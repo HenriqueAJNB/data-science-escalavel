@@ -1,17 +1,25 @@
-Translation to brazilian portuguese of the book *Build a Reproducible and Maintainable Data Science Project* from Khuyen Tran author.
+
 ---
-Tradução para português brasileiro do livro *Build a Reproducible and Maintainable Data Science Project* da autora Khuyen Tran.
+**NOTE**
+
+Translation to brazilian portuguese of the book **Build a Reproducible and Maintainable Data Science Project** from Khuyen Tran author.
+
+**NOTA**
+
+Tradução para português brasileiro do livro **Build a Reproducible and Maintainable Data Science Project** da autora Khuyen Tran.
+
 ---
 
 [![View on GitHub](https://img.shields.io/badge/GitHub-View_on_GitHub-blue?logo=GitHub)](https://github.com/HenriqueAJNB/data-science-escalavel)
 
-# Construindo uma solução robusta e escalável de ciência de dados
+<div style="text-align: justify">
 
+# Construindo uma solução robusta e escalável de ciência de dados
 Conforme uma solução de ciência de dados cresce em termos de requisitos de negócio, confiabilidade, manutenabilidade e escalabilidade, a complexidade destes projetos tendem a aumentar significativamente.
 
-Desta forma, ter um fluxo de ciência de dados reprodutível garante consistência nos resultados, facilitando a apuraçao de erros e manutenções destes projetos.
+Desta forma, ter um fluxo de ciência de dados reprodutível garante consistência nos resultados, facilitando a apuraçao de erros e manutenções destes projetos. 
 
-Este livro introduz ferramentas da linguagem Python para desenvolver fluxos de trabalho reprodutíveis e de fácil manutenção para um projeto de ciência de dados. Serão introduzidas melhores prátias e ferramentas que habilidam os cientistas de dados a se a adaptarem ao crescimento da complexidade já mencionada, enquanto garantem a confiabilidade da solução. 
+Este livro introduz ferramentas da linguagem Python para desenvolver fluxos de trabalho reprodutíveis e de fácil manutenção para um projeto de ciência de dados. Serão introduzidas melhores prátias e ferramentas que habilidam os cientistas de dados a se a adaptarem ao crescimento da complexidade já mencionada, enquanto garantem a confiabilidade da solução.
 
 Ao final deste livro você aprenderá como estruturar seu projeto, usar parametrização e logging de forma efetiva, e construir pipelines para testar, depurar e construir resultados reprodutíveis a partir do fluxo de trabalho.
 
@@ -28,3 +36,4 @@ Khuyen Tran escreveu mais de 150 artigos sobre ciência de dados com mais de cem
 
 ## Sobre o autor da tradução para português
 Henrique Branco é um instrutor de linguagem Python e disseminador de boas práticas, com atuação como Engenheiro de Machine Learning, com objetivo de ampliar a qualidade das soluçõse de ciência de dados entregue por onde ele passa, através do ensino de boas práticas de arquitetura de software, treinamentos, e outras formas de compartilhamento de conhecimento perante a alta demanda por soluções de maior qualidade, de forma geral.
+</div>
