@@ -1,5 +1,3 @@
-
----
 **NOTE**
 
 Translation to brazilian portuguese of the book **Build a Reproducible and Maintainable Data Science Project** from Khuyen Tran author.
