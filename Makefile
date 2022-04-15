@@ -1,16 +1,13 @@
 build:
-	jb build data-science-escalavel
+	jb build book
 
-copy: build
-	cp -r data-science-escalavel/_build/html/* docs
-
-git: copy
+git: build
 	git add .
 	git status
 
 open:
-	google-chrome ./data-science-escalavel/_build/html/index.html
+	google-chrome ./book/_build/html/index.html
 
-update: build copy git
+update: build git
 
-.PHONY: build copy git open update
+.PHONY: build git open update
