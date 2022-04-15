@@ -1,7 +1,7 @@
 # Book settings
 # Learn more at https://jupyterbook.org/customize/config.html
 
-title: Construindo uma solução robusta e escalável de ciência de dados
+title: Construindo uma solução robusta e escalável em ciência de dados
 author: Henrique Branco
 logo: images/hb_logo.png
 

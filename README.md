@@ -19,7 +19,7 @@ Tradução para português brasileiro do livro **Build a Reproducible and Mainta
 
 <div style="text-align: justify">
 
-# Construindo uma solução robusta e escalável de ciência de dados
+# Construindo uma solução robusta e escalável em ciência de dados
 Conforme uma solução de ciência de dados cresce em termos de requisitos de negócio, confiabilidade, manutenabilidade e escalabilidade, a complexidade destes projetos tendem a aumentar significativamente.
 
 Desta forma, ter um fluxo de ciência de dados reprodutível garante consistência nos resultados, facilitando a apuraçao de erros e manutenções destes projetos. 
