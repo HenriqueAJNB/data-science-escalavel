@@ -8,7 +8,7 @@ git: copy
 	git add .
 	git status
 
-open: copy
+open:
 	google-chrome ./data-science-escalavel/_build/html/index.html
 
 update: build copy git
