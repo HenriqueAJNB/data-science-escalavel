@@ -1,0 +1,661 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>2.1. Como estruturar seu projeto de ciência de dados para aumentar a legibilidade e transparência &#8212; Construindo uma solução robusta e escalável em ciência de dados</title>
+    
+  <link href="../_static/css/theme.css" rel="stylesheet">
+  <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.be7d3bbb2ef33a8344ce.js">
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="prev" title="2. Estrutura do projeto" href="00-estrutura_projeto.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../_static/00-hb_logo.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">Construindo uma solução robusta e escalável em ciência de dados</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../README.html">
+   Construindo uma solução robusta e escalável em ciência de dados
+  </a>
+ </li>
+</ul>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../00-como_ler_este_livro.html">
+   1. Como ler este livro
+  </a>
+ </li>
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="00-estrutura_projeto.html">
+   2. Estrutura do projeto
+  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     2.1. Como estruturar seu projeto de ciência de dados para aumentar a legibilidade e transparência
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/estrutura_projeto/01-introducao.md"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.md</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/HenriqueAJNB/data-science-escalavel"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        <a class="issues-button"
+            href="https://github.com/HenriqueAJNB/data-science-escalavel/issues/new?title=Issue%20on%20page%20%2Festrutura_projeto/01-introducao.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+        
+    </div>
+</div>
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#motivacao">
+   2.1.1. Motivação
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#mao-na-massa">
+   2.1.2. Mão na massa!
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#dependencias-e-ambiente-virtual">
+   2.1.3. Dependências e ambiente virtual
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#makefile">
+   2.1.4. Makefile
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#codigo-e-testes">
+   2.1.5. Código e testes
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#gerenciando-arquivos-de-configuracoes-com-hydra">
+   2.1.6. Gerenciando arquivos de configurações com hydra
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#gerenciando-modelos-e-dados-com-dvc">
+   2.1.7. Gerenciando modelos e dados com DVC
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#armazenando-seus-dados-de-forma-remota">
+   2.1.8. Armazenando seus dados de forma remota
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#encontrando-bugs-no-seu-codigo-antes-de-commitar">
+   2.1.9. Encontrando bugs no seu código antes de commitar
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#adicionando-a-documentacao-da-api">
+   2.1.10. Adicionando a documentação da API
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#conclusoes">
+   2.1.11. Conclusões
+  </a>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Como estruturar seu projeto de ciência de dados para aumentar a legibilidade e transparência</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#motivacao">
+   2.1.1. Motivação
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#mao-na-massa">
+   2.1.2. Mão na massa!
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#dependencias-e-ambiente-virtual">
+   2.1.3. Dependências e ambiente virtual
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#makefile">
+   2.1.4. Makefile
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#codigo-e-testes">
+   2.1.5. Código e testes
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#gerenciando-arquivos-de-configuracoes-com-hydra">
+   2.1.6. Gerenciando arquivos de configurações com hydra
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#gerenciando-modelos-e-dados-com-dvc">
+   2.1.7. Gerenciando modelos e dados com DVC
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#armazenando-seus-dados-de-forma-remota">
+   2.1.8. Armazenando seus dados de forma remota
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#encontrando-bugs-no-seu-codigo-antes-de-commitar">
+   2.1.9. Encontrando bugs no seu código antes de commitar
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#adicionando-a-documentacao-da-api">
+   2.1.10. Adicionando a documentação da API
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#conclusoes">
+   2.1.11. Conclusões
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            
+              <div>
+                
+  <p><a class="reference external" href="https://github.com/HenriqueAJNB/data-science-escalavel/tree/main/book"><img alt="View the code" src="https://img.shields.io/badge/GitHub-Visualizar_codigo-blue?logo=GitHub" /></a></p>
+<div class="section" id="como-estruturar-seu-projeto-de-ciencia-de-dados-para-aumentar-a-legibilidade-e-transparencia">
+<h1><span class="section-number">2.1. </span>Como estruturar seu projeto de ciência de dados para aumentar a legibilidade e transparência<a class="headerlink" href="#como-estruturar-seu-projeto-de-ciencia-de-dados-para-aumentar-a-legibilidade-e-transparencia" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="motivacao">
+<h2><span class="section-number">2.1.1. </span>Motivação<a class="headerlink" href="#motivacao" title="Permalink to this headline">¶</a></h2>
+<p>É importante estruturar o seu projeto de ciência de dados baseado em algum padrão para que seus colegas de trabalho consigam facilmente manter e modificar o projeto.</p>
+<p><img alt="" src="https://miro.medium.com/max/366/1*06aeJgtJ4c4mUQOG3qIbCw.png" /></p>
+<p>Mas qual tipo de padrão você deve seguir? Não seria ideal se pudessemos criar uma estrutura a partir de um modelo padrão (template)?</p>
+<p>Existem alguns excelentes templates para projetos de ciência de dados, mas eles demonstram inexistência de algumas boas práticas como testes, configurações e formatação do código.</p>
+<p>Por este motivo, a autora original do livro, Khuyen Tran, criou um repositório chamado <a class="reference external" href="https://github.com/khuyentran1401/data-science-template/blob/master/README.md">data-science-template</a>. Este repositório é resultado de anos de experiência dela refinando as melhores práicas para estruturar um projeto, deixando-o com maior reprodutibilidade e manutenabilidade.</p>
+<p>Nesta seção iremos aprender a usar esse template para incporporar as melhores práticas ao fluxo de ciência de dados.</p>
+</div>
+<div class="section" id="mao-na-massa">
+<h2><span class="section-number">2.1.2. </span>Mão na massa!<a class="headerlink" href="#mao-na-massa" title="Permalink to this headline">¶</a></h2>
+<p>Para fazer download do template, comece instalando o <a class="reference external" href="https://github.com/cookiecutter/cookiecutter">cookiecutter</a>:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip install cookiecutter
+</pre></div>
+</div>
+<p>Crie um projeto baseado no template:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>cookiecutter https://github.com/khuyentran1401/data-science-template
+</pre></div>
+</div>
+<p>…, e você será questionado de alguns detalhes do seu projeto, como:</p>
+<ul class="simple">
+<li><p>Nome</p></li>
+<li><p>Autor</p></li>
+<li><p>Versão compatível do Python</p></li>
+</ul>
+<p><img alt="cookiecutter_template" src="../_images/01-cookiecutter_template.gif" /></p>
+<p>Neste momento uma pasta com o nome fornecido acima será criada, e ela terá a seguinte estrutura:</p>
+<p><img alt="estrutura" src="../_images/02-cookiecutter_template.png" /></p>
+<p>As ferramentas usadas nesse template são:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://python-poetry.org/">Poetry</a>: gerenciamento de pacotes e ambientes virtuais.</p></li>
+<li><p><a class="reference external" href="https://hydra.cc/docs/intro/">hydra</a>: gerenciamento de arquivos de configuração.</p></li>
+<li><p>plugins do <a class="reference external" href="https://pre-commit.com/">pre-commit</a>: automação na formatação e revisão do código.</p></li>
+<li><p><a class="reference external" href="https://dvc.org/">DVC</a>: versionamento de dados e experimentos.</p></li>
+<li><p><a class="reference external" href="https://pdoc.dev/">pdoc</a>: criação de documentação automática para a API do seu projeto.</p></li>
+</ul>
+<p>Nas próximas seções, nós vamos aprender as funcionalidades destas ferramentas e arquivos.</p>
+</div>
+<div class="section" id="dependencias-e-ambiente-virtual">
+<h2><span class="section-number">2.1.3. </span>Dependências e ambiente virtual<a class="headerlink" href="#dependencias-e-ambiente-virtual" title="Permalink to this headline">¶</a></h2>
+<p>Este projeto usa o <a class="reference external" href="https://python-poetry.org/">Poetry</a> no lugar do <code class="docutils literal notranslate"><span class="pre">pip</span></code> para gerenciar as dependências. O motivo é porque o Poetry nos permite:</p>
+<ul class="simple">
+<li><p>Separar as dependências principais das dependências indiretas em dois arquivos diferentes, ao invés de colocar todas elas em um único arquivo <code class="docutils literal notranslate"><span class="pre">requirements.txt</span></code>.</p></li>
+<li><p>Criar arquivos de dependência mais legíveis.</p></li>
+<li><p>Remover todas as dependências indiretas ao remover um pacote.</p></li>
+<li><p>Evitar instalar novos pacotes que são conflitantes com aqueles pré-existentes.</p></li>
+</ul>
+<p>As instruções de instalação do Poetry está neste <a class="reference external" href="https://python-poetry.org/docs/#installation">link</a>. Todas as dependências principais do projeto estão definidas no arquivo <code class="docutils literal notranslate"><span class="pre">pyproject.toml</span></code>. Para instalar todas as dependências, basta rodar no terminal:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>poetry install
+</pre></div>
+</div>
+<p>Para adicionar um novo pacote do repositório PyPI, rode:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>poetry add &lt;nome-do-pacote&gt;
+</pre></div>
+</div>
+<p>Para remover um pacote:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>poetry remove &lt;nome-do-pacote&gt;
+</pre></div>
+</div>
+</div>
+<div class="section" id="makefile">
+<h2><span class="section-number">2.1.4. </span>Makefile<a class="headerlink" href="#makefile" title="Permalink to this headline">¶</a></h2>
+<p>O arquivo Makefile permite criar atalhos pequenos e legíveis para uma série de comandos. Você pode usar o Makefile para automatizar tarefas como, por exemplo, a preparação inicial do seu ambiente:</p>
+<div class="highlight-Makefile notranslate"><div class="highlight"><pre><span></span><span class="nf">install</span><span class="o">:</span> 
+	@echo <span class="s2">&quot;Installing...&quot;</span>
+	poetry install
+	poetry run pre-commit install
+
+<span class="nf">activate</span><span class="o">:</span>
+	@echo <span class="s2">&quot;Activating virtual environment&quot;</span>
+	poetry shell
+
+<span class="nf">initialize_git</span><span class="o">:</span>
+  @echo <span class="s2">&quot;Initialize git&quot;</span>
+	git init 
+
+<span class="nf">setup</span><span class="o">:</span> <span class="n">initialize_git</span> <span class="n">install</span>
+</pre></div>
+</div>
+<blockquote>
+<div><p><strong>Comentário a parte do livro original:</strong></p>
+<p>Embora a autora não tenho mencionado no livro original, existem alternativas não oficiais para realizar essas automações com o <code class="docutils literal notranslate"><span class="pre">make</span></code> no Windows, pois o <code class="docutils literal notranslate"><span class="pre">make</span></code> não é nativo deste sistema operacional. Em contrapartida, existe o <code class="docutils literal notranslate"><span class="pre">just</span></code> que funciona de forma equivalente ao <code class="docutils literal notranslate"><span class="pre">make</span></code> e também funciona no Windows.</p>
+</div></blockquote>
+<p>Quando qualquer pessoa pegar o projeto pela primeira vez, basta rodar os comandos abaixo para preparar todo o ambiente do projeto:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>make activate
+make setup
+</pre></div>
+</div>
+<p><img alt="make" src="../_images/02-make.gif" /></p>
+</div>
+<div class="section" id="codigo-e-testes">
+<h2><span class="section-number">2.1.5. </span>Código e testes<a class="headerlink" href="#codigo-e-testes" title="Permalink to this headline">¶</a></h2>
+<p>Todos os scripts Python são armazenados dentro da pasta <code class="docutils literal notranslate"><span class="pre">src</span></code></p>
+<p><img alt="estrutura_pastas1" src="../_images/03-estrutura_pastas1.png" /></p>
+<blockquote>
+<div><p><strong>Comentário a parte do livro original:</strong></p>
+<p>Eu particularmente não chamaria a pasta principal de <code class="docutils literal notranslate"><span class="pre">src</span></code>, pois não é o padrão da linguagem Python. Por padrão, o pacote Python principal recebe o mesmo nome do projeto. Este padrão <code class="docutils literal notranslate"><span class="pre">src</span></code> muito provavelmente é proveniente de outras linguagens de programação.</p>
+</div></blockquote>
+<p>Todos os arquivos de testes estão armazenados na pasta <code class="docutils literal notranslate"><span class="pre">tests</span></code>. Ela deve ser um espelho da pasta <code class="docutils literal notranslate"><span class="pre">src</span></code> onde cada arquivo começa com o nome <code class="docutils literal notranslate"><span class="pre">test</span></code> seguido do nome do arquivo sendo testado.</p>
+<p><img alt="estrutura_pastas2" src="../_images/04-estrutura_pastas2.png" /></p>
+</div>
+<div class="section" id="gerenciando-arquivos-de-configuracoes-com-hydra">
+<h2><span class="section-number">2.1.6. </span>Gerenciando arquivos de configurações com hydra<a class="headerlink" href="#gerenciando-arquivos-de-configuracoes-com-hydra" title="Permalink to this headline">¶</a></h2>
+<p>Um arquivo de configurações armazena todos os valores em um único arquivo, a fim de deixá-los separados e não escrevê-los diretamente no código. Neste template, todos os arquivos de configuração são armazenados na pasta <code class="docutils literal notranslate"><span class="pre">config</span></code>.</p>
+<p><img alt="config" src="../_images/05-config.png" /></p>
+<p><a class="reference external" href="https://hydra.cc/docs/intro/">Hydra</a> é um pacote da linguagem Python que permite acessar os parâmetros de configuração dos arquivos dentro de um script Python.</p>
+<p>Por exemplo, se o seu <code class="docutils literal notranslate"><span class="pre">config/main.yaml</span></code> tiver o conteúdo abaixo:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">raw</span><span class="p">:</span><span class="w"> </span>
+<span class="w">  </span><span class="nt">path</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">data/raw/sample.csv</span><span class="w"></span>
+
+<span class="nt">processed</span><span class="p">:</span><span class="w"></span>
+<span class="w">  </span><span class="nt">path</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">data/processed/processed.csv</span><span class="w"></span>
+
+<span class="nt">final</span><span class="p">:</span><span class="w"></span>
+<span class="w">  </span><span class="nt">path</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">data/final/final.csv</span><span class="w"></span>
+</pre></div>
+</div>
+<p>…, podemos acessar os valores nesse arquivo de configuração usando o decorador <code class="docutils literal notranslate"><span class="pre">&#64;hydra.main</span></code> em uma função específica. Dentro da função, podemos acessar os valores em <code class="docutils literal notranslate"><span class="pre">processed</span></code> e <code class="docutils literal notranslate"><span class="pre">path</span></code> usando a notação de ponto: <code class="docutils literal notranslate"><span class="pre">config.processed.path</span></code>.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">Este trecho de código demonstra de forma simples como acessar os parâmetros dentro da pasta config.</span>
+<span class="sd">Autora do código: Khuyen Tran</span>
+<span class="sd">Autor da tradução: Henrique Branco</span>
+<span class="sd">&quot;&quot;&quot;</span>
+
+<span class="kn">import</span> <span class="nn">hydra</span>
+<span class="kn">from</span> <span class="nn">omegaconf</span> <span class="kn">import</span> <span class="n">DictConfig</span>
+<span class="kn">from</span> <span class="nn">hydra.utils</span> <span class="kn">import</span> <span class="n">to_absolute_path</span> <span class="k">as</span> <span class="n">abspath</span>
+
+<span class="nd">@hydra</span><span class="o">.</span><span class="n">main</span><span class="p">(</span><span class="n">config_path</span><span class="o">=</span><span class="s2">&quot;../config&quot;</span><span class="p">,</span> <span class="n">config_name</span><span class="o">=</span><span class="s1">&#39;main&#39;</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">process_data</span><span class="p">(</span><span class="n">config</span><span class="p">:</span> <span class="n">DictConfig</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Função para processar os dados&quot;&quot;&quot;</span>
+
+    <span class="n">raw_path</span> <span class="o">=</span> <span class="n">abspath</span><span class="p">(</span><span class="n">config</span><span class="o">.</span><span class="n">raw</span><span class="o">.</span><span class="n">path</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Processando os dados com </span><span class="si">{</span><span class="n">raw_path</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Colunas utilizadas: </span><span class="si">{</span><span class="n">config</span><span class="o">.</span><span class="n">process</span><span class="o">.</span><span class="n">use_columns</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+    <span class="n">process_data</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Vamos aprofundar em maiores detalhes na seção sobre configurações.</p>
+</div>
+<div class="section" id="gerenciando-modelos-e-dados-com-dvc">
+<h2><span class="section-number">2.1.7. </span>Gerenciando modelos e dados com DVC<a class="headerlink" href="#gerenciando-modelos-e-dados-com-dvc" title="Permalink to this headline">¶</a></h2>
+<p>Todos os dados são armazenados na pasta <code class="docutils literal notranslate"><span class="pre">data</span></code>. Cada subpasta dentro de <code class="docutils literal notranslate"><span class="pre">data</span></code> armazena dados em diferentes estágios.</p>
+<p><img alt="config" src="../_images/06-data.png" /></p>
+<p>Todos os modelos são salvos na pasta models.</p>
+<p>Sabendo que o <em>git</em> não é uma ferramenta propícia para versionamento de dados e arquivos binários (modelos), vamos usar o DVC - Data Version Control - para controlar o versionamento de nossos dados e modelos.</p>
+<p>Começamos com especificando as etapas no arquivo <code class="docutils literal notranslate"><span class="pre">dvc.yaml</span></code>. Cada etapa representa um processamento específico de dados, incluindo a entrada (<code class="docutils literal notranslate"><span class="pre">deps</span></code>) e a saída (<code class="docutils literal notranslate"><span class="pre">outs</span></code>).</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">stages</span><span class="p">:</span><span class="w"></span>
+<span class="w">  </span><span class="nt">process_data</span><span class="p">:</span><span class="w"></span>
+<span class="w">    </span><span class="nt">cmd</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">python src/process.py</span><span class="w"></span>
+<span class="w">    </span><span class="nt">deps</span><span class="p">:</span><span class="w"></span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">config/main.yaml</span><span class="w"></span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">config/process</span><span class="w"></span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">data/raw</span><span class="w"></span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">src/process.py</span><span class="w"></span>
+<span class="w">    </span><span class="nt">outs</span><span class="p">:</span><span class="w"></span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">data/processed</span><span class="p">:</span><span class="w"></span>
+<span class="w">        </span><span class="nt">persist</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span><span class="w"></span>
+<span class="w">  </span><span class="nt">train_model</span><span class="p">:</span><span class="w"></span>
+<span class="w">    </span><span class="nt">cmd</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">python src/train_model.py</span><span class="w"></span>
+<span class="w">    </span><span class="nt">deps</span><span class="p">:</span><span class="w"></span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">config/main.yaml</span><span class="w"></span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">config/model</span><span class="w"></span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">data/processed</span><span class="w"></span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">src/train_model.py</span><span class="w"></span>
+<span class="w">    </span><span class="nt">outs</span><span class="p">:</span><span class="w"></span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">data/final</span><span class="p">:</span><span class="w"></span>
+<span class="w">        </span><span class="nt">persist</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span><span class="w"></span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">models</span><span class="p">:</span><span class="w"></span>
+<span class="w">        </span><span class="nt">persist</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span><span class="w"></span>
+</pre></div>
+</div>
+<p>Todas as pastas e arquivos abaixo de <code class="docutils literal notranslate"><span class="pre">outs</span></code> serão automaticamente rastreados e versionados pelo DVC.</p>
+<p>Se você quiser executar as etapas definido em <code class="docutils literal notranslate"><span class="pre">stages</span></code>, basta rodar noo terminal</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>dvc repro
+</pre></div>
+</div>
+<p>Fato interessante é que o DVC pula as etapas que não foram modificadas, e roda somente as etapas que foram alteradas, economizando tempo no processo de modelagem.</p>
+<p><img alt="dvc_repro" src="../_images/03-dvc_repro.gif" /></p>
+</div>
+<div class="section" id="armazenando-seus-dados-de-forma-remota">
+<h2><span class="section-number">2.1.8. </span>Armazenando seus dados de forma remota<a class="headerlink" href="#armazenando-seus-dados-de-forma-remota" title="Permalink to this headline">¶</a></h2>
+<p>O maior benefício no uso do DVC está no fato de ser possível armazenar dados em diversas plataformas, incluindo os serviços em nuvem. Você pode armazenar seus dados no DagsHub, Google Drive, Amazon S3, Azure Blob Storage, Google Cloud Storage Aliyun OS, SSH, HDFS e HTTP.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>dvc remote add -d remote &lt;REMOTE-URL&gt;
+</pre></div>
+</div>
+<p>Depois de adicionar dados ao seu projeto local, você pode enviá-los para armazenamento remoto desta forma:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>dvc push
+</pre></div>
+</div>
+<p>Agora basta adicionar as outras informações ao git:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git add .
+git commit -m <span class="s1">&#39;mensagem de commit&#39;</span>
+git push origin &lt;BRANCH&gt;
+</pre></div>
+</div>
+<p>Vamos aprofundar em maiores detalhes sobre o DVC na seção sobre versionamento de dados.</p>
+</div>
+<div class="section" id="encontrando-bugs-no-seu-codigo-antes-de-commitar">
+<h2><span class="section-number">2.1.9. </span>Encontrando bugs no seu código antes de commitar<a class="headerlink" href="#encontrando-bugs-no-seu-codigo-antes-de-commitar" title="Permalink to this headline">¶</a></h2>
+<p>Quando vamos commitar um código, precisanos nos certificar que:</p>
+<ul class="simple">
+<li><p>está bem formatado</p></li>
+<li><p>está organizado</p></li>
+<li><p>segue a padronização de estilo da PEP 8</p></li>
+<li><p>inclui documentações nas funções e classes (docstrings)</p></li>
+</ul>
+<p>No entanto, pode ser muito entediante e propenso a erro checar todos esses critérios antes de commitar o código. Para isso, contamos com a ferramenta <strong>pre-commit</strong>, que permite identificar estes detalhes antes de commitar o código.</p>
+<p>Você consegue adicionar diferentes plugins ao seu pipeline do pre-commit. Uma vez que você commitou, todo o projeto passara por estas checagens. Caso alguma delas falhe, nenhum código será commitado.</p>
+<p><img alt="pre-commit_fluxograma" src="../_images/07-pre-commit_fluxograma.png" /></p>
+<p>Neste template, usamos 5 diferentes plugins, especificados em <code class="docutils literal notranslate"><span class="pre">.pre-commit-config.yaml</span></code>. São deles:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://black.readthedocs.io/en/stable/">black</a> - formata os scripts Python.</p></li>
+<li><p><a class="reference external" href="https://flake8.pycqa.org/en/latest/">flake8</a> - checa a aderência à PEP8.</p></li>
+<li><p><a class="reference external" href="https://pycqa.github.io/isort/">isort</a> - ordena as importações de forma automática.</p></li>
+<li><p><a class="reference external" href="http://mypy-lang.org/">mypy</a> - checa os tipos das variáveis de forma estática.</p></li>
+<li><p><a class="reference external" href="https://github.com/kynan/nbstripout">nbstrpout</a> - limpa o <code class="docutils literal notranslate"><span class="pre">.json</span></code> dos arquivos Jupyter Notebooks.</p></li>
+</ul>
+<p>Para adicionar o pre-commit aos hooks do git, rode no terminal:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pre-commit install
+</pre></div>
+</div>
+<p>A partir de agora, quando você der um <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">commit</span></code>, seu código passara por todas as verificações e correções, de forma automática.</p>
+<p><img alt="pre-commit_fluxograma" src="../_images/05-pre-commit.gif" /></p>
+<p>Vamos aprofundar em maiores detalhes sobre pre-commit na seção sobre formatação de código.</p>
+</div>
+<div class="section" id="adicionando-a-documentacao-da-api">
+<h2><span class="section-number">2.1.10. </span>Adicionando a documentação da API<a class="headerlink" href="#adicionando-a-documentacao-da-api" title="Permalink to this headline">¶</a></h2>
+<p>Como um cientista de dados, assim como em qualquer outra profissão, sempre há o trabalho em equipe. Portanto, é importante criar uma boa documentação para o seu projeto.</p>
+<p>Para criar a documentação da API do seu projeto baseado nas docstrings dos seus scripts Python, vamos rodar:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>make docs_view
+</pre></div>
+</div>
+<p>Saída:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>Save the output to docs...
+pdoc src --http localhost:8080
+Starting pdoc server on localhost:8080
+pdoc server ready at http://localhost:8080
+</pre></div>
+</div>
+<p>A documentação estará disponível em <a class="reference external" href="http://localhost:8080">http://localhost:8080</a>.</p>
+<p>Para salvar a saída da documentação em formato markdown:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>make docs_save
+</pre></div>
+</div>
+</div>
+<div class="section" id="conclusoes">
+<h2><span class="section-number">2.1.11. </span>Conclusões<a class="headerlink" href="#conclusoes" title="Permalink to this headline">¶</a></h2>
+<p>You have just learned how to structure your data science project using a data science template. This template means to be flexible. Feel free to adjust the project based on your applications.</p>
+<p>Você acabou de aprender a estruturar um projeto de ciência de dados usando um template. Este template traz uma flexibilidade extrema. Sinta-se a vontade para ajustá-lo baseado nas suas próprias aplicações.</p>
+<p>E também pode brincar a vontade com o template data-science-template da autora Khuyen Tran neste <a class="reference external" href="https://github.com/khuyentran1401/data-science-template">link</a>.</p>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./estrutura_projeto"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            
+                <!-- Previous / next buttons -->
+<div class='prev-next-area'> 
+    <a class='left-prev' id="prev-link" href="00-estrutura_projeto.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title"><span class="section-number">2. </span>Estrutura do projeto</p>
+        </div>
+    </a>
+</div>
+            
+        </div>
+    </div>
+    <footer class="footer">
+  <p>
+    
+      By Henrique Branco<br/>
+    
+        &copy; Copyright 2021.<br/>
+  </p>
+</footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="../_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+
+  </body>
+</html>
