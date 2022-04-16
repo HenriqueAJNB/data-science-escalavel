@@ -123,6 +123,197 @@ Todos os scripts Python são armazenados dentro da pasta `src`
 >
 > Eu particularmente não chamaria a pasta principal de `src`, pois não é o padrão da linguagem Python. Por padrão, o pacote Python principal recebe o mesmo nome do projeto. Este padrão `src` muito provavelmente é proveniente de outras linguagens de programação.
 
-Todos os arquivos de testes estão armazenados no diretório `tests`. Ele deve ser um espelho do diretório `src` onde cada arquivo começa com o nome `test` seguido do nome do arquivo sendo testado.
+Todos os arquivos de testes estão armazenados na pasta `tests`. Ela deve ser um espelho da pasta `src` onde cada arquivo começa com o nome `test` seguido do nome do arquivo sendo testado.
 
 ![estrutura_pastas2](../images/04-estrutura_pastas2.png)
+
+### Gerenciando arquivos de configurações com hydra
+
+Um arquivo de configurações armazena todos os valores em um único arquivo, a fim de deixá-los separados e não escrevê-los diretamente no código. Neste template, todos os arquivos de configuração são armazenados na pasta `config`.
+
+![config](../images/05-config.png)
+
+[Hydra](https://hydra.cc/docs/intro/) é um pacote da linguagem Python que permite acessar os parâmetros de configuração dos arquivos dentro de um script Python.
+
+Por exemplo, se o seu `config/main.yaml` tiver o conteúdo abaixo:
+
+```yaml
+raw: 
+  path: data/raw/sample.csv
+
+processed:
+  path: data/processed/processed.csv
+
+final:
+  path: data/final/final.csv
+```
+
+..., podemos acessar os valores nesse arquivo de configuração usando o decorador `@hydra.main` em uma função específica. Dentro da função, podemos acessar os valores em `processed` e `path` usando a notação de ponto: `config.processed.path`.
+
+
+
+```python
+"""
+Este trecho de código demonstra de forma simples como acessar os parâmetros dentro da pasta config.
+Autora do código: Khuyen Tran
+Autor da tradução: Henrique Branco
+"""
+
+import hydra
+from omegaconf import DictConfig
+from hydra.utils import to_absolute_path as abspath
+
+@hydra.main(config_path="../config", config_name='main')
+def process_data(config: DictConfig):
+    """Função para processar os dados"""
+
+    raw_path = abspath(config.raw.path)
+    print(f"Processando os dados com {raw_path}")
+    print(f"Colunas utilizadas: {config.process.use_columns}")
+
+if __name__ == '__main__':
+    process_data()
+```
+
+Vamos aprofundar em maiores detalhes na seção sobre configurações.
+
+### Gerenciando modelos e dados com DVC
+
+Todos os dados são armazenados na pasta `data`. Cada subpasta dentro de `data` armazena dados em diferentes estágios.
+
+![config](../images/06-data.png)
+
+Todos os modelos são salvos na pasta models.
+
+Sabendo que o *git* não é uma ferramenta propícia para versionamento de dados e arquivos binários (modelos), vamos usar o DVC - Data Version Control - para controlar o versionamento de nossos dados e modelos.
+
+Começamos com especificando as etapas no arquivo `dvc.yaml`. Cada etapa representa um processamento específico de dados, incluindo a entrada (`deps`) e a saída (`outs`).
+
+```yaml
+stages:
+  process_data:
+    cmd: python src/process.py
+    deps:
+    - config/main.yaml
+    - config/process
+    - data/raw
+    - src/process.py
+    outs:
+    - data/processed:
+        persist: true
+  train_model:
+    cmd: python src/train_model.py
+    deps:
+    - config/main.yaml
+    - config/model
+    - data/processed
+    - src/train_model.py
+    outs:
+    - data/final:
+        persist: true
+    - models:
+        persist: true
+```
+
+Todas as pastas e arquivos abaixo de `outs` serão automaticamente rastreados e versionados pelo DVC.
+
+Se você quiser executar as etapas definido em `stages`, basta rodar noo terminal
+
+```bash
+dvc repro
+```
+
+Fato interessante é que o DVC pula as etapas que não foram modificadas, e roda somente as etapas que foram alteradas, economizando tempo no processo de modelagem.
+
+![dvc_repro](../gifs/03-dvc_repro.gif)
+
+### Armazenando seus dados de forma remota
+
+O maior benefício no uso do DVC está no fato de ser possível armazenar dados em diversas plataformas, incluindo os serviços em nuvem. Você pode armazenar seus dados no DagsHub, Google Drive, Amazon S3, Azure Blob Storage, Google Cloud Storage Aliyun OS, SSH, HDFS e HTTP.
+
+```bash
+dvc remote add -d remote <REMOTE-URL>
+```
+
+Depois de adicionar dados ao seu projeto local, você pode enviá-los para armazenamento remoto desta forma:
+```bash
+dvc push
+```
+
+Agora basta adicionar as outras informações ao git:
+```bash
+git add .
+git commit -m 'mensagem de commit'
+git push origin <BRANCH>
+```
+
+Vamos aprofundar em maiores detalhes sobre o DVC na seção sobre versionamento de dados.
+
+### Encontrando bugs no seu código antes de commitar
+
+Quando vamos commitar um código, precisanos nos certificar que:
+- está bem formatado
+- está organizado
+- segue a padronização de estilo da PEP 8
+- inclui documentações nas funções e classes (docstrings)
+
+No entanto, pode ser muito entediante e propenso a erro checar todos esses critérios antes de commitar o código. Para isso, contamos com a ferramenta **pre-commit**, que permite identificar estes detalhes antes de commitar o código.
+
+Você consegue adicionar diferentes plugins ao seu pipeline do pre-commit. Uma vez que você commitou, todo o projeto passara por estas checagens. Caso alguma delas falhe, nenhum código será commitado.
+
+![pre-commit_fluxograma](../images/07-pre-commit_fluxograma.png)
+
+Neste template, usamos 5 diferentes plugins, especificados em `.pre-commit-config.yaml`. São deles:
+
+- [black](https://black.readthedocs.io/en/stable/) - formata os scripts Python.
+- [flake8](https://flake8.pycqa.org/en/latest/) - checa a aderência à PEP8.
+- [isort](https://pycqa.github.io/isort/) - ordena as importações de forma automática.
+- [mypy](http://mypy-lang.org/) - checa os tipos das variáveis de forma estática.
+- [nbstrpout](https://github.com/kynan/nbstripout) - limpa o `.json` dos arquivos Jupyter Notebooks.
+
+Para adicionar o pre-commit aos hooks do git, rode no terminal:
+
+```bash
+pre-commit install
+```
+
+A partir de agora, quando você der um `git commit`, seu código passara por todas as verificações e correções, de forma automática.
+
+![pre-commit_fluxograma](../gifs/05-pre-commit.gif)
+
+Vamos aprofundar em maiores detalhes sobre pre-commit na seção sobre formatação de código.
+
+### Adicionando a documentação da API
+
+Como um cientista de dados, assim como em qualquer outra profissão, sempre há o trabalho em equipe. Portanto, é importante criar uma boa documentação para o seu projeto.
+
+Para criar a documentação da API do seu projeto baseado nas docstrings dos seus scripts Python, vamos rodar:
+
+```bash
+make docs_view
+```
+
+Saída:
+
+```bash
+Save the output to docs...
+pdoc src --http localhost:8080
+Starting pdoc server on localhost:8080
+pdoc server ready at http://localhost:8080
+```
+
+A documentação estará disponível em http://localhost:8080.
+
+Para salvar a saída da documentação em formato markdown:
+
+```bash
+make docs_save
+```
+
+### Conclusões
+
+You have just learned how to structure your data science project using a data science template. This template means to be flexible. Feel free to adjust the project based on your applications.
+
+Você acabou de aprender a estruturar um projeto de ciência de dados usando um template. Este template traz uma flexibilidade extrema. Sinta-se a vontade para ajustá-lo baseado nas suas próprias aplicações.
+
+E também pode brincar a vontade com o template data-science-template da autora Khuyen Tran neste [link](https://github.com/khuyentran1401/data-science-template).
