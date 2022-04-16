@@ -3,7 +3,7 @@
 
 title: Construindo uma solução robusta e escalável em ciência de dados
 author: Henrique Branco
-logo: images/hb_logo.png
+logo: images/00-hb_logo.png
 
 # Force re-execution of notebooks on each build.
 # See https://jupyterbook.org/content/execute.html
