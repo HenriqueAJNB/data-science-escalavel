@@ -10,4 +10,7 @@ open:
 
 update: build git
 
-.PHONY: build git open update
+deploy: build
+	ghp-import -n -p -f ./book/_build/html
+
+.PHONY: build git open update deploy

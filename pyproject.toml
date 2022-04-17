@@ -8,6 +8,7 @@ license = "Creative Commons Legal Code"
 [tool.poetry.dependencies]
 python = "^3.9"
 jupyter-book = "^0.12.3"
+ghp-import = "^2.0.2"
 
 [tool.poetry.dev-dependencies]
 
