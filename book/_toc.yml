@@ -10,3 +10,4 @@ chapters:
 - file: estrutura_projeto/00-estrutura_projeto.md
   sections:
   - file: estrutura_projeto/01-introducao.md
+  - file: estrutura_projeto/02-melhores_praticas_funcoes.md
