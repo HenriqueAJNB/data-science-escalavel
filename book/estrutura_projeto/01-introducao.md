@@ -1,5 +1,7 @@
 [![View the code](https://img.shields.io/badge/GitHub-Visualizar_codigo-blue?logo=GitHub)](https://github.com/HenriqueAJNB/data-science-escalavel/tree/main/book)
 
+<div style="text-align: justify">
+
 ## Como estruturar seu projeto de ciência de dados para aumentar a legibilidade e transparência
 
 ### Motivação
@@ -317,3 +319,5 @@ You have just learned how to structure your data science project using a data sc
 Você acabou de aprender a estruturar um projeto de ciência de dados usando um template. Este template traz uma flexibilidade extrema. Sinta-se a vontade para ajustá-lo baseado nas suas próprias aplicações.
 
 E também pode brincar a vontade com o template data-science-template da autora Khuyen Tran neste [link](https://github.com/khuyentran1401/data-science-template).
+
+</div>
