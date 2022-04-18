@@ -415,7 +415,18 @@ const thebe_selector_output = ".output, .cell_output"
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>poetry remove &lt;nome-do-pacote&gt;
 </pre></div>
 </div>
+<hr class="docutils" />
+<p><strong>Comentário a parte do livro original:</strong></p>
+<p>Como o Poetry lida com problema de otimização quando está resolvendo as dependências, ele pode ser mais lento do que o <code class="docutils literal notranslate"><span class="pre">pip</span></code> dependendo da quantidade de pacotes.</p>
+<p>A própria documentação oficial do Poetry sabe desta deficiência, veja <a class="reference external" href="https://python-poetry.org/docs/faq/">neste link aqui</a>.</p>
+<p>Há também vários issues abertos referente ao tema de lentidão do Poetry:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://github.com/python-poetry/poetry/issues/2094">Poetry is extremely slow when resolving the dependencies #2094</a></p></li>
+<li><p><a class="reference external" href="https://github.com/python-poetry/poetry/issues/4924">Dependency resolution is extremely slow #4924</a></p></li>
+</ul>
+<p>Se caso for necessário um build mais veloz, sugiro não utilizar o Poetry.</p>
 </div>
+<hr class="docutils" />
 <div class="section" id="makefile">
 <h2><span class="section-number">2.1.4. </span>Makefile<a class="headerlink" href="#makefile" title="Permalink to this headline">¶</a></h2>
 <p>O arquivo Makefile permite criar atalhos pequenos e legíveis para uma série de comandos. Você pode usar o Makefile para automatizar tarefas como, por exemplo, a preparação inicial do seu ambiente:</p>

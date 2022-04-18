@@ -81,6 +81,21 @@ Para remover um pacote:
 poetry remove <nome-do-pacote>
 ```
 
+---
+**Comentário a parte do livro original:**
+
+Como o Poetry lida com problema de otimização quando está resolvendo as dependências, ele pode ser mais lento do que o `pip` dependendo da quantidade de pacotes. 
+
+A própria documentação oficial do Poetry sabe desta deficiência, veja [neste link aqui](https://python-poetry.org/docs/faq/). 
+
+Há também vários issues abertos referente ao tema de lentidão do Poetry:
+- [Poetry is extremely slow when resolving the dependencies #2094](https://github.com/python-poetry/poetry/issues/2094)
+- [Dependency resolution is extremely slow #4924](https://github.com/python-poetry/poetry/issues/4924)
+
+Se caso for necessário um build mais veloz, sugiro não utilizar o Poetry.
+
+---
+
 ### Makefile
 
 O arquivo Makefile permite criar atalhos pequenos e legíveis para uma série de comandos. Você pode usar o Makefile para automatizar tarefas como, por exemplo, a preparação inicial do seu ambiente:
