@@ -139,8 +139,16 @@ def download_zip_data_from_google_drive(url: str, output_path: str):
 
 A função `download_zip_data_from_google_drive` somente faz download de um arquivo `.zip` do Google Drive e só! Nada mais além disso...
 
-> **Comentário a parte do livro original:**
->
-> Eu particularmente não chamaria a pasta principal de `src`, pois não é o padrão da linguagem Python. Por padrão, o pacote Python principal recebe o mesmo nome do projeto. Este padrão `src` muito provavelmente é proveniente de outras linguagens de programação.
+---
+**Comentário a parte do livro original:**
+
+A grande pergunta que fica aqui é: como saber quando a função faz mais de uma coisa? Um exercício bem simples, proposto pelo autor Robert C. Martin (famoso Uncle Bob) em seu livro Código Limpo é descrever o que a sua função faz em poucas palavras e ler o texto.
+Se o texto se parecer com este: "Esta função faz isso **e depois** aquilo" é um forte indicativo de que ela faz mais de uma coisa. Os indicativos são: 
+- vírgula presentes na descrição verbal ou escrita da função;
+- palavras ou expressões como `e`, `também`, `além disso`, `em seguida`;
+- código duplicado dentro da função;
+- presença de instruções if-else dentro da função com o seguinte comportamento: `se for isso, então faça assim, se for aquilo então faça assado`;
+
+---
 
 </div>
