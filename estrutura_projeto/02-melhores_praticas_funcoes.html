@@ -410,11 +410,19 @@ const thebe_selector_output = ".output, .cell_output"
 </pre></div>
 </div>
 <p>A função <code class="docutils literal notranslate"><span class="pre">download_zip_data_from_google_drive</span></code> somente faz download de um arquivo <code class="docutils literal notranslate"><span class="pre">.zip</span></code> do Google Drive e só! Nada mais além disso…</p>
-<blockquote>
-<div><p><strong>Comentário a parte do livro original:</strong></p>
-<p>Eu particularmente não chamaria a pasta principal de <code class="docutils literal notranslate"><span class="pre">src</span></code>, pois não é o padrão da linguagem Python. Por padrão, o pacote Python principal recebe o mesmo nome do projeto. Este padrão <code class="docutils literal notranslate"><span class="pre">src</span></code> muito provavelmente é proveniente de outras linguagens de programação.</p>
-</div></blockquote>
-</div></div>
+<hr class="docutils" />
+<p><strong>Comentário a parte do livro original:</strong></p>
+<p>A grande pergunta que fica aqui é: como saber quando a função faz mais de uma coisa? Um exercício bem simples, proposto pelo autor Robert C. Martin (famoso Uncle Bob) em seu livro Código Limpo é descrever o que a sua função faz em poucas palavras e ler o texto.
+Se o texto se parecer com este: “Esta função faz isso <strong>e depois</strong> aquilo” é um forte indicativo de que ela faz mais de uma coisa. Os indicativos são:</p>
+<ul class="simple">
+<li><p>vírgula presentes na descrição verbal ou escrita da função;</p></li>
+<li><p>palavras ou expressões como <code class="docutils literal notranslate"><span class="pre">e</span></code>, <code class="docutils literal notranslate"><span class="pre">também</span></code>, <code class="docutils literal notranslate"><span class="pre">além</span> <span class="pre">disso</span></code>, <code class="docutils literal notranslate"><span class="pre">em</span> <span class="pre">seguida</span></code>;</p></li>
+<li><p>código duplicado dentro da função;</p></li>
+<li><p>presença de instruções if-else dentro da função com o seguinte comportamento: <code class="docutils literal notranslate"><span class="pre">se</span> <span class="pre">for</span> <span class="pre">isso,</span> <span class="pre">então</span> <span class="pre">faça</span> <span class="pre">assim,</span> <span class="pre">se</span> <span class="pre">for</span> <span class="pre">aquilo</span> <span class="pre">então</span> <span class="pre">faça</span> <span class="pre">assado</span></code>;</p></li>
+</ul>
+<hr class="docutils" />
+</div>
+</div>
 </div>
 
     <script type="text/x-thebe-config">
