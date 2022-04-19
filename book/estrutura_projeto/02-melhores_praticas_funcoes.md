@@ -267,8 +267,6 @@ Outras pessoas conseguem entender o que a função `extract_texts_from_multiple_
 
 Não tenham medo de escrever nomes longos. É melhor escrever nomes longos do que vagos. Se você tentar encurtar o nome da função para algo parecido com `get_texts`, seria difícil para as outras pessoas entenderem o que a função faz exatamente sem olhar o código dela.
 
-If the descriptive name of a function is too long such as download_file_from_ Google_drive_and_extract_text_from_that_file . It is a good sign that your function is doing multiple things and you should split it into smaller functions.
-
 Se o nome da sua função é extremamente longo, como `download_file_from_google_drive_and_extract_text_from_that_file`, é um forte sinal de que sua função está fazendo mais do que uma coisa só e deveria ser quebrada em funções menores.
 
 ### Ter menos que 4 argumentos
