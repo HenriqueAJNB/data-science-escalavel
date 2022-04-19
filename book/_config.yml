@@ -30,3 +30,4 @@ repository:
 html:
   use_issues_button: true
   use_repository_button: true
+  google_analytics_id: G-QFTP5KWB8R
