@@ -151,4 +151,259 @@ Se o texto se parecer com este: "Esta função faz isso **e depois** aquilo" é 
 
 ---
 
+### Um único nível de abstração
+
+O código da função `extract_texts_from_multiple_files` está em um nível diferente de abstração da função em si...
+
+```python
+from typing import List 
+
+def extract_texts_from_multiple_files(path_to_file: str, files: list) -> List[str]:
+
+    all_docs = []
+    for file in files:
+        list_of_text_in_one_file = [r.text for r in ET.parse(join(path_to_file, file_name)).getroot()[0]]
+        text_in_one_file_as_string = ' '.join(t for t in list_of_text_in_one_file)
+        all_docs.append(text_in_one_file_as_string)
+
+    return all_docs
+```
+
+```{admonition} O que é nível de abstração?
+:class: tip
+
+A autora trouxe uma referência para responder a esta pergunta:
+
+O nível de abstração é a quantidade de complexidade pela qual um sistema é visualizado ou programado. Quanto maior o nível, menos detalhes. Quanto mais baixo o nível, mais detalhes. — PCMag
+
+Em outras palavras, quanto maior a complexidade, menor a abstração.
+```
+
+Baseado na definição acima, temos que:
+- O nome da função em si `extract_texts_from_multiple_files` está em um alto nível de abstração (baixa complexidade, fácil de entender).
+- Por outro lado, o trecho de código `list_of_text_in_one_file = [r.text for r in ET.parse(join(path_to_file, file_name)).getroot()[0]]` está em um nível baixo de abstração (alta complexidade, difícil de entender)
+
+Para fazer com que o código dentro da função esteja no mesmo nível de abstração, podemos colocar o código "de baixo nível" em uma outra função separada.
+
+```python
+from typing import List 
+
+def extract_texts_from_multiple_files(path_to_file: str, files: list) -> List[str]:
+
+    all_docs = []
+    for file in files:
+        text_in_one_file = extract_texts_from_each_file(path_to_file, file)
+        all_docs.append(text_in_one_file)
+
+    return all_docs
+    
+def extract_texts_from_each_file(path_to_file: str, file_name: list) -> str:
+    
+    list_of_text_in_one_file =[r.text for r in ET.parse(join(path_to_file, file_name)).getroot()[0]]
+    text_in_one_file_as_string = ' '.join(t for t in list_of_text_in_one_file)
+    
+    return text_in_one_file_as_string
+```
+
+Agora temos o código da função - `extract_texts_from_each_file(path_to_file, file)` - e a função em si - `extract_texts_from_multiple_files` no mesmo nível de abstração.
+
+### Código duplicado
+
+O código a seguir está duplicado. O trecho que é usado para coletar dados de treino é bastante similar ao trecho usado para coletar dados de teste.
+
+```python
+t_train = []
+for file in tweets_train_files:
+    train_doc_1 =[r.text for r in ET.parse(join(path_train, file)).getroot()[0]]
+    t_train.append(' '.join(t for t in train_doc_1))
+
+
+t_test = []
+for file in tweets_test_files:
+    test_doc_1 =[r.text for r in ET.parse(join(path_test, file)).getroot()[0]]
+    t_test.append(' '.join(t for t in test_doc_1))
+```
+
+Deve-se, de forma geral, evitar duplicações pelos seguintes motivos:
+- É redundante.
+- Se alteramos um trecho de código, precisamos alterar o trecho similar também. Podemos esquecer de alterar algum trecho, pois somos todos humanos, e acabamos introduzindo bugs em nosso código.
+
+Podemos eliminar o código duplicado encapsulando-o em uma função.
+
+```python
+from typing import Tuple, List
+
+def get_train_test_docs(path_train: str, path_test: str) -> Tuple[list, list]:
+    tweets_train_files = get_files(path_train)
+    tweets_test_files = get_files(path_test)
+
+    t_train = extract_texts_from_multiple_files(path_train, tweets_train_files)
+    t_test  = extract_texts_from_multiple_files(path_test, tweets_test_files)
+    return t_train, t_test
+    
+def extract_texts_from_multiple_files(path_to_file: str, files: list) -> List[str]:
+
+    all_docs = []
+    for file in files:
+        text_in_one_file = extract_texts_from_each_file(path_to_file, file)
+        all_docs.append(text_in_one_file)
+
+    return all_docs
+```
+
+### Nomes descritivos
+
+```{admonition} Nomes descritivos
+:class: tip
+
+A autora trouxe uma definição do Robert C. Martin, também conhecido como "Tio Bob" (Uncle Bob, do inglês):
+
+Um nome descritivo longo é melhor do que um nome enigmático curto. Um nome descritivo longo é melhor do que um comentário descritivo longo. — Código Limpo de Robert C. Martin
+
+Inclusive recomendo altamente a leitura desta obra citada!
+```
+
+Outras pessoas conseguem entender o que a função `extract_texts_from_multiple_files` simplesmente lendo o nome da função.
+
+Não tenham medo de escrever nomes longos. É melhor escrever nomes longos do que vagos. Se você tentar encurtar o nome da função para algo parecido com `get_texts`, seria difícil para as outras pessoas entenderem o que a função faz exatamente sem olhar o código dela.
+
+If the descriptive name of a function is too long such as download_file_from_ Google_drive_and_extract_text_from_that_file . It is a good sign that your function is doing multiple things and you should split it into smaller functions.
+
+Se o nome da sua função é extremamente longo, como `download_file_from_google_drive_and_extract_text_from_that_file`, é um forte sinal de que sua função está fazendo mais do que uma coisa só e deveria ser quebrada em funções menores.
+
+### Ter menos que 4 argumentos
+
+Uma função não deve ter mais do que 3 argumentos, pois pode ser um sinal de que ela faz mais do que uma única tarefa. Sem contar que é difícil testar uma função com mais do que 3 argumentos, pois a combinação entre eles começa a crescer de forma exponencial.
+
+Por exemplo, a função `load_data` tem 4 argumentos: `ulr`, `url`, `output_path`, `path_train`, and `path_test`. Portanto, tem-se uma leve sensação de que ela faz muitas coisas:
+- Usa a `url` para fazer donwload do dado
+- Salva-o em `output_path`
+- Extrai os dados de `output_path` e os salva em `path_train` e `path_test`.
+
+```{admonition} Dica
+:class: tip
+
+Se a função tem mais de 3 argumentos, considere torná-la uma classe!
+```
+
+Por exemplo, nós poderiamos dividir a função `load_data` em 3 outras funções diferentes:
+
+```python
+download_zip_data_from_google_drive(url, output_path)
+
+unzip_data(output_path)
+
+tweet_train, tweet_test = get_train_test_docs(path_train, path_test)
+```
+
+As três funções tem um objetivo único de extrair dados, podemos criar uma classe chamada `DataGetter`.
+
+```python
+import xml.etree.ElementTree as ET
+import zipfile
+from os import listdir
+from os.path import isfile, join
+from typing import List, Tuple
+
+import gdown
+
+
+def main():
+
+    url = "https://drive.google.com/uc?id=1jI1cmxqnwsmC-vbl8dNY6b4aNBtBbKy3"
+    output_path = "Twitter.zip"
+    path_train = "Data/train/en"
+    path_test = "Data/test/en"
+
+    data_getter = DataGetter(url, output_path, path_train, path_test)
+
+    tweet_train, tweet_test = data_getter.get_train_test_docs()
+
+
+class DataGetter:
+    def __init__(self, url: str, output_path: str, path_train: str, path_test: str):
+        self.url = url
+        self.output_path = output_path
+        self.path_train = path_train
+        self.path_test = path_test
+        self.download_zip_data_from_google_drive()
+        self.unzip_data()
+
+    def download_zip_data_from_google_drive(self):
+
+        gdown.download(self.url, self.output_path, quiet=False)
+
+    def unzip_data(self):
+
+        with zipfile.ZipFile(self.output_path, "r") as zip_ref:
+            zip_ref.extractall(".")
+
+    def get_train_test_docs(self) -> Tuple[list, list]:
+
+        tweets_train_files = self.get_files(self.path_train)
+        tweets_test_files = self.get_files(self.path_test)
+
+        t_train = self.extract_texts_from_multiple_files(
+            self.path_train, tweets_train_files
+        )
+        t_test = self.extract_texts_from_multiple_files(
+            self.path_test, tweets_test_files
+        )
+        return t_train, t_test
+
+    @staticmethod
+    def get_files(path: str) -> List[str]:
+
+        return [
+            file
+            for file in listdir(path)
+            if isfile(join(path, file)) and file != "truth.txt"
+        ]
+
+    def extract_texts_from_multiple_files(
+        self, path_to_file: str, files: list
+    ) -> List[str]:
+
+        all_docs = []
+        for file in files:
+            text_in_one_file = self.extract_texts_from_each_file(path_to_file, file)
+            all_docs.append(text_in_one_file)
+
+        return all_docs
+
+    @staticmethod
+    def extract_texts_from_each_file(path_to_file: str, file_name: list) -> str:
+
+        list_of_text_in_one_file = [
+            r.text for r in ET.parse(join(path_to_file, file_name)).getroot()[0]
+        ]
+        text_in_one_file_as_string = " ".join(t for t in list_of_text_in_one_file)
+
+        return text_in_one_file_as_string
+
+
+if __name__ == "__main__":
+    main()
+```
+
+```{admonition} Nota
+:class: note
+
+No código acima a autora usou o decorador `staticmethod` para alguns métodos pois eles não usam nenhum atributos ou métodos da classe. Ela também indicou [este site](https://realpython.com/instance-class-and-static-methods-demystified/) para buscar por maiores informações 
+```
+
+Como podemos observar, nenhuma das funções ou métodos acima, com exceção do construtor, tem mais do que 3 argumentos! E embora o código que usa o paradigma da programação orientada à objetos seja bem mais longo, ele é muito mais legível. Sabemos, também, o que cada trecho de código faz de forma bem específica.
+
+### Como escrever funções como estas?
+
+Não tente escrever o código perfeito de primeira. Escreva códigos complexos que você tem em mente. Conforme o seu código cresce, pergunte-se se as suas funções violam alguma das boas práticas mencionadas acima. Se sim, refatore-as, teste-as, e mova para próxima função.
+
+### Conclusão
+
+Você acabou de aprender as 6 melhores práticsa para escrever funções mais legíveis e ao mesmo tempo testáveis. Sabendo que cada função faz uma única coisa, você perceberá que a escrita dos testes unitários de cada uma delas será mais fácil e será possível garantir que todos obtenham sucesso quando uma alteração for feita.
+
+If you make it effortless for your teammates to understand your code, they will be happy to reuse your code for other tasks.
+
+Se você não medir esforços para que seus colegas de equipe entendam seu código, eles ficaram eternamente felizes em reutilizá-los em outros projetos.
+
 </div>
