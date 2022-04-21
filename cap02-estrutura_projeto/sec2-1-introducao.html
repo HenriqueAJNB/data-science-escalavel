@@ -53,8 +53,8 @@ const thebe_selector_output = ".output, .cell_output"
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="2.2. Boas práticas na escrita de funções" href="02-melhores_praticas_funcoes.html" />
-    <link rel="prev" title="2. Estrutura do projeto" href="00-estrutura_projeto.html" />
+    <link rel="next" title="2.2. Boas práticas na escrita de funções" href="sec2-2-melhores_praticas_funcoes.html" />
+    <link rel="prev" title="2. Estrutura do projeto" href="sec2-0-estrutura_projeto.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -108,12 +108,12 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 <ul class="current nav bd-sidenav">
  <li class="toctree-l1">
-  <a class="reference internal" href="../00-como_ler_este_livro.html">
+  <a class="reference internal" href="../cap01-como_ler_este_livro.html">
    1. Como ler este livro
   </a>
  </li>
  <li class="toctree-l1 current active has-children">
-  <a class="reference internal" href="00-estrutura_projeto.html">
+  <a class="reference internal" href="sec2-0-estrutura_projeto.html">
    2. Estrutura do projeto
   </a>
   <input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
@@ -128,8 +128,25 @@ const thebe_selector_output = ".output, .cell_output"
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="02-melhores_praticas_funcoes.html">
+    <a class="reference internal" href="sec2-2-melhores_praticas_funcoes.html">
      2.2. Boas práticas na escrita de funções
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../cap03-testes_unitarios/sec3-0-testando_codigo.html">
+   3. Testando o código
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../cap03-testes_unitarios/sec3-1-pytest.html">
+     3.1. Pytest para cientista de dados
     </a>
    </li>
   </ul>
@@ -175,7 +192,7 @@ const thebe_selector_output = ".output, .cell_output"
         <!-- ipynb file if we had a myst markdown file -->
         
         <!-- Download raw file -->
-        <a class="dropdown-buttons" href="../_sources/estrutura_projeto/01-introducao.md"><button type="button"
+        <a class="dropdown-buttons" href="../_sources/cap02-estrutura_projeto/sec2-1-introducao.md"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
                 data-placement="left">.md</button></a>
         <!-- Download PDF via print -->
@@ -195,7 +212,7 @@ const thebe_selector_output = ".output, .cell_output"
                 data-toggle="tooltip" data-placement="left" title="Source repository"><i
                     class="fab fa-github"></i>repository</button></a>
         <a class="issues-button"
-            href="https://github.com/HenriqueAJNB/data-science-escalavel/issues/new?title=Issue%20on%20page%20%2Festrutura_projeto/01-introducao.html&body=Your%20issue%20content%20here."><button
+            href="https://github.com/HenriqueAJNB/data-science-escalavel/issues/new?title=Issue%20on%20page%20%2Fcap02-estrutura_projeto/sec2-1-introducao.html&body=Your%20issue%20content%20here."><button
                 type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
                 title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
         
@@ -361,9 +378,9 @@ const thebe_selector_output = ".output, .cell_output"
               <div>
                 
   <p><a class="reference external" href="https://github.com/HenriqueAJNB/data-science-escalavel/tree/main/book"><img alt="View the code" src="https://img.shields.io/badge/GitHub-Visualizar_codigo-blue?logo=GitHub" /></a></p>
-<div style="text-align: justify">
 <div class="section" id="como-estruturar-seu-projeto-de-ciencia-de-dados-para-aumentar-a-legibilidade-e-transparencia">
 <h1><span class="section-number">2.1. </span>Como estruturar seu projeto de ciência de dados para aumentar a legibilidade e transparência<a class="headerlink" href="#como-estruturar-seu-projeto-de-ciencia-de-dados-para-aumentar-a-legibilidade-e-transparencia" title="Permalink to this headline">¶</a></h1>
+<div style="text-align: justify">
 <div class="section" id="motivacao">
 <h2><span class="section-number">2.1.1. </span>Motivação<a class="headerlink" href="#motivacao" title="Permalink to this headline">¶</a></h2>
 <p>É importante estruturar o seu projeto de ciência de dados baseado em algum padrão para que seus colegas de trabalho consigam facilmente manter e modificar o projeto.</p>
@@ -644,7 +661,7 @@ pdoc server ready at http://localhost:8080
         },
         kernelOptions: {
             kernelName: "python3",
-            path: "./estrutura_projeto"
+            path: "./cap02-estrutura_projeto"
         },
         predefinedOutput: true
     }
@@ -656,14 +673,14 @@ pdoc server ready at http://localhost:8080
             
                 <!-- Previous / next buttons -->
 <div class='prev-next-area'> 
-    <a class='left-prev' id="prev-link" href="00-estrutura_projeto.html" title="previous page">
+    <a class='left-prev' id="prev-link" href="sec2-0-estrutura_projeto.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
             <p class="prev-next-title"><span class="section-number">2. </span>Estrutura do projeto</p>
         </div>
     </a>
-    <a class='right-next' id="next-link" href="02-melhores_praticas_funcoes.html" title="next page">
+    <a class='right-next' id="next-link" href="sec2-2-melhores_praticas_funcoes.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
         <p class="prev-next-title"><span class="section-number">2.2. </span>Boas práticas na escrita de funções</p>
