@@ -1,8 +1,9 @@
 [![View the code](https://img.shields.io/badge/GitHub-Visualizar_codigo-blue?logo=GitHub)](https://github.com/HenriqueAJNB/data-science-escalavel/tree/main/book)
 
-<div style="text-align: justify">
 
 ## Como estruturar seu projeto de ciência de dados para aumentar a legibilidade e transparência
+
+<div style="text-align: justify">
 
 ### Motivação
 

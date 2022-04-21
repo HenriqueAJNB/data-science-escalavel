@@ -6,8 +6,11 @@ root: README.md
 options:
   numbered: True
 chapters:
-- file: 00-como_ler_este_livro.md
-- file: estrutura_projeto/00-estrutura_projeto.md
+- file: cap01-como_ler_este_livro.md
+- file: cap02-estrutura_projeto/sec2-0-estrutura_projeto.md
   sections:
-  - file: estrutura_projeto/01-introducao.md
-  - file: estrutura_projeto/02-melhores_praticas_funcoes.md
+  - file: cap02-estrutura_projeto/sec2-1-introducao.md
+  - file: cap02-estrutura_projeto/sec2-2-melhores_praticas_funcoes.md
+- file: cap03-testes_unitarios/sec3-0-testando_codigo.ipynb
+  sections:
+  - file: cap03-testes_unitarios/sec3-1-pytest.ipynb
