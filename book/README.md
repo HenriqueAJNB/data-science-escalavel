@@ -27,9 +27,9 @@ Mas e se as resposta estiver errada?
 Ah, só mexe nessa monte aí até ela parecer correta.
 ```
 
-Desta forma, ter um fluxo de ciência de dados reprodutível garante consistência nos resultados, facilitando a apuraçao de erros e manutenções destes projetos. 
+Desta forma, ter um fluxo de ciência de dados reprodutível garante consistência nos resultados, facilitando a apuração de erros e manutenções destes projetos. 
 
-Este livro introduz ferramentas da linguagem Python para desenvolver fluxos de trabalho reprodutíveis e de fácil manutenção para um projeto de ciência de dados. Serão introduzidas melhores prátias e ferramentas que habilidam os cientistas de dados a se a adaptarem ao crescimento da complexidade já mencionada, enquanto garantem a confiabilidade da solução.
+Este livro introduz ferramentas da linguagem Python para desenvolver fluxos de trabalho reprodutíveis e de fácil manutenção para um projeto de ciência de dados. Serão introduzidas melhores práticas e ferramentas que habilitam os cientistas de dados a se a adaptarem ao crescimento da complexidade já mencionada, enquanto garantem a confiabilidade da solução.
 
 Ao final deste livro você aprenderá como estruturar seu projeto, usar parametrização e logging de forma efetiva, e construir pipelines para testar, depurar e construir resultados reprodutíveis a partir do fluxo de trabalho.
 
