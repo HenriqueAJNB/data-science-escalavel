@@ -102,7 +102,7 @@ Vamos mostrar como refatorar essa função na prática, seguindo os 6 pontos men
 
 ### Pequena
 
-A função deve ser pequena porque é muito mais fácil de saber o que ela faz. Quão pequena? Na opinião da autora original do livro, Khuyen Tran, as funções raramente devem ter mais do que 20 linhas de código. Devem ser tão pequenas quanto o exemplo abaixo. As funções também não devem ter mais do que um ou dois níveis de identação:
+A função deve ser pequena porque é muito mais fácil de saber o que ela faz. Quão pequena? Na opinião da autora original do livro, Khuyen Tran, as funções raramente devem ter mais do que 20 linhas de código. Devem ser tão pequenas quanto o exemplo abaixo. As funções também não devem ter mais do que um ou dois níveis de indentação:
 
 ```python
 import zipfile
