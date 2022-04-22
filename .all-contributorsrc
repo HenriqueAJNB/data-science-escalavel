@@ -31,6 +31,15 @@
       "contributions": [
         "review"
       ]
+    },
+    {
+      "login": "gustavolq",
+      "name": "Gustavo Luiz Quadra",
+      "avatar_url": "https://avatars.githubusercontent.com/u/73368318?v=4",
+      "profile": "http://linkedin.com/in/gustavoquadra",
+      "contributions": [
+        "review"
+      ]
     }
   ],
   "contributorsPerLine": 7,
