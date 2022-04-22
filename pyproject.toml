@@ -9,6 +9,8 @@ license = "Creative Commons Legal Code"
 python = "^3.9"
 jupyter-book = "^0.12.3"
 ghp-import = "^2.0.2"
+pytest = "^7.1.1"
+pytest-benchmark = {extras = ["histogram"], version = "^3.4.1"}
 
 [tool.poetry.dev-dependencies]
 
