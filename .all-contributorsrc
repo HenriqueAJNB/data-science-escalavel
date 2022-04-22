@@ -13,6 +13,15 @@
       "contributions": [
         "review"
       ]
+    },
+    {
+      "login": "HenriqueAJNB",
+      "name": "Henrique Branco",
+      "avatar_url": "https://avatars.githubusercontent.com/u/54143210?v=4",
+      "profile": "https://www.linkedin.com/in/henriqueajnb/",
+      "contributions": [
+        "content"
+      ]
     }
   ],
   "contributorsPerLine": 7,
