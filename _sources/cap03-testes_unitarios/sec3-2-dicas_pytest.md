@@ -11,7 +11,7 @@ Nesta seção, iremos mostrar como:
 - Verificar a performance do seu código
 - Repetir o teste várias vezes
 
-### Filtrando os avsiso (warnings)
+### Filtrando os avisos (warnings)
 
 É comum vermos avisos (warnings), informando que uma determinada funcionalidade será desativada no futuro, durante a execução dos testes com pytest. Estes avisos não parecem ser relevantes durante a fase de testes e chegam a ser um tanto quanto desagradáveis, pois poluem muito a tela, quando queremos só debugar o nosso código. Por sorte, é possível filtrar esses avisos quando usamos o pytest.
 
@@ -100,8 +100,7 @@ def test_extract_sentiment():
     assert sentiment > 0
 ```
 
-When running `pytest test_example.py`, we will see no output. In order to see the output of the`print` function, we need to include `-s` at the end of our command:
-Apesar dos prints, quando rodamos `pytest test_example.py` não veremos nenhuma saída diferente. Para mostrar esse nosso print, precisamos incluir `-s` ao final do nosso comando.
+Apesar dos prints, quando rodamos `pytest test_example.py` não veremos nenhuma saída diferente. Para mostrar esse nosso print, precisamos incluir `-s` ao final do nosso comando:
 
 ```bash
 $ pytest test_example.py -s
@@ -127,7 +126,7 @@ l1
 [1,2,3,4,5,6]
 ```
 
-A partir da saída acima, parece que os valores da lista `l2`são sempre inseridos apóis os valores da lista `l1`. Mas será que a ordem é sempre essa com quaisquer pares de listas?
+A partir da saída acima, parece que os valores da lista `l2`são sempre inseridos após os valores da lista `l1`. Mas será que a ordem é sempre essa com quaisquer pares de listas?
 
 Para garantir que a ordem de inserção é preservada quando usamos o método `extend`, nós podemos criar duas listas aleatórias e testá-las 100 vezes. Se todos os testes passarem, teremos certeza de que o método funciona conforme o esperado.
 
@@ -137,7 +136,6 @@ Para repetir um determinado teste, instale `pytest-repeat`:
 $ pip install pytest-repeat
 ```
 
-Now use `pytest.mark.repeat(100)` as the decorator of the test function we want to repeat
 Agora podemos usar `pytest.mark.repeat(100)` como um decorador no teste que gostaríamos de repetir.
 
 ```python
@@ -236,8 +234,7 @@ def test_concat(benchmark):
 
 ![benchmark2](../images/08-benchmark2.png)
 
-Now let’s use `pytest-benchmark` to compare multiple methods to create a list ranging from 0 to 999.
-Agora vamos usar o `pytest-benchmark` para comparar múltiplos métodos de ciração de listas, todas elas com 1000 elementos (de 0 à 999).
+Agora vamos usar o `pytest-benchmark` para comparar múltiplos métodos de criação de listas, todas elas com 1000 elementos (de 0 à 999).
 
 ```python
 # test_benchmark.py
@@ -321,5 +318,4 @@ Ou então instalar as bibliotecas sugeridas no erro acima: `pygal` e `pygalsj`
 
 Uau! O gráfico mostra claramente que o método `concat` é muito mais lento que os outros!
 
-You can learn more about `pytest-benchmark` [here](https://pypi.org/project/pytest-benchmark/).
 Você pode aprender mais sobre o `pytest-benchmark` [aqui](https://pypi.org/project/pytest-benchmark/).

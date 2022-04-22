@@ -242,8 +242,8 @@ const thebe_selector_output = ".output, .cell_output"
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#filtrando-os-avsiso-warnings">
-   Filtrando os avsiso (warnings)
+  <a class="reference internal nav-link" href="#filtrando-os-avisos-warnings">
+   Filtrando os avisos (warnings)
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
@@ -287,8 +287,8 @@ const thebe_selector_output = ".output, .cell_output"
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#filtrando-os-avsiso-warnings">
-   Filtrando os avsiso (warnings)
+  <a class="reference internal nav-link" href="#filtrando-os-avisos-warnings">
+   Filtrando os avisos (warnings)
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
@@ -328,8 +328,8 @@ const thebe_selector_output = ".output, .cell_output"
 <li><p>Repetir o teste várias vezes</p></li>
 </ul>
 </div>
-<div class="section" id="filtrando-os-avsiso-warnings">
-<h2>Filtrando os avsiso (warnings)<a class="headerlink" href="#filtrando-os-avsiso-warnings" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="filtrando-os-avisos-warnings">
+<h2>Filtrando os avisos (warnings)<a class="headerlink" href="#filtrando-os-avisos-warnings" title="Permalink to this headline">¶</a></h2>
 <p>É comum vermos avisos (warnings), informando que uma determinada funcionalidade será desativada no futuro, durante a execução dos testes com pytest. Estes avisos não parecem ser relevantes durante a fase de testes e chegam a ser um tanto quanto desagradáveis, pois poluem muito a tela, quando queremos só debugar o nosso código. Por sorte, é possível filtrar esses avisos quando usamos o pytest.</p>
 <p>Vamos usar o exemplo da <a class="reference internal" href="sec3-1-pytest.html"><span class="doc std std-doc">nossa seção anterior sobre pytest</span></a>. Neste exemplo vamos testar se o TextBlob faz previsões acuradas dos sentimentos de um dado text. Se você ainda não conhece o TextBlob, você pode pesquisar mais sobre a ferramenta <a class="reference external" href="https://towardsdatascience.com/supercharge-your-python-string-with-textblob-2d9c08a8da05">neste link</a>.</p>
 <div class="note admonition">
@@ -402,8 +402,7 @@ const thebe_selector_output = ".output, .cell_output"
     <span class="k">assert</span> <span class="n">sentiment</span> <span class="o">&gt;</span> <span class="mi">0</span>
 </pre></div>
 </div>
-<p>When running <code class="docutils literal notranslate"><span class="pre">pytest</span> <span class="pre">test_example.py</span></code>, we will see no output. In order to see the output of the<code class="docutils literal notranslate"><span class="pre">print</span></code> function, we need to include <code class="docutils literal notranslate"><span class="pre">-s</span></code> at the end of our command:
-Apesar dos prints, quando rodamos <code class="docutils literal notranslate"><span class="pre">pytest</span> <span class="pre">test_example.py</span></code> não veremos nenhuma saída diferente. Para mostrar esse nosso print, precisamos incluir <code class="docutils literal notranslate"><span class="pre">-s</span></code> ao final do nosso comando.</p>
+<p>Apesar dos prints, quando rodamos <code class="docutils literal notranslate"><span class="pre">pytest</span> <span class="pre">test_example.py</span></code> não veremos nenhuma saída diferente. Para mostrar esse nosso print, precisamos incluir <code class="docutils literal notranslate"><span class="pre">-s</span></code> ao final do nosso comando:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ pytest test_example.py -s
 <span class="o">=======================</span> <span class="m">1</span> passed <span class="k">in</span> <span class="m">0</span>.49s <span class="o">=======================</span>
 </pre></div>
@@ -423,14 +422,13 @@ Apesar dos prints, quando rodamos <code class="docutils literal notranslate"><sp
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="o">[</span><span class="m">1</span>,2,3,4,5,6<span class="o">]</span>
 </pre></div>
 </div>
-<p>A partir da saída acima, parece que os valores da lista <code class="docutils literal notranslate"><span class="pre">l2</span></code>são sempre inseridos apóis os valores da lista <code class="docutils literal notranslate"><span class="pre">l1</span></code>. Mas será que a ordem é sempre essa com quaisquer pares de listas?</p>
+<p>A partir da saída acima, parece que os valores da lista <code class="docutils literal notranslate"><span class="pre">l2</span></code>são sempre inseridos após os valores da lista <code class="docutils literal notranslate"><span class="pre">l1</span></code>. Mas será que a ordem é sempre essa com quaisquer pares de listas?</p>
 <p>Para garantir que a ordem de inserção é preservada quando usamos o método <code class="docutils literal notranslate"><span class="pre">extend</span></code>, nós podemos criar duas listas aleatórias e testá-las 100 vezes. Se todos os testes passarem, teremos certeza de que o método funciona conforme o esperado.</p>
 <p>Para repetir um determinado teste, instale <code class="docutils literal notranslate"><span class="pre">pytest-repeat</span></code>:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ pip install pytest-repeat
 </pre></div>
 </div>
-<p>Now use <code class="docutils literal notranslate"><span class="pre">pytest.mark.repeat(100)</span></code> as the decorator of the test function we want to repeat
-Agora podemos usar <code class="docutils literal notranslate"><span class="pre">pytest.mark.repeat(100)</span></code> como um decorador no teste que gostaríamos de repetir.</p>
+<p>Agora podemos usar <code class="docutils literal notranslate"><span class="pre">pytest.mark.repeat(100)</span></code> como um decorador no teste que gostaríamos de repetir.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pytest</span> 
 <span class="kn">import</span> <span class="nn">random</span> 
 
@@ -511,8 +509,7 @@ Vamos instalar o <code class="docutils literal notranslate"><span class="pre">py
 </pre></div>
 </div>
 <p><img alt="benchmark2" src="../_images/08-benchmark2.png" /></p>
-<p>Now let’s use <code class="docutils literal notranslate"><span class="pre">pytest-benchmark</span></code> to compare multiple methods to create a list ranging from 0 to 999.
-Agora vamos usar o <code class="docutils literal notranslate"><span class="pre">pytest-benchmark</span></code> para comparar múltiplos métodos de ciração de listas, todas elas com 1000 elementos (de 0 à 999).</p>
+<p>Agora vamos usar o <code class="docutils literal notranslate"><span class="pre">pytest-benchmark</span></code> para comparar múltiplos métodos de criação de listas, todas elas com 1000 elementos (de 0 à 999).</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># test_benchmark.py</span>
 
 <span class="k">def</span> <span class="nf">concat</span><span class="p">(</span><span class="n">len_list</span><span class="p">):</span>
@@ -578,8 +575,7 @@ Agora vamos usar o <code class="docutils literal notranslate"><span class="pre">
 </div>
 <img src="../images/08-benchmark_histogram.svg" width=800>
 <p>Uau! O gráfico mostra claramente que o método <code class="docutils literal notranslate"><span class="pre">concat</span></code> é muito mais lento que os outros!</p>
-<p>You can learn more about <code class="docutils literal notranslate"><span class="pre">pytest-benchmark</span></code> <a class="reference external" href="https://pypi.org/project/pytest-benchmark/">here</a>.
-Você pode aprender mais sobre o <code class="docutils literal notranslate"><span class="pre">pytest-benchmark</span></code> <a class="reference external" href="https://pypi.org/project/pytest-benchmark/">aqui</a>.</p>
+<p>Você pode aprender mais sobre o <code class="docutils literal notranslate"><span class="pre">pytest-benchmark</span></code> <a class="reference external" href="https://pypi.org/project/pytest-benchmark/">aqui</a>.</p>
 </div>
 </div>
 
