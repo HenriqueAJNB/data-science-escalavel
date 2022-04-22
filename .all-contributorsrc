@@ -1,0 +1,24 @@
+{
+  "files": [
+    "README.md"
+  ],
+  "imageSize": 100,
+  "commit": false,
+  "contributors": [
+    {
+      "login": "rodrigocan",
+      "name": "Rodrigo Cândido",
+      "avatar_url": "https://avatars.githubusercontent.com/u/15656022?v=4",
+      "profile": "https://github.com/rodrigocan",
+      "contributions": [
+        "review"
+      ]
+    }
+  ],
+  "contributorsPerLine": 7,
+  "projectName": "data-science-escalavel",
+  "projectOwner": "HenriqueAJNB",
+  "repoType": "github",
+  "repoHost": "https://github.com",
+  "skipCi": true
+}
