@@ -22,6 +22,15 @@
       "contributions": [
         "content"
       ]
+    },
+    {
+      "login": "diascarolina",
+      "name": "Carolina Dias",
+      "avatar_url": "https://avatars.githubusercontent.com/u/33383955?v=4",
+      "profile": "https://diascarolina.github.io",
+      "contributions": [
+        "review"
+      ]
     }
   ],
   "contributorsPerLine": 7,

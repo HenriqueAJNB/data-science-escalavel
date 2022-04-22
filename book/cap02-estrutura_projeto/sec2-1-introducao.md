@@ -19,6 +19,7 @@ Por este motivo, a autora original do livro, Khuyen Tran, criou um repositório 
 
 Nesta seção, iremos aprender a usar esse template para incporporar as melhores práticas ao fluxo de ciência de dados.
 
+
 ### Mão na massa!
 
 Para fazer download do template, comece instalando o [cookiecutter](https://github.com/cookiecutter/cookiecutter):
@@ -65,7 +66,7 @@ Este projeto usa o [Poetry](https://python-poetry.org/) no lugar do `pip` para g
 - Evitar instalar novos pacotes que são conflitantes com os pré-existentes.
 - Empacotar o projeto em diversas linhas de código.
 
-As instruções de instalação do Poetry está neste [link](https://python-poetry.org/docs/#installation). Todas as dependências principais do projeto estão definidas no arquivo `pyproject.toml`. Para instalar todas as dependências, basta rodar no terminal:
+As instruções de instalação do Poetry estão neste [link](https://python-poetry.org/docs/#installation). Todas as dependências principais do projeto estão definidas no arquivo `pyproject.toml`. Para instalar todas as dependências, basta rodar no terminal:
 
 ```bash
 poetry install
@@ -335,5 +336,4 @@ make docs_save
 Com isso, foi possível aprender a estruturar um projeto de ciência de dados usando um template. Este template traz uma flexibilidade extrema. Sinta-se à vontade para ajustá-lo baseado nas suas próprias aplicações.
 
 E também pode brincar à vontade com o template data-science-template da autora neste [link](https://github.com/khuyentran1401/data-science-template).
-
 </div>
