@@ -6,15 +6,15 @@
 
 ### Motivação
 
-Você já olhou uma função que você mesmo escrever há um mês atrás e teve dificuldades de entender em 3 minutos? Se você já passou por isso, então este é o momento certo de refatorar seu código. Se sua função levar mais que 3 minutos para você mesmo entender o código, imagine quanto tempo demoraria para os seus colegas de trabalho.
+Você já olhou uma função que você mesmo escreveu há um mês atrás e teve dificuldades de entender em 3 minutos? Se você já passou por isso, então este é o momento certo de refatorar seu código. Se sua função levar mais que 3 minutos para você mesmo entender o código, imagine quanto tempo demoraria para os seus colegas de trabalho.
 
 Se você quer escrever códigos bons que possam ser reutilizados, então eles precisam necessariamente ser legíveis, fáceis de entender. Escrever códigos assim é extremamente importante para cientistas de dados que colaboram com outros membros de equipe em papéis diferentes.
 
-Ao final, desejamos que as funções, não só em Python, mas em qualquer outra linguagem:
+Ao final, desejamos que uma função, não só em Python, mas em qualquer outra linguagem:
 - seja pequena
 - faça uma coisa só
 - contenha código com mesmo nível de abstração
-- ter menos do que 4 argumentos
+- tenha menos do que 4 argumentos
 - não tenha código duplicado
 - use nomes descritivos
 
@@ -90,7 +90,7 @@ if __name__ == "__main__":
     main()
 ```
 
-A função `load_data` tenta baixar arquivos do Google Drive e extrair os dados. Mesmo que exista muitos comentários nesta função, é difícil entendê-la em menos de 3 minutos. Isso porque a função:
+A função `load_data` tenta baixar arquivos do Google Drive e extrair os dados. Mesmo que existam muitos comentários nesta função, é difícil entendê-la em menos de 3 minutos. Isso porque a função:
 - é extremamente longa
 - faz mais do que uma coisa só
 - contém código com diferentes níveis de abstração
@@ -273,7 +273,7 @@ Se o nome da sua função é extremamente longo, como `download_file_from_google
 
 Uma função não deve ter mais do que 3 argumentos, pois pode ser um sinal de que ela faz mais do que uma única tarefa. Sem contar que é difícil testar uma função com mais do que 3 argumentos, pois a combinação entre eles começa a crescer de forma exponencial.
 
-Por exemplo, a função `load_data` tem 4 argumentos: `ulr`, `url`, `output_path`, `path_train`, and `path_test`. Portanto, tem-se uma leve sensação de que ela faz muitas coisas:
+Por exemplo, a função `load_data` tem 4 argumentos: `url`, `output_path`, `path_train`, and `path_test`. Portanto, tem-se uma leve sensação de que ela faz muitas coisas:
 - Usa a `url` para fazer donwload do dado
 - Salva-o em `output_path`
 - Extrai os dados de `output_path` e os salva em `path_train` e `path_test`.
@@ -398,9 +398,7 @@ Não tente escrever o código perfeito de primeira. Escreva códigos complexos q
 
 ### Conclusão
 
-Você acabou de aprender as 6 melhores práticsa para escrever funções mais legíveis e ao mesmo tempo testáveis. Sabendo que cada função faz uma única coisa, você perceberá que a escrita dos testes unitários de cada uma delas será mais fácil e será possível garantir que todos obtenham sucesso quando uma alteração for feita.
-
-If you make it effortless for your teammates to understand your code, they will be happy to reuse your code for other tasks.
+Você acabou de aprender as 6 melhores práticas para escrever funções mais legíveis e ao mesmo tempo testáveis. Sabendo que cada função faz uma única coisa, você perceberá que a escrita dos testes unitários de cada uma delas será mais fácil e será possível garantir que todos obtenham sucesso quando uma alteração for feita.
 
 Se você não medir esforços para que seus colegas de equipe entendam seu código, eles ficaram eternamente felizes em reutilizá-los em outros projetos.
 
