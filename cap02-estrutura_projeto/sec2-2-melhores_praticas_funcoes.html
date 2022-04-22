@@ -373,14 +373,14 @@ const thebe_selector_output = ".output, .cell_output"
 <h1><span class="section-number">2.2. </span>Boas práticas na escrita de funções<a class="headerlink" href="#boas-praticas-na-escrita-de-funcoes" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="motivacao">
 <h2><span class="section-number">2.2.1. </span>Motivação<a class="headerlink" href="#motivacao" title="Permalink to this headline">¶</a></h2>
-<p>Você já olhou uma função que você mesmo escrever há um mês atrás e teve dificuldades de entender em 3 minutos? Se você já passou por isso, então este é o momento certo de refatorar seu código. Se sua função levar mais que 3 minutos para você mesmo entender o código, imagine quanto tempo demoraria para os seus colegas de trabalho.</p>
+<p>Você já olhou uma função que você mesmo escreveu há um mês atrás e teve dificuldades de entender em 3 minutos? Se você já passou por isso, então este é o momento certo de refatorar seu código. Se sua função levar mais que 3 minutos para você mesmo entender o código, imagine quanto tempo demoraria para os seus colegas de trabalho.</p>
 <p>Se você quer escrever códigos bons que possam ser reutilizados, então eles precisam necessariamente ser legíveis, fáceis de entender. Escrever códigos assim é extremamente importante para cientistas de dados que colaboram com outros membros de equipe em papéis diferentes.</p>
-<p>Ao final, desejamos que as funções, não só em Python, mas em qualquer outra linguagem:</p>
+<p>Ao final, desejamos que uma função, não só em Python, mas em qualquer outra linguagem:</p>
 <ul class="simple">
 <li><p>seja pequena</p></li>
 <li><p>faça uma coisa só</p></li>
 <li><p>contenha código com mesmo nível de abstração</p></li>
-<li><p>ter menos do que 4 argumentos</p></li>
+<li><p>tenha menos do que 4 argumentos</p></li>
 <li><p>não tenha código duplicado</p></li>
 <li><p>use nomes descritivos</p></li>
 </ul>
@@ -453,7 +453,7 @@ const thebe_selector_output = ".output, .cell_output"
     <span class="n">main</span><span class="p">()</span>
 </pre></div>
 </div>
-<p>A função <code class="docutils literal notranslate"><span class="pre">load_data</span></code> tenta baixar arquivos do Google Drive e extrair os dados. Mesmo que exista muitos comentários nesta função, é difícil entendê-la em menos de 3 minutos. Isso porque a função:</p>
+<p>A função <code class="docutils literal notranslate"><span class="pre">load_data</span></code> tenta baixar arquivos do Google Drive e extrair os dados. Mesmo que existam muitos comentários nesta função, é difícil entendê-la em menos de 3 minutos. Isso porque a função:</p>
 <ul class="simple">
 <li><p>é extremamente longa</p></li>
 <li><p>faz mais do que uma coisa só</p></li>
@@ -614,7 +614,7 @@ Se o texto se parecer com este: “Esta função faz isso <strong>e depois</stro
 <div class="section" id="ter-menos-que-4-argumentos">
 <h2><span class="section-number">2.2.8. </span>Ter menos que 4 argumentos<a class="headerlink" href="#ter-menos-que-4-argumentos" title="Permalink to this headline">¶</a></h2>
 <p>Uma função não deve ter mais do que 3 argumentos, pois pode ser um sinal de que ela faz mais do que uma única tarefa. Sem contar que é difícil testar uma função com mais do que 3 argumentos, pois a combinação entre eles começa a crescer de forma exponencial.</p>
-<p>Por exemplo, a função <code class="docutils literal notranslate"><span class="pre">load_data</span></code> tem 4 argumentos: <code class="docutils literal notranslate"><span class="pre">ulr</span></code>, <code class="docutils literal notranslate"><span class="pre">url</span></code>, <code class="docutils literal notranslate"><span class="pre">output_path</span></code>, <code class="docutils literal notranslate"><span class="pre">path_train</span></code>, and <code class="docutils literal notranslate"><span class="pre">path_test</span></code>. Portanto, tem-se uma leve sensação de que ela faz muitas coisas:</p>
+<p>Por exemplo, a função <code class="docutils literal notranslate"><span class="pre">load_data</span></code> tem 4 argumentos: <code class="docutils literal notranslate"><span class="pre">url</span></code>, <code class="docutils literal notranslate"><span class="pre">output_path</span></code>, <code class="docutils literal notranslate"><span class="pre">path_train</span></code>, and <code class="docutils literal notranslate"><span class="pre">path_test</span></code>. Portanto, tem-se uma leve sensação de que ela faz muitas coisas:</p>
 <ul class="simple">
 <li><p>Usa a <code class="docutils literal notranslate"><span class="pre">url</span></code> para fazer donwload do dado</p></li>
 <li><p>Salva-o em <code class="docutils literal notranslate"><span class="pre">output_path</span></code></p></li>
@@ -732,8 +732,7 @@ Se o texto se parecer com este: “Esta função faz isso <strong>e depois</stro
 </div>
 <div class="section" id="conclusao">
 <h2><span class="section-number">2.2.10. </span>Conclusão<a class="headerlink" href="#conclusao" title="Permalink to this headline">¶</a></h2>
-<p>Você acabou de aprender as 6 melhores práticsa para escrever funções mais legíveis e ao mesmo tempo testáveis. Sabendo que cada função faz uma única coisa, você perceberá que a escrita dos testes unitários de cada uma delas será mais fácil e será possível garantir que todos obtenham sucesso quando uma alteração for feita.</p>
-<p>If you make it effortless for your teammates to understand your code, they will be happy to reuse your code for other tasks.</p>
+<p>Você acabou de aprender as 6 melhores práticas para escrever funções mais legíveis e ao mesmo tempo testáveis. Sabendo que cada função faz uma única coisa, você perceberá que a escrita dos testes unitários de cada uma delas será mais fácil e será possível garantir que todos obtenham sucesso quando uma alteração for feita.</p>
 <p>Se você não medir esforços para que seus colegas de equipe entendam seu código, eles ficaram eternamente felizes em reutilizá-los em outros projetos.</p>
 </div>
 </div>

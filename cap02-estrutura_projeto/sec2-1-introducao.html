@@ -385,10 +385,10 @@ const thebe_selector_output = ".output, .cell_output"
 <h2><span class="section-number">2.1.1. </span>Motivação<a class="headerlink" href="#motivacao" title="Permalink to this headline">¶</a></h2>
 <p>É importante estruturar o seu projeto de ciência de dados baseado em algum padrão para que seus colegas de trabalho consigam facilmente manter e modificar o projeto.</p>
 <p><img alt="" src="https://miro.medium.com/max/366/1*06aeJgtJ4c4mUQOG3qIbCw.png" /></p>
-<p>Mas qual tipo de padrão você deve seguir? Não seria ideal se pudessemos criar uma estrutura a partir de um modelo padrão (template)?</p>
+<p>Mas qual tipo de padrão você deve seguir? Não seria ideal se pudéssemos criar uma estrutura a partir de um modelo padrão (template)?</p>
 <p>Existem alguns excelentes templates para projetos de ciência de dados, mas eles demonstram inexistência de algumas boas práticas como testes, configurações e formatação do código.</p>
 <p>Por este motivo, a autora original do livro, Khuyen Tran, criou um repositório chamado <a class="reference external" href="https://github.com/khuyentran1401/data-science-template/blob/master/README.md">data-science-template</a>. Este repositório é resultado de anos de experiência dela refinando as melhores práicas para estruturar um projeto, deixando-o com maior reprodutibilidade e manutenabilidade.</p>
-<p>Nesta seção iremos aprender a usar esse template para incporporar as melhores práticas ao fluxo de ciência de dados.</p>
+<p>Nesta seção iremos aprender a usar esse template para incorporar as melhores práticas ao fluxo de ciência de dados.</p>
 </div>
 <div class="section" id="mao-na-massa">
 <h2><span class="section-number">2.1.2. </span>Mão na massa!<a class="headerlink" href="#mao-na-massa" title="Permalink to this headline">¶</a></h2>
@@ -428,7 +428,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li><p>Remover todas as dependências indiretas ao remover um pacote.</p></li>
 <li><p>Evitar instalar novos pacotes que são conflitantes com aqueles pré-existentes.</p></li>
 </ul>
-<p>As instruções de instalação do Poetry está neste <a class="reference external" href="https://python-poetry.org/docs/#installation">link</a>. Todas as dependências principais do projeto estão definidas no arquivo <code class="docutils literal notranslate"><span class="pre">pyproject.toml</span></code>. Para instalar todas as dependências, basta rodar no terminal:</p>
+<p>As instruções de instalação do Poetry estão neste <a class="reference external" href="https://python-poetry.org/docs/#installation">link</a>. Todas as dependências principais do projeto estão definidas no arquivo <code class="docutils literal notranslate"><span class="pre">pyproject.toml</span></code>. Para instalar todas as dependências, basta rodar no terminal:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>poetry install
 </pre></div>
 </div>
@@ -567,7 +567,7 @@ make setup
 </pre></div>
 </div>
 <p>Todas as pastas e arquivos abaixo de <code class="docutils literal notranslate"><span class="pre">outs</span></code> serão automaticamente rastreados e versionados pelo DVC.</p>
-<p>Se você quiser executar as etapas definido em <code class="docutils literal notranslate"><span class="pre">stages</span></code>, basta rodar noo terminal</p>
+<p>Se você quiser executar as etapas definidas em <code class="docutils literal notranslate"><span class="pre">stages</span></code>, basta rodar no terminal</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>dvc repro
 </pre></div>
 </div>
@@ -576,7 +576,7 @@ make setup
 </div>
 <div class="section" id="armazenando-seus-dados-de-forma-remota">
 <h2><span class="section-number">2.1.8. </span>Armazenando seus dados de forma remota<a class="headerlink" href="#armazenando-seus-dados-de-forma-remota" title="Permalink to this headline">¶</a></h2>
-<p>O maior benefício no uso do DVC está no fato de ser possível armazenar dados em diversas plataformas, incluindo os serviços em nuvem. Você pode armazenar seus dados no DagsHub, Google Drive, Amazon S3, Azure Blob Storage, Google Cloud Storage Aliyun OS, SSH, HDFS e HTTP.</p>
+<p>O maior benefício no uso do DVC está no fato de ser possível armazenar dados em diversas plataformas, incluindo os serviços em nuvem. Você pode armazenar seus dados no DagsHub, Google Drive, Amazon S3, Azure Blob Storage, Google Cloud Storage, Aliyun OS, SSH, HDFS e HTTP.</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>dvc remote add -d remote &lt;REMOTE-URL&gt;
 </pre></div>
 </div>
@@ -602,7 +602,7 @@ git push origin &lt;BRANCH&gt;
 <li><p>inclui documentações nas funções e classes (docstrings)</p></li>
 </ul>
 <p>No entanto, pode ser muito entediante e propenso a erro checar todos esses critérios antes de commitar o código. Para isso, contamos com a ferramenta <strong>pre-commit</strong>, que permite identificar estes detalhes antes de commitar o código.</p>
-<p>Você consegue adicionar diferentes plugins ao seu pipeline do pre-commit. Uma vez que você commitou, todo o projeto passara por estas checagens. Caso alguma delas falhe, nenhum código será commitado.</p>
+<p>Você consegue adicionar diferentes plugins ao seu pipeline do pre-commit. Uma vez que você commitou, todo o projeto passará por estas checagens. Caso alguma delas falhe, nenhum código será commitado.</p>
 <p><img alt="pre-commit_fluxograma" src="../_images/07-pre-commit_fluxograma.png" /></p>
 <p>Neste template, usamos 5 diferentes plugins, especificados em <code class="docutils literal notranslate"><span class="pre">.pre-commit-config.yaml</span></code>. São deles:</p>
 <ul class="simple">
@@ -616,7 +616,7 @@ git push origin &lt;BRANCH&gt;
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pre-commit install
 </pre></div>
 </div>
-<p>A partir de agora, quando você der um <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">commit</span></code>, seu código passara por todas as verificações e correções, de forma automática.</p>
+<p>A partir de agora, quando você der um <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">commit</span></code>, seu código passará por todas as verificações e correções, de forma automática.</p>
 <p><img alt="pre-commit_fluxograma" src="../_images/05-pre-commit.gif" /></p>
 <p>Vamos aprofundar em maiores detalhes sobre pre-commit na seção sobre formatação de código.</p>
 </div>
@@ -642,10 +642,10 @@ pdoc server ready at http://localhost:8080
 </div>
 <div class="section" id="conclusoes">
 <h2><span class="section-number">2.1.11. </span>Conclusões<a class="headerlink" href="#conclusoes" title="Permalink to this headline">¶</a></h2>
-<p>You have just learned how to structure your data science project using a data science template. This template means to be flexible. Feel free to adjust the project based on your applications.</p>
-<p>Você acabou de aprender a estruturar um projeto de ciência de dados usando um template. Este template traz uma flexibilidade extrema. Sinta-se a vontade para ajustá-lo baseado nas suas próprias aplicações.</p>
+<p>Você acabou de aprender a estruturar um projeto de ciência de dados usando um template. Este template traz uma flexibilidade extrema. Sinta-se à vontade para ajustá-lo baseado nas suas próprias aplicações.</p>
 <p>E também pode brincar a vontade com o template data-science-template da autora Khuyen Tran neste <a class="reference external" href="https://github.com/khuyentran1401/data-science-template">link</a>.</p>
-</div></div>
+</div>
+</div>
 </div>
 
     <script type="text/x-thebe-config">

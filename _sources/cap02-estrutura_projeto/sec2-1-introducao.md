@@ -11,13 +11,13 @@
 
 ![](https://miro.medium.com/max/366/1*06aeJgtJ4c4mUQOG3qIbCw.png)
 
-Mas qual tipo de padrão você deve seguir? Não seria ideal se pudessemos criar uma estrutura a partir de um modelo padrão (template)?
+Mas qual tipo de padrão você deve seguir? Não seria ideal se pudéssemos criar uma estrutura a partir de um modelo padrão (template)?
 
 Existem alguns excelentes templates para projetos de ciência de dados, mas eles demonstram inexistência de algumas boas práticas como testes, configurações e formatação do código.
 
 Por este motivo, a autora original do livro, Khuyen Tran, criou um repositório chamado [data-science-template](https://github.com/khuyentran1401/data-science-template/blob/master/README.md). Este repositório é resultado de anos de experiência dela refinando as melhores práicas para estruturar um projeto, deixando-o com maior reprodutibilidade e manutenabilidade.
 
-Nesta seção iremos aprender a usar esse template para incporporar as melhores práticas ao fluxo de ciência de dados.
+Nesta seção iremos aprender a usar esse template para incorporar as melhores práticas ao fluxo de ciência de dados.
 
 ### Mão na massa!
 
@@ -64,7 +64,7 @@ Este projeto usa o [Poetry](https://python-poetry.org/) no lugar do `pip` para g
 - Remover todas as dependências indiretas ao remover um pacote.
 - Evitar instalar novos pacotes que são conflitantes com aqueles pré-existentes.
 
-As instruções de instalação do Poetry está neste [link](https://python-poetry.org/docs/#installation). Todas as dependências principais do projeto estão definidas no arquivo `pyproject.toml`. Para instalar todas as dependências, basta rodar no terminal:
+As instruções de instalação do Poetry estão neste [link](https://python-poetry.org/docs/#installation). Todas as dependências principais do projeto estão definidas no arquivo `pyproject.toml`. Para instalar todas as dependências, basta rodar no terminal:
 
 ```bash
 poetry install
@@ -235,7 +235,7 @@ stages:
 
 Todas as pastas e arquivos abaixo de `outs` serão automaticamente rastreados e versionados pelo DVC.
 
-Se você quiser executar as etapas definido em `stages`, basta rodar noo terminal
+Se você quiser executar as etapas definidas em `stages`, basta rodar no terminal
 
 ```bash
 dvc repro
@@ -247,7 +247,7 @@ Fato interessante é que o DVC pula as etapas que não foram modificadas, e roda
 
 ### Armazenando seus dados de forma remota
 
-O maior benefício no uso do DVC está no fato de ser possível armazenar dados em diversas plataformas, incluindo os serviços em nuvem. Você pode armazenar seus dados no DagsHub, Google Drive, Amazon S3, Azure Blob Storage, Google Cloud Storage Aliyun OS, SSH, HDFS e HTTP.
+O maior benefício no uso do DVC está no fato de ser possível armazenar dados em diversas plataformas, incluindo os serviços em nuvem. Você pode armazenar seus dados no DagsHub, Google Drive, Amazon S3, Azure Blob Storage, Google Cloud Storage, Aliyun OS, SSH, HDFS e HTTP.
 
 ```bash
 dvc remote add -d remote <REMOTE-URL>
@@ -277,7 +277,7 @@ Quando vamos commitar um código, precisanos nos certificar que:
 
 No entanto, pode ser muito entediante e propenso a erro checar todos esses critérios antes de commitar o código. Para isso, contamos com a ferramenta **pre-commit**, que permite identificar estes detalhes antes de commitar o código.
 
-Você consegue adicionar diferentes plugins ao seu pipeline do pre-commit. Uma vez que você commitou, todo o projeto passara por estas checagens. Caso alguma delas falhe, nenhum código será commitado.
+Você consegue adicionar diferentes plugins ao seu pipeline do pre-commit. Uma vez que você commitou, todo o projeto passará por estas checagens. Caso alguma delas falhe, nenhum código será commitado.
 
 ![pre-commit_fluxograma](../images/07-pre-commit_fluxograma.png)
 
@@ -295,7 +295,7 @@ Para adicionar o pre-commit aos hooks do git, rode no terminal:
 pre-commit install
 ```
 
-A partir de agora, quando você der um `git commit`, seu código passara por todas as verificações e correções, de forma automática.
+A partir de agora, quando você der um `git commit`, seu código passará por todas as verificações e correções, de forma automática.
 
 ![pre-commit_fluxograma](../gifs/05-pre-commit.gif)
 
@@ -330,9 +330,7 @@ make docs_save
 
 ### Conclusões
 
-You have just learned how to structure your data science project using a data science template. This template means to be flexible. Feel free to adjust the project based on your applications.
-
-Você acabou de aprender a estruturar um projeto de ciência de dados usando um template. Este template traz uma flexibilidade extrema. Sinta-se a vontade para ajustá-lo baseado nas suas próprias aplicações.
+Você acabou de aprender a estruturar um projeto de ciência de dados usando um template. Este template traz uma flexibilidade extrema. Sinta-se à vontade para ajustá-lo baseado nas suas próprias aplicações.
 
 E também pode brincar a vontade com o template data-science-template da autora Khuyen Tran neste [link](https://github.com/khuyentran1401/data-science-template).
 
