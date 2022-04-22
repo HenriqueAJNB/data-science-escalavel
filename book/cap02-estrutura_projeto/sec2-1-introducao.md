@@ -15,7 +15,7 @@ Mas qual tipo de padrão você deve seguir? Não seria ideal se pudéssemos cria
 
 Existem alguns excelentes templates para projetos de ciência de dados, mas eles demonstram inexistência de algumas boas práticas como testes, configurações e formatação do código.
 
-Por este motivo, a autora original do livro, Khuyen Tran, criou um repositório chamado [data-science-template](https://github.com/khuyentran1401/data-science-template/blob/master/README.md). Este repositório é resultado de anos de experiência dela refinando as melhores práicas para estruturar um projeto, deixando-o com maior reprodutibilidade e manutenabilidade.
+Por este motivo, a autora original do livro, Khuyen Tran, criou um repositório chamado [data-science-template](https://github.com/khuyentran1401/data-science-template/blob/master/README.md). Este repositório é resultado de anos de experiência dela refinando as melhores práticas para estruturar um projeto, deixando-o com maior reprodutibilidade e manutenabilidade.
 
 Nesta seção iremos aprender a usar esse template para incorporar as melhores práticas ao fluxo de ciência de dados.
 
@@ -269,7 +269,7 @@ Vamos aprofundar em maiores detalhes sobre o DVC na seção sobre versionamento 
 
 ### Encontrando bugs no seu código antes de commitar
 
-Quando vamos commitar um código, precisanos nos certificar que:
+Quando vamos commitar um código, precisamos nos certificar que:
 - está bem formatado
 - está organizado
 - segue a padronização de estilo da PEP 8
