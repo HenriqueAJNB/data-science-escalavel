@@ -1,5 +1,5 @@
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-[![All Contributors](https://img.shields.io/badge/all_contributors-2-orange.svg?style=flat-square)](#contributors-)
+[![All Contributors](https://img.shields.io/badge/all_contributors-3-orange.svg?style=flat-square)](#contributors-)
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 
 [![GitHub original](https://img.shields.io/badge/GitHub-original_en-blue?logo=GitHub)](https://github.com/khuyentran1401/reproducible-data-science)
@@ -26,6 +26,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
   <tr>
     <td align="center"><a href="https://github.com/rodrigocan"><img src="https://avatars.githubusercontent.com/u/15656022?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Rodrigo Cândido</b></sub></a><br /><a href="https://github.com/HenriqueAJNB/data-science-escalavel/pulls?q=is%3Apr+reviewed-by%3Arodrigocan" title="Reviewed Pull Requests">👀</a></td>
     <td align="center"><a href="https://www.linkedin.com/in/henriqueajnb/"><img src="https://avatars.githubusercontent.com/u/54143210?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Henrique Branco</b></sub></a><br /><a href="#content-HenriqueAJNB" title="Content">🖋</a></td>
+    <td align="center"><a href="https://diascarolina.github.io"><img src="https://avatars.githubusercontent.com/u/33383955?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Carolina Dias</b></sub></a><br /><a href="https://github.com/HenriqueAJNB/data-science-escalavel/pulls?q=is%3Apr+reviewed-by%3Adiascarolina" title="Reviewed Pull Requests">👀</a></td>
   </tr>
 </table>
 
