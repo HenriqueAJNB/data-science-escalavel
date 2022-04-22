@@ -47,9 +47,9 @@ Pessoa normal: acho que não deveria ter feito isso...
 Cientista: E se acontecesse sempre?
 ```
 
-## O que é manutenabilidade?
+## O que é manutenibilidade?
 
-A manutenabilidade de um projeto de ciência de dados é vista quando outros profissionais conseguem depurar, manter e adicionar características ao projeto com facilidade sem inserir novas falhas no código.
+A manutenibilidade de um projeto de ciência de dados é vista quando outros profissionais conseguem depurar, manter e adicionar características ao projeto com facilidade sem inserir novas falhas no código.
 
 ![wanna_see_the_code](https://imgs.xkcd.com/comics/wanna_see_the_code.png)
 
@@ -70,5 +70,5 @@ E você é sortudo, pois as pessoas ao seu redor entendem que eles criam mais pr
 Khuyen Tran escreveu mais de 150 artigos sobre ciência de dados com mais de cem mil visualizações por mês na plataforma Towards Data Science. Ela também escreveu mais de 500 artigos de forma diária no site Data Science Simplified. A sua missão atual é fazer com que os projetos open-source (de código aberto) sejam mais acessíveis à comunidade de ciência de dados.
 
 ## Sobre o autor da tradução para português
-Henrique Branco é um instrutor de linguagem Python e disseminador de boas práticas, com atuação como Engenheiro de Machine Learning, com objetivo de ampliar a qualidade das soluçõse de ciência de dados entregue por onde ele passa, através do ensino de boas práticas de arquitetura de software, treinamentos, e outras formas de compartilhamento de conhecimento perante a alta demanda por soluções de maior qualidade, de forma geral.
+Henrique Branco é um instrutor de linguagem Python e disseminador de boas práticas, com atuação como Engenheiro de Machine Learning, com objetivo de ampliar a qualidade das soluções de ciência de dados entregue por onde ele passa, através do ensino de boas práticas de arquitetura de software, treinamentos, e outras formas de compartilhamento de conhecimento perante a alta demanda por soluções de maior qualidade, de forma geral.
 </div>
