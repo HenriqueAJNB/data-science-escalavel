@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Quatro dicas úteis para de pytest &#8212; Construindo uma solução robusta e escalável em ciência de dados</title>
+    <title>3.2. Quatro dicas úteis para de pytest &#8212; Construindo uma solução robusta e escalável em ciência de dados</title>
     
   <link href="../_static/css/theme.css" rel="stylesheet">
   <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
@@ -53,6 +53,8 @@ const thebe_selector_output = ".output, .cell_output"
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="4. Testando os dados" href="../cap04-testando_dados/sec4-0-introducao.html" />
+    <link rel="prev" title="3.1. Pytest para cientista de dados" href="sec3-1-pytest.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -104,7 +106,7 @@ const thebe_selector_output = ".output, .cell_output"
   </a>
  </li>
 </ul>
-<ul class="nav bd-sidenav">
+<ul class="current nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="../cap01-como_ler_este_livro.html">
    1. Como ler este livro
@@ -132,19 +134,24 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
   </ul>
  </li>
- <li class="toctree-l1 has-children">
+ <li class="toctree-l1 current active has-children">
   <a class="reference internal" href="sec3-0-testando_codigo.html">
    3. Testando o código
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
   <label for="toctree-checkbox-2">
    <i class="fas fa-chevron-down">
    </i>
   </label>
-  <ul>
+  <ul class="current">
    <li class="toctree-l2">
     <a class="reference internal" href="sec3-1-pytest.html">
      3.1. Pytest para cientista de dados
+    </a>
+   </li>
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     3.2. Quatro dicas úteis para de pytest
     </a>
    </li>
   </ul>
@@ -255,27 +262,27 @@ const thebe_selector_output = ".output, .cell_output"
                 <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#motivacao">
-   Motivação
+   3.2.1. Motivação
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#filtrando-os-avisos-warnings">
-   Filtrando os avisos (warnings)
+   3.2.2. Filtrando os avisos (warnings)
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#verificar-a-saida-da-funcao-sendo-testada">
-   Verificar a saída da função sendo testada
+   3.2.3. Verificar a saída da função sendo testada
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#repetindo-um-teste-multiplas-vezes">
-   Repetindo um teste múltiplas vezes
+   3.2.4. Repetindo um teste múltiplas vezes
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#medindo-a-performance-do-codigo">
-   Medindo a performance do código
+   3.2.5. Medindo a performance do código
   </a>
  </li>
 </ul>
@@ -300,27 +307,27 @@ const thebe_selector_output = ".output, .cell_output"
                             <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#motivacao">
-   Motivação
+   3.2.1. Motivação
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#filtrando-os-avisos-warnings">
-   Filtrando os avisos (warnings)
+   3.2.2. Filtrando os avisos (warnings)
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#verificar-a-saida-da-funcao-sendo-testada">
-   Verificar a saída da função sendo testada
+   3.2.3. Verificar a saída da função sendo testada
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#repetindo-um-teste-multiplas-vezes">
-   Repetindo um teste múltiplas vezes
+   3.2.4. Repetindo um teste múltiplas vezes
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#medindo-a-performance-do-codigo">
-   Medindo a performance do código
+   3.2.5. Medindo a performance do código
   </a>
  </li>
 </ul>
@@ -333,9 +340,9 @@ const thebe_selector_output = ".output, .cell_output"
               <div>
                 
   <div class="section" id="quatro-dicas-uteis-para-de-pytest">
-<h1>Quatro dicas úteis para de pytest<a class="headerlink" href="#quatro-dicas-uteis-para-de-pytest" title="Permalink to this headline">¶</a></h1>
+<h1><span class="section-number">3.2. </span>Quatro dicas úteis para de pytest<a class="headerlink" href="#quatro-dicas-uteis-para-de-pytest" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="motivacao">
-<h2>Motivação<a class="headerlink" href="#motivacao" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">3.2.1. </span>Motivação<a class="headerlink" href="#motivacao" title="Permalink to this headline">¶</a></h2>
 <p><a class="reference external" href="https://docs.pytest.org/en/stable/"><strong>Pytest</strong></a> é o framework ideal para escrever pequenos testes em Python. Nós cobrimos os benefícios de testes unitários e de como começar com pytest na seção anterior.</p>
 <p>Nesta seção, iremos mostrar como:</p>
 <ul class="simple">
@@ -346,7 +353,7 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 </div>
 <div class="section" id="filtrando-os-avisos-warnings">
-<h2>Filtrando os avisos (warnings)<a class="headerlink" href="#filtrando-os-avisos-warnings" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">3.2.2. </span>Filtrando os avisos (warnings)<a class="headerlink" href="#filtrando-os-avisos-warnings" title="Permalink to this headline">¶</a></h2>
 <p>É comum vermos avisos (warnings), informando que uma determinada funcionalidade será desativada no futuro, durante a execução dos testes com pytest. Estes avisos não parecem ser relevantes durante a fase de testes e chegam a ser um tanto quanto desagradáveis, pois poluem muito a tela, quando queremos só debugar o nosso código. Por sorte, é possível filtrar esses avisos quando usamos o pytest.</p>
 <p>Vamos usar o exemplo da <a class="reference internal" href="sec3-1-pytest.html"><span class="doc std std-doc">nossa seção anterior sobre pytest</span></a>. Neste exemplo vamos testar se o TextBlob faz previsões acuradas dos sentimentos de um dado text. Se você ainda não conhece o TextBlob, você pode pesquisar mais sobre a ferramenta <a class="reference external" href="https://towardsdatascience.com/supercharge-your-python-string-with-textblob-2d9c08a8da05">neste link</a>.</p>
 <div class="note admonition">
@@ -394,7 +401,7 @@ const thebe_selector_output = ".output, .cell_output"
 <p>Pronto! Agora é só executar os testes novamente. Nós veremos uma saída sem aqueles warnings!</p>
 </div>
 <div class="section" id="verificar-a-saida-da-funcao-sendo-testada">
-<h2>Verificar a saída da função sendo testada<a class="headerlink" href="#verificar-a-saida-da-funcao-sendo-testada" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">3.2.3. </span>Verificar a saída da função sendo testada<a class="headerlink" href="#verificar-a-saida-da-funcao-sendo-testada" title="Permalink to this headline">¶</a></h2>
 <p>As vezes desejamos ver algum código intermediário antes do <code class="docutils literal notranslate"><span class="pre">assert</span></code> no teste. Por que não simplesmente imprimir essa saída intermediária?</p>
 <p>Este pequeno ajuste nos permite desenvolver uma função que tenha uma saída conforme a desejada.</p>
 <p>Por exemplo, nós podemos dar um <code class="docutils literal notranslate"><span class="pre">print(text.sentiment)</span></code> e saber exatamente o conteúdo de <code class="docutils literal notranslate"><span class="pre">text.sentiment</span></code>:</p>
@@ -427,7 +434,7 @@ const thebe_selector_output = ".output, .cell_output"
 <p>Para maiores informações sobre este e outros comandos, rode <code class="docutils literal notranslate"><span class="pre">pytest</span> <span class="pre">-h</span></code> que a lista de todos os comandos extras do pytest será exibida no terminal.</p>
 </div>
 <div class="section" id="repetindo-um-teste-multiplas-vezes">
-<h2>Repetindo um teste múltiplas vezes<a class="headerlink" href="#repetindo-um-teste-multiplas-vezes" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">3.2.4. </span>Repetindo um teste múltiplas vezes<a class="headerlink" href="#repetindo-um-teste-multiplas-vezes" title="Permalink to this headline">¶</a></h2>
 <p>As vezes o nosso desejo é rodar o mesmo teste 100 vezes para garantir reprodutibilidade, ou seja, que nossa função sempre funcione conforme esperado.</p>
 <p>Um exemplo básico, nós descobrimos agora o método para combinar duas listas em Python.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">l1</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">]</span>
@@ -482,7 +489,7 @@ const thebe_selector_output = ".output, .cell_output"
 <p>Se quiser ter ainda mais certeza, aumente o número de repetições para 1000 e veja o resultado. Você pode ler mais sobre o <code class="docutils literal notranslate"><span class="pre">pytest-repeat</span></code> <a class="reference external" href="https://pypi.org/project/pytest-repeat/">aqui</a>.</p>
 </div>
 <div class="section" id="medindo-a-performance-do-codigo">
-<h2>Medindo a performance do código<a class="headerlink" href="#medindo-a-performance-do-codigo" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">3.2.5. </span>Medindo a performance do código<a class="headerlink" href="#medindo-a-performance-do-codigo" title="Permalink to this headline">¶</a></h2>
 <p>As vezes o nosso desejo é não só que a saída seja igual ao experado, mas também gostaríamos de comparar a performance entre duas funções diferentes.</p>
 <p>A <strong>benchmark</strong> is a test that we can use to measure how fast our code is.
 Um <strong>benchmark</strong> é um teste que usamos para medir o quão rápido o código executa.</p>
@@ -620,7 +627,21 @@ Vamos instalar o <code class="docutils literal notranslate"><span class="pre">py
               
             
                 <!-- Previous / next buttons -->
-<div class='prev-next-area'>
+<div class='prev-next-area'> 
+    <a class='left-prev' id="prev-link" href="sec3-1-pytest.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title"><span class="section-number">3.1. </span>Pytest para cientista de dados</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="../cap04-testando_dados/sec4-0-introducao.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><span class="section-number">4. </span>Testando os dados</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
 </div>
             
         </div>
