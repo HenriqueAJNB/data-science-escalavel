@@ -11,7 +11,7 @@
 <div style="text-align: justify">
 
 # Construindo uma solução robusta e escalável em ciência de dados
-Conforme uma solução de ciência de dados cresce em termos de requisitos de negócio, confiabilidade, manutenabilidade e escalabilidade, a complexidade destes projetos tendem a aumentar significativamente.
+Conforme uma solução de ciência de dados cresce em termos de requisitos de negócio, confiabilidade, manutenibilidade e escalabilidade, a complexidade destes projetos tendem a aumentar significativamente.
 
 
 ![machine_learning](https://imgs.xkcd.com/comics/machine_learning.png)
@@ -20,11 +20,11 @@ Fonte: [xkcd](https://xkcd.com/1838/)
 ```
 Este é o seu sistema de Machine Learning?
 
-Sim! Você joga os dados nesse monte de álgebra linear e coleta a resposta do outro lado.
+Sim! Você joga os dados nesse monte de álgebra linear e coleta as respostas do outro lado.
 
-Mas e se as resposta estiver errada? 
+Mas e se as resposta estiverem erradas? 
 
-Ah, só mexe nessa monte aí até ela parecer correta.
+Ah, é só mexer nesse monte até que elas pareçam corretas.
 ```
 
 Desta forma, ter um fluxo de ciência de dados reprodutível garante consistência nos resultados, facilitando a apuração de erros e manutenções destes projetos. 
@@ -42,9 +42,9 @@ Um projeto de ciência de dados é reprodutível com um alto nível de confiabil
 Fonte: [xkcd](https://xkcd.com/242/)
 
 ```
-Pessoa normal: acho que não deveria ter feito isso...
+Pessoa normal: Acho que não deveria ter feito isso...
 
-Cientista: E se acontecesse sempre?
+Cientista: Será que acontece sempre?
 ```
 
 ## O que é manutenibilidade?
@@ -62,13 +62,13 @@ Ah, legal! ... espere, você escreveu isso? Ah não.
 Quer ver o código?
 Eu gostaria, caso você não tivesse dito isso em tom de "quer ver um cadáver?"
 
-Meu código é similar à um cadáver, no qual você pode ver agora ou esperar algumas semanas até que ele se torne um problema.
-E você é sortudo, pois as pessoas ao seu redor entendem que eles criam mais problemas, então eles resolvem.
+Meu código é similar a um cadáver, no qual você pode ver agora ou esperar algumas semanas até que ele se torne um problema.
+Você é sortudo que as pessoas ao seu redor sabem que criam mais problemas do que resolvem.
 ```
 
 ## Sobre a autora original do livro
-Khuyen Tran escreveu mais de 150 artigos sobre ciência de dados com mais de cem mil visualizações por mês na plataforma Towards Data Science. Ela também escreveu mais de 500 artigos de forma diária no site Data Science Simplified. A sua missão atual é fazer com que os projetos open-source (de código aberto) sejam mais acessíveis à comunidade de ciência de dados.
+Khuyen Tran escreveu mais de 150 artigos sobre ciência de dados com mais de cem mil visualizações por mês na plataforma Towards Data Science. Ela também escreveu mais de 500 artigos de forma diária no <i>site</i> Data Science Simplified. A sua missão atual é fazer com que os projetos open-source (de código aberto) sejam mais acessíveis à comunidade de ciência de dados.
 
 ## Sobre o autor da tradução para português
-Henrique Branco é um instrutor de linguagem Python e disseminador de boas práticas, com atuação como Engenheiro de Machine Learning, com objetivo de ampliar a qualidade das soluções de ciência de dados entregue por onde ele passa, através do ensino de boas práticas de arquitetura de software, treinamentos, e outras formas de compartilhamento de conhecimento perante a alta demanda por soluções de maior qualidade, de forma geral.
+Henrique Branco é um instrutor de linguagem Python e disseminador de boas práticas, com atuação como Engenheiro de Machine Learning, com objetivo de ampliar a qualidade das soluções de ciência de dados entregue por onde ele passa, através do ensino de boas práticas de arquitetura de <i>software</i>, treinamentos, e outras formas de compartilhamento de conhecimento perante a alta demanda por soluções de maior qualidade, de forma geral.
 </div>
