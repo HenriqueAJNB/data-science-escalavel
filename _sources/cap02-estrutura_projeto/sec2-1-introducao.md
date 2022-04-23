@@ -9,13 +9,14 @@
 
 É importante estruturar o seu projeto de ciência de dados baseado em algum padrão para que seus colegas de trabalho consigam facilmente manter e modificar o projeto.
 
-![](https://miro.medium.com/max/366/1*06aeJgtJ4c4mUQOG3qIbCw.png)
+![](https://i.ibb.co/1TLnVc5/template.png)
+
 
 Mas qual tipo de padrão você deve seguir? Não seria ideal se pudéssemos criar uma estrutura a partir de um modelo padrão (template)?
 
 Existem alguns excelentes templates para projetos de ciência de dados, mas eles demonstram inexistência de algumas boas práticas como testes, configurações e formatação do código.
 
-Por este motivo, a autora original do livro, Khuyen Tran, criou um repositório chamado [data-science-template](https://github.com/khuyentran1401/data-science-template/blob/master/README.md). Este repositório é resultado de anos de experiência dela refinando as melhores práticas para estruturar um projeto, deixando-o com maior reprodutibilidade e manutenabilidade.
+Por este motivo, a autora original do livro, Khuyen Tran, criou um repositório chamado [data-science-template](https://github.com/khuyentran1401/data-science-template/blob/master/README.md). Este repositório é resultado de anos de experiência dela refinando as melhores práticas para estruturar um projeto, deixando-o com maior reprodutibilidade e manutenibilidade.
 
 Nesta seção iremos aprender a usar esse template para incorporar as melhores práticas ao fluxo de ciência de dados.
 
@@ -62,9 +63,9 @@ Este projeto usa o [Poetry](https://python-poetry.org/) no lugar do `pip` para g
 - Separar as dependências principais das dependências indiretas em dois arquivos diferentes, ao invés de colocar todas elas em um único arquivo `requirements.txt`.
 - Criar arquivos de dependência mais legíveis.
 - Remover todas as dependências indiretas ao remover um pacote.
-- Evitar instalar novos pacotes que são conflitantes com aqueles pré-existentes.
+- Evitar instalar novos pacotes que são conflitantes com aqueles preexistentes.
 
-As instruções de instalação do Poetry estão neste [link](https://python-poetry.org/docs/#installation). Todas as dependências principais do projeto estão definidas no arquivo `pyproject.toml`. Para instalar todas as dependências, basta rodar no terminal:
+As instruções de instalação do Poetry estão neste [<i>link</i>](https://python-poetry.org/docs/#installation). Todas as dependências principais do projeto estão definidas no arquivo `pyproject.toml`. Para instalar todas as dependências, basta rodar no terminal:
 
 ```bash
 poetry install
@@ -87,9 +88,9 @@ poetry remove <nome-do-pacote>
 
 Como o Poetry lida com problema de otimização quando está resolvendo as dependências, ele pode ser mais lento do que o `pip` dependendo da quantidade de pacotes. 
 
-A própria documentação oficial do Poetry sabe desta deficiência, veja [neste link aqui](https://python-poetry.org/docs/faq/). 
+A própria documentação oficial do Poetry sabe desta deficiência, veja neste [<i>link</i>](https://python-poetry.org/docs/faq/). 
 
-Há também vários issues abertos referente ao tema de lentidão do Poetry:
+Há também vários issues abertos referentes ao tema de lentidão do Poetry:
 - [Poetry is extremely slow when resolving the dependencies #2094](https://github.com/python-poetry/poetry/issues/2094)
 - [Dependency resolution is extremely slow #4924](https://github.com/python-poetry/poetry/issues/4924)
 
@@ -205,7 +206,7 @@ Todos os modelos são salvos na pasta `model`.
 
 Sabendo que o *git* não é uma ferramenta propícia para versionamento de dados e arquivos binários (modelos), vamos usar o DVC - Data Version Control - para controlar o versionamento de nossos dados e modelos.
 
-Começamos com especificando as etapas no arquivo `dvc.yaml`. Cada etapa representa um processamento específico de dados, incluindo a entrada (`deps`) e a saída (`outs`).
+Começamos especificando as etapas no arquivo `dvc.yaml`. Cada etapa representa um processamento específico de dados, incluindo a entrada (`deps`) e a saída (`outs`).
 
 ```yaml
 stages:
@@ -281,7 +282,7 @@ Você consegue adicionar diferentes plugins ao seu pipeline do pre-commit. Uma v
 
 ![pre-commit_fluxograma](../images/07-pre-commit_fluxograma.png)
 
-Neste template, usamos 5 diferentes plugins, especificados em `.pre-commit-config.yaml`. São deles:
+Neste template, usamos 5 diferentes plugins, especificados em `.pre-commit-config.yaml`. São eles:
 
 - [black](https://black.readthedocs.io/en/stable/) - formata os scripts Python.
 - [flake8](https://flake8.pycqa.org/en/latest/) - checa a aderência à PEP8.
@@ -303,7 +304,7 @@ Vamos aprofundar em maiores detalhes sobre pre-commit na seção sobre formataç
 
 ### Adicionando a documentação da API
 
-Como um cientista de dados, assim como em qualquer outra profissão, sempre há o trabalho em equipe. Portanto, é importante criar uma boa documentação para o seu projeto.
+Na ciência de dados, assim como em qualquer outra profissão, sempre há o trabalho em equipe. Portanto, é importante criar uma boa documentação para o seu projeto.
 
 Para criar a documentação da API do seu projeto baseado nas docstrings dos seus scripts Python, vamos rodar:
 
@@ -332,6 +333,6 @@ make docs_save
 
 Você acabou de aprender a estruturar um projeto de ciência de dados usando um template. Este template traz uma flexibilidade extrema. Sinta-se à vontade para ajustá-lo baseado nas suas próprias aplicações.
 
-E também pode brincar a vontade com o template data-science-template da autora Khuyen Tran neste [link](https://github.com/khuyentran1401/data-science-template).
+E também pode brincar a vontade com o template [data-science-template](https://github.com/khuyentran1401/data-science-template) da autora Khuyen Tran.
 
 </div>

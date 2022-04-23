@@ -406,10 +406,10 @@ const thebe_selector_output = ".output, .cell_output"
 <div class="section" id="motivacao">
 <h2><span class="section-number">2.1.1. </span>Motivação<a class="headerlink" href="#motivacao" title="Permalink to this headline">¶</a></h2>
 <p>É importante estruturar o seu projeto de ciência de dados baseado em algum padrão para que seus colegas de trabalho consigam facilmente manter e modificar o projeto.</p>
-<p><img alt="" src="https://miro.medium.com/max/366/1*06aeJgtJ4c4mUQOG3qIbCw.png" /></p>
+<p><img alt="" src="https://i.ibb.co/1TLnVc5/template.png" /></p>
 <p>Mas qual tipo de padrão você deve seguir? Não seria ideal se pudéssemos criar uma estrutura a partir de um modelo padrão (template)?</p>
 <p>Existem alguns excelentes templates para projetos de ciência de dados, mas eles demonstram inexistência de algumas boas práticas como testes, configurações e formatação do código.</p>
-<p>Por este motivo, a autora original do livro, Khuyen Tran, criou um repositório chamado <a class="reference external" href="https://github.com/khuyentran1401/data-science-template/blob/master/README.md">data-science-template</a>. Este repositório é resultado de anos de experiência dela refinando as melhores práticas para estruturar um projeto, deixando-o com maior reprodutibilidade e manutenabilidade.</p>
+<p>Por este motivo, a autora original do livro, Khuyen Tran, criou um repositório chamado <a class="reference external" href="https://github.com/khuyentran1401/data-science-template/blob/master/README.md">data-science-template</a>. Este repositório é resultado de anos de experiência dela refinando as melhores práticas para estruturar um projeto, deixando-o com maior reprodutibilidade e manutenibilidade.</p>
 <p>Nesta seção iremos aprender a usar esse template para incorporar as melhores práticas ao fluxo de ciência de dados.</p>
 </div>
 <div class="section" id="mao-na-massa">
@@ -448,9 +448,9 @@ const thebe_selector_output = ".output, .cell_output"
 <li><p>Separar as dependências principais das dependências indiretas em dois arquivos diferentes, ao invés de colocar todas elas em um único arquivo <code class="docutils literal notranslate"><span class="pre">requirements.txt</span></code>.</p></li>
 <li><p>Criar arquivos de dependência mais legíveis.</p></li>
 <li><p>Remover todas as dependências indiretas ao remover um pacote.</p></li>
-<li><p>Evitar instalar novos pacotes que são conflitantes com aqueles pré-existentes.</p></li>
+<li><p>Evitar instalar novos pacotes que são conflitantes com aqueles preexistentes.</p></li>
 </ul>
-<p>As instruções de instalação do Poetry estão neste <a class="reference external" href="https://python-poetry.org/docs/#installation">link</a>. Todas as dependências principais do projeto estão definidas no arquivo <code class="docutils literal notranslate"><span class="pre">pyproject.toml</span></code>. Para instalar todas as dependências, basta rodar no terminal:</p>
+<p>As instruções de instalação do Poetry estão neste <a class="reference external" href="https://python-poetry.org/docs/#installation"><i>link</i></a>. Todas as dependências principais do projeto estão definidas no arquivo <code class="docutils literal notranslate"><span class="pre">pyproject.toml</span></code>. Para instalar todas as dependências, basta rodar no terminal:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>poetry install
 </pre></div>
 </div>
@@ -465,8 +465,8 @@ const thebe_selector_output = ".output, .cell_output"
 <hr class="docutils" />
 <p><strong>Comentário a parte do livro original:</strong></p>
 <p>Como o Poetry lida com problema de otimização quando está resolvendo as dependências, ele pode ser mais lento do que o <code class="docutils literal notranslate"><span class="pre">pip</span></code> dependendo da quantidade de pacotes.</p>
-<p>A própria documentação oficial do Poetry sabe desta deficiência, veja <a class="reference external" href="https://python-poetry.org/docs/faq/">neste link aqui</a>.</p>
-<p>Há também vários issues abertos referente ao tema de lentidão do Poetry:</p>
+<p>A própria documentação oficial do Poetry sabe desta deficiência, veja neste <a class="reference external" href="https://python-poetry.org/docs/faq/"><i>link</i></a>.</p>
+<p>Há também vários issues abertos referentes ao tema de lentidão do Poetry:</p>
 <ul class="simple">
 <li><p><a class="reference external" href="https://github.com/python-poetry/poetry/issues/2094">Poetry is extremely slow when resolving the dependencies #2094</a></p></li>
 <li><p><a class="reference external" href="https://github.com/python-poetry/poetry/issues/4924">Dependency resolution is extremely slow #4924</a></p></li>
@@ -562,7 +562,7 @@ make setup
 <p><img alt="config" src="../_images/06-data.png" /></p>
 <p>Todos os modelos são salvos na pasta <code class="docutils literal notranslate"><span class="pre">model</span></code>.</p>
 <p>Sabendo que o <em>git</em> não é uma ferramenta propícia para versionamento de dados e arquivos binários (modelos), vamos usar o DVC - Data Version Control - para controlar o versionamento de nossos dados e modelos.</p>
-<p>Começamos com especificando as etapas no arquivo <code class="docutils literal notranslate"><span class="pre">dvc.yaml</span></code>. Cada etapa representa um processamento específico de dados, incluindo a entrada (<code class="docutils literal notranslate"><span class="pre">deps</span></code>) e a saída (<code class="docutils literal notranslate"><span class="pre">outs</span></code>).</p>
+<p>Começamos especificando as etapas no arquivo <code class="docutils literal notranslate"><span class="pre">dvc.yaml</span></code>. Cada etapa representa um processamento específico de dados, incluindo a entrada (<code class="docutils literal notranslate"><span class="pre">deps</span></code>) e a saída (<code class="docutils literal notranslate"><span class="pre">outs</span></code>).</p>
 <div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">stages</span><span class="p">:</span><span class="w"></span>
 <span class="w">  </span><span class="nt">process_data</span><span class="p">:</span><span class="w"></span>
 <span class="w">    </span><span class="nt">cmd</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">python src/process.py</span><span class="w"></span>
@@ -626,7 +626,7 @@ git push origin &lt;BRANCH&gt;
 <p>No entanto, pode ser muito entediante e propenso a erro checar todos esses critérios antes de commitar o código. Para isso, contamos com a ferramenta <strong>pre-commit</strong>, que permite identificar estes detalhes antes de commitar o código.</p>
 <p>Você consegue adicionar diferentes plugins ao seu pipeline do pre-commit. Uma vez que você commitou, todo o projeto passará por estas checagens. Caso alguma delas falhe, nenhum código será commitado.</p>
 <p><img alt="pre-commit_fluxograma" src="../_images/07-pre-commit_fluxograma.png" /></p>
-<p>Neste template, usamos 5 diferentes plugins, especificados em <code class="docutils literal notranslate"><span class="pre">.pre-commit-config.yaml</span></code>. São deles:</p>
+<p>Neste template, usamos 5 diferentes plugins, especificados em <code class="docutils literal notranslate"><span class="pre">.pre-commit-config.yaml</span></code>. São eles:</p>
 <ul class="simple">
 <li><p><a class="reference external" href="https://black.readthedocs.io/en/stable/">black</a> - formata os scripts Python.</p></li>
 <li><p><a class="reference external" href="https://flake8.pycqa.org/en/latest/">flake8</a> - checa a aderência à PEP8.</p></li>
@@ -644,7 +644,7 @@ git push origin &lt;BRANCH&gt;
 </div>
 <div class="section" id="adicionando-a-documentacao-da-api">
 <h2><span class="section-number">2.1.10. </span>Adicionando a documentação da API<a class="headerlink" href="#adicionando-a-documentacao-da-api" title="Permalink to this headline">¶</a></h2>
-<p>Como um cientista de dados, assim como em qualquer outra profissão, sempre há o trabalho em equipe. Portanto, é importante criar uma boa documentação para o seu projeto.</p>
+<p>Na ciência de dados, assim como em qualquer outra profissão, sempre há o trabalho em equipe. Portanto, é importante criar uma boa documentação para o seu projeto.</p>
 <p>Para criar a documentação da API do seu projeto baseado nas docstrings dos seus scripts Python, vamos rodar:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>make docs_view
 </pre></div>
@@ -665,7 +665,7 @@ pdoc server ready at http://localhost:8080
 <div class="section" id="conclusoes">
 <h2><span class="section-number">2.1.11. </span>Conclusões<a class="headerlink" href="#conclusoes" title="Permalink to this headline">¶</a></h2>
 <p>Você acabou de aprender a estruturar um projeto de ciência de dados usando um template. Este template traz uma flexibilidade extrema. Sinta-se à vontade para ajustá-lo baseado nas suas próprias aplicações.</p>
-<p>E também pode brincar a vontade com o template data-science-template da autora Khuyen Tran neste <a class="reference external" href="https://github.com/khuyentran1401/data-science-template">link</a>.</p>
+<p>E também pode brincar a vontade com o template <a class="reference external" href="https://github.com/khuyentran1401/data-science-template">data-science-template</a> da autora Khuyen Tran.</p>
 </div>
 </div>
 </div>
