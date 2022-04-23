@@ -560,7 +560,7 @@ make setup
 <h2><span class="section-number">2.1.7. </span>Gerenciando modelos e dados com DVC<a class="headerlink" href="#gerenciando-modelos-e-dados-com-dvc" title="Permalink to this headline">¶</a></h2>
 <p>Todos os dados são armazenados na pasta <code class="docutils literal notranslate"><span class="pre">data</span></code>. Cada subpasta dentro de <code class="docutils literal notranslate"><span class="pre">data</span></code> armazena dados em diferentes estágios.</p>
 <p><img alt="config" src="../_images/06-data.png" /></p>
-<p>Todos os modelos são salvos na pasta models.</p>
+<p>Todos os modelos são salvos na pasta <code class="docutils literal notranslate"><span class="pre">model</span></code>.</p>
 <p>Sabendo que o <em>git</em> não é uma ferramenta propícia para versionamento de dados e arquivos binários (modelos), vamos usar o DVC - Data Version Control - para controlar o versionamento de nossos dados e modelos.</p>
 <p>Começamos com especificando as etapas no arquivo <code class="docutils literal notranslate"><span class="pre">dvc.yaml</span></code>. Cada etapa representa um processamento específico de dados, incluindo a entrada (<code class="docutils literal notranslate"><span class="pre">deps</span></code>) e a saída (<code class="docutils literal notranslate"><span class="pre">outs</span></code>).</p>
 <div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">stages</span><span class="p">:</span><span class="w"></span>

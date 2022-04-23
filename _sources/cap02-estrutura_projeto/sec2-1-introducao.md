@@ -201,7 +201,7 @@ Todos os dados são armazenados na pasta `data`. Cada subpasta dentro de `data` 
 
 ![config](../images/06-data.png)
 
-Todos os modelos são salvos na pasta models.
+Todos os modelos são salvos na pasta `model`.
 
 Sabendo que o *git* não é uma ferramenta propícia para versionamento de dados e arquivos binários (modelos), vamos usar o DVC - Data Version Control - para controlar o versionamento de nossos dados e modelos.
 
