@@ -49,6 +49,15 @@
       "contributions": [
         "review"
       ]
+    },
+    {
+      "login": "leticiagcsilva",
+      "name": "Letícia Gomes",
+      "avatar_url": "https://avatars.githubusercontent.com/u/86079181?v=4",
+      "profile": "https://www.linkedin.com/in/leticia-gomescsilva/",
+      "contributions": [
+        "content"
+      ]
     }
   ],
   "contributorsPerLine": 7,
