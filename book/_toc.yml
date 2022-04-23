@@ -14,6 +14,7 @@ chapters:
 - file: cap03-testes_unitarios/sec3-0-testando_codigo.ipynb
   sections:
   - file: cap03-testes_unitarios/sec3-1-pytest.ipynb
+  - file: cap03-testes_unitarios/sec3-2-dicas_pytest.md
 - file: cap04-testando_dados/sec4-0-introducao.md
   sections:
   - file: cap04-testando_dados/sec4-1-great_expectations.md
