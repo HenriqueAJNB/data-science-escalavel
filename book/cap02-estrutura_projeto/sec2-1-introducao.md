@@ -71,6 +71,16 @@ As instruções de instalação do Poetry estão neste [<i>link</i>](https://pyt
 poetry install
 ```
 
+>**Comentário a parte do livro original:**
+>
+> No Windows há uma limitação do tamanho máximo de 256 caracteres que um caminho pode ter. É comum que ao se trabalhar com repositórios git e instações de dependências os caminhos se tornem extensivamente grandes, levantando uma exceção no terminal. Para corrigir isso abra o PowerShell com privilégios de administrador e rode o comando:
+>
+>```
+>New-ItemProperty -Path >"HKLM:\SYSTEM\CurrentControlSet\Control\FileSystem" `
+>-Name "LongPathsEnabled" -Value 1 -PropertyType DWORD >-Force
+>```
+>Isso alterará o valor da variável `LongPathsEnabled` do Sistema de Arquivos para 1 (True).
+
 Para adicionar um novo pacote do repositório PyPI, rode:
 
 ```bash
@@ -84,17 +94,17 @@ poetry remove <nome-do-pacote>
 ```
 
 ---
-**Comentário a parte do livro original:**
-
-Como o Poetry lida com problema de otimização quando está resolvendo as dependências, ele pode ser mais lento do que o `pip` dependendo da quantidade de pacotes. 
-
-A própria documentação oficial do Poetry sabe desta deficiência, veja neste [<i>link</i>](https://python-poetry.org/docs/faq/). 
-
-Há também vários issues abertos referentes ao tema de lentidão do Poetry:
-- [Poetry is extremely slow when resolving the dependencies #2094](https://github.com/python-poetry/poetry/issues/2094)
-- [Dependency resolution is extremely slow #4924](https://github.com/python-poetry/poetry/issues/4924)
-
-Se caso for necessário um build mais veloz, sugiro não utilizar o Poetry.
+>**Comentário a parte do livro original:**
+>
+>Como o Poetry lida com problema de otimização quando está resolvendo as dependências, ele pode ser mais lento do que o `pip` dependendo da quantidade de pacotes. 
+>
+>A própria documentação oficial do Poetry sabe desta deficiência, veja neste [<i>link</i>](https://python-poetry.org/docs/faq/). 
+>
+>Há também vários issues abertos referentes ao tema de lentidão do Poetry:
+>- [Poetry is extremely slow when resolving the dependencies #2094](https://github.com/python-poetry/poetry/issues/2094)
+>- [Dependency resolution is extremely slow #4924](https://github.com/python-poetry/poetry/issues/4924)
+>
+>Se caso for necessário um build mais veloz, sugiro não utilizar o Poetry.
 
 ---
 
