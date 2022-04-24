@@ -1,5 +1,5 @@
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-[![All Contributors](https://img.shields.io/badge/all_contributors-7-orange.svg?style=flat-square)](#contributors-)
+[![All Contributors](https://img.shields.io/badge/all_contributors-8-orange.svg?style=flat-square)](#contributors-)
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 
 [![GitHub original](https://img.shields.io/badge/GitHub-original_en-blue?logo=GitHub)](https://github.com/khuyentran1401/reproducible-data-science)
@@ -31,6 +31,9 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
     <td align="center"><a href="https://cmcouto-silva.github.io"><img src="https://avatars.githubusercontent.com/u/23084403?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Cainã Max Couto da Silva</b></sub></a><br /><a href="https://github.com/HenriqueAJNB/data-science-escalavel/pulls?q=is%3Apr+reviewed-by%3Acmcouto-silva" title="Reviewed Pull Requests">👀</a></td>
     <td align="center"><a href="https://www.linkedin.com/in/leticia-gomescsilva/"><img src="https://avatars.githubusercontent.com/u/86079181?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Letícia Gomes</b></sub></a><br /><a href="#content-leticiagcsilva" title="Content">🖋</a></td>
     <td align="center"><a href="https:\\linkedin.com\in\joao-vitor-ssouza\"><img src="https://avatars.githubusercontent.com/u/90481938?v=4?s=100" width="100px;" alt=""/><br /><sub><b>João Vitor</b></sub></a><br /><a href="#content-joao-vitor-souza" title="Content">🖋</a></td>
+  </tr>
+  <tr>
+    <td align="center"><a href="https://gurezende.github.io/GustavoSantos_Portfolio/"><img src="https://avatars.githubusercontent.com/u/50956352?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Gustavo R Santos</b></sub></a><br /><a href="#content-gurezende" title="Content">🖋</a></td>
   </tr>
 </table>
 
