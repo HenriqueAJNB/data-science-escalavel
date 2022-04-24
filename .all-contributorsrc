@@ -68,6 +68,15 @@
       "contributions": [
         "content"
       ]
+    },
+    {
+      "login": "gurezende",
+      "name": "Gustavo R Santos",
+      "avatar_url": "https://avatars.githubusercontent.com/u/50956352?v=4",
+      "profile": "https://gurezende.github.io/GustavoSantos_Portfolio/",
+      "contributions": [
+        "content"
+      ]
     }
   ],
   "contributorsPerLine": 7,
