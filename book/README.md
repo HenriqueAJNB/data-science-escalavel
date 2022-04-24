@@ -22,7 +22,7 @@ Este é o seu sistema de Machine Learning?
 
 Sim! Você joga os dados nesse monte de álgebra linear e coleta as respostas do outro lado.
 
-Mas e se as resposta estiverem erradas? 
+Mas e se as respostas estiverem erradas? 
 
 Ah, é só mexer nesse monte até que elas pareçam corretas.
 ```
