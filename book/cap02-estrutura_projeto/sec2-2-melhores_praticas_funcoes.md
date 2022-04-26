@@ -6,17 +6,17 @@
 
 ### Motivação
 
-Você já olhou uma função que você mesmo escreveu há um mês atrás e teve dificuldades de entender em 3 minutos? Se você já passou por isso, então este é o momento certo de refatorar seu código. Se sua função levar mais que 3 minutos para você mesmo entender o código, imagine quanto tempo demoraria para os seus colegas de trabalho.
+Você já olhou uma função que você mesmo escreveu há um mês e teve dificuldades de entender em 3 minutos? Se você já passou por isso, então este é o momento certo de refatorar seu código. Se sua função levar mais que 3 minutos para você mesmo entender o código, imagine quanto tempo demoraria para os seus colegas de trabalho.
 
 Se você quer escrever códigos bons que possam ser reutilizados, então eles precisam necessariamente ser legíveis, fáceis de entender. Escrever códigos assim é extremamente importante para cientistas de dados que colaboram com outros membros de equipe em papéis diferentes.
 
 Ao final, desejamos que uma função, não só em Python, mas em qualquer outra linguagem:
-- seja pequena
-- faça uma coisa só
-- contenha código com mesmo nível de abstração
-- tenha menos do que 4 argumentos
-- não tenha código duplicado
-- use nomes descritivos
+- seja pequena;
+- faça uma coisa só;
+- contenha código com mesmo nível de abstração;
+- tenha menos do que 4 argumentos;
+- não tenha código duplicado;
+- use nomes descritivos.
 
 Essas boas práticas acima tornarão as funções mais fáceis de ler e de depurar para encontrar erros.
 
@@ -91,12 +91,12 @@ if __name__ == "__main__":
 ```
 
 A função `load_data` tenta baixar arquivos do Google Drive e extrair os dados. Mesmo que existam muitos comentários nesta função, é difícil entendê-la em menos de 3 minutos. Isso porque a função:
-- é extremamente longa
-- faz mais do que uma coisa só
-- contém código com diferentes níveis de abstração
-- tem mais do que 3 argumentos
-- tem muita duplicação de código
-- não possui um nome mais descritivo
+- é extremamente longa;
+- faz mais do que uma coisa só;
+- contém código com diferentes níveis de abstração;
+- tem mais do que 3 argumentos;
+- tem muita duplicação de código;
+- não possui um nome mais descritivo.
 
 Vamos mostrar como refatorar essa função na prática, seguindo os 6 pontos mencionados no começo do capítulo.
 
@@ -137,17 +137,17 @@ def download_zip_data_from_google_drive(url: str, output_path: str):
     gdown.download(url, output_path, quiet=False) 
 ```
 
-A função `download_zip_data_from_google_drive` somente faz download de um arquivo `.zip` do Google Drive e só! Nada mais além disso...
+A função `download_zip_data_from_google_drive` somente faz <i>download</i> de um arquivo `.zip` do Google Drive e só! Nada mais além disso...
 
 ---
-**Comentário a parte do livro original:**
-
-A grande pergunta que fica aqui é: como saber quando a função faz mais de uma coisa? Um exercício bem simples, proposto pelo autor Robert C. Martin (famoso Uncle Bob) em seu livro Código Limpo é descrever o que a sua função faz em poucas palavras e ler o texto.
+>**Comentário a parte do livro original:**
+>
+>A grande pergunta que fica aqui é: como saber quando a função faz mais de uma coisa? Um exercício bem simples, proposto pelo autor Robert C. Martin (famoso Uncle Bob) em seu livro Código Limpo é descrever o que a sua função faz em poucas palavras e ler o texto.
 Se o texto se parecer com este: "Esta função faz isso **e depois** aquilo" é um forte indicativo de que ela faz mais de uma coisa. Os indicativos são: 
-- vírgula presentes na descrição verbal ou escrita da função;
-- palavras ou expressões como `e`, `também`, `além disso`, `em seguida`;
-- código duplicado dentro da função;
-- presença de instruções if-else dentro da função com o seguinte comportamento: `se for isso, então faça assim, se for aquilo então faça assado`;
+>- vírgulas presentes na descrição verbal ou escrita da função;
+>- palavras ou expressões como `e`, `também`, `além disso`, `em seguida`;
+>- código duplicado na função;
+>- presença de instruções if-else na função com o seguinte comportamento: `se for isso, então faça assim, se for aquilo então faça assado`;
 
 ---
 
@@ -156,6 +156,7 @@ Se o texto se parecer com este: "Esta função faz isso **e depois** aquilo" é 
 O código da função `extract_texts_from_multiple_files` está em um nível diferente de abstração da função em si...
 
 ```python
+import xml.etree.ElementTree as ET
 from typing import List 
 
 def extract_texts_from_multiple_files(path_to_file: str, files: list) -> List[str]:
@@ -180,12 +181,13 @@ Em outras palavras, quanto maior a complexidade, menor a abstração.
 ```
 
 Baseado na definição acima, temos que:
-- O nome da função em si `extract_texts_from_multiple_files` está em um alto nível de abstração (baixa complexidade, fácil de entender).
-- Por outro lado, o trecho de código `list_of_text_in_one_file = [r.text for r in ET.parse(join(path_to_file, file_name)).getroot()[0]]` está em um nível baixo de abstração (alta complexidade, difícil de entender)
+- O nome da função em si `extract_texts_from_multiple_files` está em um alto nível de abstração (baixa complexidade, fácil de entender);
+- Por outro lado, o trecho de código `list_of_text_in_one_file = [r.text for r in ET.parse(join(path_to_file, file_name)).getroot()[0]]` está em um nível baixo de abstração (alta complexidade, difícil de entender).
 
-Para fazer com que o código dentro da função esteja no mesmo nível de abstração, podemos colocar o código "de baixo nível" em uma outra função separada.
+Para fazer com que o código na função esteja no mesmo nível de abstração, podemos colocar o código "de baixo nível" em outra função separada.
 
 ```python
+import xml.etree.ElementTree as ET
 from typing import List 
 
 def extract_texts_from_multiple_files(path_to_file: str, files: list) -> List[str]:
@@ -212,6 +214,8 @@ Agora temos o código da função - `extract_texts_from_each_file(path_to_file, 
 O código a seguir está duplicado. O trecho que é usado para coletar dados de treino é bastante similar ao trecho usado para coletar dados de teste.
 
 ```python
+import xml.etree.ElementTree as ET
+
 t_train = []
 for file in tweets_train_files:
     train_doc_1 =[r.text for r in ET.parse(join(path_train, file)).getroot()[0]]
@@ -225,7 +229,7 @@ for file in tweets_test_files:
 ```
 
 Deve-se, de forma geral, evitar duplicações pelos seguintes motivos:
-- É redundante.
+- É redundante;
 - Se alteramos um trecho de código, precisamos alterar o trecho similar também. Podemos esquecer de alterar algum trecho, pois somos todos humanos, e acabamos introduzindo bugs em nosso código.
 
 Podemos eliminar o código duplicado encapsulando-o em uma função.
@@ -258,7 +262,7 @@ def extract_texts_from_multiple_files(path_to_file: str, files: list) -> List[st
 
 A autora trouxe uma definição do Robert C. Martin, também conhecido como "Tio Bob" (Uncle Bob, do inglês):
 
-Um nome descritivo longo é melhor do que um nome enigmático curto. Um nome descritivo longo é melhor do que um comentário descritivo longo. — Código Limpo de Robert C. Martin
+Um nome descritivo longo é melhor que um nome enigmático curto. Um nome descritivo longo é melhor que um comentário descritivo longo. — Código Limpo de Robert C. Martin
 
 Inclusive recomendo altamente a leitura desta obra citada!
 ```
@@ -271,11 +275,11 @@ Se o nome da sua função é extremamente longo, como `download_file_from_google
 
 ### Ter menos que 4 argumentos
 
-Uma função não deve ter mais do que 3 argumentos, pois pode ser um sinal de que ela faz mais do que uma única tarefa. Sem contar que é difícil testar uma função com mais do que 3 argumentos, pois a combinação entre eles começa a crescer de forma exponencial.
+Uma função não deve ter mais do que 3 argumentos, pois pode ser um sinal de que ela faz mais do que uma única tarefa. Sem contar que é difícil testar uma função com mais do que 3 argumentos, pois a combinação entre eles começa a crescer exponencialmente.
 
 Por exemplo, a função `load_data` tem 4 argumentos: `url`, `output_path`, `path_train`, and `path_test`. Portanto, tem-se uma leve sensação de que ela faz muitas coisas:
-- Usa a `url` para fazer donwload do dado
-- Salva-o em `output_path`
+- Usa a `url` para fazer <i>download</i> do dado;
+- Salva-o em `output_path`;
 - Extrai os dados de `output_path` e os salva em `path_train` e `path_test`.
 
 ```{admonition} Dica
@@ -284,7 +288,7 @@ Por exemplo, a função `load_data` tem 4 argumentos: `url`, `output_path`, `pat
 Se a função tem mais de 3 argumentos, considere torná-la uma classe!
 ```
 
-Por exemplo, nós poderiamos dividir a função `load_data` em 3 outras funções diferentes:
+Por exemplo, nós poderíamos dividir a função `load_data` em 3 outras funções diferentes:
 
 ```python
 download_zip_data_from_google_drive(url, output_path)
@@ -387,7 +391,7 @@ if __name__ == "__main__":
 ```{admonition} Nota
 :class: note
 
-No código acima a autora usou o decorador `staticmethod` para alguns métodos pois eles não usam nenhum atributos ou métodos da classe. Ela também indicou [este site](https://realpython.com/instance-class-and-static-methods-demystified/) para buscar por maiores informações 
+No código acima a autora usou o decorador `staticmethod` para alguns métodos, pois eles não usam nenhum atributo ou método da classe. Ela também indicou [este site](https://realpython.com/instance-class-and-static-methods-demystified/) para buscar por mais informações. 
 ```
 
 Como podemos observar, nenhuma das funções ou métodos acima, com exceção do construtor, tem mais do que 3 argumentos! E embora o código que usa o paradigma da programação orientada à objetos seja bem mais longo, ele é muito mais legível. Sabemos, também, o que cada trecho de código faz de forma bem específica.
@@ -398,7 +402,7 @@ Não tente escrever o código perfeito de primeira. Escreva códigos complexos q
 
 ### Conclusão
 
-Você acabou de aprender as 6 melhores práticas para escrever funções mais legíveis e ao mesmo tempo testáveis. Sabendo que cada função faz uma única coisa, você perceberá que a escrita dos testes unitários de cada uma delas será mais fácil e será possível garantir que todos obtenham sucesso quando uma alteração for feita.
+Você acabou de aprender as 6 melhores práticas para escrever funções mais legíveis e, ao mesmo tempo, testáveis. Sabendo que cada função faz uma única coisa, você perceberá que a escrita dos testes unitários de cada uma delas será mais fácil e será possível garantir que todos obtenham sucesso quando uma alteração for feita.
 
 Se você não medir esforços para que seus colegas de equipe entendam seu código, eles ficaram eternamente felizes em reutilizá-los em outros projetos.
 
