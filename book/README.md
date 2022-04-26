@@ -8,6 +8,13 @@
 
 ![GitHub contributors](https://img.shields.io/github/contributors/HenriqueAJNB/data-science-escalavel?label=Contributors&logo=GitHub&style=plastic)
 
+
+```{admonition} Nota
+:class: note
+
+Para todos que querem contribuir com o projeto, por favor, utilizem a padronização de commits do [commitizen](https://github.com/commitizen/cz-cli). Dessa forma teremos um maior controle e entendimento das alterações feitas.
+```
+
 <div style="text-align: justify">
 
 # Construindo uma solução robusta e escalável em ciência de dados
