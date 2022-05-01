@@ -102,7 +102,7 @@ const thebe_selector_output = ".output, .cell_output"
         <ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="../README.html">
-   Construindo uma solução robusta e escalável em ciência de dados
+   Nota
   </a>
  </li>
 </ul>
@@ -454,6 +454,15 @@ const thebe_selector_output = ".output, .cell_output"
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>poetry install
 </pre></div>
 </div>
+<blockquote>
+<div><p><strong>Comentário a parte do livro original:</strong></p>
+<p>No Windows há uma limitação do tamanho máximo de 256 caracteres que um caminho pode ter. É comum que ao se trabalhar com repositórios git e instalações de dependências os caminhos se tornem extensivamente grandes, levantando uma exceção no terminal. Para corrigir isso abra o PowerShell com privilégios de administrador e rode o comando:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>New-ItemProperty -Path &gt;&quot;HKLM:\SYSTEM\CurrentControlSet\Control\FileSystem&quot; `
+-Name &quot;LongPathsEnabled&quot; -Value 1 -PropertyType DWORD &gt;-Force
+</pre></div>
+</div>
+<p>Isso alterará o valor da variável <code class="docutils literal notranslate"><span class="pre">LongPathsEnabled</span></code> do Sistema de Arquivos para 1 (True).</p>
+</div></blockquote>
 <p>Para adicionar um novo pacote do repositório PyPI, rode:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>poetry add &lt;nome-do-pacote&gt;
 </pre></div>
@@ -463,7 +472,8 @@ const thebe_selector_output = ".output, .cell_output"
 </pre></div>
 </div>
 <hr class="docutils" />
-<p><strong>Comentário a parte do livro original:</strong></p>
+<blockquote>
+<div><p><strong>Comentário a parte do livro original:</strong></p>
 <p>Como o Poetry lida com problema de otimização quando está resolvendo as dependências, ele pode ser mais lento do que o <code class="docutils literal notranslate"><span class="pre">pip</span></code> dependendo da quantidade de pacotes.</p>
 <p>A própria documentação oficial do Poetry sabe desta deficiência, veja neste <a class="reference external" href="https://python-poetry.org/docs/faq/"><i>link</i></a>.</p>
 <p>Há também vários issues abertos referentes ao tema de lentidão do Poetry:</p>
@@ -472,6 +482,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li><p><a class="reference external" href="https://github.com/python-poetry/poetry/issues/4924">Dependency resolution is extremely slow #4924</a></p></li>
 </ul>
 <p>Se caso for necessário um build mais veloz, sugiro não utilizar o Poetry.</p>
+</div></blockquote>
 </div>
 <hr class="docutils" />
 <div class="section" id="makefile">

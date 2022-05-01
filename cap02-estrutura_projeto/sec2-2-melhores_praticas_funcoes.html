@@ -102,7 +102,7 @@ const thebe_selector_output = ".output, .cell_output"
         <ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="../README.html">
-   Construindo uma solução robusta e escalável em ciência de dados
+   Nota
   </a>
  </li>
 </ul>
@@ -395,16 +395,16 @@ const thebe_selector_output = ".output, .cell_output"
 <h1><span class="section-number">2.2. </span>Boas práticas na escrita de funções<a class="headerlink" href="#boas-praticas-na-escrita-de-funcoes" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="motivacao">
 <h2><span class="section-number">2.2.1. </span>Motivação<a class="headerlink" href="#motivacao" title="Permalink to this headline">¶</a></h2>
-<p>Você já olhou uma função que você mesmo escreveu há um mês atrás e teve dificuldades de entender em 3 minutos? Se você já passou por isso, então este é o momento certo de refatorar seu código. Se sua função levar mais que 3 minutos para você mesmo entender o código, imagine quanto tempo demoraria para os seus colegas de trabalho.</p>
+<p>Você já olhou uma função que você mesmo escreveu há um mês e teve dificuldades de entender em 3 minutos? Se você já passou por isso, então este é o momento certo de refatorar seu código. Se sua função levar mais que 3 minutos para você mesmo entender o código, imagine quanto tempo demoraria para os seus colegas de trabalho.</p>
 <p>Se você quer escrever códigos bons que possam ser reutilizados, então eles precisam necessariamente ser legíveis, fáceis de entender. Escrever códigos assim é extremamente importante para cientistas de dados que colaboram com outros membros de equipe em papéis diferentes.</p>
 <p>Ao final, desejamos que uma função, não só em Python, mas em qualquer outra linguagem:</p>
 <ul class="simple">
-<li><p>seja pequena</p></li>
-<li><p>faça uma coisa só</p></li>
-<li><p>contenha código com mesmo nível de abstração</p></li>
-<li><p>tenha menos do que 4 argumentos</p></li>
-<li><p>não tenha código duplicado</p></li>
-<li><p>use nomes descritivos</p></li>
+<li><p>seja pequena;</p></li>
+<li><p>faça uma coisa só;</p></li>
+<li><p>contenha código com mesmo nível de abstração;</p></li>
+<li><p>tenha menos do que 4 argumentos;</p></li>
+<li><p>não tenha código duplicado;</p></li>
+<li><p>use nomes descritivos.</p></li>
 </ul>
 <p>Essas boas práticas acima tornarão as funções mais fáceis de ler e de depurar para encontrar erros.</p>
 <p>Nesta seção, vamos discutir como usar essas 6 práticas para melhorar o código das nossas funções.</p>
@@ -477,12 +477,12 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 <p>A função <code class="docutils literal notranslate"><span class="pre">load_data</span></code> tenta baixar arquivos do Google Drive e extrair os dados. Mesmo que existam muitos comentários nesta função, é difícil entendê-la em menos de 3 minutos. Isso porque a função:</p>
 <ul class="simple">
-<li><p>é extremamente longa</p></li>
-<li><p>faz mais do que uma coisa só</p></li>
-<li><p>contém código com diferentes níveis de abstração</p></li>
-<li><p>tem mais do que 3 argumentos</p></li>
-<li><p>tem muita duplicação de código</p></li>
-<li><p>não possui um nome mais descritivo</p></li>
+<li><p>é extremamente longa;</p></li>
+<li><p>faz mais do que uma coisa só;</p></li>
+<li><p>contém código com diferentes níveis de abstração;</p></li>
+<li><p>tem mais do que 3 argumentos;</p></li>
+<li><p>tem muita duplicação de código;</p></li>
+<li><p>não possui um nome mais descritivo.</p></li>
 </ul>
 <p>Vamos mostrar como refatorar essa função na prática, seguindo os 6 pontos mencionados no começo do capítulo.</p>
 </div>
@@ -517,23 +517,26 @@ const thebe_selector_output = ".output, .cell_output"
     <span class="n">gdown</span><span class="o">.</span><span class="n">download</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">output_path</span><span class="p">,</span> <span class="n">quiet</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span> 
 </pre></div>
 </div>
-<p>A função <code class="docutils literal notranslate"><span class="pre">download_zip_data_from_google_drive</span></code> somente faz download de um arquivo <code class="docutils literal notranslate"><span class="pre">.zip</span></code> do Google Drive e só! Nada mais além disso…</p>
+<p>A função <code class="docutils literal notranslate"><span class="pre">download_zip_data_from_google_drive</span></code> somente faz <i>download</i> de um arquivo <code class="docutils literal notranslate"><span class="pre">.zip</span></code> do Google Drive e só! Nada mais além disso…</p>
 <hr class="docutils" />
-<p><strong>Comentário a parte do livro original:</strong></p>
+<blockquote>
+<div><p><strong>Comentário a parte do livro original:</strong></p>
 <p>A grande pergunta que fica aqui é: como saber quando a função faz mais de uma coisa? Um exercício bem simples, proposto pelo autor Robert C. Martin (famoso Uncle Bob) em seu livro Código Limpo é descrever o que a sua função faz em poucas palavras e ler o texto.
 Se o texto se parecer com este: “Esta função faz isso <strong>e depois</strong> aquilo” é um forte indicativo de que ela faz mais de uma coisa. Os indicativos são:</p>
 <ul class="simple">
-<li><p>vírgula presentes na descrição verbal ou escrita da função;</p></li>
+<li><p>vírgulas presentes na descrição verbal ou escrita da função;</p></li>
 <li><p>palavras ou expressões como <code class="docutils literal notranslate"><span class="pre">e</span></code>, <code class="docutils literal notranslate"><span class="pre">também</span></code>, <code class="docutils literal notranslate"><span class="pre">além</span> <span class="pre">disso</span></code>, <code class="docutils literal notranslate"><span class="pre">em</span> <span class="pre">seguida</span></code>;</p></li>
-<li><p>código duplicado dentro da função;</p></li>
-<li><p>presença de instruções if-else dentro da função com o seguinte comportamento: <code class="docutils literal notranslate"><span class="pre">se</span> <span class="pre">for</span> <span class="pre">isso,</span> <span class="pre">então</span> <span class="pre">faça</span> <span class="pre">assim,</span> <span class="pre">se</span> <span class="pre">for</span> <span class="pre">aquilo</span> <span class="pre">então</span> <span class="pre">faça</span> <span class="pre">assado</span></code>;</p></li>
+<li><p>código duplicado na função;</p></li>
+<li><p>presença de instruções if-else na função com o seguinte comportamento: <code class="docutils literal notranslate"><span class="pre">se</span> <span class="pre">for</span> <span class="pre">isso,</span> <span class="pre">então</span> <span class="pre">faça</span> <span class="pre">assim,</span> <span class="pre">se</span> <span class="pre">for</span> <span class="pre">aquilo</span> <span class="pre">então</span> <span class="pre">faça</span> <span class="pre">assado</span></code>;</p></li>
 </ul>
+</div></blockquote>
 </div>
 <hr class="docutils" />
 <div class="section" id="um-unico-nivel-de-abstracao">
 <h2><span class="section-number">2.2.5. </span>Um único nível de abstração<a class="headerlink" href="#um-unico-nivel-de-abstracao" title="Permalink to this headline">¶</a></h2>
 <p>O código da função <code class="docutils literal notranslate"><span class="pre">extract_texts_from_multiple_files</span></code> está em um nível diferente de abstração da função em si…</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">List</span> 
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">xml.etree.ElementTree</span> <span class="k">as</span> <span class="nn">ET</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">List</span> 
 
 <span class="k">def</span> <span class="nf">extract_texts_from_multiple_files</span><span class="p">(</span><span class="n">path_to_file</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">files</span><span class="p">:</span> <span class="nb">list</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]:</span>
 
@@ -554,11 +557,12 @@ Se o texto se parecer com este: “Esta função faz isso <strong>e depois</stro
 </div>
 <p>Baseado na definição acima, temos que:</p>
 <ul class="simple">
-<li><p>O nome da função em si <code class="docutils literal notranslate"><span class="pre">extract_texts_from_multiple_files</span></code> está em um alto nível de abstração (baixa complexidade, fácil de entender).</p></li>
-<li><p>Por outro lado, o trecho de código <code class="docutils literal notranslate"><span class="pre">list_of_text_in_one_file</span> <span class="pre">=</span> <span class="pre">[r.text</span> <span class="pre">for</span> <span class="pre">r</span> <span class="pre">in</span> <span class="pre">ET.parse(join(path_to_file,</span> <span class="pre">file_name)).getroot()[0]]</span></code> está em um nível baixo de abstração (alta complexidade, difícil de entender)</p></li>
+<li><p>O nome da função em si <code class="docutils literal notranslate"><span class="pre">extract_texts_from_multiple_files</span></code> está em um alto nível de abstração (baixa complexidade, fácil de entender);</p></li>
+<li><p>Por outro lado, o trecho de código <code class="docutils literal notranslate"><span class="pre">list_of_text_in_one_file</span> <span class="pre">=</span> <span class="pre">[r.text</span> <span class="pre">for</span> <span class="pre">r</span> <span class="pre">in</span> <span class="pre">ET.parse(join(path_to_file,</span> <span class="pre">file_name)).getroot()[0]]</span></code> está em um nível baixo de abstração (alta complexidade, difícil de entender).</p></li>
 </ul>
-<p>Para fazer com que o código dentro da função esteja no mesmo nível de abstração, podemos colocar o código “de baixo nível” em uma outra função separada.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">List</span> 
+<p>Para fazer com que o código na função esteja no mesmo nível de abstração, podemos colocar o código “de baixo nível” em outra função separada.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">xml.etree.ElementTree</span> <span class="k">as</span> <span class="nn">ET</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">List</span> 
 
 <span class="k">def</span> <span class="nf">extract_texts_from_multiple_files</span><span class="p">(</span><span class="n">path_to_file</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">files</span><span class="p">:</span> <span class="nb">list</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]:</span>
 
@@ -582,7 +586,9 @@ Se o texto se parecer com este: “Esta função faz isso <strong>e depois</stro
 <div class="section" id="codigo-duplicado">
 <h2><span class="section-number">2.2.6. </span>Código duplicado<a class="headerlink" href="#codigo-duplicado" title="Permalink to this headline">¶</a></h2>
 <p>O código a seguir está duplicado. O trecho que é usado para coletar dados de treino é bastante similar ao trecho usado para coletar dados de teste.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">t_train</span> <span class="o">=</span> <span class="p">[]</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">xml.etree.ElementTree</span> <span class="k">as</span> <span class="nn">ET</span>
+
+<span class="n">t_train</span> <span class="o">=</span> <span class="p">[]</span>
 <span class="k">for</span> <span class="n">file</span> <span class="ow">in</span> <span class="n">tweets_train_files</span><span class="p">:</span>
     <span class="n">train_doc_1</span> <span class="o">=</span><span class="p">[</span><span class="n">r</span><span class="o">.</span><span class="n">text</span> <span class="k">for</span> <span class="n">r</span> <span class="ow">in</span> <span class="n">ET</span><span class="o">.</span><span class="n">parse</span><span class="p">(</span><span class="n">join</span><span class="p">(</span><span class="n">path_train</span><span class="p">,</span> <span class="n">file</span><span class="p">))</span><span class="o">.</span><span class="n">getroot</span><span class="p">()[</span><span class="mi">0</span><span class="p">]]</span>
     <span class="n">t_train</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39; &#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">t</span> <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">train_doc_1</span><span class="p">))</span>
@@ -596,7 +602,7 @@ Se o texto se parecer com este: “Esta função faz isso <strong>e depois</stro
 </div>
 <p>Deve-se, de forma geral, evitar duplicações pelos seguintes motivos:</p>
 <ul class="simple">
-<li><p>É redundante.</p></li>
+<li><p>É redundante;</p></li>
 <li><p>Se alteramos um trecho de código, precisamos alterar o trecho similar também. Podemos esquecer de alterar algum trecho, pois somos todos humanos, e acabamos introduzindo bugs em nosso código.</p></li>
 </ul>
 <p>Podemos eliminar o código duplicado encapsulando-o em uma função.</p>
@@ -626,7 +632,7 @@ Se o texto se parecer com este: “Esta função faz isso <strong>e depois</stro
 <div class="tip admonition">
 <p class="admonition-title">Nomes descritivos</p>
 <p>A autora trouxe uma definição do Robert C. Martin, também conhecido como “Tio Bob” (Uncle Bob, do inglês):</p>
-<p>Um nome descritivo longo é melhor do que um nome enigmático curto. Um nome descritivo longo é melhor do que um comentário descritivo longo. — Código Limpo de Robert C. Martin</p>
+<p>Um nome descritivo longo é melhor que um nome enigmático curto. Um nome descritivo longo é melhor que um comentário descritivo longo. — Código Limpo de Robert C. Martin</p>
 <p>Inclusive recomendo altamente a leitura desta obra citada!</p>
 </div>
 <p>Outras pessoas conseguem entender o que a função <code class="docutils literal notranslate"><span class="pre">extract_texts_from_multiple_files</span></code> simplesmente lendo o nome da função.</p>
@@ -635,18 +641,18 @@ Se o texto se parecer com este: “Esta função faz isso <strong>e depois</stro
 </div>
 <div class="section" id="ter-menos-que-4-argumentos">
 <h2><span class="section-number">2.2.8. </span>Ter menos que 4 argumentos<a class="headerlink" href="#ter-menos-que-4-argumentos" title="Permalink to this headline">¶</a></h2>
-<p>Uma função não deve ter mais do que 3 argumentos, pois pode ser um sinal de que ela faz mais do que uma única tarefa. Sem contar que é difícil testar uma função com mais do que 3 argumentos, pois a combinação entre eles começa a crescer de forma exponencial.</p>
+<p>Uma função não deve ter mais do que 3 argumentos, pois pode ser um sinal de que ela faz mais do que uma única tarefa. Sem contar que é difícil testar uma função com mais do que 3 argumentos, pois a combinação entre eles começa a crescer exponencialmente.</p>
 <p>Por exemplo, a função <code class="docutils literal notranslate"><span class="pre">load_data</span></code> tem 4 argumentos: <code class="docutils literal notranslate"><span class="pre">url</span></code>, <code class="docutils literal notranslate"><span class="pre">output_path</span></code>, <code class="docutils literal notranslate"><span class="pre">path_train</span></code>, and <code class="docutils literal notranslate"><span class="pre">path_test</span></code>. Portanto, tem-se uma leve sensação de que ela faz muitas coisas:</p>
 <ul class="simple">
-<li><p>Usa a <code class="docutils literal notranslate"><span class="pre">url</span></code> para fazer donwload do dado</p></li>
-<li><p>Salva-o em <code class="docutils literal notranslate"><span class="pre">output_path</span></code></p></li>
+<li><p>Usa a <code class="docutils literal notranslate"><span class="pre">url</span></code> para fazer <i>download</i> do dado;</p></li>
+<li><p>Salva-o em <code class="docutils literal notranslate"><span class="pre">output_path</span></code>;</p></li>
 <li><p>Extrai os dados de <code class="docutils literal notranslate"><span class="pre">output_path</span></code> e os salva em <code class="docutils literal notranslate"><span class="pre">path_train</span></code> e <code class="docutils literal notranslate"><span class="pre">path_test</span></code>.</p></li>
 </ul>
 <div class="tip admonition">
 <p class="admonition-title">Dica</p>
 <p>Se a função tem mais de 3 argumentos, considere torná-la uma classe!</p>
 </div>
-<p>Por exemplo, nós poderiamos dividir a função <code class="docutils literal notranslate"><span class="pre">load_data</span></code> em 3 outras funções diferentes:</p>
+<p>Por exemplo, nós poderíamos dividir a função <code class="docutils literal notranslate"><span class="pre">load_data</span></code> em 3 outras funções diferentes:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">download_zip_data_from_google_drive</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">output_path</span><span class="p">)</span>
 
 <span class="n">unzip_data</span><span class="p">(</span><span class="n">output_path</span><span class="p">)</span>
@@ -744,7 +750,7 @@ Se o texto se parecer com este: “Esta função faz isso <strong>e depois</stro
 </div>
 <div class="note admonition">
 <p class="admonition-title">Nota</p>
-<p>No código acima a autora usou o decorador <code class="docutils literal notranslate"><span class="pre">staticmethod</span></code> para alguns métodos pois eles não usam nenhum atributos ou métodos da classe. Ela também indicou <a class="reference external" href="https://realpython.com/instance-class-and-static-methods-demystified/">este site</a> para buscar por maiores informações</p>
+<p>No código acima a autora usou o decorador <code class="docutils literal notranslate"><span class="pre">staticmethod</span></code> para alguns métodos, pois eles não usam nenhum atributo ou método da classe. Ela também indicou <a class="reference external" href="https://realpython.com/instance-class-and-static-methods-demystified/">este site</a> para buscar por mais informações.</p>
 </div>
 <p>Como podemos observar, nenhuma das funções ou métodos acima, com exceção do construtor, tem mais do que 3 argumentos! E embora o código que usa o paradigma da programação orientada à objetos seja bem mais longo, ele é muito mais legível. Sabemos, também, o que cada trecho de código faz de forma bem específica.</p>
 </div>
@@ -754,7 +760,7 @@ Se o texto se parecer com este: “Esta função faz isso <strong>e depois</stro
 </div>
 <div class="section" id="conclusao">
 <h2><span class="section-number">2.2.10. </span>Conclusão<a class="headerlink" href="#conclusao" title="Permalink to this headline">¶</a></h2>
-<p>Você acabou de aprender as 6 melhores práticas para escrever funções mais legíveis e ao mesmo tempo testáveis. Sabendo que cada função faz uma única coisa, você perceberá que a escrita dos testes unitários de cada uma delas será mais fácil e será possível garantir que todos obtenham sucesso quando uma alteração for feita.</p>
+<p>Você acabou de aprender as 6 melhores práticas para escrever funções mais legíveis e, ao mesmo tempo, testáveis. Sabendo que cada função faz uma única coisa, você perceberá que a escrita dos testes unitários de cada uma delas será mais fácil e será possível garantir que todos obtenham sucesso quando uma alteração for feita.</p>
 <p>Se você não medir esforços para que seus colegas de equipe entendam seu código, eles ficaram eternamente felizes em reutilizá-los em outros projetos.</p>
 </div>
 </div>

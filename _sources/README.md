@@ -8,6 +8,13 @@
 
 ![GitHub contributors](https://img.shields.io/github/contributors/HenriqueAJNB/data-science-escalavel?label=Contributors&logo=GitHub&style=plastic)
 
+
+```{admonition} Nota
+:class: note
+
+Para todos que querem contribuir com o projeto, por favor, utilizem a padronização de commits do [commitizen](https://github.com/commitizen/cz-cli). Dessa forma teremos um maior controle e entendimento das alterações feitas.
+```
+
 <div style="text-align: justify">
 
 # Construindo uma solução robusta e escalável em ciência de dados
@@ -22,7 +29,7 @@ Este é o seu sistema de Machine Learning?
 
 Sim! Você joga os dados nesse monte de álgebra linear e coleta as respostas do outro lado.
 
-Mas e se as resposta estiverem erradas? 
+Mas e se as respostas estiverem erradas? 
 
 Ah, é só mexer nesse monte até que elas pareçam corretas.
 ```
