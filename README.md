@@ -11,9 +11,52 @@
 [![Livro traduzido](https://img.shields.io/badge/Link-Livro_traduzido-red?style=plastic)](https://henriqueajnb.github.io/data-science-escalavel/)
 
 
-### Translation to brazilian portuguese of the book **Build a Reproducible and Maintainable Data Science Project** from Khuyen Tran author.
+## Translation to brazilian portuguese of the book **Build a Reproducible and Maintainable Data Science Project** from Khuyen Tran author.
 ---
-### Tradução para português brasileiro do livro **Build a Reproducible and Maintainable Data Science Project** da autora Khuyen Tran.
+## Tradução para português brasileiro do livro **Build a Reproducible and Maintainable Data Science Project** da autora Khuyen Tran.
+---
+## Acompanhamento da tradução
+
+### Legenda
+- [] Nome do capítulo/seção ainda não traduzido (nome de quem vai colaborar com a tradução)
+- [x] Nome do capítulo/seção já traduzido (nome de quem colaborou com a tradução)
+---
+- [x] Capa (@HenriqueAJNB)
+
+- [x] Cap01 - como ler este livro (@HenriqueAJNB)
+
+- [x] Cap02 - estrutura do projeto (@HenriqueAJNB)
+  - [x] Sec2.0 - estrutura do projeto (@HenriqueAJNB)
+  - [x] Sec2.1 - introdução (@HenriqueAJNB)
+  - [x] Sec2.2 - melhores práticas na escrita de funções (@HenriqueAJNB)
+
+- [x] Cap03 - testes unitários (@HenriqueAJNB)
+  - [x] Sec3.0 - testando o código (@HenriqueAJNB)
+  - [x] Sec3.1 - pytest (@HenriqueAJNB)
+  - [x] Sec3.2 - dicas de pytest (@HenriqueAJNB)
+
+- [x] Cap04 - testando dados (@HenriqueAJNB)
+  - [x] Sec4.0 - introdução (@HenriqueAJNB)
+  - [] Sec4.1 - great_expectations (@HenriqueAJNB)
+  - [] Sec4.2 - pandera (@gurezende)
+  - [] Sec4.3 - schema
+
+- [x] Cap05 - orquestrando pipelines (@LevyPy)
+  - [x] Sec5.0 - introdução (@LevyPy)
+  - [x] Sec5.1 - prefect (@LevyPy)
+
+- [x] Cap06 - experimentação (@LevyPy)
+  - [x] Sec6.1 - hydra (@LevyPy)
+  - [] Sec6.2 - wandb (em aberto)
+
+- [] Cap07 - controle de versionamento (em aberto)
+  - [] Sec7.1 - DVC (em aberto)
+  - [] Sec7.2 - DagsHub (em aberto)
+  - [] Sec7.3 - plugin do pre-commit (em aberto)
+
+- [] Cap08 - Deploy de modelos (em aberto)
+  - [] Sec8.0 - introdução (em aberto)
+  - [] Sec8.1 - BentoML (em aberto)
 
 ## Contributors ✨
 
