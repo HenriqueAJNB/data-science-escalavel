@@ -21,32 +21,32 @@
 - [ ] Nome do capítulo/seção ainda não traduzido (nome de quem vai colaborar com a tradução)
 - [x] Nome do capítulo/seção já traduzido (nome de quem colaborou com a tradução)
 ---
-- [x] Capa (@HenriqueAJNB)
+- [x] Capa ([HenriqueAJNB](https://github.com/HenriqueAJNB))
 
-- [x] Cap01 - como ler este livro (@HenriqueAJNB)
+- [x] Cap01 - como ler este livro ([HenriqueAJNB](https://github.com/HenriqueAJNB))
 
-- [x] Cap02 - estrutura do projeto (@HenriqueAJNB)
-  - [x] Sec2.0 - estrutura do projeto (@HenriqueAJNB)
-  - [x] Sec2.1 - introdução (@HenriqueAJNB)
-  - [x] Sec2.2 - melhores práticas na escrita de funções (@HenriqueAJNB)
+- [x] Cap02 - estrutura do projeto ([HenriqueAJNB](https://github.com/HenriqueAJNB))
+  - [x] Sec2.0 - estrutura do projeto ([HenriqueAJNB](https://github.com/HenriqueAJNB))
+  - [x] Sec2.1 - introdução ([HenriqueAJNB](https://github.com/HenriqueAJNB))
+  - [x] Sec2.2 - melhores práticas na escrita de funções ([HenriqueAJNB](https://github.com/HenriqueAJNB))
 
-- [x] Cap03 - testes unitários (@HenriqueAJNB)
-  - [x] Sec3.0 - testando o código (@HenriqueAJNB)
-  - [x] Sec3.1 - pytest (@HenriqueAJNB)
-  - [x] Sec3.2 - dicas de pytest (@HenriqueAJNB)
+- [x] Cap03 - testes unitários ([HenriqueAJNB](https://github.com/HenriqueAJNB))
+  - [x] Sec3.0 - testando o código ([HenriqueAJNB](https://github.com/HenriqueAJNB))
+  - [x] Sec3.1 - pytest ([HenriqueAJNB](https://github.com/HenriqueAJNB))
+  - [x] Sec3.2 - dicas de pytest ([HenriqueAJNB](https://github.com/HenriqueAJNB))
 
-- [x] Cap04 - testando dados (@HenriqueAJNB)
-  - [x] Sec4.0 - introdução (@HenriqueAJNB)
-  - [ ] Sec4.1 - great_expectations (@HenriqueAJNB)
-  - [ ] Sec4.2 - pandera (@gurezende)
+- [x] Cap04 - testando dados ([HenriqueAJNB](https://github.com/HenriqueAJNB))
+  - [x] Sec4.0 - introdução ([HenriqueAJNB](https://github.com/HenriqueAJNB))
+  - [ ] Sec4.1 - great_expectations ([HenriqueAJNB](https://github.com/HenriqueAJNB))
+  - [ ] Sec4.2 - pandera ([gurezende](https://github.com/gurezende))
   - [ ] Sec4.3 - schema
 
-- [x] Cap05 - orquestrando pipelines (@LevyPy)
-  - [x] Sec5.0 - introdução (@LevyPy)
-  - [x] Sec5.1 - prefect (@LevyPy)
+- [x] Cap05 - orquestrando pipelines ([LevyPy](https://github.com/LevyPy))
+  - [x] Sec5.0 - introdução ([LevyPy](https://github.com/LevyPy))
+  - [x] Sec5.1 - prefect ([LevyPy](https://github.com/LevyPy))
 
-- [x] Cap06 - experimentação (@LevyPy)
-  - [x] Sec6.1 - hydra (@LevyPy)
+- [x] Cap06 - experimentação ([LevyPy](https://github.com/LevyPy))
+  - [x] Sec6.1 - hydra ([LevyPy](https://github.com/LevyPy))
   - [ ] Sec6.2 - wandb (em aberto)
 
 - [ ] Cap07 - controle de versionamento (em aberto)
