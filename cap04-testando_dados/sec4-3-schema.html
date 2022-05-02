@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Introdução ao Schema: Uma Biblioteca Python para Validar seus Dados &#8212; Construindo uma solução robusta e escalável em ciência de dados</title>
+    <title>4.3. Introdução ao Schema: Uma Biblioteca Python para Validar seus Dados &#8212; Construindo uma solução robusta e escalável em ciência de dados</title>
     
   <link href="../_static/css/theme.css" rel="stylesheet">
   <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
@@ -53,6 +53,8 @@ const thebe_selector_output = ".output, .cell_output"
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="5. Construir Pipelines" href="../cap05-construir_pipelines/sec5-0-construir_pipelines.html" />
+    <link rel="prev" title="4.2. Valide Seu Pandas DataFrame com Pandera" href="sec4-2-pandera.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -104,7 +106,7 @@ const thebe_selector_output = ".output, .cell_output"
   </a>
  </li>
 </ul>
-<ul class="nav bd-sidenav">
+<ul class="current nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="../cap01-como_ler_este_livro.html">
    1. Como ler este livro
@@ -154,19 +156,63 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
   </ul>
  </li>
- <li class="toctree-l1 has-children">
+ <li class="toctree-l1 current active has-children">
   <a class="reference internal" href="sec4-0-introducao.html">
    4. Testando os dados
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
   <label for="toctree-checkbox-3">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
+   <li class="toctree-l2">
+    <a class="reference internal" href="sec4-1-great_expectations.html">
+     4.1. Great Expectations: saiba sempre o que esperar dos seus dados
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="sec4-2-pandera.html">
+     4.2. Valide Seu Pandas DataFrame com Pandera
+    </a>
+   </li>
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     4.3. Introdução ao Schema: Uma Biblioteca Python para Validar seus Dados
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../cap05-construir_pipelines/sec5-0-construir_pipelines.html">
+   5. Construir Pipelines
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+  <label for="toctree-checkbox-4">
    <i class="fas fa-chevron-down">
    </i>
   </label>
   <ul>
    <li class="toctree-l2">
-    <a class="reference internal" href="sec4-1-great_expectations.html">
-     4.1. Great Expectations: saiba sempre o que esperar dos seus dados
+    <a class="reference internal" href="../cap05-construir_pipelines/sec5-1-prefect.html">
+     5.1. Orquestre um projeto de ciência de dados em Python com Prefect
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../cap06-acompanhamento_de_experimentos/sec6-0-acompanhamento_de_experimentos.html">
+   6. Acompanhamento de experimentos
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
+  <label for="toctree-checkbox-5">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../cap06-acompanhamento_de_experimentos/sec6-1-hydra.html">
+     6.1. Configure seus projetos de ciência de dados com Hydra
     </a>
    </li>
   </ul>
@@ -212,7 +258,7 @@ const thebe_selector_output = ".output, .cell_output"
         <!-- ipynb file if we had a myst markdown file -->
         
         <!-- Download raw file -->
-        <a class="dropdown-buttons" href="../_sources/cap04-testando_dados/schema.md"><button type="button"
+        <a class="dropdown-buttons" href="../_sources/cap04-testando_dados/sec4-3-schema.md"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
                 data-placement="left">.md</button></a>
         <!-- Download PDF via print -->
@@ -232,7 +278,7 @@ const thebe_selector_output = ".output, .cell_output"
                 data-toggle="tooltip" data-placement="left" title="Source repository"><i
                     class="fab fa-github"></i>repository</button></a>
         <a class="issues-button"
-            href="https://github.com/HenriqueAJNB/data-science-escalavel/issues/new?title=Issue%20on%20page%20%2Fcap04-testando_dados/schema.html&body=Your%20issue%20content%20here."><button
+            href="https://github.com/HenriqueAJNB/data-science-escalavel/issues/new?title=Issue%20on%20page%20%2Fcap04-testando_dados/sec4-3-schema.html&body=Your%20issue%20content%20here."><button
                 type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
                 title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
         
@@ -260,31 +306,32 @@ const thebe_selector_output = ".output, .cell_output"
                 <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#o-que-e-schema">
-   O que é schema?
+   4.3.1. O que é schema?
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#valide-tipos-de-dados">
-   Valide Tipos de Dados
+   4.3.2. Valide Tipos de Dados
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#valide-o-tipo-de-dados-de-algumas-colunas-enquanto-ignora-o-resto">
-   Valide o Tipo de Dados de Algumas Colunas Enquanto Ignora o Resto
+   4.3.3. Valide o Tipo de Dados de Algumas Colunas Enquanto Ignora o Resto
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#valide-com-funcao">
-   Valide com Função
+   4.3.4. Valide com Função
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#valide-varios-schemas">
-   Valide Vários Schemas
+   4.3.5. Valide Vários Schemas
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#and">
+     4.3.5.1.
      <em>
       And
      </em>
@@ -292,6 +339,7 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#or">
+     4.3.5.2.
      <em>
       Or
      </em>
@@ -299,6 +347,7 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#combinacao-de-and-e-or">
+     4.3.5.3.
      <em>
       Combinação de And e Or
      </em>
@@ -308,22 +357,22 @@ const thebe_selector_output = ".output, .cell_output"
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#optional">
-   Optional
+   4.3.6. Optional
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#forbidden">
-   Forbidden
+   4.3.7. Forbidden
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#dicionario-aninhado">
-   Dicionário Aninhado
+   4.3.8. Dicionário Aninhado
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#converter-tipo-de-dados">
-   Converter tipo de dados
+   4.3.9. Converter tipo de dados
   </a>
  </li>
 </ul>
@@ -348,31 +397,32 @@ const thebe_selector_output = ".output, .cell_output"
                             <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#o-que-e-schema">
-   O que é schema?
+   4.3.1. O que é schema?
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#valide-tipos-de-dados">
-   Valide Tipos de Dados
+   4.3.2. Valide Tipos de Dados
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#valide-o-tipo-de-dados-de-algumas-colunas-enquanto-ignora-o-resto">
-   Valide o Tipo de Dados de Algumas Colunas Enquanto Ignora o Resto
+   4.3.3. Valide o Tipo de Dados de Algumas Colunas Enquanto Ignora o Resto
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#valide-com-funcao">
-   Valide com Função
+   4.3.4. Valide com Função
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#valide-varios-schemas">
-   Valide Vários Schemas
+   4.3.5. Valide Vários Schemas
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#and">
+     4.3.5.1.
      <em>
       And
      </em>
@@ -380,6 +430,7 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#or">
+     4.3.5.2.
      <em>
       Or
      </em>
@@ -387,6 +438,7 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#combinacao-de-and-e-or">
+     4.3.5.3.
      <em>
       Combinação de And e Or
      </em>
@@ -396,22 +448,22 @@ const thebe_selector_output = ".output, .cell_output"
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#optional">
-   Optional
+   4.3.6. Optional
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#forbidden">
-   Forbidden
+   4.3.7. Forbidden
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#dicionario-aninhado">
-   Dicionário Aninhado
+   4.3.8. Dicionário Aninhado
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#converter-tipo-de-dados">
-   Converter tipo de dados
+   4.3.9. Converter tipo de dados
   </a>
  </li>
 </ul>
@@ -425,11 +477,11 @@ const thebe_selector_output = ".output, .cell_output"
                 
   <p><a class="reference external" href="https://github.com/khuyentran1401/Data-science/blob/master/data_science_tools/schema.ipynb"><img alt="View the code" src="https://img.shields.io/badge/GitHub-View_the_Code-blue?logo=GitHub" /></a></p>
 <div class="section" id="introducao-ao-schema-uma-biblioteca-python-para-validar-seus-dados">
-<h1>Introdução ao Schema: Uma Biblioteca Python para Validar seus Dados<a class="headerlink" href="#introducao-ao-schema-uma-biblioteca-python-para-validar-seus-dados" title="Permalink to this headline">¶</a></h1>
+<h1><span class="section-number">4.3. </span>Introdução ao Schema: Uma Biblioteca Python para Validar seus Dados<a class="headerlink" href="#introducao-ao-schema-uma-biblioteca-python-para-validar-seus-dados" title="Permalink to this headline">¶</a></h1>
 <p><img alt="" src="https://miro.medium.com/max/700/0*HSqvCAEj62jir0Lq" /></p>
 <p>Photo by <a class="reference external" href="https://unsplash.com/&#64;nonsapvisuals?utm_source=medium&amp;utm_medium=referral">Nonsap Visuals</a> on <a class="reference external" href="https://unsplash.com/?utm_source=medium&amp;utm_medium=referral">Unsplash</a></p>
 <div class="section" id="o-que-e-schema">
-<h2>O que é schema?<a class="headerlink" href="#o-que-e-schema" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">4.3.1. </span>O que é schema?<a class="headerlink" href="#o-que-e-schema" title="Permalink to this headline">¶</a></h2>
 <p>Nas duas últimas seções, aprendemos como validar um DataFrame pandas. No entanto, às vezes você pode querer validar estruturas de dados Python em vez de um DataFrame pandas. É aí que o schema se faz útil.</p>
 <p><a class="reference external" href="https://github.com/keleshev/schema"><strong>schema</strong></a> é uma biblioteca para validação de estruturas de dados em Python.</p>
 <p>Instale o schema com</p>
@@ -438,7 +490,7 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 <div class="section" id="valide-tipos-de-dados">
-<h2>Valide Tipos de Dados<a class="headerlink" href="#valide-tipos-de-dados" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">4.3.2. </span>Valide Tipos de Dados<a class="headerlink" href="#valide-tipos-de-dados" title="Permalink to this headline">¶</a></h2>
 <p>Imagine que esses dados apresentam as informações sobre seus amigos.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="p">[</span>
     <span class="p">{</span><span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="s1">&#39;Norma Fisher&#39;</span><span class="p">,</span>  <span class="s1">&#39;city&#39;</span><span class="p">:</span> <span class="s1">&#39;South Richard&#39;</span><span class="p">,</span>  <span class="s1">&#39;closeness (1-5)&#39;</span><span class="p">:</span> <span class="mi">4</span><span class="p">,</span>  <span class="s1">&#39;extrovert&#39;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span>  <span class="s1">&#39;favorite_temperature&#39;</span><span class="p">:</span> <span class="o">-</span><span class="mf">45.74</span><span class="p">},</span> 
@@ -483,7 +535,7 @@ Key <span class="s1">&#39;name&#39;</span> error:
 <p>Isso retornará <code class="docutils literal notranslate"><span class="pre">True</span></code> se os dados estiverem conforme o esperado ou <code class="docutils literal notranslate"><span class="pre">False</span></code> caso contrário.</p>
 </div>
 <div class="section" id="valide-o-tipo-de-dados-de-algumas-colunas-enquanto-ignora-o-resto">
-<h2>Valide o Tipo de Dados de Algumas Colunas Enquanto Ignora o Resto<a class="headerlink" href="#valide-o-tipo-de-dados-de-algumas-colunas-enquanto-ignora-o-resto" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">4.3.3. </span>Valide o Tipo de Dados de Algumas Colunas Enquanto Ignora o Resto<a class="headerlink" href="#valide-o-tipo-de-dados-de-algumas-colunas-enquanto-ignora-o-resto" title="Permalink to this headline">¶</a></h2>
 <p>Mas e se não nos importarmos com os tipos de dados de todas as colunas, mas apenas nos preocuparmos com o valor de algumas colunas? Podemos especificar isso com <code class="docutils literal notranslate"><span class="pre">str:</span> <span class="pre">object</span></code></p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">schema</span> <span class="o">=</span> <span class="n">Schema</span><span class="p">([{</span><span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
                  <span class="s1">&#39;city&#39;</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> 
@@ -501,7 +553,7 @@ Key <span class="s1">&#39;name&#39;</span> error:
 <p>Os dados são válidos porque os tipos de dados dos 3 recursos especificados estão corretos.</p>
 </div>
 <div class="section" id="valide-com-funcao">
-<h2>Valide com Função<a class="headerlink" href="#valide-com-funcao" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">4.3.4. </span>Valide com Função<a class="headerlink" href="#valide-com-funcao" title="Permalink to this headline">¶</a></h2>
 <p>E se quisermos determinar se os dados em uma coluna atendem a uma condição específica que não é relevante para tipos de dados, como o intervalo dos valores em uma coluna?</p>
 <p>Schema permite que você use uma função para especificar a condição para seus dados.</p>
 <p>Se quisermos verificar se os valores na coluna ‘closeness’ estão entre 1 e 5, podemos usar <code class="docutils literal notranslate"><span class="pre">lambda</span></code> como abaixo</p>
@@ -521,9 +573,9 @@ Key <span class="s1">&#39;name&#39;</span> error:
 <p>Como você pode ver, especificamos <code class="docutils literal notranslate"><span class="pre">n,</span></code>o valor em cada linha da coluna ‘proximidade’, entre 1 e 5 com <code class="docutils literal notranslate"><span class="pre">lambda</span> <span class="pre">n:</span> <span class="pre">1</span> <span class="pre">&lt;=</span> <span class="pre">n</span> <span class="pre">&lt;=5.</span></code> Legal!</p>
 </div>
 <div class="section" id="valide-varios-schemas">
-<h2>Valide Vários Schemas<a class="headerlink" href="#valide-varios-schemas" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">4.3.5. </span>Valide Vários Schemas<a class="headerlink" href="#valide-varios-schemas" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="and">
-<h3><em>And</em><a class="headerlink" href="#and" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">4.3.5.1. </span><em>And</em><a class="headerlink" href="#and" title="Permalink to this headline">¶</a></h3>
 <p>E se você quiser garantir que sua coluna “proximidade” esteja entre 1 e 5 <strong>e</strong> o tipo de dados seja um número inteiro?</p>
 <p>É quando <code class="docutils literal notranslate"><span class="pre">And</span></code> pode ser usado</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">schema</span> <span class="o">=</span> <span class="n">Schema</span><span class="p">([{</span><span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
@@ -542,7 +594,7 @@ Key <span class="s1">&#39;name&#39;</span> error:
 <p>Embora todos os valores estejam entre 1 e 5, o tipo de dados não é flutuante (decimal). Como uma das condições não foi satisfeita, os dados não são válidos.</p>
 </div>
 <div class="section" id="or">
-<h3><em>Or</em><a class="headerlink" href="#or" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">4.3.5.2. </span><em>Or</em><a class="headerlink" href="#or" title="Permalink to this headline">¶</a></h3>
 <p>Se quisermos que os dados da coluna sejam válidos se qualquer uma das condições for satisfeita, podemos usar <code class="docutils literal notranslate"><span class="pre">Or</span></code></p>
 <p>Por exemplo, se quisermos que o nome da cidade contenha 1 ou 2 palavras, podemos usar</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">schema</span> <span class="o">=</span> <span class="n">Schema</span><span class="p">([{</span><span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
@@ -557,7 +609,7 @@ Key <span class="s1">&#39;name&#39;</span> error:
 </div>
 </div>
 <div class="section" id="combinacao-de-and-e-or">
-<h3><em>Combinação de And e Or</em><a class="headerlink" href="#combinacao-de-and-e-or" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">4.3.5.3. </span><em>Combinação de And e Or</em><a class="headerlink" href="#combinacao-de-and-e-or" title="Permalink to this headline">¶</a></h3>
 <p>E se quisermos que o tipo de dados ‘city’ seja uma string, mas o comprimento pode ser 1 ou 2? Felizmente, isso pode ser tratado facilmente combinando <code class="docutils literal notranslate"><span class="pre">And</span></code> e <code class="docutils literal notranslate"><span class="pre">Or</span></code>.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">schema</span> <span class="o">=</span> <span class="n">Schema</span><span class="p">([{</span><span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
                  <span class="s1">&#39;city&#39;</span><span class="p">:</span> <span class="n">And</span><span class="p">(</span><span class="nb">str</span><span class="p">,</span> <span class="n">Or</span><span class="p">(</span><span class="k">lambda</span> <span class="n">n</span><span class="p">:</span> <span class="nb">len</span><span class="p">(</span><span class="n">n</span><span class="o">.</span><span class="n">split</span><span class="p">())</span><span class="o">==</span><span class="mi">2</span><span class="p">,</span> <span class="k">lambda</span> <span class="n">n</span><span class="p">:</span> <span class="nb">len</span><span class="p">(</span><span class="n">n</span><span class="o">.</span><span class="n">split</span><span class="p">())</span> <span class="o">==</span><span class="mi">1</span><span class="p">)),</span> 
@@ -575,7 +627,7 @@ Key <span class="s1">&#39;name&#39;</span> error:
 </div>
 </div>
 <div class="section" id="optional">
-<h2>Optional<a class="headerlink" href="#optional" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">4.3.6. </span>Optional<a class="headerlink" href="#optional" title="Permalink to this headline">¶</a></h2>
 <p>E se <strong>não tivermos</strong> as informações detalhadas sobre <strong>alguns</strong> de seus amigos?</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="p">[</span>
     <span class="p">{</span><span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="s1">&#39;Norma Fisher&#39;</span><span class="p">,</span>  <span class="s1">&#39;city&#39;</span><span class="p">:</span> <span class="s1">&#39;South Richard&#39;</span><span class="p">,</span>  <span class="s1">&#39;closeness (1-5)&#39;</span><span class="p">:</span> <span class="mi">4</span><span class="p">,</span>  <span class="s1">&#39;detailed_info&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;favorite_color&#39;</span><span class="p">:</span> <span class="s1">&#39;Pink&#39;</span><span class="p">,</span>   <span class="s1">&#39;phone number&#39;</span><span class="p">:</span> <span class="s1">&#39;7593824219489&#39;</span><span class="p">}},</span> 
@@ -590,7 +642,7 @@ Key <span class="s1">&#39;name&#39;</span> error:
 </div>
 </div>
 <div class="section" id="forbidden">
-<h2>Forbidden<a class="headerlink" href="#forbidden" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">4.3.7. </span>Forbidden<a class="headerlink" href="#forbidden" title="Permalink to this headline">¶</a></h2>
 <p>Às vezes, também podemos querer garantir que um determinado tipo de dados não esteja em nossos dados, como informações privadas. Podemos especificar qual coluna é proibida com <code class="docutils literal notranslate"><span class="pre">Forbidden</span></code></p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">schema</span> <span class="kn">import</span> <span class="n">Forbidden</span>
 
@@ -608,7 +660,7 @@ Key <span class="s1">&#39;name&#39;</span> error:
 <p>Agora estamos cientes da existência da coluna proibida toda vez que o esquema lança um erro!</p>
 </div>
 <div class="section" id="dicionario-aninhado">
-<h2>Dicionário Aninhado<a class="headerlink" href="#dicionario-aninhado" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">4.3.8. </span>Dicionário Aninhado<a class="headerlink" href="#dicionario-aninhado" title="Permalink to this headline">¶</a></h2>
 <p>Até agora, o esquema nos permitiu realizar muitas validações sofisticadas em várias linhas de código. Mas na vida real, podemos lidar com uma estrutura de dados mais sofisticada do que o exemplo acima.</p>
 <p>Podemos usá-lo para dados com uma estrutura mais complicada? Como um dicionário dentro de um dicionário? Sim, nós podemos.</p>
 <p>Imagine que nossos dados se parecem abaixo:</p>
@@ -631,7 +683,7 @@ Key <span class="s1">&#39;name&#39;</span> error:
 <p>A sintaxe é direta! Só precisamos escrever outro dicionário dentro do dicionário e especificar o tipo de dados para cada chave.</p>
 </div>
 <div class="section" id="converter-tipo-de-dados">
-<h2>Converter tipo de dados<a class="headerlink" href="#converter-tipo-de-dados" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">4.3.9. </span>Converter tipo de dados<a class="headerlink" href="#converter-tipo-de-dados" title="Permalink to this headline">¶</a></h2>
 <p>O Schema pode não somente ser usado para validar dados, mas também para converter o tipo de dados se não for o que esperávamos!</p>
 <p>Por exemplo, podemos converter a string ‘123’ para o inteiro 123 com <code class="docutils literal notranslate"><span class="pre">Use(int)</span></code></p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">Schema</span><span class="p">(</span><span class="n">Use</span><span class="p">(</span><span class="nb">int</span><span class="p">))</span><span class="o">.</span><span class="n">validate</span><span class="p">(</span><span class="s1">&#39;123&#39;</span><span class="p">)</span>
@@ -667,7 +719,21 @@ Key <span class="s1">&#39;name&#39;</span> error:
               
             
                 <!-- Previous / next buttons -->
-<div class='prev-next-area'>
+<div class='prev-next-area'> 
+    <a class='left-prev' id="prev-link" href="sec4-2-pandera.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title"><span class="section-number">4.2. </span>Valide Seu Pandas DataFrame com Pandera</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="../cap05-construir_pipelines/sec5-0-construir_pipelines.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><span class="section-number">5. </span>Construir Pipelines</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
 </div>
             
         </div>

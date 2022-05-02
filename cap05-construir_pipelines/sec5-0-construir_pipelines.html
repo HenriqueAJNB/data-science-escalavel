@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Construir Pipelines &#8212; Construindo uma solução robusta e escalável em ciência de dados</title>
+    <title>5. Construir Pipelines &#8212; Construindo uma solução robusta e escalável em ciência de dados</title>
     
   <link href="../_static/css/theme.css" rel="stylesheet">
   <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
@@ -53,6 +53,8 @@ const thebe_selector_output = ".output, .cell_output"
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="5.1. Orquestre um projeto de ciência de dados em Python com Prefect" href="sec5-1-prefect.html" />
+    <link rel="prev" title="4.3. Introdução ao Schema: Uma Biblioteca Python para Validar seus Dados" href="../cap04-testando_dados/sec4-3-schema.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -104,7 +106,7 @@ const thebe_selector_output = ".output, .cell_output"
   </a>
  </li>
 </ul>
-<ul class="nav bd-sidenav">
+<ul class="current nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="../cap01-como_ler_este_livro.html">
    1. Como ler este livro
@@ -167,6 +169,50 @@ const thebe_selector_output = ".output, .cell_output"
    <li class="toctree-l2">
     <a class="reference internal" href="../cap04-testando_dados/sec4-1-great_expectations.html">
      4.1. Great Expectations: saiba sempre o que esperar dos seus dados
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../cap04-testando_dados/sec4-2-pandera.html">
+     4.2. Valide Seu Pandas DataFrame com Pandera
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../cap04-testando_dados/sec4-3-schema.html">
+     4.3. Introdução ao Schema: Uma Biblioteca Python para Validar seus Dados
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 current active has-children">
+  <a class="current reference internal" href="#">
+   5. Construir Pipelines
+  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+  <label for="toctree-checkbox-4">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="sec5-1-prefect.html">
+     5.1. Orquestre um projeto de ciência de dados em Python com Prefect
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../cap06-acompanhamento_de_experimentos/sec6-0-acompanhamento_de_experimentos.html">
+   6. Acompanhamento de experimentos
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
+  <label for="toctree-checkbox-5">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../cap06-acompanhamento_de_experimentos/sec6-1-hydra.html">
+     6.1. Configure seus projetos de ciência de dados com Hydra
     </a>
    </li>
   </ul>
@@ -272,7 +318,7 @@ const thebe_selector_output = ".output, .cell_output"
               <div>
                 
   <div class="tex2jax_ignore mathjax_ignore section" id="construir-pipelines">
-<h1>Construir Pipelines<a class="headerlink" href="#construir-pipelines" title="Permalink to this headline">¶</a></h1>
+<h1><span class="section-number">5. </span>Construir Pipelines<a class="headerlink" href="#construir-pipelines" title="Permalink to this headline">¶</a></h1>
 <p>Como cientista de dados, por que você deveria se preocupar em otimizar seu fluxo de trabalho de ciência de dados? Vamos começar com um exemplo de um projeto básico de ciência de dados.</p>
 <p>Imagine que você estivesse trabalhando com um conjunto de dados Iris. Você começou construindo funções para processar seus dados.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span>
@@ -329,6 +375,8 @@ const thebe_selector_output = ".output, .cell_output"
 <p><img alt="" src="https://miro.medium.com/max/700/1*X40DYs9p2UPcXasHTQ62mQ.png" /></p>
 <p>Agora, você pode concordar comigo que é importante otimizar o fluxo de trabalho de diferentes funções. No entanto, pode ser muito trabalhoso gerenciar manualmente o fluxo de trabalho.</p>
 <p>Existe uma maneira de <strong>otimizar automaticamente o fluxo de trabalho</strong> adicionando apenas várias linhas de código? É aí que as bibliotecas de orquestração são úteis.</p>
+<div class="toctree-wrapper compound">
+</div>
 </div>
 
     <script type="text/x-thebe-config">
@@ -355,7 +403,21 @@ const thebe_selector_output = ".output, .cell_output"
               
             
                 <!-- Previous / next buttons -->
-<div class='prev-next-area'>
+<div class='prev-next-area'> 
+    <a class='left-prev' id="prev-link" href="../cap04-testando_dados/sec4-3-schema.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title"><span class="section-number">4.3. </span>Introdução ao Schema: Uma Biblioteca Python para Validar seus Dados</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="sec5-1-prefect.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><span class="section-number">5.1. </span>Orquestre um projeto de ciência de dados em Python com Prefect</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
 </div>
             
         </div>

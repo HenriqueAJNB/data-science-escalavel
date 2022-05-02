@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Orquestre um projeto de ciência de dados em Python com Prefect &#8212; Construindo uma solução robusta e escalável em ciência de dados</title>
+    <title>5.1. Orquestre um projeto de ciência de dados em Python com Prefect &#8212; Construindo uma solução robusta e escalável em ciência de dados</title>
     
   <link href="../_static/css/theme.css" rel="stylesheet">
   <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
@@ -53,6 +53,8 @@ const thebe_selector_output = ".output, .cell_output"
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="6. Acompanhamento de experimentos" href="../cap06-acompanhamento_de_experimentos/sec6-0-acompanhamento_de_experimentos.html" />
+    <link rel="prev" title="5. Construir Pipelines" href="sec5-0-construir_pipelines.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -104,7 +106,7 @@ const thebe_selector_output = ".output, .cell_output"
   </a>
  </li>
 </ul>
-<ul class="nav bd-sidenav">
+<ul class="current nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="../cap01-como_ler_este_livro.html">
    1. Como ler este livro
@@ -169,6 +171,50 @@ const thebe_selector_output = ".output, .cell_output"
      4.1. Great Expectations: saiba sempre o que esperar dos seus dados
     </a>
    </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../cap04-testando_dados/sec4-2-pandera.html">
+     4.2. Valide Seu Pandas DataFrame com Pandera
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../cap04-testando_dados/sec4-3-schema.html">
+     4.3. Introdução ao Schema: Uma Biblioteca Python para Validar seus Dados
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="sec5-0-construir_pipelines.html">
+   5. Construir Pipelines
+  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+  <label for="toctree-checkbox-4">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     5.1. Orquestre um projeto de ciência de dados em Python com Prefect
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../cap06-acompanhamento_de_experimentos/sec6-0-acompanhamento_de_experimentos.html">
+   6. Acompanhamento de experimentos
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
+  <label for="toctree-checkbox-5">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../cap06-acompanhamento_de_experimentos/sec6-1-hydra.html">
+     6.1. Configure seus projetos de ciência de dados com Hydra
+    </a>
+   </li>
   </ul>
  </li>
 </ul>
@@ -212,7 +258,7 @@ const thebe_selector_output = ".output, .cell_output"
         <!-- ipynb file if we had a myst markdown file -->
         
         <!-- Download raw file -->
-        <a class="dropdown-buttons" href="../_sources/cap05-construir_pipelines/sec5-1-orquestre_um_projeto_de_ciencia_de_dados_em_python_com_prefect.md"><button type="button"
+        <a class="dropdown-buttons" href="../_sources/cap05-construir_pipelines/sec5-1-prefect.md"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
                 data-placement="left">.md</button></a>
         <!-- Download PDF via print -->
@@ -232,7 +278,7 @@ const thebe_selector_output = ".output, .cell_output"
                 data-toggle="tooltip" data-placement="left" title="Source repository"><i
                     class="fab fa-github"></i>repository</button></a>
         <a class="issues-button"
-            href="https://github.com/HenriqueAJNB/data-science-escalavel/issues/new?title=Issue%20on%20page%20%2Fcap05-construir_pipelines/sec5-1-orquestre_um_projeto_de_ciencia_de_dados_em_python_com_prefect.html&body=Your%20issue%20content%20here."><button
+            href="https://github.com/HenriqueAJNB/data-science-escalavel/issues/new?title=Issue%20on%20page%20%2Fcap05-construir_pipelines/sec5-1-prefect.html&body=Your%20issue%20content%20here."><button
                 type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
                 title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
         
@@ -260,91 +306,91 @@ const thebe_selector_output = ".output, .cell_output"
                 <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#o-que-e-prefect">
-   O que é Prefect?
+   5.1.1. O que é Prefect?
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#construa-seu-fluxo-de-trabalho-com-prefect">
-   Construa seu fluxo de trabalho com Prefect
+   5.1.2. Construa seu fluxo de trabalho com Prefect
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#primeiro-passo-criar-tarefas">
-     Primeiro Passo — Criar Tarefas
+     5.1.2.1. Primeiro Passo — Criar Tarefas
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#segunda-etapa-criar-um-fluxo">
-     Segunda Etapa — Criar um Fluxo
+     5.1.2.2. Segunda Etapa — Criar um Fluxo
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#terceiro-passo-adicionar-parametros">
-     Terceiro passo — Adicionar parâmetros
+     5.1.2.3. Terceiro passo — Adicionar parâmetros
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#monitore-seu-fluxo-de-trabalho">
-   Monitore seu fluxo de trabalho
+   5.1.3. Monitore seu fluxo de trabalho
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#visao-geral">
-     Visão geral
+     5.1.3.1. Visão geral
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#executar-o-fluxo-de-trabalho-com-parametros-padrao">
-     Executar o fluxo de trabalho com parâmetros padrão
+     5.1.3.2. Executar o fluxo de trabalho com parâmetros padrão
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#execute-o-fluxo-de-trabalho-com-parametros-personalizados">
-     Execute o fluxo de trabalho com parâmetros personalizados
+     5.1.3.3. Execute o fluxo de trabalho com parâmetros personalizados
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#visualize-o-grafico-do-fluxo-de-trabalho">
-     Visualize o gráfico do fluxo de trabalho
+     5.1.3.4. Visualize o gráfico do fluxo de trabalho
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#outras-caracteristicas">
-   Outras características
+   5.1.4. Outras características
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#cache-de-entrada">
-     Cache de entrada
+     5.1.4.1. Cache de entrada
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#saida-persistente">
-     Saída persistente
+     5.1.4.2. Saída persistente
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#use-a-saida-de-outro-fluxo-para-o-fluxo-atual">
-     Use a saída de outro fluxo para o fluxo atual
+     5.1.4.3. Use a saída de outro fluxo para o fluxo atual
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#conectar-fluxos-dependentes">
-     Conectar fluxos dependentes
+     5.1.4.4. Conectar fluxos dependentes
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#agende-seu-fluxo">
-     Agende seu fluxo
+     5.1.4.5. Agende seu fluxo
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#logging">
-     Logging
+     5.1.4.6. Logging
     </a>
    </li>
   </ul>
@@ -371,91 +417,91 @@ const thebe_selector_output = ".output, .cell_output"
                             <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#o-que-e-prefect">
-   O que é Prefect?
+   5.1.1. O que é Prefect?
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#construa-seu-fluxo-de-trabalho-com-prefect">
-   Construa seu fluxo de trabalho com Prefect
+   5.1.2. Construa seu fluxo de trabalho com Prefect
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#primeiro-passo-criar-tarefas">
-     Primeiro Passo — Criar Tarefas
+     5.1.2.1. Primeiro Passo — Criar Tarefas
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#segunda-etapa-criar-um-fluxo">
-     Segunda Etapa — Criar um Fluxo
+     5.1.2.2. Segunda Etapa — Criar um Fluxo
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#terceiro-passo-adicionar-parametros">
-     Terceiro passo — Adicionar parâmetros
+     5.1.2.3. Terceiro passo — Adicionar parâmetros
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#monitore-seu-fluxo-de-trabalho">
-   Monitore seu fluxo de trabalho
+   5.1.3. Monitore seu fluxo de trabalho
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#visao-geral">
-     Visão geral
+     5.1.3.1. Visão geral
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#executar-o-fluxo-de-trabalho-com-parametros-padrao">
-     Executar o fluxo de trabalho com parâmetros padrão
+     5.1.3.2. Executar o fluxo de trabalho com parâmetros padrão
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#execute-o-fluxo-de-trabalho-com-parametros-personalizados">
-     Execute o fluxo de trabalho com parâmetros personalizados
+     5.1.3.3. Execute o fluxo de trabalho com parâmetros personalizados
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#visualize-o-grafico-do-fluxo-de-trabalho">
-     Visualize o gráfico do fluxo de trabalho
+     5.1.3.4. Visualize o gráfico do fluxo de trabalho
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#outras-caracteristicas">
-   Outras características
+   5.1.4. Outras características
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#cache-de-entrada">
-     Cache de entrada
+     5.1.4.1. Cache de entrada
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#saida-persistente">
-     Saída persistente
+     5.1.4.2. Saída persistente
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#use-a-saida-de-outro-fluxo-para-o-fluxo-atual">
-     Use a saída de outro fluxo para o fluxo atual
+     5.1.4.3. Use a saída de outro fluxo para o fluxo atual
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#conectar-fluxos-dependentes">
-     Conectar fluxos dependentes
+     5.1.4.4. Conectar fluxos dependentes
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#agende-seu-fluxo">
-     Agende seu fluxo
+     5.1.4.5. Agende seu fluxo
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#logging">
-     Logging
+     5.1.4.6. Logging
     </a>
    </li>
   </ul>
@@ -470,9 +516,9 @@ const thebe_selector_output = ".output, .cell_output"
               <div>
                 
   <div class="section" id="orquestre-um-projeto-de-ciencia-de-dados-em-python-com-prefect">
-<h1>Orquestre um projeto de ciência de dados em Python com Prefect<a class="headerlink" href="#orquestre-um-projeto-de-ciencia-de-dados-em-python-com-prefect" title="Permalink to this headline">¶</a></h1>
+<h1><span class="section-number">5.1. </span>Orquestre um projeto de ciência de dados em Python com Prefect<a class="headerlink" href="#orquestre-um-projeto-de-ciencia-de-dados-em-python-com-prefect" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="o-que-e-prefect">
-<h2>O que é Prefect?<a class="headerlink" href="#o-que-e-prefect" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">5.1.1. </span>O que é Prefect?<a class="headerlink" href="#o-que-e-prefect" title="Permalink to this headline">¶</a></h2>
 <p><a class="reference external" href="https://www.prefect.io/">Prefect</a> é um framework open-sourced para criar fluxos de trabalho em Python. O Prefect facilita a criação, execução e monitoramento de pipelines de dados em escala.</p>
 <p>Para instalar o Prefect, digite:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip install prefect
@@ -480,10 +526,10 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 <div class="section" id="construa-seu-fluxo-de-trabalho-com-prefect">
-<h2>Construa seu fluxo de trabalho com Prefect<a class="headerlink" href="#construa-seu-fluxo-de-trabalho-com-prefect" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">5.1.2. </span>Construa seu fluxo de trabalho com Prefect<a class="headerlink" href="#construa-seu-fluxo-de-trabalho-com-prefect" title="Permalink to this headline">¶</a></h2>
 <p>Para saber como o Prefect funciona, vamos encapsular o fluxo de trabalho apresentado acima com o Prefect.</p>
 <div class="section" id="primeiro-passo-criar-tarefas">
-<h3>Primeiro Passo — Criar Tarefas<a class="headerlink" href="#primeiro-passo-criar-tarefas" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">5.1.2.1. </span>Primeiro Passo — Criar Tarefas<a class="headerlink" href="#primeiro-passo-criar-tarefas" title="Permalink to this headline">¶</a></h3>
 <p>Uma <code class="docutils literal notranslate"><span class="pre">Task</span></code> é uma ação discreta em um fluxo Prefect. Comece transformando as funções definidas acima em tarefas usando o decorador <code class="docutils literal notranslate"><span class="pre">prefect.task</span></code> :</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">prefect</span> <span class="kn">import</span> <span class="n">task</span>
 <span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Any</span><span class="p">,</span> <span class="n">Dict</span><span class="p">,</span> <span class="n">List</span>
@@ -515,7 +561,7 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 <div class="section" id="segunda-etapa-criar-um-fluxo">
-<h3>Segunda Etapa — Criar um Fluxo<a class="headerlink" href="#segunda-etapa-criar-um-fluxo" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">5.1.2.2. </span>Segunda Etapa — Criar um Fluxo<a class="headerlink" href="#segunda-etapa-criar-um-fluxo" title="Permalink to this headline">¶</a></h3>
 <p>Um <code class="docutils literal notranslate"><span class="pre">Flow</span></code> representa todo o fluxo de trabalho gerenciando as dependências entre as tarefas. Para criar um flow, basta inserir o código para executar suas funções dentro do gerenciador de contexto <code class="docutils literal notranslate"><span class="pre">with</span> <span class="pre">Flow(...)</span></code>.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">prefect</span> <span class="kn">import</span> <span class="n">task</span><span class="p">,</span> <span class="n">Flow</span>
 
@@ -573,7 +619,7 @@ Flow run succeeded!
 <p>Observe que Prefect gerencia automaticamente as ordens de execução entre as tarefas para que o fluxo de trabalho seja otimizado. Isso é muito legal para alguns pedaços de código adicionais!</p>
 </div>
 <div class="section" id="terceiro-passo-adicionar-parametros">
-<h3>Terceiro passo — Adicionar parâmetros<a class="headerlink" href="#terceiro-passo-adicionar-parametros" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">5.1.2.3. </span>Terceiro passo — Adicionar parâmetros<a class="headerlink" href="#terceiro-passo-adicionar-parametros" title="Permalink to this headline">¶</a></h3>
 <p>Se você está experimentando frequentemente valores diferentes de uma variável, é ideal transformar essa variável em um <code class="docutils literal notranslate"><span class="pre">Parameter</span></code>.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">test_data_ratio</span> <span class="o">=</span> <span class="mf">0.2</span>
 <span class="n">train_test_dict</span> <span class="o">=</span> <span class="n">split_data</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">categorical_columns</span><span class="p">,</span> 
@@ -621,9 +667,9 @@ Flow run succeeded!
 </div>
 </div>
 <div class="section" id="monitore-seu-fluxo-de-trabalho">
-<h2>Monitore seu fluxo de trabalho<a class="headerlink" href="#monitore-seu-fluxo-de-trabalho" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">5.1.3. </span>Monitore seu fluxo de trabalho<a class="headerlink" href="#monitore-seu-fluxo-de-trabalho" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="visao-geral">
-<h3>Visão geral<a class="headerlink" href="#visao-geral" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">5.1.3.1. </span>Visão geral<a class="headerlink" href="#visao-geral" title="Permalink to this headline">¶</a></h3>
 <p>O Prefect também permite monitorar seu fluxo de trabalho no Prefect Cloud. Siga <a class="reference external" href="https://docs.prefect.io/orchestration/getting-started/set-up.html#server-or-cloud">esta instrução</a> para instalar dependências relevantes para Prefect Cloud.</p>
 <p>Depois que todas as dependências estiverem instaladas e configuradas, comece criando um projeto no Prefect executando:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ prefect create project <span class="s2">&quot;Iris Project&quot;</span>
@@ -651,36 +697,36 @@ Flow run succeeded!
 <p>É muito legal como essas informações importantes são rastreadas automaticamente pelo Perfect!</p>
 </div>
 <div class="section" id="executar-o-fluxo-de-trabalho-com-parametros-padrao">
-<h3>Executar o fluxo de trabalho com parâmetros padrão<a class="headerlink" href="#executar-o-fluxo-de-trabalho-com-parametros-padrao" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">5.1.3.2. </span>Executar o fluxo de trabalho com parâmetros padrão<a class="headerlink" href="#executar-o-fluxo-de-trabalho-com-parametros-padrao" title="Permalink to this headline">¶</a></h3>
 <p>Observe que o fluxo de trabalho está registrado no Prefect Cloud, mas ainda não foi executado. Para executar o fluxo de trabalho com os parâmetros padrão, clique em Quick Run no canto superior direito.</p>
 <p><img alt="" src="https://miro.medium.com/max/376/1*kSdZ7ILVXcMurXJc-1n6Dw.png" /></p>
 <p>Clique na execução que é criada. Agora você poderá ver a atividade do seu novo fluxo executado em tempo real!</p>
 <p><img alt="" src="https://miro.medium.com/max/1000/1*JbKeDKz2sN_9cQP89yXVvg.gif" /></p>
 </div>
 <div class="section" id="execute-o-fluxo-de-trabalho-com-parametros-personalizados">
-<h3>Execute o fluxo de trabalho com parâmetros personalizados<a class="headerlink" href="#execute-o-fluxo-de-trabalho-com-parametros-personalizados" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">5.1.3.3. </span>Execute o fluxo de trabalho com parâmetros personalizados<a class="headerlink" href="#execute-o-fluxo-de-trabalho-com-parametros-personalizados" title="Permalink to this headline">¶</a></h3>
 <p>Para executar o fluxo de trabalho com parâmetros personalizados, clique na guia Run e altere os parâmetros em Inputs.</p>
 <p><img alt="" src="https://miro.medium.com/max/1885/1*4FD_0vEttydd1pvivVEpjw.png" /></p>
 <p>Quando estiver satisfeito com os parâmetros, basta clicar no botão Run para iniciar a execução.</p>
 </div>
 <div class="section" id="visualize-o-grafico-do-fluxo-de-trabalho">
-<h3>Visualize o gráfico do fluxo de trabalho<a class="headerlink" href="#visualize-o-grafico-do-fluxo-de-trabalho" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">5.1.3.4. </span>Visualize o gráfico do fluxo de trabalho<a class="headerlink" href="#visualize-o-grafico-do-fluxo-de-trabalho" title="Permalink to this headline">¶</a></h3>
 <p>Clicar em Schematic fornecerá o gráfico de todo o fluxo de trabalho.</p>
 <p><img alt="" src="https://miro.medium.com/max/1000/1*Inj8ey1ZWrMiVtmDPCYGyQ.png" /></p>
 </div>
 </div>
 <div class="section" id="outras-caracteristicas">
-<h2>Outras características<a class="headerlink" href="#outras-caracteristicas" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">5.1.4. </span>Outras características<a class="headerlink" href="#outras-caracteristicas" title="Permalink to this headline">¶</a></h2>
 <p>Além de alguns recursos básicos mencionados acima, o Prefect também fornece outros recursos interessantes que aumentarão significativamente a eficiência do seu fluxo de trabalho.</p>
 <div class="section" id="cache-de-entrada">
-<h3>Cache de entrada<a class="headerlink" href="#cache-de-entrada" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">5.1.4.1. </span>Cache de entrada<a class="headerlink" href="#cache-de-entrada" title="Permalink to this headline">¶</a></h3>
 <p>Lembra do problema que mencionamos no início da seção? Normalmente, se a função <code class="docutils literal notranslate"><span class="pre">get_classes</span></code> falhar, os dados criados pela função <code class="docutils literal notranslate"><span class="pre">encode_categorical_columns</span></code> serão descartados e todo o fluxo de trabalho precisa ser iniciado desde o início.</p>
 <p>No entanto, com Prefect, a saída de <code class="docutils literal notranslate"><span class="pre">encode_categorical_columns</span></code> é armazenada. Na próxima vez que o fluxo de trabalho for executado novamente, a saída de <code class="docutils literal notranslate"><span class="pre">encode_categorical_columns</span></code> será usada pela próxima tarefa <strong>sem executar novamente</strong> a tarefa <code class="docutils literal notranslate"><span class="pre">encode_categorical_columns</span></code> .</p>
 <p><img alt="" src="https://miro.medium.com/max/700/1*WN5iFz3QunvTDNc8ijpizg.png" /></p>
 <p>Isso pode resultar em uma grande redução no tempo necessário para executar o fluxo de trabalho.</p>
 </div>
 <div class="section" id="saida-persistente">
-<h3>Saída persistente<a class="headerlink" href="#saida-persistente" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">5.1.4.2. </span>Saída persistente<a class="headerlink" href="#saida-persistente" title="Permalink to this headline">¶</a></h3>
 <p>Às vezes, você pode querer exportar os dados da sua tarefa para um local externo. Isso pode ser feito inserindo na função de tarefa o código para salvar os dados.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">split_data</span><span class="p">(</span><span class="n">data</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">,</span> <span class="n">test_data_ratio</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">classes</span><span class="p">:</span> <span class="nb">list</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]:</span>
   
@@ -737,7 +783,7 @@ def split_data<span class="o">(</span>data: pd.DataFrame, test_data_ratio: float
 <p>Prefect também fornece outras classes <code class="docutils literal notranslate"><span class="pre">Result</span></code> como <code class="docutils literal notranslate"><span class="pre">GCSResult</span></code> e <code class="docutils literal notranslate"><span class="pre">S3Result</span></code> . Você pode conferir a documentação da API sobre resultados <a class="reference external" href="https://docs.prefect.io/api/latest/engine/results.html">aqui</a>.</p>
 </div>
 <div class="section" id="use-a-saida-de-outro-fluxo-para-o-fluxo-atual">
-<h3>Use a saída de outro fluxo para o fluxo atual<a class="headerlink" href="#use-a-saida-de-outro-fluxo-para-o-fluxo-atual" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">5.1.4.3. </span>Use a saída de outro fluxo para o fluxo atual<a class="headerlink" href="#use-a-saida-de-outro-fluxo-para-o-fluxo-atual" title="Permalink to this headline">¶</a></h3>
 <p>Se você estiver trabalhando com vários fluxos, por exemplo, fluxo <code class="docutils literal notranslate"><span class="pre">data-engineer</span></code> e fluxo <code class="docutils literal notranslate"><span class="pre">data-science</span></code>, convém usar a saída do fluxo <code class="docutils literal notranslate"><span class="pre">data-engineer</span></code> para o fluxo <code class="docutils literal notranslate"><span class="pre">data-science</span></code>.</p>
 <p><img alt="" src="https://miro.medium.com/max/700/1*Hl_8w9TqtGTzMKW_RygsDw.png" /></p>
 <p>Depois de salvar a saída do seu fluxo <code class="docutils literal notranslate"><span class="pre">data-engineer</span></code> como um arquivo, você pode ler esse arquivo usando o método <code class="docutils literal notranslate"><span class="pre">read</span></code>:</p>
@@ -748,7 +794,7 @@ def split_data<span class="o">(</span>data: pd.DataFrame, test_data_ratio: float
 </div>
 </div>
 <div class="section" id="conectar-fluxos-dependentes">
-<h3>Conectar fluxos dependentes<a class="headerlink" href="#conectar-fluxos-dependentes" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">5.1.4.4. </span>Conectar fluxos dependentes<a class="headerlink" href="#conectar-fluxos-dependentes" title="Permalink to this headline">¶</a></h3>
 <p>Imagine este cenário: você criou dois fluxos que dependem um do outro. O fluxo <code class="docutils literal notranslate"><span class="pre">data-engineer</span></code> precisa ser executado antes do fluxo <code class="docutils literal notranslate"><span class="pre">data-science</span></code></p>
 <p>Alguém que olhou para o seu fluxo de trabalho não entendeu a relação entre esses dois fluxos. Como resultado, eles executaram o fluxo <code class="docutils literal notranslate"><span class="pre">data-science</span></code> e o fluxo <code class="docutils literal notranslate"><span class="pre">data-engineer</span></code> ao mesmo tempo e encontraram um erro!</p>
 <p><img alt="" src="https://miro.medium.com/max/700/1*J7-kWMCMm3332B-Ff0D6JA.png" /></p>
@@ -778,7 +824,7 @@ def split_data<span class="o">(</span>data: pd.DataFrame, test_data_ratio: float
 <p>Muito legal!</p>
 </div>
 <div class="section" id="agende-seu-fluxo">
-<h3>Agende seu fluxo<a class="headerlink" href="#agende-seu-fluxo" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">5.1.4.5. </span>Agende seu fluxo<a class="headerlink" href="#agende-seu-fluxo" title="Permalink to this headline">¶</a></h3>
 <p>O Prefect também facilita a execução de um fluxo em um determinado momento ou em um determinado intervalo.</p>
 <p>Por exemplo, para executar um fluxo a cada 1 minuto, você pode iniciar a classe <code class="docutils literal notranslate"><span class="pre">IntervalSchedule</span></code> e adicionar <code class="docutils literal notranslate"><span class="pre">schedule</span></code> ao gerenciador de contexto <code class="docutils literal notranslate"><span class="pre">with</span> <span class="pre">Flow(...)</span></code>:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">prefect.schedules</span> <span class="kn">import</span> <span class="n">IntervalSchedule</span>
@@ -800,7 +846,7 @@ def split_data<span class="o">(</span>data: pd.DataFrame, test_data_ratio: float
 <p>Saiba mais sobre as diferentes maneiras de programar seu fluxo <a class="reference external" href="https://docs.prefect.io/core/concepts/schedules.html#overview">aqui</a>.</p>
 </div>
 <div class="section" id="logging">
-<h3>Logging<a class="headerlink" href="#logging" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">5.1.4.6. </span>Logging<a class="headerlink" href="#logging" title="Permalink to this headline">¶</a></h3>
 <p>Você pode registrar as declarações do print dentro de uma tarefa simplesmente adicionando <code class="docutils literal notranslate"><span class="pre">log_stdout=True</span></code> a <code class="docutils literal notranslate"><span class="pre">&#64;task</span></code>:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nd">@task</span><span class="p">(</span><span class="n">log_stdout</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 <span class="k">def</span> <span class="nf">report_accuracy</span><span class="p">(</span><span class="n">predictions</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">test_y</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
@@ -843,7 +889,21 @@ def split_data<span class="o">(</span>data: pd.DataFrame, test_data_ratio: float
               
             
                 <!-- Previous / next buttons -->
-<div class='prev-next-area'>
+<div class='prev-next-area'> 
+    <a class='left-prev' id="prev-link" href="sec5-0-construir_pipelines.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title"><span class="section-number">5. </span>Construir Pipelines</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="../cap06-acompanhamento_de_experimentos/sec6-0-acompanhamento_de_experimentos.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><span class="section-number">6. </span>Acompanhamento de experimentos</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
 </div>
             
         </div>
