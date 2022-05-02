@@ -18,7 +18,7 @@
 ## Acompanhamento da tradução
 
 ### Legenda
-- [] Nome do capítulo/seção ainda não traduzido (nome de quem vai colaborar com a tradução)
+- [ ] Nome do capítulo/seção ainda não traduzido (nome de quem vai colaborar com a tradução)
 - [x] Nome do capítulo/seção já traduzido (nome de quem colaborou com a tradução)
 ---
 - [x] Capa (@HenriqueAJNB)
@@ -37,9 +37,9 @@
 
 - [x] Cap04 - testando dados (@HenriqueAJNB)
   - [x] Sec4.0 - introdução (@HenriqueAJNB)
-  - [] Sec4.1 - great_expectations (@HenriqueAJNB)
-  - [] Sec4.2 - pandera (@gurezende)
-  - [] Sec4.3 - schema
+  - [ ] Sec4.1 - great_expectations (@HenriqueAJNB)
+  - [ ] Sec4.2 - pandera (@gurezende)
+  - [ ] Sec4.3 - schema
 
 - [x] Cap05 - orquestrando pipelines (@LevyPy)
   - [x] Sec5.0 - introdução (@LevyPy)
@@ -47,16 +47,16 @@
 
 - [x] Cap06 - experimentação (@LevyPy)
   - [x] Sec6.1 - hydra (@LevyPy)
-  - [] Sec6.2 - wandb (em aberto)
+  - [ ] Sec6.2 - wandb (em aberto)
 
-- [] Cap07 - controle de versionamento (em aberto)
-  - [] Sec7.1 - DVC (em aberto)
-  - [] Sec7.2 - DagsHub (em aberto)
-  - [] Sec7.3 - plugin do pre-commit (em aberto)
+- [ ] Cap07 - controle de versionamento (em aberto)
+  - [ ] Sec7.1 - DVC (em aberto)
+  - [ ] Sec7.2 - DagsHub (em aberto)
+  - [ ] Sec7.3 - plugin do pre-commit (em aberto)
 
-- [] Cap08 - Deploy de modelos (em aberto)
-  - [] Sec8.0 - introdução (em aberto)
-  - [] Sec8.1 - BentoML (em aberto)
+- [ ] Cap08 - Deploy de modelos (em aberto)
+  - [ ] Sec8.0 - introdução (em aberto)
+  - [ ] Sec8.1 - BentoML (em aberto)
 
 ## Contributors ✨
 
