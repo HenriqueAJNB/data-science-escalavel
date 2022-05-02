@@ -18,3 +18,11 @@ chapters:
 - file: cap04-testando_dados/sec4-0-introducao.md
   sections:
   - file: cap04-testando_dados/sec4-1-great_expectations.md
+  - file: cap04-testando_dados/sec4-2-pandera.md
+  - file: cap04-testando_dados/sec4-3-schema.md
+- file: cap05-construir_pipelines/sec5-0-construir_pipelines.md
+  sections:
+  - file: cap05-construir_pipelines/sec5-1-prefect.md
+- file: cap06-acompanhamento_de_experimentos/sec6-0-acompanhamento_de_experimentos.md
+  sections:
+  - file: cap06-acompanhamento_de_experimentos/sec6-1-hydra.ipynb
