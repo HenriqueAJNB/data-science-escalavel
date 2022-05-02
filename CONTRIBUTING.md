@@ -68,6 +68,11 @@ O trabalho não consiste apenas na tradução simples e pura. Deve-se testar tod
 quaisquer commits. A ideia é garantir que outras pessoas possam reutilizar o projeto. Desta forma, todos os 
 códigos devem ser testados de forma simples antes de serem simplesmente alocados em uma seção da tradução.
 
+### Começou e não conseguiu/não quer finalizar?
+Se caso você começou uma tradução de um capítulo/trecho e não quer ou não pode mais continuar, por
+qualquer que seja o motivo, sem crise!
+É só comunicar. Seu nome ainda sim vai para a lista de contribuidores.
+
 # Minha sugestão foi aceita, o que eu ganho?
 Caso seu PR seja aprovado, você irá automaticamente para a 
 [lista de contribuintes do projeto](https://github.com/HenriqueAJNB/data-science-escalavel#contributors-) 
