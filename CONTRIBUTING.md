@@ -63,6 +63,11 @@ Não há nada escrito em pedras, desde que siga o padrão! :v:
 - em caso de reporte de bug, ser específico e fornecer um guia explicativo para reprodução do bug.
 - seguir os padrões pré-definidos no projeto (nome de pastas, ícones, imagens, ordem dos capítulos, gifs, etc.)
 
+### Códigos funcionais
+O trabalho não consiste apenas na tradução simples e pura. Deve-se testar todos os códigos antes de serem feitos
+quaisquer commits. A ideia é garantir que outras pessoas possam reutilizar o projeto. Desta forma, todos os 
+códigos devem ser testados de forma simples antes de serem simplesmente alocados em uma seção da tradução.
+
 # Minha sugestão foi aceita, o que eu ganho?
 Caso seu PR seja aprovado, você irá automaticamente para a 
 [lista de contribuintes do projeto](https://github.com/HenriqueAJNB/data-science-escalavel#contributors-) 
