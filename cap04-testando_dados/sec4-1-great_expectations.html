@@ -331,6 +331,11 @@ const thebe_selector_output = ".output, .cell_output"
    4.1.3. Conectando à base de dados
   </a>
  </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#criando-a-primeira-validacao">
+   4.1.4. Criando a primeira validação
+  </a>
+ </li>
 </ul>
 
             </nav>
@@ -376,6 +381,11 @@ const thebe_selector_output = ".output, .cell_output"
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#conectando-a-base-de-dados">
    4.1.3. Conectando à base de dados
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#criando-a-primeira-validacao">
+   4.1.4. Criando a primeira validação
   </a>
  </li>
 </ul>
@@ -437,7 +447,7 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 <div class="section" id="fluxo-do-great-expectations">
 <h3><span class="section-number">4.1.2.2. </span>Fluxo do Great Expectations<a class="headerlink" href="#fluxo-do-great-expectations" title="Permalink to this headline">¶</a></h3>
-<p>O Great Expectations geralmente inclui 3 etapas: conectar à base de dados, criar as expectativas e validar os dados.</p>
+<p>O Great Expectations geralmente inclui 3 etapas: conectar à base de dados, criar as validações e validar os dados.</p>
 <p><img alt="ge_steps" src="../_images/09-ge_steps.png" /></p>
 <p>Nas seções seguintes serão abordadas cada uma destas etapas.</p>
 </div>
@@ -445,16 +455,104 @@ const thebe_selector_output = ".output, .cell_output"
 <div class="section" id="conectando-a-base-de-dados">
 <h2><span class="section-number">4.1.3. </span>Conectando à base de dados<a class="headerlink" href="#conectando-a-base-de-dados" title="Permalink to this headline">¶</a></h2>
 <p><img alt="ge_steps1" src="../_images/09-ge_step1.png" /></p>
-<p>Como demonstração, a autora escolheu dividir o dataset <a class="reference external" href="https://www.kaggle.com/fayomi/advertising">advertising</a>, cuja origem é o Kaggle, em dois datasets: <code class="docutils literal notranslate"><span class="pre">first_data.csv</span></code> e <code class="docutils literal notranslate"><span class="pre">second_data.csv</span></code>, nos quais:</p>
+<div class="attention admonition">
+<p class="admonition-title">Link inexistente</p>
+<p>No momento da tradução deste livro, o link do dataset usado pela autora original não existe mais.</p>
+<p>Como consequência, o autor da tradução buscou por um novo conjunto de dados e separou-o da mesma forma como feito no livro em inglês. Porém, o dataset é diferente, levanto à divergências significativas, que precisaram ser adaptadas, em relação ao livro original.</p>
+</div>
+<p>Como demonstração, optou-se por dividir o dataset <a class="reference external" href="https://archive.ics.uci.edu/ml/datasets/Air+Quality">Air Quality Data Set</a>, cuja origem é a plataforma UCI Machine Learning , em dois datasets: <code class="docutils literal notranslate"><span class="pre">first_data.csv</span></code> e <code class="docutils literal notranslate"><span class="pre">second_data.csv</span></code>, nos quais:</p>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">first_data.csv</span></code> contém dados de janeiro até abril de 2016</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">second_data.csv</span></code> contém dados de maio até julho de 2016</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">first_data.csv</span></code> contém dados de 2004.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">second_data.csv</span></code> contém dados de 2005.</p></li>
 </ul>
-<p>Estes datasets estão no diretório <code class="docutils literal notranslate"><span class="pre">data</span></code>.</p>
+<p>Ambos os datasets estão no diretório <code class="docutils literal notranslate"><span class="pre">data</span></code>. O dataset original é o <code class="docutils literal notranslate"><span class="pre">AirQualityUCI.csv</span></code>, encontrado no diretório raiz do projeto, e foi quebrado em ambos os datasets acima utilizando o script <code class="docutils literal notranslate"><span class="pre">scripts/split_data_ge.py</span></code>.</p>
 <p>Para conectar à fonte de dados, rode:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ great_expectations --v3-api datasource new
 </pre></div>
 </div>
+<p><img alt="great_expectations_connection" src="../_images/04-01-1-great_expectations_connection.png" /></p>
+<p>Há a possibilidade de conectar o Great Expectations à arquivos locais ou à um banco de dados. Aqui foi feita as seguintes escolhas:</p>
+<ul class="simple">
+<li><p>Conectar à arquivos no nosso sistema operacional.</p></li>
+<li><p>processar os dados com o framework Pandas.</p></li>
+<li><p>especificar <code class="docutils literal notranslate"><span class="pre">data</span></code> como o diretório que contém os datasets que o Great Expectations irá considerar para análise.</p></li>
+</ul>
+<p>Depois de responder a todas estas perguntas, um Jupyter Notebook será aberto de forma automática! Este Notebook permite configurar a nova fonte de dados, Datasource. Este Datasource dirá ao Great Expectations onde estão os dados e como se conectar à eles.</p>
+<p>Por padrão, o Great Expectations cria o Jupyter Notebook no seguinte caminho: <code class="docutils literal notranslate"><span class="pre">great_expectations/uncommitted/datasource_new.ipynb</span></code></p>
+<p>Neste notebook, é possível especificar o nome do Datasource editando o valor da variável <code class="docutils literal notranslate"><span class="pre">datasource-name</span></code>.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">datasource_name</span> <span class="o">=</span> <span class="s2">&quot;first_data&quot;</span>
+</pre></div>
+</div>
+<p>O trecho de código abaixo permite criar e customizar as configurações no Datasource.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">example_yaml</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">name: </span><span class="si">{</span><span class="n">datasource_name</span><span class="si">}</span><span class="s2"></span>
+<span class="s2">class_name: Datasource</span>
+<span class="s2">execution_engine:</span>
+<span class="s2">  class_name: PandasExecutionEngine</span>
+<span class="s2">data_connectors:</span>
+<span class="s2">  default_inferred_data_connector_name:</span>
+<span class="s2">    class_name: InferredAssetFilesystemDataConnector</span>
+<span class="s2">    base_directory: ../data</span>
+<span class="s2">    default_regex:</span>
+<span class="s2">      group_names: </span>
+<span class="s2">        - data_asset_name</span>
+<span class="s2">      pattern: (.*)</span>
+<span class="s2">  default_runtime_data_connector_name:</span>
+<span class="s2">    class_name: RuntimeDataConnector</span>
+<span class="s2">    batch_identifiers:</span>
+<span class="s2">      - default_identifier_name</span>
+<span class="s2">&quot;&quot;&quot;</span>
+</pre></div>
+</div>
+<p>Nas configurações acima, a classe <code class="docutils literal notranslate"><span class="pre">InferredAssetFilesystemDataConnector</span></code> irá procurar por arquivos no diretório fornecido utilizando expressões regulares.</p>
+<p>Por exemplo, como <code class="docutils literal notranslate"><span class="pre">first_data</span></code> e <code class="docutils literal notranslate"><span class="pre">second_data</span></code> estão no diretório <code class="docutils literal notranslate"><span class="pre">data</span></code>, a classe <code class="docutils literal notranslate"><span class="pre">InferredAssetFilesystemDataConnector</span></code> irá detectá-los e conectar-se a eles.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">context</span><span class="o">.</span><span class="n">test_yaml_config</span><span class="p">(</span><span class="n">yaml_config</span><span class="o">=</span><span class="n">example_yaml</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Available</span> <span class="n">data_asset_names</span> <span class="p">(</span><span class="mi">2</span> <span class="n">of</span> <span class="mi">2</span><span class="p">):</span>   
+    <span class="n">first_data</span><span class="o">.</span><span class="n">csv</span> <span class="p">(</span><span class="mi">1</span> <span class="n">of</span> <span class="mi">1</span><span class="p">):</span> <span class="p">[</span><span class="s1">&#39;first_data.csv&#39;</span><span class="p">]</span>   
+    <span class="n">second_data</span><span class="o">.</span><span class="n">csv</span> <span class="p">(</span><span class="mi">1</span> <span class="n">of</span> <span class="mi">1</span><span class="p">):</span> <span class="p">[</span><span class="s1">&#39;second_data.csv&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>Depois de executar todas as células do Notebook, as configurações do Datasource serão adicionadas ao <code class="docutils literal notranslate"><span class="pre">great_expectations.yml</span></code>!</p>
+<p><a class="reference external" href="https://docs.greatexpectations.io/docs/guides/connecting_to_your_data/index">Neste link</a> é possível ver outras formas de conectar à outras fontes.</p>
+</div>
+<div class="section" id="criando-a-primeira-validacao">
+<h2><span class="section-number">4.1.4. </span>Criando a primeira validação<a class="headerlink" href="#criando-a-primeira-validacao" title="Permalink to this headline">¶</a></h2>
+<p><img alt="ge_expectativas" src="../_images/10-ge_expectativas.png" /></p>
+<p>Agora que vem uma das partes mais empolgantes: criar as primeiras validações! A próxima etapa é criar uma nova Expectation Suite. Uma Expectation Suite é uma coleção de validações. Para criar uma nova Expectation Suite, rode:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ great_expectations --v3-api suite new
+</pre></div>
+</div>
+<p><img alt="ge_suite" src="../_images/10-ge_suite.png" /></p>
+<p>É possível criar as validações de forma manual ou automática utilizando uma amostra do conjunto de dados. Aqui, deseja-se criar uma validação automática considerando o arquivo <code class="docutils literal notranslate"><span class="pre">first_data.csv</span></code>.</p>
+<p>Depois de responder a todas as perguntas, um outro Jupyter Notebook será criado automaticamente. Neste outro Notebook, é possível selecionar colunas e outros fatores que sejam relevnates na análise, e deixar o profiler do Great Expectations sugerir algumas validações.</p>
+<p><img alt="ge_suite" src="../_images/06-ge_suite.gif" /></p>
+<p>O novo Notebook pode ser encontrado em <code class="docutils literal notranslate"><span class="pre">great_expectations/uncommitted</span></code>.</p>
+<p>A primeira célula deste Notebook carregará os dados especificados em Datasource. Aqui é um ponto importante, pois é possível visualizar e checar algumas características do conjunto de dados.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">validator</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="n">n_rows</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">fetch_all</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>O Great Expectations também oferece um filtro de colunas que serão ignoradas por ele, ou seja, não será criada nenhuma validação para elas.</p>
+<p>Por estar usando um dataset diferente do livro original, houve a necessidade de incluir o separador ponto-e-vírgula no Notebook, na primeira célula, variável <code class="docutils literal notranslate"><span class="pre">batch_request</span></code> foi acrescida da seguinte configuração:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">batch_request</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;datasource_name&quot;</span><span class="p">:</span> <span class="s2">&quot;first_data&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;data_connector_name&quot;</span><span class="p">:</span> <span class="s2">&quot;default_inferred_data_connector_name&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;data_asset_name&quot;</span><span class="p">:</span> <span class="s2">&quot;first_data.csv&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;limit&quot;</span><span class="p">:</span> <span class="mi">1000</span><span class="p">,</span>
+    <span class="s2">&quot;batch_spec_passthrough&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;reader_options&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;sep&quot;</span><span class="p">:</span> <span class="s2">&quot;;&quot;</span><span class="p">}}</span> <span class="c1"># Configuração do separador de colunas acrescida!</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>A solução foi encontrada neste <a class="reference external" href="https://github.com/great-expectations/great_expectations/issues/2038">issue</a> do repositório oficial do Great Expectations no GitHub.</p>
+<p>Depois de rodar o restante do Notebook, um relatório similar ao mostrado abaixo será criado!</p>
+<p><img alt="ge_relatorio" src="../_images/06-ge_relatorio.gif" /></p>
+<p>Existe ainda a possibilidade de editar as validações criadas pelo Grat Expectations. Tudo bem! Basta digitar:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ great_expectations --v3-api suite edit first_data.csv.warning
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">first_data.csv.warning</span></code> é o nome da Expectation Suite. Depois de rodar o comando acima, um outro Notebook será aberto e fornece a possibilidade de editar a Expectation Suite.</p>
+<p>…tradução ainda em andamento!</p>
 </div>
 </div>
 
