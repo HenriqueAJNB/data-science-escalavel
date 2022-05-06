@@ -9,3 +9,6 @@ _build
 
 # Ambiente virtual
 .venv
+
+# Pasta do Great Expectations
+great_expectations
