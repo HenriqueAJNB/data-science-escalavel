@@ -78,3 +78,52 @@ git add data.dvc
 git commit -m "add data"
 ```
 
+### 7.1.4. Armazenando os dados remotamente
+
+
+Legal! Agora nós criamos um arquivo para armazenar as informações sobre os dados originais. O próximo passo é descobrir onde armazenar os dados.
+
+Assim como utilizamos `git add remote` para armazenar a URL do repositório remoto, também queremos utilizar `dvc remote add` para armazenar a localização do repositório remoto.
+
+O DVC nos permite armazenar nossos dados no Google Drive, Amazon S3, Azure Blob Storage, Google Cloud Storage, Aliyun OSS, SSH, HDFS e HTTP. Como eu assumo que todo mundo tenha uma conta no Google Drive, vamos aprender como armazenar nossos dados no Google Drive.
+
+Comece criando uma pasta no Google Drive
+
+<!---figura do Google Drive-->
+
+
+Depois de criarmos uma pasta, nosso link será algo assim <a>https://drive.google.com/drive/folders/1ynNBbT-4J0ida0eKYQqZZbC93juUUbVH</a>
+Basta adicionar esse link ao DVC para armazenar a localização do repositório remoto
+
+```
+dvc remote add -d remote gdrive://1ynNBbT-4J0ida0eKYQqZZbC93juUUbVH
+```
+
+-d se refere a padrão (<i>default</i>). As informações sobre o armazenamento serão salvas em `.dvc/config`
+
+```
+[core]
+remote = remote
+['remote "remote"']
+url = gdrive://1ynNBbT-4J0ida0eKYQqZZbC93juUUbVH
+```
+
+Agora basta confirmar o arquivo de configuração
+
+```
+git commit .dvc/config -m "Configurar armazenamento remoto"
+```
+
+E envie os dados para o Google Drive
+
+```
+push dvc
+```
+
+É isto! Agora todos os dados são enviados para o Google Drive. Verifique com `dvc remote add` para visualizar mais maneiras de armazenar seus dados em outros serviços de armazenamento.
+
+Para enviar a mudança que fizemos até agora para nosso repositório remoto, digite
+
+```
+git push origin <branch>
+```
