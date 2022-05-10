@@ -359,8 +359,8 @@ const thebe_selector_output = ".output, .cell_output"
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#structure-your-projects">
-   3.1.6. Structure your Projects
+  <a class="reference internal nav-link" href="#estruture-seus-projetos">
+   3.1.6. Estruture seus projetos
   </a>
  </li>
 </ul>
@@ -421,8 +421,8 @@ const thebe_selector_output = ".output, .cell_output"
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#structure-your-projects">
-   3.1.6. Structure your Projects
+  <a class="reference internal nav-link" href="#estruture-seus-projetos">
+   3.1.6. Estruture seus projetos
   </a>
  </li>
 </ul>
@@ -442,7 +442,7 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 <img src="https://user-images.githubusercontent.com/72529112/165227426-638a9596-de98-49a6-a02b-c24d904046ca.jpg" style="width:800px; height:545px"/><div class="section" id="o-que-e-o-pytest">
 <h2><span class="section-number">3.1.1. </span>O que é o Pytest?<a class="headerlink" href="#o-que-e-o-pytest" title="Permalink to this headline">¶</a></h2>
-<p><a class="reference external" href="https://docs.pytest.org/en/stable/">Pytest</a> é um framework que facilita a escrita de testes unitários em Python. A autora original do livro afirma gostar do Pytest pois permite a escrita de teses com pouco código, e eu, autor da tradução, concordo plenamente com ela. Se você já está familiarizado com testes unitários, pytest é uma grande ferramenta para sair da inércia.</p>
+<p><a class="reference external" href="https://docs.pytest.org/en/stable/">Pytest</a> é um framework que facilita a escrita de testes unitários em Python. A autora original do livro afirma gostar do pytest pois permite a escrita de teses com pouco código, e eu, autor da tradução, concordo plenamente com ela. Se você já está familiarizado com testes unitários, pytest é uma grande ferramenta para sair da inércia.</p>
 <p>Para instalar o pytest, basta rodar no terminal:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip install pytest
 </pre></div>
@@ -455,7 +455,7 @@ const thebe_selector_output = ".output, .cell_output"
 <div class="cell_output docutils container">
 <div class="output text_html"><iframe width="560"height="315"src="https://www.youtube.com/embed/Y9tJeUIg-kc"title="YouTube video player"frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"allowfullscreen></iframe></div></div>
 </div>
-<p>Para testar a função mostrada anteriormente, nós podemos simplesmente criar uma outra função que se inicia com <code class="docutils literal notranslate"><span class="pre">test_</span></code> seguida do nome da função que desejamos testar, que é <code class="docutils literal notranslate"><span class="pre">extract_sentiment</span></code>.</p>
+<p>Para testar a função mostrada anteriormente, nós podemos simplesmente criar outra função que se inicia com <code class="docutils literal notranslate"><span class="pre">test_</span></code> seguida do nome da função que desejamos testar, que é <code class="docutils literal notranslate"><span class="pre">extract_sentiment</span></code>.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># sentiment.py</span>
 <span class="kn">from</span> <span class="nn">textblob</span> <span class="kn">import</span> <span class="n">TextBlob</span>
 
@@ -479,7 +479,7 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 <div class="note admonition">
 <p class="admonition-title">Nota¹</p>
-<p>Até o momento da tradução deste livro, a biblioteca <code class="docutils literal notranslate"><span class="pre">textblob</span></code> não apresenta suporte à lingua portuguesa.</p>
+<p>Até o momento da tradução deste livro, a biblioteca <code class="docutils literal notranslate"><span class="pre">textblob</span></code> não apresenta suporte à língua portuguesa.</p>
 </div>
 <p>Dentro da função de teste, nós usamos a função <code class="docutils literal notranslate"><span class="pre">extract_sentiment</span></code> em uma frase de exemplo: “I think today will be a great day”, que em português significa “Eu acredito que hoje será um grande dia”. Nós, então, usamos um <code class="docutils literal notranslate"><span class="pre">assert</span> <span class="pre">sentiment</span> <span class="pre">&gt;</span> <span class="pre">0</span></code> para garantir que aquele sentimento é positivo, pois esta é nossa expectativa.</p>
 <p>E tudo pronto! Hora de rodar nosso teste.</p>
@@ -487,11 +487,11 @@ const thebe_selector_output = ".output, .cell_output"
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pytest sentiment.py
 </pre></div>
 </div>
-<p>O Pytest irá procurar e rodar por todas as funções que começam com <code class="docutils literal notranslate"><span class="pre">test</span></code> no script. A saída do teste acima será parecida com esta:</p>
+<p>O pytest irá procurar e rodar por todas as funções que começam com <code class="docutils literal notranslate"><span class="pre">test_</span></code> no script. A saída do teste acima será parecida com esta:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="o">==========================================</span> <span class="m">1</span> passed <span class="k">in</span> <span class="m">0</span>.68s <span class="o">===========================================</span>
 </pre></div>
 </div>
-<p>Legal, não? Não precisamos nem especificar qual função rodar. A partir do momento em que colocamos <code class="docutils literal notranslate"><span class="pre">test</span></code> no começo da função de teste, o pytest detecta e executa automaticamente aquela função. Não precisamos nem sequer importar o pytest no script para rodar os testes.</p>
+<p>Legal, não? Não precisamos nem especificar qual função rodar. Desde que colocamos <code class="docutils literal notranslate"><span class="pre">test_</span></code> no começo da função de teste, o pytest detecta e executa automaticamente aquela função. Não precisamos nem sequer importar o pytest no script para rodar os testes.</p>
 <p>Qual será a saída caso algum dos testes do pytest falhar?</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1">#sentiment.py</span>
 
@@ -523,7 +523,7 @@ E       assert <span class="m">0</span>.8 &lt; <span class="nv">0</span>
 <div class="section" id="multiplos-testes-para-a-mesma-funcao">
 <h2><span class="section-number">3.1.2. </span>Múltiplos testes para a mesma função<a class="headerlink" href="#multiplos-testes-para-a-mesma-funcao" title="Permalink to this headline">¶</a></h2>
 <p>Nós gostaríamos de testar a nossa função com outros exemplos. Como seriam os nomes destes novos testes?</p>
-<p>O nome do segundo teste poderia ser algo do tipo <code class="docutils literal notranslate"><span class="pre">test_extract_sentiment_2</span></code> ou <code class="docutils literal notranslate"><span class="pre">test_extract_sentiment_negative</span></code> caso o teste seja com um texto com sentimento negativo. O importante é que qualquer nome significativo é valido, desde que comece com <code class="docutils literal notranslate"><span class="pre">test</span></code>:</p>
+<p>O nome do segundo teste poderia ser algo do tipo <code class="docutils literal notranslate"><span class="pre">test_extract_sentiment_2</span></code> ou <code class="docutils literal notranslate"><span class="pre">test_extract_sentiment_negative</span></code> caso o teste seja com um texto com sentimento negativo. O importante é que qualquer nome significativo é valido, desde que comece com <code class="docutils literal notranslate"><span class="pre">test_</span></code>:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1">#sentiment.py</span>
 
 <span class="k">def</span> <span class="nf">test_extract_sentiment_positive</span><span class="p">():</span>
@@ -696,7 +696,7 @@ E       assert <span class="m">0</span>.0 &gt; <span class="nv">0</span>
 <div class="cell_output docutils container">
 <div class="output text_html"><iframe width="560"height="315"src="https://www.youtube.com/embed/Jx2G0BQIjMs"title="YouTube video player"frameborder="0"allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"allowfullscreen></iframe></div></div>
 </div>
-<p>E se quiséssemos usar os mesmos dados para testar diferentes funções? Por exemplo, gostaríamos de usar a frase “Today I found a duck and I am happy” para testar se ela contém a palavra “duck” <strong>e também</strong> se seu sentimento é positivo. A ideia é aplicar as duas funções à mesma frase “Today I found a duck and I am happy”. É quando as <code class="docutils literal notranslate"><span class="pre">fixture</span></code> mostram o seu pontencial.</p>
+<p>E se quiséssemos usar os mesmos dados para testar diferentes funções? Por exemplo, gostaríamos de usar a frase “Today I found a duck and I am happy” para testar se ela contém a palavra “duck” <strong>e também</strong> se seu sentimento é positivo. A ideia é aplicar as duas funções à mesma frase “Today I found a duck and I am happy”. É quando as <code class="docutils literal notranslate"><span class="pre">fixture</span></code> mostram o seu potencial.</p>
 <p>As <code class="docutils literal notranslate"><span class="pre">fixtures</span></code> do pytest são uma forma de usar os mesmos dados para duas ou mais funções diferentes.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nd">@pytest</span><span class="o">.</span><span class="n">fixture</span>
 <span class="k">def</span> <span class="nf">example_data</span><span class="p">():</span>
@@ -719,19 +719,19 @@ E       assert <span class="m">0</span>.0 &gt; <span class="nv">0</span>
 <p>No exemplo acima, criamos uma frase de exemplo com o decorador <code class="docutils literal notranslate"><span class="pre">&#64;pytest.fixture</span></code> acima da função <code class="docutils literal notranslate"><span class="pre">example_data</span></code>. Essa função transforma <code class="docutils literal notranslate"><span class="pre">example_data</span></code> em uma variável com o valor “Today I found a duck and I am happy”</p>
 <p>Agora conseguimos usar essa variável como parâmetro de quaisquer outros testes!</p>
 </div>
-<div class="section" id="structure-your-projects">
-<h2><span class="section-number">3.1.6. </span>Structure your Projects<a class="headerlink" href="#structure-your-projects" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="estruture-seus-projetos">
+<h2><span class="section-number">3.1.6. </span>Estruture seus projetos<a class="headerlink" href="#estruture-seus-projetos" title="Permalink to this headline">¶</a></h2>
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
 <div class="output text_html"><iframe width="560"height="315"src="https://www.youtube.com/embed/714TfDztVVM"title="YouTube video player"frameborder="0"allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"allowfullscreen></iframe></div></div>
 </div>
 <p>Por último, mas não menos importante, conforme o nosso código cresce, é ideal que coloquemos as nossas funções de ciência de dados e os seus respectivos testes em duas pastas diferentes. Isso facilita a localização de cada função e do teste correspondente.</p>
-<p>Nomeando as funções de teste seja com <code class="docutils literal notranslate"><span class="pre">test_&lt;nome_da_funcao&gt;.py</span></code> ou <code class="docutils literal notranslate"><span class="pre">&lt;nome_da_funcao&gt;_test.py</span></code>, o pytest encontrará os scripts que começam ou terminam com <code class="docutils literal notranslate"><span class="pre">test</span></code> e executará as funções cujos nomes iniciam com <code class="docutils literal notranslate"><span class="pre">test</span></code> dentro daquele script.</p>
-<p>Há diferentes formas de organizar seus arquivos. Você pode ou organizar seus scripts e funções na mesma pasta ou em duas pastas diferentes, uma com o código fonte e outra com os testes.</p>
+<p>Nomeando as funções de teste seja com <code class="docutils literal notranslate"><span class="pre">test_&lt;nome_da_funcao&gt;.py</span></code> ou <code class="docutils literal notranslate"><span class="pre">&lt;nome_da_funcao&gt;_test.py</span></code>, o pytest encontrará os scripts que começam ou terminam com <code class="docutils literal notranslate"><span class="pre">test</span></code> e executará as funções associadas a cada teste.</p>
+<p>Há diferentes formas de organizar seus arquivos. Você pode ou organizar seus scripts e funções na mesma pasta ou em duas pastas diferentes, uma com o código-fonte e outra com os testes.</p>
 <p>Método 1:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>test_structure_example/
 ├── process.py
-└── test_process.py<span class="sb">```</span>
+└── test_process.py
 </pre></div>
 </div>
 <p>Método 2:</p>
@@ -775,7 +775,7 @@ E       assert <span class="m">0</span>.0 &gt; <span class="nv">0</span>
 </pre></div>
 </div>
 <p>O objetivo do comando <code class="docutils literal notranslate"><span class="pre">sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__),</span> <span class="pre">os.path.pardir)))</span></code> é simplesmente adicionar o módulo <code class="docutils literal notranslate"><span class="pre">src</span></code> à variável de ambiente <code class="docutils literal notranslate"><span class="pre">PYTHONPATH</span></code> para permitir importações dos módulos e funções.</p>
-<p>Estando na pasta raíz do projeto (<code class="docutils literal notranslate"><span class="pre">test_structure_example/</span></code>), rode <code class="docutils literal notranslate"><span class="pre">pytest</span> <span class="pre">tests/test_process.py</span></code> ou então <code class="docutils literal notranslate"><span class="pre">pytest</span> <span class="pre">test_process.py</span></code>.</p>
+<p>Estando na pasta raiz do projeto (<code class="docutils literal notranslate"><span class="pre">test_structure_example/</span></code>), rode <code class="docutils literal notranslate"><span class="pre">pytest</span> <span class="pre">tests/test_process.py</span></code> ou então <code class="docutils literal notranslate"><span class="pre">pytest</span> <span class="pre">test_process.py</span></code>.</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="o">===========================</span> <span class="m">1</span> passed <span class="k">in</span> <span class="m">0</span>.69s <span class="o">============================</span>
 </pre></div>
 </div>
