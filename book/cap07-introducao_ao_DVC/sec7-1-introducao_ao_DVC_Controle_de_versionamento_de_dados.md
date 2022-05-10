@@ -155,3 +155,31 @@ git push origin <branch>
 ```
 
 É direto, não?
+
+### 7.1.7. Alternar entre diferentes versões
+
+O ponto principal de se utilizar o DVC é que podemos alternar entre diferentes versões de nossos dados. Então, como exatamente podemos fazer isso? Novamente, assim como alternamos entre diferentes versões de nosso código com o Git, use dvc checkout para alternar entre diferentes versões de nossos dados.
+
+```
+git checkout <...>
+dvc checkout
+```
+
+Por exemplo, se quisermos mudar para a versão anterior dos dados, digite
+
+```
+git checkout HEAD^1 data.dvc
+dvc checkout
+```
+
+Agora, quando os dados reverterem para a versão anterior, utilize
+
+```
+git commit data.dvc -m "reverter para a versão anterior"
+```
+
+para salvar as alterações.
+
+Basicamente, mudamos para outra versão do nosso código com `git checkout. dvc checkout` restaura as versões correspondentes dos arquivos `.dvc` e diretórios `.dvc/cache` para a área de trabalho.
+
+Bem legal não?
