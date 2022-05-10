@@ -25,21 +25,21 @@ DVC é um sistema para controle de versionamento de dados. É essencialmente com
 
 Melhor ainda, a sintaxe de DVC é similar à do Git! Se você já conhece o Git, aprender DVC é muito fácil.
 
-Vamos ver como usar o DVC do exemplo. Utilizarei <a href='https://github.com/khuyentran1401/Machine-learning-pipeline'>meu repositório</a> como exemplo desta seção. Você pode acompanhar clonando o repositório.
+Vamos ver como usar o DVC do exemplo. Utilizarei [meu repositório](https://github.com/khuyentran1401/Machine-learning-pipeline) como exemplo desta seção. Você pode acompanhar clonando o repositório.
 
 Inicie instalando o pacote
 
-```
+```bash
 pip install dvc
 ```
 
-Encontre as instruções sobre mais formas de instalar o DVC <a href='https://dvc.org/doc/install'>aqui</a>.
+Encontre as instruções sobre mais formas de instalar o DVC [aqui](https://dvc.org/doc/install).
 
 ### 7.1.3. Iniciar
 
-Após a instalação do DVC, <b>em um projeto Git</b>, inicialize-o executando
+Após a instalação do DVC, `em um projeto Git`, inicialize-o executando
 
-```
+```bash
 git commit -m "Inicialize DVC"
 ```
 
@@ -63,7 +63,7 @@ data
 
 Para começar a rastrear um arquivo ou diretório, utilize
 
-```
+```bash
 dvc add data
 ```
 
@@ -73,7 +73,7 @@ Como o tamanho desse arquivo de texto é pequeno, ele pode ser versionado como u
 
 Agora, basta realizar o commit do arquivo dvc como faria com o código-fonte. Certifique-se de adicionar dados ao .gitignore com antecedência para evitar o commit dos dados.
 
-```
+```bash
 git add data.dvc
 git commit -m "add data"
 ```
@@ -92,14 +92,14 @@ Comece criando uma pasta no Google Drive
 <!---figura do Google Drive-->
 
 
-Depois de criarmos uma pasta, nosso link será algo assim <a>https://drive.google.com/drive/folders/1ynNBbT-4J0ida0eKYQqZZbC93juUUbVH</a>
+Depois de criarmos uma pasta, nosso link será algo assim [https://drive.google.com/drive/folders/1ynNBbT-4J0ida0eKYQqZZbC93juUUbVH](https://drive.google.com/drive/folders/1ynNBbT-4J0ida0eKYQqZZbC93juUUbVH)
 Basta adicionar esse link ao DVC para armazenar a localização do repositório remoto
 
-```
+```bash
 dvc remote add -d remote gdrive://1ynNBbT-4J0ida0eKYQqZZbC93juUUbVH
 ```
 
--d se refere a padrão (<i>default</i>). As informações sobre o armazenamento serão salvas em `.dvc/config`
+-d se refere a padrão (`default`). As informações sobre o armazenamento serão salvas em `.dvc/config`
 
 ```
 [core]
@@ -110,13 +110,13 @@ url = gdrive://1ynNBbT-4J0ida0eKYQqZZbC93juUUbVH
 
 Agora basta confirmar o arquivo de configuração
 
-```
+```bash
 git commit .dvc/config -m "Configurar armazenamento remoto"
 ```
 
 E envie os dados para o Google Drive
 
-```
+```bash
 push dvc
 ```
 
@@ -124,7 +124,7 @@ push dvc
 
 Para enviar a mudança que fizemos até agora para nosso repositório remoto, digite
 
-```
+```bash
 git push origin <branch>
 ```
 ### 7.1.5. Acesse os dados
@@ -135,7 +135,7 @@ Seus dados estão armazenados em algum lugar seguro. Mas agora você ou seus col
 
 Para recuperar os dados, basta digitar
 
-```
+```bash
 dvc pull
 ```
 
@@ -147,7 +147,7 @@ Se você estiver seguindo o tutorial e ainda tiver o repositório de dados em su
 
 Para fazer alterações, utilize
 
-```
+```bash
 dvc add data
 git commit data.dvc -m 'Data updates'
 dvc push
@@ -160,21 +160,21 @@ git push origin <branch>
 
 O ponto principal de se utilizar o DVC é que podemos alternar entre diferentes versões de nossos dados. Então, como exatamente podemos fazer isso? Novamente, assim como alternamos entre diferentes versões de nosso código com o Git, use dvc checkout para alternar entre diferentes versões de nossos dados.
 
-```
+```bash
 git checkout <...>
 dvc checkout
 ```
 
 Por exemplo, se quisermos mudar para a versão anterior dos dados, digite
 
-```
+```bash
 git checkout HEAD^1 data.dvc
 dvc checkout
 ```
 
 Agora, quando os dados reverterem para a versão anterior, utilize
 
-```
+```bash
 git commit data.dvc -m "reverter para a versão anterior"
 ```
 
@@ -183,3 +183,5 @@ para salvar as alterações.
 Basicamente, mudamos para outra versão do nosso código com `git checkout. dvc checkout` restaura as versões correspondentes dos arquivos `.dvc` e diretórios `.dvc/cache` para a área de trabalho.
 
 Bem legal não?
+
+</div>
