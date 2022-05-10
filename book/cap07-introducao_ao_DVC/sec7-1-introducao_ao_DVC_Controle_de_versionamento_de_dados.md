@@ -127,3 +127,18 @@ Para enviar a mudança que fizemos até agora para nosso repositório remoto, di
 ```
 git push origin <branch>
 ```
+### 7.1.5. Acesse os dados
+
+Seus dados estão armazenados em algum lugar seguro. Mas agora você ou seus colegas de equipe querem acessar os dados, o que você ou seus colegas devem fazer?
+
+É direto ao ponto. Basta usar `git pull` para puxar as mudanças no código como você normalmente faz. Agora você tem o arquivo .dvc em seu repositório local.
+
+Para recuperar os dados, basta digitar
+
+```
+dvc pull
+```
+
+para extrair os dados do armazenamento remoto. É isto!
+
+Se você estiver seguindo o tutorial e ainda tiver o repositório de dados em sua máquina local, exclua-o para ver como o dvc pull pode recuperar seus dados do repositório remoto.
