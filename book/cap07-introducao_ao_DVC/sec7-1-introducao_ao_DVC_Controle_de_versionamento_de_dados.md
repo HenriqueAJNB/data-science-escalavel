@@ -142,3 +142,16 @@ dvc pull
 para extrair os dados do armazenamento remoto. É isto!
 
 Se você estiver seguindo o tutorial e ainda tiver o repositório de dados em sua máquina local, exclua-o para ver como o dvc pull pode recuperar seus dados do repositório remoto.
+
+### 7.1.6. Faça alterações
+
+Para fazer alterações, utilize
+
+```
+dvc add data
+git commit data.dvc -m 'Data updates'
+dvc push
+git push origin <branch>
+```
+
+É direto, não?
