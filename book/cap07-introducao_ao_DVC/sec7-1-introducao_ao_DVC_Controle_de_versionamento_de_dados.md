@@ -34,3 +34,47 @@ pip install dvc
 ```
 
 Encontre as instruções sobre mais formas de instalar o DVC <a href='https://dvc.org/doc/install'>aqui</a>.
+
+### 7.1.3. Iniciar
+
+Após a instalação do DVC, <b>em um projeto Git</b>, inicialize-o executando
+
+```
+git commit -m "Inicialize DVC"
+```
+
+Aqui está a estrutura do meu diretório de dados
+
+```
+data
+├── processed
+│   ├── test_text.txt
+│   ├── train_label.txt
+│   ├── train_text.txt
+│   ├── val_label.txt
+│   └── val_text.txt
+└── raw
+    ├── mex20_test_full.txt
+    ├── mex20_train_labels.txt
+    ├── mex20_train.txt
+    ├── mex20_val_labels.txt
+    └── mex20_val.txt
+```
+
+Para começar a rastrear um arquivo ou diretório, utilize
+
+```
+dvc add data
+```
+
+A informação do arquivo ou diretório adicionado será armazenada no arquivo .dvc arquivo nomeado data.dvc . Este é um pequeno arquivo de texto que armazena informações sobre como acessar os dados originais, e não são os dados originais em si.
+
+Como o tamanho desse arquivo de texto é pequeno, ele pode ser versionado como um código-fonte com o Git.
+
+Agora, basta realizar o commit do arquivo dvc como faria com o código-fonte. Certifique-se de adicionar dados ao .gitignore com antecedência para evitar o commit dos dados.
+
+```
+git add data.dvc
+git commit -m "add data"
+```
+
