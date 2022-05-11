@@ -45,12 +45,12 @@
   - [x] Sec5.0 - introdução ([LevyPy](https://github.com/LevyPy))
   - [x] Sec5.1 - prefect ([LevyPy](https://github.com/LevyPy))
 
-- [x] Cap06 - experimentação ([LevyPy](https://github.com/LevyPy))
+- [ ] Cap06 - experimentação ([LevyPy](https://github.com/LevyPy))
   - [x] Sec6.1 - hydra ([LevyPy](https://github.com/LevyPy))
   - [ ] Sec6.2 - wandb (em aberto)
 
 - [ ] Cap07 - controle de versionamento (em aberto)
-  - [ ] Sec7.1 - DVC (em aberto)
+  - [x] Sec7.1 - DVC ([arturovaine](https://github.com/arturovaine))
   - [ ] Sec7.2 - DagsHub (em aberto)
   - [ ] Sec7.3 - plugin do pre-commit (em aberto)
 
