@@ -1,4 +1,4 @@
-[![View the code](https://img.shields.io/badge/GitHub-View_the_Code-blue?logo=GitHub)](https://github.com/khuyentran1401/customer_segmentation/tree/bentoml_demo)
+[![View the code](https://img.shields.io/badge/GitHub-Visualizar_codigo-blue?logo=GitHub)](https://github.com/HenriqueAJNB/data-science-escalavel/tree/main/book)
 
 ## BentoML: Crie um Serviço de Predição Baseado em ML em Minutos
 
