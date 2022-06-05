@@ -34,7 +34,7 @@ fruits = pd.DataFrame(
 fruits
 ```
 
-![](../image/pandera2.png)
+![](../images/04-2-pandera.png)
 
 Imagine este cenário. Seu gerente lhe diz que só pode haver certas frutas e lojas no conjunto de dados e o preço deve ser menor que 4.
 
