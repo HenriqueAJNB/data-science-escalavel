@@ -21,7 +21,7 @@ Para todos que querem contribuir com o projeto, por favor, sigam as orientaçõe
 Conforme uma solução de ciência de dados cresce em termos de requisitos de negócio, confiabilidade, manutenibilidade e escalabilidade, a complexidade destes projetos tendem a aumentar significativamente.
 
 
-![machine_learning](https://imgs.xkcd.com/comics/machine_learning.png)
+![machine_learning](images/00-machine_learning.png)
 
 Fonte: [xkcd](https://xkcd.com/1838/)
 ```
@@ -44,7 +44,7 @@ Ao final deste livro você aprenderá como estruturar seu projeto, usar parametr
 
 Um projeto de ciência de dados é reprodutível com um alto nível de confiabilidade quando, ao ser replicado em outra máquina, traz exatamente os mesmos resultados.
 
-![the_difference](https://imgs.xkcd.com/comics/the_difference.png)
+![the_difference](images/00-the_difference.png)
 
 Fonte: [xkcd](https://xkcd.com/242/)
 
@@ -58,7 +58,7 @@ Cientista: Será que acontece sempre?
 
 A manutenibilidade de um projeto de ciência de dados é vista quando outros profissionais conseguem depurar, manter e adicionar características ao projeto com facilidade sem inserir novas falhas no código.
 
-![wanna_see_the_code](https://imgs.xkcd.com/comics/wanna_see_the_code.png)
+![wanna_see_the_code](images/00-wanna_see_the_code.png)
 
 Fonte: [xkcd](https://xkcd.com/2138/)
 
