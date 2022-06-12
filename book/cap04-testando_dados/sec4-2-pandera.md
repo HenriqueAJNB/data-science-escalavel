@@ -46,11 +46,11 @@ nearby_stores = ["Aldi", "Walmart"]
 Para garantir que seus dados sigam tais condições, verificar seus dados manualmente pode tomar muito tempo, especialmente quando o conjunto é grande. 
 Existe uma maneira de automatizar esse processo?
 
-É aí que Pandera se torna útil. Especificamente, nós:
+É aí que o Pandera se torna útil. Especificamente, nós:
 
-- Criaremos vários testes para todo o conjunto de dados usando `DataFrameSchema`
-- Criaremos vários testes para cada coluna usando `Column`
-- Especificaremos o tipo de teste usando `Check`
+- Criaremos vários testes para todo o conjunto de dados usando `DataFrameSchema`;
+- Criaremos vários testes para cada coluna usando `Column`;
+- Especificaremos o tipo de teste usando `Check`.
 
 
 ```python
@@ -77,8 +77,8 @@ failure cases:
 
 No código acima:
 
-- `"name": Column(str, Check.isin(available_fruits))` verifica se a coluna `name` é do tipo string e se todos os valores da coluna `name` estão dentro de uma lista especificada.
-- `"price": Column(int, Check.less_than(4))` verifica se todos os valores na coluna `price` são do tipo `int` e são menores que 4.
+- `"name": Column(str, Check.isin(available_fruits))` verifica se a coluna `name` é do tipo string e se todos os valores da coluna `name` estão dentro de uma lista especificada;
+- `"price": Column(int, Check.less_than(4))` verifica se todos os valores na coluna `price` são do tipo `int` e são menores que 4;
 - Como nem todos os valores na coluna `price` são menores que 4, o teste falha.
 
 Encontre outros métodos de verificações `Checks` integrados [aqui](https://pandera.readthedocs.io/en/stable/reference/generated/pandera.checks.Check.html#pandera-checks-check).
@@ -102,7 +102,7 @@ schema.validate(fruits)
 
 ### Model de Schema
 
-Quando nossos testes são complicados, usar dataclass pode fazer nossos testes parecerem muito mais limpos do que usar um dicionário. Felizmente, Pandera também nos permite criar testes usando uma classe de dados em vez de um dicionário.
+Quando nossos testes são complicados, usar <i>dataclass</i> pode fazer nossos testes parecerem muito mais limpos do que usar um dicionário. Felizmente, o Pandera também nos permite criar testes usando uma classe de dados em vez de um dicionário.
 
 ```python
 from pandera.typing import Series
@@ -150,12 +150,12 @@ def get_total_price(fruits: pd.DataFrame, schema: pa.DataFrameSchema):
 get_total_price(fruits, schema)
 ```
 
-No entanto, essa abordagem dificulta o teste de nossa função. Como o argumento de `get_total_price` requer ambos `fruits` e `schema` , precisamos incluir esses dois argumentos dentro do teste:
+No entanto, essa abordagem dificulta o teste de nossa função. Como o argumento de `get_total_price` requer ambos `fruits` e `schema`, precisamos incluir esses dois argumentos no teste:
 ```python
 def test_get_total_price():
     fruits = pd.DataFrame({'name': ['apple', 'banana'], 'store': ['Aldi', 'Walmart'], 'price': [1, 2]})
     
-    # Need to include schema in the unit test
+    # Precisa incluir o schema na unidade de teste
     schema = pa.DataFrameSchema(
         {
             "name": Column(str, Check.isin(available_fruits)),
@@ -264,7 +264,7 @@ combine_fruits(fruits_nearby, fruits_faraway)
 
 #### Trabalhando com Valores Nulos
 
-Por padrão, o Pandera gerará um erro se houver valores nulos em uma coluna que estamos testando. Se valores nulos forem aceitáveis, adicione `nullable=False` à nossa classe `Column`:
+Por padrão, o Pandera gerará um erro se houver valores nulos em uma coluna que estamos testando. Se valores nulos forem aceitáveis, adicione `nullable=True` à nossa classe `Column`:
 ```python
 import numpy as np
 
@@ -335,7 +335,7 @@ dtype: object
 
 #### Padrões de correspondência
 
-E se quisermos alterar todas as colunas que começam com a palavra `store` ?
+E se quisermos alterar todas as colunas que começam com a palavra `store`?
 ```python
 favorite_stores = ["Aldi", "Walmart", "Whole Foods", "Schnucks"]
 
@@ -348,7 +348,7 @@ fruits = pd.DataFrame(
 )
 ```
 
-O Pandera nos permite aplicar as mesmas verificações em várias colunas que compartilham um determinado padrão adicionando `regex=True` :
+O Pandera nos permite aplicar as mesmas verificações em várias colunas que compartilham um determinado padrão adicionando `regex=True`:
 ```python
 schema = pa.DataFrameSchema(
     {
@@ -359,7 +359,7 @@ schema = pa.DataFrameSchema(
 schema.validate(fruits)
 ```
 
-### Exporte e Carregue de Arquivo YAML
+### Exporte e Carregue de um Arquivo YAML
 
 ### Exportar para YAML
 
@@ -367,10 +367,10 @@ Usar um arquivo YAML é uma maneira interessante de mostrar seus testes para col
 ```python
 from pathlib import Path
 
-# Get a YAML object
+# Cria um objeto YAML
 yaml_schema = schema.to_yaml()
 
-# Save to a file
+# Salva em um arquivo
 f = Path("schema.yml")
 f.touch()
 f.write_text(yaml_schema)
