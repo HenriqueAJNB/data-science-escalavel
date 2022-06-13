@@ -307,6 +307,12 @@ schema.validate(fruits)
 SchemaError: series 'store' contains duplicate values: {2: 'Walmart'}
 ```
 
+```{admonition} Nota
+:class: note
+
+A partir da [versão 0.9.0](https://pandera.readthedocs.io/en/v0.9.0/index.html) do Pandera o parâmetro <i>allow_duplicates</i> foi renomeado para <i>unique</i>. Se <i>allow_duplicates=False</i>, então <i>unique=True</i> e vice-versa.
+```
+
 #### Converta Tipos de Dados
 
 `coerce=True` altera o tipo de dados de uma coluna se seu tipo de dados não satisfizer a condição de teste.
@@ -374,6 +380,16 @@ yaml_schema = schema.to_yaml()
 f = Path("schema.yml")
 f.touch()
 f.write_text(yaml_schema)
+```
+
+```{admonition} Nota
+:class: note
+
+Para utilizar as funções de leitura e escrita do Pandera é necessário instalar as dependências de IO. Para isso digite:
+
+```bash
+pip install pandera[io]
+```
 ```
 
 O `schema.yml` ficará parecido com o abaixo:
