@@ -142,7 +142,7 @@ schema = pa.DataFrameSchema(
 )
 
 
-def get_total_price(fruits: pd.DataFrame, schema: pa.DataFrameSchema):
+def get_total_price(fruits: pd.DataFrame, schema: pa.DataFrameSchema) -> int:
     validated = schema.validate(fruits)
     return validated["price"].sum()
 
@@ -173,7 +173,7 @@ O Pandera fornece uma solução para isso com o decorator `check_input`. O argum
 from pandera import check_input
 
 @check_input(schema)
-def get_total_price(fruits: pd.DataFrame):
+def get_total_price(fruits: pd.DataFrame) -> int:
     return fruits.price.sum()
 
 get_total_price(fruits)
@@ -190,7 +190,7 @@ fruits = pd.DataFrame(
 )
 
 @check_input(schema)
-def get_total_price(fruits: pd.DataFrame):
+def get_total_price(fruits: pd.DataFrame) -> int:
     return fruits.price.sum()
 
 get_total_price(fruits)
@@ -230,7 +230,7 @@ out_schema = pa.DataFrameSchema(
 
 
 @check_output(out_schema)
-def combine_fruits(fruits_nearby: pd.DataFrame, fruits_faraway: pd.DataFrame):
+def combine_fruits(fruits_nearby: pd.DataFrame, fruits_faraway: pd.DataFrame) -> pd.DataFrame:
     fruits = pd.concat([fruits_nearby, fruits_faraway])
     return fruits
 
@@ -252,7 +252,7 @@ out_schema = pa.DataFrameSchema(
 
 
 @check_io(fruits_nearby=in_schema, fruits_faraway=in_schema, out=out_schema)
-def combine_fruits(fruits_nearby: pd.DataFrame, fruits_faraway: pd.DataFrame):
+def combine_fruits(fruits_nearby: pd.DataFrame, fruits_faraway: pd.DataFrame) -> pd.DataFrame:
     fruits = pd.concat([fruits_nearby, fruits_faraway])
     return fruits
 
