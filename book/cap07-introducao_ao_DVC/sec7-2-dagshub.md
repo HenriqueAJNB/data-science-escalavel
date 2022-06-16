@@ -234,3 +234,122 @@ with mlflow.start_run():
           }
       )
 ```
+
+### 7.2.5. Compare entre experiementos MLflow
+
+Para comparar entre dois ou mais experimentos, marque as caixas dos experimentos que deseja comparar e clique em Comparar (Compare).
+
+<!-- imagem - ![alt text](./images/image-tbd.png "Title") -->
+
+Você deve ver as comparações de todos os experimentos como abaixo:
+
+<!-- imagem - ![alt text](./images/image-tbd.png "Title") -->
+
+DagsHub também cria automaticamente gráficos como gráficos de coordenadas paralelas e gráficos de barras para que você possa observar as relações entre os parâmetros e as saídas.
+
+<!-- imagem - ![alt text](./images/image-tbd.png "Title") -->
+
+### 7.2.6. Compare entre experimentos Git
+
+Para comparar a diferença de arquivos entre dois experimentos do Git, copie seus IDs de confirmação na guia Experimentos (Experiments):
+
+<!-- imagem - ![alt text](./images/image-tbd.png "Title") -->
+
+Em seguida, cole cada ID de confirmação em cada ramificação na guia Arquivos (Files):
+
+<!-- imagem - ![alt text](./images/image-tbd.png "Title") -->
+
+Os arquivos que são diferentes entre os dois commits serão destacados em amarelo.
+
+<!-- imagem - ![alt text](./images/image-tbd.png "Title") -->
+
+Para ver a diferença, clique nos arquivos. Como as informações ausentes são destacadas em vermelho e as informações adicionais são destacadas em verde, podemos ver claramente a diferença entre os dois commits.
+
+<!-- imagem - ![alt text](./images/image-tbd.png "Title") -->
+
+Melhor ainda, o DagsHub fornece uma interface agradável para comparar dois notebooks Jupyter.
+
+<!-- imagem - ![alt text](./images/image-tbd.png "Title") -->
+
+Como os cientistas de dados trabalham muito com o Jupyter Notebook, é útil poder comparar as saídas de dois notebooks.
+
+### 7.2.7. Bonus Tip: Criar um pipeline DVC
+
+Às vezes, você pode querer que outras pessoas entendam o fluxo de trabalho do seu projeto (ou seja, como as saídas de um script são usadas para outro script). O DagsHub permite que você crie a visualização do seu fluxo de trabalho de dados por meio do pipeline DVC.
+
+<!-- imagem - ![alt text](./images/image-tbd.png "Title") -->
+
+Para criar um pipeline DVC, comece criando um arquivo `dvc.yaml`. No código abaixo, divido meu fluxo de trabalho em 3 estágios: `process_data`, `segment` e `analyze`. Para cada uma das etapas,
+
+- `cmd` especifica o comando para executar a etapa
+- `deps` especifica as dependências da etapa
+- `outs` especifica as saídas da etapa
+- `metrics` especifica as métricas da etapa
+
+```Yaml
+stages:
+  process_data:
+    cmd: python src/process_data.py
+    deps:
+    - config/main.yaml
+    - data/raw
+    - params.yml
+    - src/main.py
+    - src/process_data.py
+    outs:
+    - data/intermediate:
+        persist: true
+  segment:
+    cmd: python src/segment.py
+    deps:
+    - config/main.yaml
+    - data/intermediate
+    - params.yml
+    - src/main.py
+    - src/segment.py
+    outs:
+    - data/final:
+        persist: true
+    - image:
+        persist: true
+    - model/cluster.pkl:
+        persist: true
+    metrics:
+    - metrics.csv:
+        persist: true
+  analyze:
+    cmd: python src/run_notebook.py
+    deps:
+    - notebook/analyze_data.ipynb
+    - data/final
+```
+
+Todos os arquivos listados como saídas (`outs`) de dunder são armazenados em cache, o que é semelhante ao que acontece quando você usa `dvc add`. É por isso que você não precisa mais usar `dvc add` com esses arquivos.
+
+Agora você pode reproduzir todo o pipeline especificado em `dvc.yaml` executando:
+
+`dvc repro`
+
+Outputs:
+
+```Python
+Running stage 'process_data':
+> python src/process_data.py
+Updating lock file 'dvc.lock'                                                                                                                                                                          
+Running stage 'segment':
+> python src/segment.py
+Updating lock file 'dvc.lock'                                                                                                                                                            
+Running stage 'analyze':
+> python src/run_notebook.py
+Updating lock file 'dvc.lock'
+```
+
+Agora, outros poderão reproduzir seus resultados executando o comando dvc repro. Quão conveniente é isso?
+
+Em seguida, execute `dvc push` para enviar todos os arquivos rastreados pelo DVC para o DagsHub. Use `git add` e `git commit` para enviar as alterações no código e nos dados para o GitHub.
+
+Se você for ao seu repositório no DagsHub, deverá ver um bom gráfico interativo de todo o pipeline no DagsHub!
+
+<!-- imagem - ![alt text](./images/image-tbd.png "Title") -->
+
+Você pode obter mais detalhes sobre um nó no gráfico clicando nesse nó. Agora, outras pessoas podem entender seu fluxo de trabalho de dados simplesmente acessando seu repositório no DagsHub.
