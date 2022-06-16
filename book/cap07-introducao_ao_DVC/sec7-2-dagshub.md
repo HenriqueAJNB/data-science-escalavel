@@ -324,7 +324,7 @@ Melhor ainda, o DagsHub fornece uma interface agradável para comparar dois note
 
 Como os cientistas de dados trabalham muito com o Jupyter Notebook, é útil poder comparar as saídas de dois notebooks.
 
-### 7.2.7. Bonus Tip: Criar um pipeline DVC
+### 7.2.7. Dica Bonus: Criar um pipeline DVC
 
 Às vezes, você pode querer que outras pessoas entendam o fluxo de trabalho do seu projeto (ou seja, como as saídas de um script são usadas para outro script). O DagsHub permite que você crie a visualização do seu fluxo de trabalho de dados por meio do pipeline DVC.
 
