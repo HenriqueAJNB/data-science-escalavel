@@ -26,10 +26,10 @@ Você pode adicionar plugins diferentes ao seu pipeline de pré-commit. Depois q
 Para instalar o pré-commit, digite:
 
 ```bash
-pip instalar pré-commit
+pip install pre-commit
 ```
 
-Legal! Agora vamos adicionar alguns plugins úteis ao nosso pipeline de pré-commit.
+Legal! Agora vamos adicionar alguns plugins úteis ao nosso pipeline de pre-commit.
 
 ### 7.3.3. black
 
