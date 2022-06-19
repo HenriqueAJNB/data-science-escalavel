@@ -176,7 +176,7 @@ from sklearn.model_selection import train_test_split
 from sklearn.linear_model import LogisticRegression, OrderedLogisticRegression, \
     LinearRegression, LogisticRegressionCV, LinearRegressionCV 
 ```
-```
+```bash
 $ isort isort_example.py
 ```
 
@@ -205,4 +205,165 @@ Para adicionar isort ao pipeline de pré-confirmação, adicione o seguinte cód
     rev: 5.7.0
     hooks:
     -   id: isort
+```
+
+### 7.3.6. interrogate
+
+<!-- video - https://www.youtube.com/watch?v=fcRC07RJUGI&feature=emb_imp_woyt -->
+
+[interrogate](https://www.youtube.com/watch?v=m3WDafkpbpM&feature=emb_imp_woyt) verifica sua base de código em busca de docstrings ausentes.
+
+Para instalar o interrogate, digite:
+
+```bash
+pip install interrogate
+```
+
+Às vezes, podemos esquecer de escrever docstrings para classes e funções como abaixo:
+
+```Python
+class MathOperation:
+    def __init__(self, num) -> None:
+        self.num = num 
+
+    def plus_two(self):
+        return self.num + 2
+
+    def multiply_three(self):
+        return self.num * 3
+```
+
+Em vez de olhar manualmente para todas as nossas funções e classes em busca de docstrings ausentes, podemos executar o interrogate:
+
+```
+$ interrogate -vv interrogate_example.py
+```
+
+Resultado (output):
+
+<!-- imagem - ![alt text](./images/image-tbd.png "Title") -->
+
+Legal! A partir da saída do terminal, sabemos quais arquivos, classes e funções não possuem docstrings. Como sabemos os locais das docstrings ausentes, é fácil adicioná-las.
+
+```Python
+"""Example for interrogate"""
+
+class MathOperation:
+    """Perform math operation"""
+    def __init__(self, num) -> None:
+        self.num = num 
+
+    def plus_two(self):
+        """Add 2"""
+        return self.num + 2
+
+    def multiply_three(self):
+        """Multiply by 3"""
+        return self.num * 3
+```
+
+```bash
+$ interrogate -vv interrogate_example.py
+```
+<!-- imagem - ![alt text](./images/image-tbd.png "Title") -->
+
+A docstring para o método `__init__` está ausente, mas não é necessária. Podemos dizer ao interrogate para ignorar o método `__init__` adicionando `-i` ao argumento:
+
+```
+$ interrogate -vv -i interrogate_example.py
+```
+<!-- imagem - ![alt text](./images/image-tbd.png "Title") -->
+
+Legal! Para adicionar interrogação ao pipeline de pré-confirmação, insira o seguinte código no arquivo `.pre-commit-config.yaml`:
+
+```yaml
+- repo: https://github.com/econchick/interrogate
+    rev: 1.4.0  
+    hooks:
+      - id: interrogate
+        args: [--vv, -i, --fail-under=80]
+```
+
+Para editar as configurações padrão do interrogate, insira o seguinte código no arquivo `pyproject.toml`:
+
+```toml
+[tool.interrogate]
+ignore-init-method = true
+ignore-init-module = false
+ignore-magic = false
+ignore-semiprivate = false
+ignore-private = false
+ignore-property-decorators = false
+ignore-module = true
+ignore-nested-functions = false
+ignore-nested-classes = true
+ignore-setters = false
+fail-under = 95
+exclude = ["setup.py", "docs", "build"]
+ignore-regex = ["^get$", "^mock_.*", ".*BaseClass.*"]
+verbose = 0
+quiet = false
+whitelist-regex = []
+color = true
+generate-badge = "."
+badge-format = "svg"
+```
+
+### 7.3.7. Etapa Final — Adicionar pre-commit ao Git Hooks
+
+<!-- video - https://www.youtube.com/watch?v=1Q1VOIrQ9GA&feature=emb_imp_woyt -->
+
+O código final em seu arquivo `.pre-commit-config.yaml` deve ter a seguinte aparência:
+
+```yaml
+repos:
+-   repo: https://github.com/ambv/black
+    rev: 20.8b1
+    hooks:
+    - id: black
+-   repo: https://gitlab.com/pycqa/flake8
+    rev: 3.8.4
+    hooks:
+    - id: flake8
+-   repo: https://github.com/timothycrosley/isort
+    rev: 5.7.0
+    hooks:
+    -   id: isort
+-   repo: https://github.com/econchick/interrogate
+    rev: 1.4.0  
+    hooks:
+    - id: interrogate
+      args: [-vv, -i, --fail-under=80]
+```
+
+Para adicionar o pre-commit ao git hooks, digite:
+
+```bash
+$ pre-commit install
+```
+
+Resultado (output):
+
+```bash
+pre-commit installed at .git/hooks/pre-commit
+```
+
+### 7.3.8. Commit
+
+Agora estamos prontos para dar o commit do novo código!
+
+```bash
+$ git commit -m 'add pre-commit examples'
+```
+
+E você deve ver algo como abaixo:
+
+<!-- imagem - ![alt text](./images/image-tbd.png "Title") -->
+
+### 7.3.9. Pular verificação
+
+Para evitar que o pré-commit verifique um determinado commit, adicione --no-verify ao git commit:
+
+```bash
+$ git commit -m 'add pre-commit examples' --no-verify
 ```
