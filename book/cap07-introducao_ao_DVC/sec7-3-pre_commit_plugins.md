@@ -92,3 +92,117 @@ exclude = '''
 | build   
 )/ 
 ```
+
+### 7.3.4. flake8
+
+flake8 é uma ferramenta python que verifica o estilo e a qualidade do seu código Python. Ele verifica vários problemas não cobertos pelo preto.
+
+Para instalar o flake8, digite:
+
+```bash
+pip install flake8
+```
+
+Para ver o que o flake8 faz, vamos escrever um código que viole algumas diretrizes do PEP 8.
+
+```Python
+def very_long_function_name(var1, var2, var3,
+var4, var5):
+    print(var1, var2, var3, var4, var5)
+
+very_long_function_name(1, 2, 3, 4, 5)
+```
+
+Em seguida, verifique o código usando flake8:
+
+```
+$ flake8 flake_example.py
+```
+
+```
+flake8_example.py:2:1: E128 continuation line under-indented for visual indent
+flake8_example.py:5:1: E305 expected 2 blank lines after class or function definition, found 1
+flake8_example.py:5:39: W292 no newline at end of file
+```
+
+Ah! flake8 detecta 3 erros de formatação PEP 8. Podemos usar esses erros como diretrizes para corrigir o código.
+
+```Python
+def very_long_function_name(var1, var2, var3, var4, var5):
+    print(var1, var2, var3, var4, var5)
+
+very_long_function_name(1, 2, 3, 4, 5)
+```
+
+O código parece muito melhor agora!
+
+Para adicionar flake8 ao pipeline de pré-confirmação, insira o seguinte código no arquivo `.pre-commit-config.yaml`:
+
+```yaml
+-   repo: https://gitlab.com/pycqa/flake8
+    rev: 3.8.4
+    hooks:
+    - id: flake8
+```
+
+Para escolher quais erros ignorar ou editar outras configurações, crie um arquivo chamado `.flake8` e adicione o seguinte código ao arquivo `.flake8`:
+
+```flake8
+[flake8]
+ignore = E203, E266, E501, W503, F403, F401
+max-line-length = 79
+max-complexity = 18
+select = B,C,E,F,W,T4,B9
+```
+
+### 7.3.5. isort
+
+[isort](https://github.com/PyCQA/isort) é uma biblioteca Python que classifica automaticamente as bibliotecas importadas em ordem alfabética e as separa em seções e tipos.
+
+Para instalar o isort, digite:
+
+```bash
+pip install isort
+```
+
+Vamos tentar usar isort para classificar importações confusas como abaixo:
+
+```Python
+import pandas as pd 
+import numpy as np 
+import matplotlib.pyplot as plt
+from flake8_example import very_long_function_name
+from sklearn.model_selection import train_test_split
+from sklearn.linear_model import LogisticRegression, OrderedLogisticRegression, \
+    LinearRegression, LogisticRegressionCV, LinearRegressionCV 
+```
+```
+$ isort isort_example.py
+```
+
+Resultado:
+```Python
+import matplotlib.pyplot as plt
+import numpy as np
+import pandas as pd
+from flake8_example import very_long_function_name
+from sklearn.linear_model import (
+    LinearRegression,
+    LinearRegressionCV,
+    LogisticRegression,
+    LogisticRegressionCV,
+    OrderedLogisticRegression,
+)
+from sklearn.model_selection import train_test_split
+```
+
+Legal! As importações estão muito mais organizadas agora.
+
+Para adicionar isort ao pipeline de pré-confirmação, adicione o seguinte código ao arquivo `.pre-commit-config.yaml`:
+
+```yaml
+-   repo: https://github.com/timothycrosley/isort
+    rev: 5.7.0
+    hooks:
+    -   id: isort
+```
