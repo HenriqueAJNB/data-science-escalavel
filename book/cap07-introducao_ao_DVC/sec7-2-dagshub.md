@@ -25,7 +25,7 @@ O DagsHub permite que você crie um novo repositório em sua plataforma ou se co
 
 Se quiser criar um novo repositório no DagsHub, clique em Novo Repositório (New Repository):
 
-<!-- imagem - ![alt text](./images/image-tbd.png "Title") -->
+<!-- imagem - ![alt text](./images/image-tbd.png "Title")  -->
 
 Se você já possui um repositório no GitHub e deseja migrar seu repositório para o DagsHub, clique em Migrar um Repositório (Migrate A Repo):
 
