@@ -1,5 +1,5 @@
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-[![All Contributors](https://img.shields.io/badge/all_contributors-9-orange.svg?style=flat-square)](#contributors-)
+[![All Contributors](https://img.shields.io/badge/all_contributors-10-orange.svg?style=flat-square)](#contributors-)
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 
 [![GitHub original](https://img.shields.io/badge/GitHub-original_en-blue?logo=GitHub)](https://github.com/khuyentran1401/reproducible-data-science)
@@ -45,12 +45,12 @@
   - [x] Sec5.0 - introdução ([LevyPy](https://github.com/LevyPy))
   - [x] Sec5.1 - prefect ([LevyPy](https://github.com/LevyPy))
 
-- [x] Cap06 - experimentação ([LevyPy](https://github.com/LevyPy))
+- [ ] Cap06 - experimentação ([LevyPy](https://github.com/LevyPy))
   - [x] Sec6.1 - hydra ([LevyPy](https://github.com/LevyPy))
   - [ ] Sec6.2 - wandb (em aberto)
 
 - [ ] Cap07 - controle de versionamento (em aberto)
-  - [ ] Sec7.1 - DVC (em aberto)
+  - [x] Sec7.1 - DVC ([arturovaine](https://github.com/arturovaine))
   - [ ] Sec7.2 - DagsHub (em aberto)
   - [ ] Sec7.3 - plugin do pre-commit (em aberto)
 
@@ -78,6 +78,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
   <tr>
     <td align="center"><a href="https://gurezende.github.io/GustavoSantos_Portfolio/"><img src="https://avatars.githubusercontent.com/u/50956352?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Gustavo R Santos</b></sub></a><br /><a href="#content-gurezende" title="Content">🖋</a></td>
     <td align="center"><a href="https://github.com/LevyPy"><img src="https://avatars.githubusercontent.com/u/72529112?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Levy Anesi Py Júnior</b></sub></a><br /><a href="https://github.com/HenriqueAJNB/data-science-escalavel/pulls?q=is%3Apr+reviewed-by%3ALevyPy" title="Reviewed Pull Requests">👀</a></td>
+    <td align="center"><a href="https://www.linkedin.com/in/arturovaine/"><img src="https://avatars.githubusercontent.com/u/30031680?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Arturo Vaine</b></sub></a><br /><a href="#content-arturovaine" title="Content">🖋</a></td>
   </tr>
 </table>
 
