@@ -479,8 +479,8 @@ title="Print to PDF"
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#exporte-e-carregue-de-arquivo-yaml">
-   4.2.7. Exporte e Carregue de Arquivo YAML
+  <a class="reference internal nav-link" href="#exporte-e-carregue-de-um-arquivo-yaml">
+   4.2.7. Exporte e Carregue de um Arquivo YAML
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
@@ -582,8 +582,8 @@ title="Print to PDF"
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#exporte-e-carregue-de-arquivo-yaml">
-   4.2.7. Exporte e Carregue de Arquivo YAML
+  <a class="reference internal nav-link" href="#exporte-e-carregue-de-um-arquivo-yaml">
+   4.2.7. Exporte e Carregue de um Arquivo YAML
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
@@ -635,7 +635,7 @@ title="Print to PDF"
 <span class="n">fruits</span>
 </pre></div>
 </div>
-<p><img alt="" src="image/pandera2.png" /></p>
+<p><img alt="" src="../_images/04-2-pandera.png" /></p>
 <p>Imagine este cenário. Seu gerente lhe diz que só pode haver certas frutas e lojas no conjunto de dados e o preço deve ser menor que 4.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">available_fruits</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;apple&quot;</span><span class="p">,</span> <span class="s2">&quot;banana&quot;</span><span class="p">,</span> <span class="s2">&quot;orange&quot;</span><span class="p">]</span>
 <span class="n">nearby_stores</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Aldi&quot;</span><span class="p">,</span> <span class="s2">&quot;Walmart&quot;</span><span class="p">]</span>
@@ -643,11 +643,11 @@ title="Print to PDF"
 </div>
 <p>Para garantir que seus dados sigam tais condições, verificar seus dados manualmente pode tomar muito tempo, especialmente quando o conjunto é grande.
 Existe uma maneira de automatizar esse processo?</p>
-<p>É aí que Pandera se torna útil. Especificamente, nós:</p>
+<p>É aí que o Pandera se torna útil. Especificamente, nós:</p>
 <ul class="simple">
-<li><p>Criaremos vários testes para todo o conjunto de dados usando <code class="docutils literal notranslate"><span class="pre">DataFrameSchema</span></code></p></li>
-<li><p>Criaremos vários testes para cada coluna usando <code class="docutils literal notranslate"><span class="pre">Column</span></code></p></li>
-<li><p>Especificaremos o tipo de teste usando <code class="docutils literal notranslate"><span class="pre">Check</span></code></p></li>
+<li><p>Criaremos vários testes para todo o conjunto de dados usando <code class="docutils literal notranslate"><span class="pre">DataFrameSchema</span></code>;</p></li>
+<li><p>Criaremos vários testes para cada coluna usando <code class="docutils literal notranslate"><span class="pre">Column</span></code>;</p></li>
+<li><p>Especificaremos o tipo de teste usando <code class="docutils literal notranslate"><span class="pre">Check</span></code>.</p></li>
 </ul>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandera</span> <span class="k">as</span> <span class="nn">pa</span>
 <span class="kn">from</span> <span class="nn">pandera</span> <span class="kn">import</span> <span class="n">Column</span><span class="p">,</span> <span class="n">Check</span>
@@ -671,8 +671,8 @@ failure cases:
 </div>
 <p>No código acima:</p>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">&quot;name&quot;:</span> <span class="pre">Column(str,</span> <span class="pre">Check.isin(available_fruits))</span></code> verifica se a coluna <code class="docutils literal notranslate"><span class="pre">name</span></code> é do tipo string e se todos os valores da coluna <code class="docutils literal notranslate"><span class="pre">name</span></code> estão dentro de uma lista especificada.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">&quot;price&quot;:</span> <span class="pre">Column(int,</span> <span class="pre">Check.less_than(4))</span></code> verifica se todos os valores na coluna <code class="docutils literal notranslate"><span class="pre">price</span></code> são do tipo <code class="docutils literal notranslate"><span class="pre">int</span></code> e são menores que 4.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">&quot;name&quot;:</span> <span class="pre">Column(str,</span> <span class="pre">Check.isin(available_fruits))</span></code> verifica se a coluna <code class="docutils literal notranslate"><span class="pre">name</span></code> é do tipo string e se todos os valores da coluna <code class="docutils literal notranslate"><span class="pre">name</span></code> estão dentro de uma lista especificada;</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">&quot;price&quot;:</span> <span class="pre">Column(int,</span> <span class="pre">Check.less_than(4))</span></code> verifica se todos os valores na coluna <code class="docutils literal notranslate"><span class="pre">price</span></code> são do tipo <code class="docutils literal notranslate"><span class="pre">int</span></code> e são menores que 4;</p></li>
 <li><p>Como nem todos os valores na coluna <code class="docutils literal notranslate"><span class="pre">price</span></code> são menores que 4, o teste falha.</p></li>
 </ul>
 <p>Encontre outros métodos de verificações <code class="docutils literal notranslate"><span class="pre">Checks</span></code> integrados <a class="reference external" href="https://pandera.readthedocs.io/en/stable/reference/generated/pandera.checks.Check.html#pandera-checks-check">aqui</a>.</p>
@@ -695,7 +695,7 @@ failure cases:
 </section>
 <section id="model-de-schema">
 <h2><span class="section-number">4.2.4. </span>Model de Schema<a class="headerlink" href="#model-de-schema" title="Permalink to this headline">#</a></h2>
-<p>Quando nossos testes são complicados, usar dataclass pode fazer nossos testes parecerem muito mais limpos do que usar um dicionário. Felizmente, Pandera também nos permite criar testes usando uma classe de dados em vez de um dicionário.</p>
+<p>Quando nossos testes são complicados, usar <i>dataclass</i> pode fazer nossos testes parecerem muito mais limpos do que usar um dicionário. Felizmente, o Pandera também nos permite criar testes usando uma classe de dados em vez de um dicionário.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pandera.typing</span> <span class="kn">import</span> <span class="n">Series</span>
 
 <span class="k">class</span> <span class="nc">Schema</span><span class="p">(</span><span class="n">pa</span><span class="o">.</span><span class="n">SchemaModel</span><span class="p">):</span>
@@ -733,7 +733,7 @@ failure cases:
 <span class="p">)</span>
 
 
-<span class="k">def</span> <span class="nf">get_total_price</span><span class="p">(</span><span class="n">fruits</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">,</span> <span class="n">schema</span><span class="p">:</span> <span class="n">pa</span><span class="o">.</span><span class="n">DataFrameSchema</span><span class="p">):</span>
+<span class="k">def</span> <span class="nf">get_total_price</span><span class="p">(</span><span class="n">fruits</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">,</span> <span class="n">schema</span><span class="p">:</span> <span class="n">pa</span><span class="o">.</span><span class="n">DataFrameSchema</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
     <span class="n">validated</span> <span class="o">=</span> <span class="n">schema</span><span class="o">.</span><span class="n">validate</span><span class="p">(</span><span class="n">fruits</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">validated</span><span class="p">[</span><span class="s2">&quot;price&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
 
@@ -741,11 +741,11 @@ failure cases:
 <span class="n">get_total_price</span><span class="p">(</span><span class="n">fruits</span><span class="p">,</span> <span class="n">schema</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>No entanto, essa abordagem dificulta o teste de nossa função. Como o argumento de <code class="docutils literal notranslate"><span class="pre">get_total_price</span></code> requer ambos <code class="docutils literal notranslate"><span class="pre">fruits</span></code> e <code class="docutils literal notranslate"><span class="pre">schema</span></code> , precisamos incluir esses dois argumentos dentro do teste:</p>
+<p>No entanto, essa abordagem dificulta o teste de nossa função. Como o argumento de <code class="docutils literal notranslate"><span class="pre">get_total_price</span></code> requer ambos <code class="docutils literal notranslate"><span class="pre">fruits</span></code> e <code class="docutils literal notranslate"><span class="pre">schema</span></code>, precisamos incluir esses dois argumentos no teste:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">test_get_total_price</span><span class="p">():</span>
     <span class="n">fruits</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;apple&#39;</span><span class="p">,</span> <span class="s1">&#39;banana&#39;</span><span class="p">],</span> <span class="s1">&#39;store&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;Aldi&#39;</span><span class="p">,</span> <span class="s1">&#39;Walmart&#39;</span><span class="p">],</span> <span class="s1">&#39;price&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">]})</span>
     
-    <span class="c1"># Need to include schema in the unit test</span>
+    <span class="c1"># Precisa incluir o schema na unidade de teste</span>
     <span class="n">schema</span> <span class="o">=</span> <span class="n">pa</span><span class="o">.</span><span class="n">DataFrameSchema</span><span class="p">(</span>
         <span class="p">{</span>
             <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="n">Column</span><span class="p">(</span><span class="nb">str</span><span class="p">,</span> <span class="n">Check</span><span class="o">.</span><span class="n">isin</span><span class="p">(</span><span class="n">available_fruits</span><span class="p">)),</span>
@@ -761,7 +761,7 @@ failure cases:
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pandera</span> <span class="kn">import</span> <span class="n">check_input</span>
 
 <span class="nd">@check_input</span><span class="p">(</span><span class="n">schema</span><span class="p">)</span>
-<span class="k">def</span> <span class="nf">get_total_price</span><span class="p">(</span><span class="n">fruits</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">):</span>
+<span class="k">def</span> <span class="nf">get_total_price</span><span class="p">(</span><span class="n">fruits</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
     <span class="k">return</span> <span class="n">fruits</span><span class="o">.</span><span class="n">price</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
 
 <span class="n">get_total_price</span><span class="p">(</span><span class="n">fruits</span><span class="p">)</span>
@@ -777,7 +777,7 @@ failure cases:
 <span class="p">)</span>
 
 <span class="nd">@check_input</span><span class="p">(</span><span class="n">schema</span><span class="p">)</span>
-<span class="k">def</span> <span class="nf">get_total_price</span><span class="p">(</span><span class="n">fruits</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">):</span>
+<span class="k">def</span> <span class="nf">get_total_price</span><span class="p">(</span><span class="n">fruits</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
     <span class="k">return</span> <span class="n">fruits</span><span class="o">.</span><span class="n">price</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
 
 <span class="n">get_total_price</span><span class="p">(</span><span class="n">fruits</span><span class="p">)</span>
@@ -815,7 +815,7 @@ failure cases:
 
 
 <span class="nd">@check_output</span><span class="p">(</span><span class="n">out_schema</span><span class="p">)</span>
-<span class="k">def</span> <span class="nf">combine_fruits</span><span class="p">(</span><span class="n">fruits_nearby</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">,</span> <span class="n">fruits_faraway</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">):</span>
+<span class="k">def</span> <span class="nf">combine_fruits</span><span class="p">(</span><span class="n">fruits_nearby</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">,</span> <span class="n">fruits_faraway</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">:</span>
     <span class="n">fruits</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">fruits_nearby</span><span class="p">,</span> <span class="n">fruits_faraway</span><span class="p">])</span>
     <span class="k">return</span> <span class="n">fruits</span>
 
@@ -837,7 +837,7 @@ failure cases:
 
 
 <span class="nd">@check_io</span><span class="p">(</span><span class="n">fruits_nearby</span><span class="o">=</span><span class="n">in_schema</span><span class="p">,</span> <span class="n">fruits_faraway</span><span class="o">=</span><span class="n">in_schema</span><span class="p">,</span> <span class="n">out</span><span class="o">=</span><span class="n">out_schema</span><span class="p">)</span>
-<span class="k">def</span> <span class="nf">combine_fruits</span><span class="p">(</span><span class="n">fruits_nearby</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">,</span> <span class="n">fruits_faraway</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">):</span>
+<span class="k">def</span> <span class="nf">combine_fruits</span><span class="p">(</span><span class="n">fruits_nearby</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">,</span> <span class="n">fruits_faraway</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">:</span>
     <span class="n">fruits</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">fruits_nearby</span><span class="p">,</span> <span class="n">fruits_faraway</span><span class="p">])</span>
     <span class="k">return</span> <span class="n">fruits</span>
 
@@ -851,7 +851,7 @@ failure cases:
 <h2><span class="section-number">4.2.6. </span>Outros Argumentos para Validação de Coluna<a class="headerlink" href="#outros-argumentos-para-validacao-de-coluna" title="Permalink to this headline">#</a></h2>
 <section id="trabalhando-com-valores-nulos">
 <h3><span class="section-number">4.2.6.1. </span>Trabalhando com Valores Nulos<a class="headerlink" href="#trabalhando-com-valores-nulos" title="Permalink to this headline">#</a></h3>
-<p>Por padrão, o Pandera gerará um erro se houver valores nulos em uma coluna que estamos testando. Se valores nulos forem aceitáveis, adicione <code class="docutils literal notranslate"><span class="pre">nullable=False</span></code> à nossa classe <code class="docutils literal notranslate"><span class="pre">Column</span></code>:</p>
+<p>Por padrão, o Pandera gerará um erro se houver valores nulos em uma coluna que estamos testando. Se valores nulos forem aceitáveis, adicione <code class="docutils literal notranslate"><span class="pre">nullable=True</span></code> à nossa classe <code class="docutils literal notranslate"><span class="pre">Column</span></code>:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 
 <span class="n">fruits</span> <span class="o">=</span> <span class="n">fruits</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span>
@@ -891,6 +891,10 @@ failure cases:
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>SchemaError: series <span class="s1">&#39;store&#39;</span> contains duplicate values: <span class="o">{</span><span class="m">2</span>: <span class="s1">&#39;Walmart&#39;</span><span class="o">}</span>
 </pre></div>
 </div>
+<div class="note admonition">
+<p class="admonition-title">Nota</p>
+<p>A partir da <a class="reference external" href="https://pandera.readthedocs.io/en/v0.9.0/index.html">versão 0.9.0</a> do Pandera o parâmetro <i>allow_duplicates</i> foi renomeado para <i>unique</i>. Se <i>allow_duplicates=False</i>, então <i>unique=True</i> e vice-versa.</p>
+</div>
 </section>
 <section id="converta-tipos-de-dados">
 <h3><span class="section-number">4.2.6.3. </span>Converta Tipos de Dados<a class="headerlink" href="#converta-tipos-de-dados" title="Permalink to this headline">#</a></h3>
@@ -918,7 +922,7 @@ dtype: object
 </section>
 <section id="padroes-de-correspondencia">
 <h3><span class="section-number">4.2.6.4. </span>Padrões de correspondência<a class="headerlink" href="#padroes-de-correspondencia" title="Permalink to this headline">#</a></h3>
-<p>E se quisermos alterar todas as colunas que começam com a palavra <code class="docutils literal notranslate"><span class="pre">store</span></code> ?</p>
+<p>E se quisermos alterar todas as colunas que começam com a palavra <code class="docutils literal notranslate"><span class="pre">store</span></code>?</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">favorite_stores</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Aldi&quot;</span><span class="p">,</span> <span class="s2">&quot;Walmart&quot;</span><span class="p">,</span> <span class="s2">&quot;Whole Foods&quot;</span><span class="p">,</span> <span class="s2">&quot;Schnucks&quot;</span><span class="p">]</span>
 
 <span class="n">fruits</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span>
@@ -930,7 +934,7 @@ dtype: object
 <span class="p">)</span>
 </pre></div>
 </div>
-<p>O Pandera nos permite aplicar as mesmas verificações em várias colunas que compartilham um determinado padrão adicionando <code class="docutils literal notranslate"><span class="pre">regex=True</span></code> :</p>
+<p>O Pandera nos permite aplicar as mesmas verificações em várias colunas que compartilham um determinado padrão adicionando <code class="docutils literal notranslate"><span class="pre">regex=True</span></code>:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">schema</span> <span class="o">=</span> <span class="n">pa</span><span class="o">.</span><span class="n">DataFrameSchema</span><span class="p">(</span>
     <span class="p">{</span>
         <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="n">Column</span><span class="p">(</span><span class="nb">str</span><span class="p">,</span> <span class="n">Check</span><span class="o">.</span><span class="n">isin</span><span class="p">(</span><span class="n">available_fruits</span><span class="p">)),</span>
@@ -942,63 +946,72 @@ dtype: object
 </div>
 </section>
 </section>
-<section id="exporte-e-carregue-de-arquivo-yaml">
-<h2><span class="section-number">4.2.7. </span>Exporte e Carregue de Arquivo YAML<a class="headerlink" href="#exporte-e-carregue-de-arquivo-yaml" title="Permalink to this headline">#</a></h2>
+<section id="exporte-e-carregue-de-um-arquivo-yaml">
+<h2><span class="section-number">4.2.7. </span>Exporte e Carregue de um Arquivo YAML<a class="headerlink" href="#exporte-e-carregue-de-um-arquivo-yaml" title="Permalink to this headline">#</a></h2>
 </section>
 <section id="exportar-para-yaml">
 <h2><span class="section-number">4.2.8. </span>Exportar para YAML<a class="headerlink" href="#exportar-para-yaml" title="Permalink to this headline">#</a></h2>
 <p>Usar um arquivo YAML é uma maneira interessante de mostrar seus testes para colegas que não conhecem Python. Podemos manter um registro de todas as validações em um arquivo YAML usando <code class="docutils literal notranslate"><span class="pre">schema.to_yaml()</span></code>:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
 
-<span class="c1"># Get a YAML object</span>
+<span class="c1"># Cria um objeto YAML</span>
 <span class="n">yaml_schema</span> <span class="o">=</span> <span class="n">schema</span><span class="o">.</span><span class="n">to_yaml</span><span class="p">()</span>
 
-<span class="c1"># Save to a file</span>
+<span class="c1"># Salva em um arquivo</span>
 <span class="n">f</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="s2">&quot;schema.yml&quot;</span><span class="p">)</span>
 <span class="n">f</span><span class="o">.</span><span class="n">touch</span><span class="p">()</span>
 <span class="n">f</span><span class="o">.</span><span class="n">write_text</span><span class="p">(</span><span class="n">yaml_schema</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>O <code class="docutils literal notranslate"><span class="pre">schema.yml</span></code> ficará parecido com o abaixo:</p>
-<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">schema_type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">dataframe</span><span class="w"></span>
-<span class="nt">version</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.7.0</span><span class="w"></span>
-<span class="nt">columns</span><span class="p">:</span><span class="w"></span>
-<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"></span>
-<span class="w">    </span><span class="nt">dtype</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">str</span><span class="w"></span>
-<span class="w">    </span><span class="nt">nullable</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span><span class="w"></span>
-<span class="w">    </span><span class="nt">checks</span><span class="p">:</span><span class="w"></span>
-<span class="w">      </span><span class="nt">isin</span><span class="p">:</span><span class="w"></span>
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">apple</span><span class="w"></span>
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">banana</span><span class="w"></span>
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">orange</span><span class="w"></span>
-<span class="w">    </span><span class="nt">allow_duplicates</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span><span class="w"></span>
-<span class="w">    </span><span class="nt">coerce</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span><span class="w"></span>
-<span class="w">    </span><span class="nt">required</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span><span class="w"></span>
-<span class="w">    </span><span class="nt">regex</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span><span class="w"></span>
-<span class="w">  </span><span class="nt">store</span><span class="p">:</span><span class="w"></span>
-<span class="w">    </span><span class="nt">dtype</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">str</span><span class="w"></span>
-<span class="w">    </span><span class="nt">nullable</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span><span class="w"></span>
-<span class="w">    </span><span class="nt">checks</span><span class="p">:</span><span class="w"></span>
-<span class="w">      </span><span class="nt">isin</span><span class="p">:</span><span class="w"></span>
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Aldi</span><span class="w"></span>
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Walmart</span><span class="w"></span>
-<span class="w">    </span><span class="nt">allow_duplicates</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span><span class="w"></span>
-<span class="w">    </span><span class="nt">coerce</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span><span class="w"></span>
-<span class="w">    </span><span class="nt">required</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span><span class="w"></span>
-<span class="w">    </span><span class="nt">regex</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span><span class="w"></span>
-<span class="w">  </span><span class="nt">price</span><span class="p">:</span><span class="w"></span>
-<span class="w">    </span><span class="nt">dtype</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">int64</span><span class="w"></span>
-<span class="w">    </span><span class="nt">nullable</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span><span class="w"></span>
-<span class="w">    </span><span class="nt">checks</span><span class="p">:</span><span class="w"></span>
-<span class="w">      </span><span class="nt">less_than</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">5</span><span class="w"></span>
-<span class="w">    </span><span class="nt">allow_duplicates</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span><span class="w"></span>
-<span class="w">    </span><span class="nt">coerce</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span><span class="w"></span>
-<span class="w">    </span><span class="nt">required</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span><span class="w"></span>
-<span class="w">    </span><span class="nt">regex</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span><span class="w"></span>
-<span class="nt">checks</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">null</span><span class="w"></span>
-<span class="nt">index</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">null</span><span class="w"></span>
-<span class="nt">coerce</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span><span class="w"></span>
-<span class="nt">strict</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span><span class="w"></span>
+<div class="note admonition">
+<p class="admonition-title">Nota</p>
+<p>Para utilizar as funções de leitura e escrita do Pandera é necessário instalar as dependências de IO. Para isso digite:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip install pandera<span class="o">[</span>io<span class="o">]</span>
+</pre></div>
+</div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
+O `schema.yml` ficará parecido com o abaixo:
+```yaml
+schema_type: dataframe
+version: 0.7.0
+columns:
+  name:
+    dtype: str
+    nullable: false
+    checks:
+      isin:
+      - apple
+      - banana
+      - orange
+    allow_duplicates: true
+    coerce: false
+    required: true
+    regex: false
+  store:
+    dtype: str
+    nullable: true
+    checks:
+      isin:
+      - Aldi
+      - Walmart
+    allow_duplicates: false
+    coerce: false
+    required: true
+    regex: false
+  price:
+    dtype: int64
+    nullable: false
+    checks:
+      less_than: 5
+    allow_duplicates: true
+    coerce: false
+    required: true
+    regex: false
+checks: null
+index: null
+coerce: false
+strict: false
 </pre></div>
 </div>
 </section>

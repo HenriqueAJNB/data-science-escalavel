@@ -555,7 +555,7 @@ title="Print to PDF"
 <section id="motivacao">
 <h2><span class="section-number">2.1.1. </span>Motivação<a class="headerlink" href="#motivacao" title="Permalink to this headline">#</a></h2>
 <p>É importante estruturar o seu projeto de ciência de dados baseado em algum padrão para que seus colegas de trabalho consigam facilmente manter e modificar o projeto.</p>
-<p><img alt="" src="https://i.ibb.co/1TLnVc5/template.png" /></p>
+<p><img alt="estrutura_projeto" src="../_images/02-1-estrutura_projeto.png" /></p>
 <p>Mas qual tipo de padrão você deve seguir? Não seria ideal se pudéssemos criar uma estrutura a partir de um modelo padrão (template)?</p>
 <p>Existem alguns excelentes templates para projetos de ciência de dados, mas eles demonstram inexistência de algumas boas práticas como testes, configurações e formatação do código.</p>
 <p>Por este motivo, a autora original do livro, Khuyen Tran, criou um repositório chamado <a class="reference external" href="https://github.com/khuyentran1401/data-science-template/blob/master/README.md">data-science-template</a>. Este repositório é resultado de anos de experiência dela refinando as melhores práticas para estruturar um projeto, deixando-o com maior reprodutibilidade e manutenibilidade.</p>
@@ -577,9 +577,9 @@ title="Print to PDF"
 <li><p>Autor</p></li>
 <li><p>Versão compatível do Python</p></li>
 </ul>
-<p><img alt="cookiecutter_template" src="../_images/01-cookiecutter_template.gif" /></p>
+<p><img alt="cookiecutter_template" src="../_images/02-1-cookiecutter_template.gif" /></p>
 <p>Neste momento uma pasta com o nome fornecido acima será criada, e ela terá a seguinte estrutura:</p>
-<p><img alt="estrutura" src="../_images/02-cookiecutter_template.png" /></p>
+<p><img alt="estrutura" src="../_images/02-1-cookiecutter_template.png" /></p>
 <p>As ferramentas usadas nesse template são:</p>
 <ul class="simple">
 <li><p><a class="reference external" href="https://python-poetry.org/">Poetry</a>: gerenciamento de pacotes e ambientes virtuais.</p></li>
@@ -662,23 +662,23 @@ title="Print to PDF"
 make setup
 </pre></div>
 </div>
-<p><img alt="make" src="../_images/02-make.gif" /></p>
+<p><img alt="make" src="../_images/02-1-make.gif" /></p>
 </section>
 <section id="codigo-e-testes">
 <h2><span class="section-number">2.1.5. </span>Código e testes<a class="headerlink" href="#codigo-e-testes" title="Permalink to this headline">#</a></h2>
 <p>Todos os scripts Python são armazenados dentro da pasta <code class="docutils literal notranslate"><span class="pre">src</span></code></p>
-<p><img alt="estrutura_pastas1" src="../_images/03-estrutura_pastas1.png" /></p>
+<p><img alt="estrutura_pastas1" src="../_images/02-1-estrutura_pastas1.png" /></p>
 <blockquote>
 <div><p><strong>Comentário a parte do livro original:</strong></p>
 <p>Eu particularmente não chamaria a pasta principal de <code class="docutils literal notranslate"><span class="pre">src</span></code>, pois não é o padrão da linguagem Python. Por padrão, o pacote Python principal recebe o mesmo nome do projeto. Este padrão <code class="docutils literal notranslate"><span class="pre">src</span></code> muito provavelmente é proveniente de outras linguagens de programação.</p>
 </div></blockquote>
 <p>Todos os arquivos de testes estão armazenados na pasta <code class="docutils literal notranslate"><span class="pre">tests</span></code>. Ela deve ser um espelho da pasta <code class="docutils literal notranslate"><span class="pre">src</span></code> onde cada arquivo começa com o nome <code class="docutils literal notranslate"><span class="pre">test</span></code> seguido do nome do arquivo sendo testado.</p>
-<p><img alt="estrutura_pastas2" src="../_images/04-estrutura_pastas2.png" /></p>
+<p><img alt="estrutura_pastas2" src="../_images/02-1-estrutura_pastas2.png" /></p>
 </section>
 <section id="gerenciando-arquivos-de-configuracoes-com-hydra">
 <h2><span class="section-number">2.1.6. </span>Gerenciando arquivos de configurações com hydra<a class="headerlink" href="#gerenciando-arquivos-de-configuracoes-com-hydra" title="Permalink to this headline">#</a></h2>
 <p>Um arquivo de configurações armazena todos os valores em um único arquivo, a fim de deixá-los separados e não escrevê-los diretamente no código. Neste template, todos os arquivos de configuração são armazenados na pasta <code class="docutils literal notranslate"><span class="pre">config</span></code>.</p>
-<p><img alt="config" src="../_images/05-config.png" /></p>
+<p><img alt="config" src="../_images/02-1-config.png" /></p>
 <p><a class="reference external" href="https://hydra.cc/docs/intro/">Hydra</a> é um pacote da linguagem Python que permite acessar os parâmetros de configuração dos arquivos dentro de um script Python.</p>
 <p>Por exemplo, se o seu <code class="docutils literal notranslate"><span class="pre">config/main.yaml</span></code> tiver o conteúdo abaixo:</p>
 <div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">raw</span><span class="p">:</span><span class="w"> </span>
@@ -719,7 +719,7 @@ make setup
 <section id="gerenciando-modelos-e-dados-com-dvc">
 <h2><span class="section-number">2.1.7. </span>Gerenciando modelos e dados com DVC<a class="headerlink" href="#gerenciando-modelos-e-dados-com-dvc" title="Permalink to this headline">#</a></h2>
 <p>Todos os dados são armazenados na pasta <code class="docutils literal notranslate"><span class="pre">data</span></code>. Cada subpasta dentro de <code class="docutils literal notranslate"><span class="pre">data</span></code> armazena dados em diferentes estágios.</p>
-<p><img alt="config" src="../_images/06-data.png" /></p>
+<p><img alt="config" src="../_images/02-1-data.png" /></p>
 <p>Todos os modelos são salvos na pasta <code class="docutils literal notranslate"><span class="pre">model</span></code>.</p>
 <p>Sabendo que o <em>git</em> não é uma ferramenta propícia para versionamento de dados e arquivos binários (modelos), vamos usar o DVC - Data Version Control - para controlar o versionamento de nossos dados e modelos.</p>
 <p>Começamos especificando as etapas no arquivo <code class="docutils literal notranslate"><span class="pre">dvc.yaml</span></code>. Cada etapa representa um processamento específico de dados, incluindo a entrada (<code class="docutils literal notranslate"><span class="pre">deps</span></code>) e a saída (<code class="docutils literal notranslate"><span class="pre">outs</span></code>).</p>
@@ -754,7 +754,7 @@ make setup
 </pre></div>
 </div>
 <p>Fato interessante é que o DVC pula as etapas que não foram modificadas, e roda somente as etapas que foram alteradas, economizando tempo no processo de modelagem.</p>
-<p><img alt="dvc_repro" src="../_images/03-dvc_repro.gif" /></p>
+<p><img alt="dvc_repro" src="../_images/02-1-dvc_repro.gif" /></p>
 </section>
 <section id="armazenando-seus-dados-de-forma-remota">
 <h2><span class="section-number">2.1.8. </span>Armazenando seus dados de forma remota<a class="headerlink" href="#armazenando-seus-dados-de-forma-remota" title="Permalink to this headline">#</a></h2>
@@ -785,7 +785,7 @@ git push origin &lt;BRANCH&gt;
 </ul>
 <p>No entanto, pode ser muito entediante e propenso a erro checar todos esses critérios antes de commitar o código. Para isso, contamos com a ferramenta <strong>pre-commit</strong>, que permite identificar estes detalhes antes de commitar o código.</p>
 <p>Você consegue adicionar diferentes plugins ao seu pipeline do pre-commit. Uma vez que você commitou, todo o projeto passará por estas checagens. Caso alguma delas falhe, nenhum código será commitado.</p>
-<p><img alt="pre-commit_fluxograma" src="../_images/07-pre-commit_fluxograma.png" /></p>
+<p><img alt="pre-commit_fluxograma" src="../_images/02-1-pre-commit_fluxograma.png" /></p>
 <p>Neste template, usamos 5 diferentes plugins, especificados em <code class="docutils literal notranslate"><span class="pre">.pre-commit-config.yaml</span></code>. São eles:</p>
 <ul class="simple">
 <li><p><a class="reference external" href="https://black.readthedocs.io/en/stable/">black</a> - formata os scripts Python.</p></li>
@@ -799,7 +799,7 @@ git push origin &lt;BRANCH&gt;
 </pre></div>
 </div>
 <p>A partir de agora, quando você der um <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">commit</span></code>, seu código passará por todas as verificações e correções, de forma automática.</p>
-<p><img alt="pre-commit_fluxograma" src="../_images/05-pre-commit.gif" /></p>
+<p><img alt="pre-commit_fluxograma" src="../_images/02-1-pre-commit.gif" /></p>
 <p>Vamos aprofundar em maiores detalhes sobre pre-commit na seção sobre formatação de código.</p>
 </section>
 <section id="adicionando-a-documentacao-da-api">

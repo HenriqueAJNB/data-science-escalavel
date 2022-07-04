@@ -586,7 +586,7 @@ title="Print to PDF"
 
 <span class="k">def</span> <span class="nf">test_extract_sentiment</span><span class="p">():</span>
 
-    <span class="c1"># Tradução: Eu acredito que hoje será um grande dia (nota¹)</span>
+    <span class="c1"># Tradução: Eu acredito que hoje será um grande dia</span>
     <span class="n">text</span> <span class="o">=</span> <span class="s2">&quot;I think today will be a great day&quot;</span>
 
     <span class="n">sentiment</span> <span class="o">=</span> <span class="n">extract_sentiment</span><span class="p">(</span><span class="n">text</span><span class="p">)</span>
@@ -595,7 +595,7 @@ title="Print to PDF"
 </pre></div>
 </div>
 <div class="note admonition">
-<p class="admonition-title">Nota¹</p>
+<p class="admonition-title">Nota</p>
 <p>Até o momento da tradução deste livro, a biblioteca <code class="docutils literal notranslate"><span class="pre">textblob</span></code> não apresenta suporte à língua portuguesa.</p>
 </div>
 <p>Dentro da função de teste, nós usamos a função <code class="docutils literal notranslate"><span class="pre">extract_sentiment</span></code> em uma frase de exemplo: “I think today will be a great day”, que em português significa “Eu acredito que hoje será um grande dia”. Nós, então, usamos um <code class="docutils literal notranslate"><span class="pre">assert</span> <span class="pre">sentiment</span> <span class="pre">&gt;</span> <span class="pre">0</span></code> para garantir que aquele sentimento é positivo, pois esta é nossa expectativa.</p>
