@@ -9,8 +9,7 @@
 
 É importante estruturar o seu projeto de ciência de dados baseado em algum padrão para que seus colegas de trabalho consigam facilmente manter e modificar o projeto.
 
-![](https://i.ibb.co/1TLnVc5/template.png)
-
+![estrutura_projeto](../images/02-1-estrutura_projeto.png)
 
 Mas qual tipo de padrão você deve seguir? Não seria ideal se pudéssemos criar uma estrutura a partir de um modelo padrão (template)?
 
@@ -39,11 +38,11 @@ cookiecutter https://github.com/khuyentran1401/data-science-template
 - Autor
 - Versão compatível do Python
 
-![cookiecutter_template](../gifs/01-cookiecutter_template.gif)
+![cookiecutter_template](../gifs/02-1-cookiecutter_template.gif)
 
 Neste momento uma pasta com o nome fornecido acima será criada, e ela terá a seguinte estrutura:
 
-![estrutura](../images/02-cookiecutter_template.png)
+![estrutura](../images/02-1-cookiecutter_template.png)
 
 
 As ferramentas usadas nesse template são:
@@ -140,13 +139,13 @@ make activate
 make setup
 ```
 
-![make](../gifs/02-make.gif)
+![make](../gifs/02-1-make.gif)
 
 ### Código e testes
 
 Todos os scripts Python são armazenados dentro da pasta `src`
 
-![estrutura_pastas1](../images/03-estrutura_pastas1.png)
+![estrutura_pastas1](../images/02-1-estrutura_pastas1.png)
 
 > **Comentário a parte do livro original:**
 >
@@ -154,13 +153,13 @@ Todos os scripts Python são armazenados dentro da pasta `src`
 
 Todos os arquivos de testes estão armazenados na pasta `tests`. Ela deve ser um espelho da pasta `src` onde cada arquivo começa com o nome `test` seguido do nome do arquivo sendo testado.
 
-![estrutura_pastas2](../images/04-estrutura_pastas2.png)
+![estrutura_pastas2](../images/02-1-estrutura_pastas2.png)
 
 ### Gerenciando arquivos de configurações com hydra
 
 Um arquivo de configurações armazena todos os valores em um único arquivo, a fim de deixá-los separados e não escrevê-los diretamente no código. Neste template, todos os arquivos de configuração são armazenados na pasta `config`.
 
-![config](../images/05-config.png)
+![config](../images/02-1-config.png)
 
 [Hydra](https://hydra.cc/docs/intro/) é um pacote da linguagem Python que permite acessar os parâmetros de configuração dos arquivos dentro de um script Python.
 
@@ -210,7 +209,7 @@ Vamos aprofundar em maiores detalhes na seção sobre configurações.
 
 Todos os dados são armazenados na pasta `data`. Cada subpasta dentro de `data` armazena dados em diferentes estágios.
 
-![config](../images/06-data.png)
+![config](../images/02-1-data.png)
 
 Todos os modelos são salvos na pasta `model`.
 
@@ -254,7 +253,7 @@ dvc repro
 
 Fato interessante é que o DVC pula as etapas que não foram modificadas, e roda somente as etapas que foram alteradas, economizando tempo no processo de modelagem.
 
-![dvc_repro](../gifs/03-dvc_repro.gif)
+![dvc_repro](../gifs/02-1-dvc_repro.gif)
 
 ### Armazenando seus dados de forma remota
 
@@ -290,7 +289,7 @@ No entanto, pode ser muito entediante e propenso a erro checar todos esses crit�
 
 Você consegue adicionar diferentes plugins ao seu pipeline do pre-commit. Uma vez que você commitou, todo o projeto passará por estas checagens. Caso alguma delas falhe, nenhum código será commitado.
 
-![pre-commit_fluxograma](../images/07-pre-commit_fluxograma.png)
+![pre-commit_fluxograma](../images/02-1-pre-commit_fluxograma.png)
 
 Neste template, usamos 5 diferentes plugins, especificados em `.pre-commit-config.yaml`. São eles:
 
@@ -308,7 +307,7 @@ pre-commit install
 
 A partir de agora, quando você der um `git commit`, seu código passará por todas as verificações e correções, de forma automática.
 
-![pre-commit_fluxograma](../gifs/05-pre-commit.gif)
+![pre-commit_fluxograma](../gifs/02-1-pre-commit.gif)
 
 Vamos aprofundar em maiores detalhes sobre pre-commit na seção sobre formatação de código.
 
