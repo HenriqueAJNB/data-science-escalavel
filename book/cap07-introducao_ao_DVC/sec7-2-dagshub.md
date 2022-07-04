@@ -189,6 +189,57 @@ Também defino o URI de rastreamento para ser o URL encontrado em MLflow Trackin
 
 Ser capaz de registrar seus experimentos MLflow em um servidor remoto como o DagsHub em vez de um banco de dados local permitirá que seus colegas de equipe tenham acesso aos seus experimentos no navegador.
 
+#### 7.2.4.2. Registre os seus Experimentos com DagsHub Logger
+
+Depois de encontrar um bom experimento e estiver pronto para registrar o código, os dados e as saídas (outputs) desse experimento, basta alternar o MLFlow para o DagsHub logger.
+
+Para usar o DagsHub logger, comece instalando o DagsHub:
+
+```bash
+pip install dagshub
+```
+
+Registrar seus experimentos com o DagsHub logger é muito similar a registrar com o MLFlow:
+
+```Python
+from dagshub import DAGsHubLogger
+
+# intialize DagsHub logger
+logger = DAGsHubLogger
+
+# log parameters
+logger.log_hyperparams({"model_class": type(model).__name__})
+logger.log_hyperparams({"model": model.get_params()})
+
+# log metrics
+logger.log_metrics(
+        {
+            "k_best": k_best,
+            "score_best": elbow.elbow_score_,
+        }
+    )
+```
+
+Depois de executar seu código, o DagsHub criará automaticamente dois `metrics.csv` e `params.yml` em seu diretório de trabalho:
+
+```
+.
+├── metrics.csv
+└── params.yml
+```
+
+Adicione todas as alterações à área de teste, confirme e envie essas alterações para o GitHub:
+
+```bash
+git add .
+git commit -m 'experiment 1'
+git push origin master
+```
+
+Agora, o novo experimento será registrado com o Git na guia Experiment.
+
+<!-- imagem - ![alt text](./images/image-tbd.png "Title") -->
+
 #### 7.2.4.3. Utilize tanto MLflow quanto DagsHub Logger ao mesmo tempo
 
 Embora seja útil alternar entre o MLflow e DagsHub logger, achei inconveniente reescrever meu código toda vez que quero alternar para outro registrador.
@@ -273,7 +324,7 @@ Melhor ainda, o DagsHub fornece uma interface agradável para comparar dois note
 
 Como os cientistas de dados trabalham muito com o Jupyter Notebook, é útil poder comparar as saídas de dois notebooks.
 
-### 7.2.7. Bonus Tip: Criar um pipeline DVC
+### 7.2.7. Dica Bonus: Criar um pipeline DVC
 
 Às vezes, você pode querer que outras pessoas entendam o fluxo de trabalho do seu projeto (ou seja, como as saídas de um script são usadas para outro script). O DagsHub permite que você crie a visualização do seu fluxo de trabalho de dados por meio do pipeline DVC.
 
