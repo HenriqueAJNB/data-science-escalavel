@@ -1,0 +1,884 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>7.3. 4 plugins pré-commit para automatizar a revisão e formatação de código em Python &#8212; Construindo uma solução robusta e escalável em ciência de dados</title>
+    
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=62ba249389abaaa9ffc34bf36a076bdc1d65ee18" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
+    
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=f31d14ad54b65d19161ba51d4ffff3a77ae00456"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-QFTP5KWB8R"></script>
+<script>
+                    window.dataLayer = window.dataLayer || [];
+                    function gtag(){ dataLayer.push(arguments); }
+                    gtag('js', new Date());
+                    gtag('config', 'G-QFTP5KWB8R');
+                </script>
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../_static/00-hb_logo.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">Construindo uma solução robusta e escalável em ciência de dados</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../README.html">
+                    Construindo uma solução robusta e escalável em ciência de dados
+                </a>
+            </li>
+        </ul>
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../cap01-como_ler_este_livro.html">
+   1. Como ler este livro
+  </a>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../cap02-estrutura_projeto/sec2-0-estrutura_projeto.html">
+   2. Estrutura do projeto
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../cap02-estrutura_projeto/sec2-1-introducao.html">
+     2.1. Como estruturar seu projeto de ciência de dados para aumentar a legibilidade e transparência
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../cap02-estrutura_projeto/sec2-2-melhores_praticas_funcoes.html">
+     2.2. Boas práticas na escrita de funções
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../cap03-testes_unitarios/sec3-0-testando_codigo.html">
+   3. Testando o código
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../cap03-testes_unitarios/sec3-1-pytest.html">
+     3.1. Pytest para cientista de dados
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../cap03-testes_unitarios/sec3-2-dicas_pytest.html">
+     3.2. Quatro dicas úteis para o pytest
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../cap04-testando_dados/sec4-0-introducao.html">
+   4. Testando os dados
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <label for="toctree-checkbox-3">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../cap04-testando_dados/sec4-1-great_expectations.html">
+     4.1. Great Expectations: saiba sempre o que esperar dos seus dados
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../cap04-testando_dados/sec4-2-pandera.html">
+     4.2. Valide Seu Pandas DataFrame com Pandera
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../cap04-testando_dados/sec4-3-schema.html">
+     4.3. Introdução ao Schema: Uma Biblioteca Python para Validar seus Dados
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../cap05-construir_pipelines/sec5-0-construir_pipelines.html">
+   5. Construir Pipelines
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+  <label for="toctree-checkbox-4">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../cap05-construir_pipelines/sec5-1-prefect.html">
+     5.1. Orquestre um projeto de ciência de dados em Python com Prefect
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../cap06-acompanhamento_de_experimentos/sec6-0-acompanhamento_de_experimentos.html">
+   6. Acompanhamento de experimentos
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
+  <label for="toctree-checkbox-5">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../cap06-acompanhamento_de_experimentos/sec6-1-hydra.html">
+     6.1. Configure seus projetos de ciência de dados com Hydra
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+    </div>
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
+            
+            <div class="navbar_extra_footer">
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+            </div>
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+<div class="menu-dropdown menu-dropdown-repository-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Source repositories">
+      <i class="fab fa-github"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://github.com/HenriqueAJNB/data-science-escalavel"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Source repository"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="headerbtn__text-container">repository</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://github.com/HenriqueAJNB/data-science-escalavel/issues/new?title=Issue%20on%20page%20%2Fcap07-introducao_ao_DVC/sec7-3-pre_commit_plugins.html&body=Your%20issue%20content%20here."
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Open an issue"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="headerbtn__text-container">open issue</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="../_sources/cap07-introducao_ao_DVC/sec7-3-pre_commit_plugins.md"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.md</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#motivacao">
+   7.3.1. Motivação
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#o-que-e-pre-commit">
+   7.3.2. O que é pré-commit?
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#black">
+   7.3.3. black
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#flake8">
+   7.3.4. flake8
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#isort">
+   7.3.5. isort
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#interrogate">
+   7.3.6. interrogate
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#etapa-final-adicionar-pre-commit-ao-git-hooks">
+   7.3.7. Etapa Final — Adicionar pre-commit ao Git Hooks
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#commit">
+   7.3.8. Commit
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#pular-verificacao">
+   7.3.9. Pular verificação
+  </a>
+ </li>
+</ul>
+
+    </nav>
+</div>
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>7.3. 4 plugins pré-commit para automatizar a revisão e formatação de código em Python</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#motivacao">
+   7.3.1. Motivação
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#o-que-e-pre-commit">
+   7.3.2. O que é pré-commit?
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#black">
+   7.3.3. black
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#flake8">
+   7.3.4. flake8
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#isort">
+   7.3.5. isort
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#interrogate">
+   7.3.6. interrogate
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#etapa-final-adicionar-pre-commit-ao-git-hooks">
+   7.3.7. Etapa Final — Adicionar pre-commit ao Git Hooks
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#commit">
+   7.3.8. Commit
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#pular-verificacao">
+   7.3.9. Pular verificação
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
+              <div>
+                
+  <section id="plugins-pre-commit-para-automatizar-a-revisao-e-formatacao-de-codigo-em-python">
+<h1>7.3. 4 plugins pré-commit para automatizar a revisão e formatação de código em Python<a class="headerlink" href="#plugins-pre-commit-para-automatizar-a-revisao-e-formatacao-de-codigo-em-python" title="Permalink to this headline">#</a></h1>
+<section id="motivacao">
+<h2>7.3.1. Motivação<a class="headerlink" href="#motivacao" title="Permalink to this headline">#</a></h2>
+<p>Ao enviar seu código Python para o Git, você precisa ter certeza de que seu código:</p>
+<ul class="simple">
+<li><p>parece legal</p></li>
+<li><p>está organizado</p></li>
+<li><p>está em conformidade com o guia de estilo PEP 8</p></li>
+<li><p>inclui docstrings</p></li>
+</ul>
+<p>No entanto, pode ser difícil verificar todos esses critérios antes de confirmar seu código. Não seria legal se você pudesse verificar e formatar automaticamente seu código toda vez que você confirmasse um novo código como abaixo?</p>
+<!-- imagem - ![alt text](./images/image-tbd.png "Title") -->
+<p>É aí que o pré-commit é útil. Nesta seção, você aprenderá o que é pré-commit e quais plugins você pode adicionar a um pipeline de pré-commit.</p>
+</section>
+<section id="o-que-e-pre-commit">
+<h2>7.3.2. O que é pré-commit?<a class="headerlink" href="#o-que-e-pre-commit" title="Permalink to this headline">#</a></h2>
+<p>pre-commit é uma estrutura que permite identificar problemas simples em seu código antes de confirmá-lo.</p>
+<p>Você pode adicionar plugins diferentes ao seu pipeline de pré-commit. Depois que seus arquivos forem confirmados, eles serão verificados por esses plugins. A menos que todas as verificações sejam aprovadas, nenhum código será confirmado.</p>
+<!-- imagem - ![alt text](./images/image-tbd.png "Title") -->
+<p>Para instalar o pré-commit, digite:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip install pre-commit
+</pre></div>
+</div>
+<p>Legal! Agora vamos adicionar alguns plugins úteis ao nosso pipeline de pre-commit.</p>
+</section>
+<section id="black">
+<h2>7.3.3. black<a class="headerlink" href="#black" title="Permalink to this headline">#</a></h2>
+<!-- video - https://www.youtube.com/watch?v=fcRC07RJUGI&feature=emb_imp_woyt -->
+<p><a class="reference external" href="https://black.readthedocs.io/en/stable/">black</a> é um formatador de código em Python.</p>
+<p>Para instalar o black, digite:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip install black
+</pre></div>
+</div>
+<p>Agora, para ver o que o black pode fazer, escreveremos uma função muito longa, como abaixo. Como há mais de 79 caracteres na primeira linha de código, isso viola o PEP 8.</p>
+<p>Vamos tentar formatar o código usando black:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ black long_function.py
+</pre></div>
+</div>
+<p>E o código é formatado automaticamente como abaixo!</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">very_long_function</span><span class="p">(</span>
+    <span class="n">long_variable_name</span><span class="p">,</span>
+    <span class="n">long_variable_name2</span><span class="p">,</span>
+    <span class="n">long_variable_name3</span><span class="p">,</span>
+    <span class="n">long_variable_name4</span><span class="p">,</span>
+    <span class="n">long_variable_name5</span><span class="p">,</span>
+<span class="p">):</span>
+    <span class="k">pass</span>
+</pre></div>
+</div>
+<p>Para adicionar o black a um pipeline de pré-confirmação, crie um arquivo chamado <code class="docutils literal notranslate"><span class="pre">.pre-commit-config.yaml</span></code> e insira o seguinte código no arquivo:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">repos</span><span class="p">:</span><span class="w"></span>
+<span class="p p-Indicator">-</span><span class="w">   </span><span class="nt">repo</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://github.com/ambv/black</span><span class="w"></span>
+<span class="w">    </span><span class="nt">rev</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">20.8b1</span><span class="w"></span>
+<span class="w">    </span><span class="nt">hooks</span><span class="p">:</span><span class="w"></span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">id</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">black</span><span class="w"></span>
+</pre></div>
+</div>
+<p>Para escolher quais arquivos incluir e excluir ao executar o black, crie um arquivo chamado <code class="docutils literal notranslate"><span class="pre">pyproject.toml</span></code> e adicione o seguinte código ao arquivo <code class="docutils literal notranslate"><span class="pre">pyproject.toml</span></code>:</p>
+<div class="highlight-toml notranslate"><div class="highlight"><pre><span></span>[tool.black]
+line-length = 79
+include = &#39;\.pyi?$&#39;
+exclude = &#39;&#39;&#39;
+/(
+	\.git
+| \.hg
+| \.mypy_cache
+| \.tox
+| \.venv
+| _build
+| buck-out
+| build   
+)/ 
+</pre></div>
+</div>
+</section>
+<section id="flake8">
+<h2>7.3.4. flake8<a class="headerlink" href="#flake8" title="Permalink to this headline">#</a></h2>
+<p>flake8 é uma ferramenta python que verifica o estilo e a qualidade do seu código Python. Ele verifica vários problemas não cobertos pelo preto.</p>
+<p>Para instalar o flake8, digite:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip install flake8
+</pre></div>
+</div>
+<p>Para ver o que o flake8 faz, vamos escrever um código que viole algumas diretrizes do PEP 8.</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">very_long_function_name</span><span class="p">(</span><span class="n">var1</span><span class="p">,</span> <span class="n">var2</span><span class="p">,</span> <span class="n">var3</span><span class="p">,</span>
+<span class="n">var4</span><span class="p">,</span> <span class="n">var5</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">var1</span><span class="p">,</span> <span class="n">var2</span><span class="p">,</span> <span class="n">var3</span><span class="p">,</span> <span class="n">var4</span><span class="p">,</span> <span class="n">var5</span><span class="p">)</span>
+
+<span class="n">very_long_function_name</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Em seguida, verifique o código usando flake8:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ flake8 flake_example.py
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">flake8_example</span><span class="o">.</span><span class="n">py</span><span class="p">:</span><span class="mi">2</span><span class="p">:</span><span class="mi">1</span><span class="p">:</span> <span class="n">E128</span> <span class="n">continuation</span> <span class="n">line</span> <span class="n">under</span><span class="o">-</span><span class="n">indented</span> <span class="k">for</span> <span class="n">visual</span> <span class="n">indent</span>
+<span class="n">flake8_example</span><span class="o">.</span><span class="n">py</span><span class="p">:</span><span class="mi">5</span><span class="p">:</span><span class="mi">1</span><span class="p">:</span> <span class="n">E305</span> <span class="n">expected</span> <span class="mi">2</span> <span class="n">blank</span> <span class="n">lines</span> <span class="n">after</span> <span class="k">class</span> <span class="nc">or</span> <span class="n">function</span> <span class="n">definition</span><span class="p">,</span> <span class="n">found</span> <span class="mi">1</span>
+<span class="n">flake8_example</span><span class="o">.</span><span class="n">py</span><span class="p">:</span><span class="mi">5</span><span class="p">:</span><span class="mi">39</span><span class="p">:</span> <span class="n">W292</span> <span class="n">no</span> <span class="n">newline</span> <span class="n">at</span> <span class="n">end</span> <span class="n">of</span> <span class="n">file</span>
+</pre></div>
+</div>
+<p>Ah! flake8 detecta 3 erros de formatação PEP 8. Podemos usar esses erros como diretrizes para corrigir o código.</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">very_long_function_name</span><span class="p">(</span><span class="n">var1</span><span class="p">,</span> <span class="n">var2</span><span class="p">,</span> <span class="n">var3</span><span class="p">,</span> <span class="n">var4</span><span class="p">,</span> <span class="n">var5</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">var1</span><span class="p">,</span> <span class="n">var2</span><span class="p">,</span> <span class="n">var3</span><span class="p">,</span> <span class="n">var4</span><span class="p">,</span> <span class="n">var5</span><span class="p">)</span>
+
+<span class="n">very_long_function_name</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>O código parece muito melhor agora!</p>
+<p>Para adicionar flake8 ao pipeline de pré-confirmação, insira o seguinte código no arquivo <code class="docutils literal notranslate"><span class="pre">.pre-commit-config.yaml</span></code>:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="p p-Indicator">-</span><span class="w">   </span><span class="nt">repo</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://gitlab.com/pycqa/flake8</span><span class="w"></span>
+<span class="w">    </span><span class="nt">rev</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">3.8.4</span><span class="w"></span>
+<span class="w">    </span><span class="nt">hooks</span><span class="p">:</span><span class="w"></span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">id</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">flake8</span><span class="w"></span>
+</pre></div>
+</div>
+<p>Para escolher quais erros ignorar ou editar outras configurações, crie um arquivo chamado <code class="docutils literal notranslate"><span class="pre">.flake8</span></code> e adicione o seguinte código ao arquivo <code class="docutils literal notranslate"><span class="pre">.flake8</span></code>:</p>
+<div class="highlight-flake8 notranslate"><div class="highlight"><pre><span></span>[flake8]
+ignore = E203, E266, E501, W503, F403, F401
+max-line-length = 79
+max-complexity = 18
+select = B,C,E,F,W,T4,B9
+</pre></div>
+</div>
+</section>
+<section id="isort">
+<h2>7.3.5. isort<a class="headerlink" href="#isort" title="Permalink to this headline">#</a></h2>
+<p><a class="reference external" href="https://github.com/PyCQA/isort">isort</a> é uma biblioteca Python que classifica automaticamente as bibliotecas importadas em ordem alfabética e as separa em seções e tipos.</p>
+<p>Para instalar o isort, digite:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip install isort
+</pre></div>
+</div>
+<p>Vamos tentar usar isort para classificar importações confusas como abaixo:</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span> 
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span> 
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">from</span> <span class="nn">flake8_example</span> <span class="kn">import</span> <span class="n">very_long_function_name</span>
+<span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">train_test_split</span>
+<span class="kn">from</span> <span class="nn">sklearn.linear_model</span> <span class="kn">import</span> <span class="n">LogisticRegression</span><span class="p">,</span> <span class="n">OrderedLogisticRegression</span><span class="p">,</span> \
+    <span class="n">LinearRegression</span><span class="p">,</span> <span class="n">LogisticRegressionCV</span><span class="p">,</span> <span class="n">LinearRegressionCV</span> 
+</pre></div>
+</div>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ isort isort_example.py
+</pre></div>
+</div>
+<p>Resultado:</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">from</span> <span class="nn">flake8_example</span> <span class="kn">import</span> <span class="n">very_long_function_name</span>
+<span class="kn">from</span> <span class="nn">sklearn.linear_model</span> <span class="kn">import</span> <span class="p">(</span>
+    <span class="n">LinearRegression</span><span class="p">,</span>
+    <span class="n">LinearRegressionCV</span><span class="p">,</span>
+    <span class="n">LogisticRegression</span><span class="p">,</span>
+    <span class="n">LogisticRegressionCV</span><span class="p">,</span>
+    <span class="n">OrderedLogisticRegression</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">train_test_split</span>
+</pre></div>
+</div>
+<p>Legal! As importações estão muito mais organizadas agora.</p>
+<p>Para adicionar isort ao pipeline de pré-confirmação, adicione o seguinte código ao arquivo <code class="docutils literal notranslate"><span class="pre">.pre-commit-config.yaml</span></code>:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="p p-Indicator">-</span><span class="w">   </span><span class="nt">repo</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://github.com/timothycrosley/isort</span><span class="w"></span>
+<span class="w">    </span><span class="nt">rev</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">5.7.0</span><span class="w"></span>
+<span class="w">    </span><span class="nt">hooks</span><span class="p">:</span><span class="w"></span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w">   </span><span class="nt">id</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">isort</span><span class="w"></span>
+</pre></div>
+</div>
+</section>
+<section id="interrogate">
+<h2>7.3.6. interrogate<a class="headerlink" href="#interrogate" title="Permalink to this headline">#</a></h2>
+<!-- video - https://www.youtube.com/watch?v=fcRC07RJUGI&feature=emb_imp_woyt -->
+<p><a class="reference external" href="https://www.youtube.com/watch?v=m3WDafkpbpM&amp;feature=emb_imp_woyt">interrogate</a> verifica sua base de código em busca de docstrings ausentes.</p>
+<p>Para instalar o interrogate, digite:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip install interrogate
+</pre></div>
+</div>
+<p>Às vezes, podemos esquecer de escrever docstrings para classes e funções como abaixo:</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">MathOperation</span><span class="p">:</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">num</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">num</span> <span class="o">=</span> <span class="n">num</span> 
+
+    <span class="k">def</span> <span class="nf">plus_two</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">num</span> <span class="o">+</span> <span class="mi">2</span>
+
+    <span class="k">def</span> <span class="nf">multiply_three</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">num</span> <span class="o">*</span> <span class="mi">3</span>
+</pre></div>
+</div>
+<p>Em vez de olhar manualmente para todas as nossas funções e classes em busca de docstrings ausentes, podemos executar o interrogate:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ interrogate -vv interrogate_example.py
+</pre></div>
+</div>
+<p>Resultado (output):</p>
+<!-- imagem - ![alt text](./images/image-tbd.png "Title") -->
+<p>Legal! A partir da saída do terminal, sabemos quais arquivos, classes e funções não possuem docstrings. Como sabemos os locais das docstrings ausentes, é fácil adicioná-las.</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="sd">&quot;&quot;&quot;Example for interrogate&quot;&quot;&quot;</span>
+
+<span class="k">class</span> <span class="nc">MathOperation</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;Perform math operation&quot;&quot;&quot;</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">num</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">num</span> <span class="o">=</span> <span class="n">num</span> 
+
+    <span class="k">def</span> <span class="nf">plus_two</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Add 2&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">num</span> <span class="o">+</span> <span class="mi">2</span>
+
+    <span class="k">def</span> <span class="nf">multiply_three</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Multiply by 3&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">num</span> <span class="o">*</span> <span class="mi">3</span>
+</pre></div>
+</div>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ interrogate -vv interrogate_example.py
+</pre></div>
+</div>
+<!-- imagem - ![alt text](./images/image-tbd.png "Title") -->
+<p>A docstring para o método <code class="docutils literal notranslate"><span class="pre">__init__</span></code> está ausente, mas não é necessária. Podemos dizer ao interrogate para ignorar o método <code class="docutils literal notranslate"><span class="pre">__init__</span></code> adicionando <code class="docutils literal notranslate"><span class="pre">-i</span></code> ao argumento:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ interrogate -vv -i interrogate_example.py
+</pre></div>
+</div>
+<!-- imagem - ![alt text](./images/image-tbd.png "Title") -->
+<p>Legal! Para adicionar interrogação ao pipeline de pré-confirmação, insira o seguinte código no arquivo <code class="docutils literal notranslate"><span class="pre">.pre-commit-config.yaml</span></code>:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">repo</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://github.com/econchick/interrogate</span><span class="w"></span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">rev</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1.4.0</span><span class="w">  </span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">hooks</span><span class="p p-Indicator">:</span><span class="w"></span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">id</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">interrogate</span><span class="w"></span>
+<span class="w">        </span><span class="nt">args</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">--vv</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">-i</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">--fail-under=80</span><span class="p p-Indicator">]</span><span class="w"></span>
+</pre></div>
+</div>
+<p>Para editar as configurações padrão do interrogate, insira o seguinte código no arquivo <code class="docutils literal notranslate"><span class="pre">pyproject.toml</span></code>:</p>
+<div class="highlight-toml notranslate"><div class="highlight"><pre><span></span><span class="k">[tool.interrogate]</span><span class="w"></span>
+<span class="n">ignore-init-method</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span><span class="w"></span>
+<span class="n">ignore-init-module</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">false</span><span class="w"></span>
+<span class="n">ignore-magic</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">false</span><span class="w"></span>
+<span class="n">ignore-semiprivate</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">false</span><span class="w"></span>
+<span class="n">ignore-private</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">false</span><span class="w"></span>
+<span class="n">ignore-property-decorators</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">false</span><span class="w"></span>
+<span class="n">ignore-module</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span><span class="w"></span>
+<span class="n">ignore-nested-functions</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">false</span><span class="w"></span>
+<span class="n">ignore-nested-classes</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span><span class="w"></span>
+<span class="n">ignore-setters</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">false</span><span class="w"></span>
+<span class="n">fail-under</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">95</span><span class="w"></span>
+<span class="n">exclude</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s">&quot;setup.py&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;docs&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;build&quot;</span><span class="p">]</span><span class="w"></span>
+<span class="n">ignore-regex</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s">&quot;^get$&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;^mock_.*&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;.*BaseClass.*&quot;</span><span class="p">]</span><span class="w"></span>
+<span class="n">verbose</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="w"></span>
+<span class="n">quiet</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">false</span><span class="w"></span>
+<span class="n">whitelist-regex</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[]</span><span class="w"></span>
+<span class="n">color</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span><span class="w"></span>
+<span class="n">generate-badge</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;.&quot;</span><span class="w"></span>
+<span class="n">badge-format</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;svg&quot;</span><span class="w"></span>
+</pre></div>
+</div>
+</section>
+<section id="etapa-final-adicionar-pre-commit-ao-git-hooks">
+<h2>7.3.7. Etapa Final — Adicionar pre-commit ao Git Hooks<a class="headerlink" href="#etapa-final-adicionar-pre-commit-ao-git-hooks" title="Permalink to this headline">#</a></h2>
+<!-- video - https://www.youtube.com/watch?v=1Q1VOIrQ9GA&feature=emb_imp_woyt -->
+<p>O código final em seu arquivo <code class="docutils literal notranslate"><span class="pre">.pre-commit-config.yaml</span></code> deve ter a seguinte aparência:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">repos</span><span class="p">:</span><span class="w"></span>
+<span class="p p-Indicator">-</span><span class="w">   </span><span class="nt">repo</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://github.com/ambv/black</span><span class="w"></span>
+<span class="w">    </span><span class="nt">rev</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">20.8b1</span><span class="w"></span>
+<span class="w">    </span><span class="nt">hooks</span><span class="p">:</span><span class="w"></span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">id</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">black</span><span class="w"></span>
+<span class="p p-Indicator">-</span><span class="w">   </span><span class="nt">repo</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://gitlab.com/pycqa/flake8</span><span class="w"></span>
+<span class="w">    </span><span class="nt">rev</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">3.8.4</span><span class="w"></span>
+<span class="w">    </span><span class="nt">hooks</span><span class="p">:</span><span class="w"></span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">id</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">flake8</span><span class="w"></span>
+<span class="p p-Indicator">-</span><span class="w">   </span><span class="nt">repo</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://github.com/timothycrosley/isort</span><span class="w"></span>
+<span class="w">    </span><span class="nt">rev</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">5.7.0</span><span class="w"></span>
+<span class="w">    </span><span class="nt">hooks</span><span class="p">:</span><span class="w"></span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w">   </span><span class="nt">id</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">isort</span><span class="w"></span>
+<span class="p p-Indicator">-</span><span class="w">   </span><span class="nt">repo</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://github.com/econchick/interrogate</span><span class="w"></span>
+<span class="w">    </span><span class="nt">rev</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1.4.0</span><span class="w">  </span>
+<span class="w">    </span><span class="nt">hooks</span><span class="p">:</span><span class="w"></span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">id</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">interrogate</span><span class="w"></span>
+<span class="w">      </span><span class="nt">args</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">-vv</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">-i</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">--fail-under=80</span><span class="p p-Indicator">]</span><span class="w"></span>
+</pre></div>
+</div>
+<p>Para adicionar o pre-commit ao git hooks, digite:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ pre-commit install
+</pre></div>
+</div>
+<p>Resultado (output):</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pre-commit installed at .git/hooks/pre-commit
+</pre></div>
+</div>
+</section>
+<section id="commit">
+<h2>7.3.8. Commit<a class="headerlink" href="#commit" title="Permalink to this headline">#</a></h2>
+<p>Agora estamos prontos para dar o commit do novo código!</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ git commit -m <span class="s1">&#39;add pre-commit examples&#39;</span>
+</pre></div>
+</div>
+<p>E você deve ver algo como abaixo:</p>
+<!-- imagem - ![alt text](./images/image-tbd.png "Title") -->
+</section>
+<section id="pular-verificacao">
+<h2>7.3.9. Pular verificação<a class="headerlink" href="#pular-verificacao" title="Permalink to this headline">#</a></h2>
+<p>Para evitar que o pré-commit verifique um determinado commit, adicione –no-verify ao git commit:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ git commit -m <span class="s1">&#39;add pre-commit examples&#39;</span> --no-verify
+</pre></div>
+</div>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./cap07-introducao_ao_DVC"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+</div>
+            </footer>
+        </div>
+    </div>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By Henrique Branco<br/>
+  
+      &copy; Copyright 2022.<br/>
+</p>
+        </footer>
+    </div>
+    
+</div>
+
+
+      </div>
+    </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
+
+  </body>
+</html>
