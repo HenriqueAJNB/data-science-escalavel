@@ -4,23 +4,23 @@
 
 Great Expectations é uma biblioteca referência de Python que permite você validar, documentar e checar dados para garantir que eles estão conforme esperado.
 
-Great Expectations passa por uma lista de checagem para garantir que os dados passem por todos os testes antes de serem utilizados.
+O Great Expectations passa por uma lista de checagem para garantir que os dados passem por todos os testes antes de serem utilizados.
 
-![ge_checks](../images/09-ge_checks.png)
+![ge_verificacoes](../images/04-1-1-verificacao.png)
 
 Há inúmeras ferramentas disponíveis que permitem criar validações para os dados. Porém, a autora afirma gostar do Great Expectations pelos seguintes motivos:
 
-- **Cria automaticamente um pipeline de testes para os dados:** criar um pipeline de testes compreensivos para os dados pode ser uma tarefa árdua. Great Expectations elimina essa complexidade sugerindo alguns testes baseado nas características da própria base de dados.
+- **Cria automaticamente um pipeline de testes para os dados:** criar um pipeline de testes compreensivos para os dados pode ser uma tarefa árdua. O Great Expectations elimina essa complexidade sugerindo alguns testes baseado nas características da própria base de dados.
 
-![ge_database](../images/09-ge_database.png)
+![ge_banco_de_dados](../images/04-1-1-banco_dados.png)
 
 - **Cria suas validações e configura a sua fonte de dados através de Jupyter Notebooks:** Para algumas pessoas pode ser difícil criar validações de dados usando arquivos JSON. Great Expectations facilita a criação destas validações usando Jupyter Notebooks!
 
-- **Cria uma documentação de dados:** Great Expectations também cria uma documentação de fácil leitura que permite entender os dados e as validações de forma eficiente.
+- **Cria uma documentação de dados:** O Great Expectations também cria uma documentação de fácil leitura que permite entender os dados e as validações eficientemente.
 
 ![](https://miro.medium.com/max/1000/1*UygLmtl_SBwaxWainKQ7ZQ.gif)
 
-- **Possui integração simples com ferramentas que usam DAG:** Great Expections integra facilmente com ferramentas baseadas em DAG como o [Apache Airflow](https://airflow.apache.org/), [dbt](https://www.getdbt.com/), [Prefect](https://www.prefect.io/), [Dagster](https://github.com/dagster-io/dagster), [Kedro](https://github.com/quantumblacklabs/kedro), dentre outras.
+- **Possui integração simples com ferramentas que usam DAG:** O Great Expections se integra facilmente com ferramentas baseadas em DAG como o [Apache Airflow](https://airflow.apache.org/), [dbt](https://www.getdbt.com/), [Prefect](https://www.prefect.io/), [Dagster](https://github.com/dagster-io/dagster), [Kedro](https://github.com/quantumblacklabs/kedro), dentre outras.
 
 Nesta seção: 
 - Será apresentada uma introdução ao Great Expectations.
@@ -35,7 +35,7 @@ pip install great_expectations
 
 #### Criando um contexto de dados (Data Context)
 
-O chamado contexto de dados, ou Data Context em inglês, gerencia a configuração do seu projeto. Para criar um novo Data Context usando a API versão V3, rode:
+O chamado contexto de dados, ou Data Context em inglês, gerencia a configuração do seu projeto. Para criar um Data Context usando a API versão 3, rode:
 
 ```bash
 $ great_expectations --v3-api init
@@ -43,42 +43,35 @@ $ great_expectations --v3-api init
 
 E um novo diretório com o conteúdo da imagem abaixo será gerado no seu diretório atual!
 
-![ge_folder_structure](../images/09-ge_folder_structure.png)
+![ge_estrutura_das_pastas](../images/04-1-2-estrutura_pastas.png)
 
-Abaixo uma explicação de cada um destes diretórios e arquivos:
+Abaixo há uma explicação de cada um destes diretórios e arquivos:
 
-- O arquivo `great_expectations.yml` contém as principais configurações da implementação atual.
-- O diretório `expectations` armazena todas as validações como arquivos JSON.
-- O diretório `plugins` armazena os códigos para quaisquer plugins que possam eventualmente existir.
-- O diretório `uncommited` contém arquivos que não deveriam estar no controle de versionamento
+- O arquivo `great_expectations.yml` contém as principais configurações da implementação atual;
+- O diretório `expectations` armazena todas as validações como arquivos JSON;
+- O diretório `plugins` armazena os códigos para quaisquer plugins que possam eventualmente existir;
+- O diretório `uncommited` contém arquivos que não deveriam estar no controle de versionamento.
 
 #### Fluxo do Great Expectations
 
-O Great Expectations geralmente inclui 3 etapas: conectar à base de dados, criar as validações e validar os dados.
+O Great Expectations geralmente inclui 3 etapas: conectar à base de dados, criar as validações e validar os dados:
 
-![ge_steps](../images/09-ge_steps.png)
+![ge_passos](../images/04-1-2-2-passos.png)
 
 Nas seções seguintes serão abordadas cada uma destas etapas.
 
 ### Conectando à base de dados
 
-![ge_steps1](../images/09-ge_step1.png)
+![ge_passo1](../images/04-1-3-passo1.png)
 
-```{admonition} Link inexistente
-:class: attention
+Como demonstração, optou-se por dividir o dataset [advertising dataset](https://www.kaggle.com/datasets/joaovitorsilva/advertising-dataset), baixado do Kaggle , em dois datasets: `first_data.csv` e `second_data.csv`, nos quais:
 
-No momento da tradução deste livro, o link do dataset usado pela autora original não existe mais. 
+- `first_data.csv` contém dados de janeiro de 2016 a abril de 2016;
+- `second_data.csv` contém dados de maio de 2016 a julho de 2016.
 
-Como consequência, o autor da tradução buscou por um novo conjunto de dados e separou-o da mesma forma como feito no livro em inglês. Porém, o dataset é diferente, levanto à divergências significativas, que precisaram ser adaptadas, em relação ao livro original.
+Estes datasets estão armazenados no diretório `data`.
 
-```
-
-Como demonstração, optou-se por dividir o dataset [Air Quality Data Set](https://archive.ics.uci.edu/ml/datasets/Air+Quality), cuja origem é a plataforma UCI Machine Learning , em dois datasets: `first_data.csv` e `second_data.csv`, nos quais:
-
-- `first_data.csv` contém dados de 2004.
-- `second_data.csv` contém dados de 2005.
-
-Ambos os datasets estão no diretório `data`. O dataset original é o `AirQualityUCI.csv`, encontrado no diretório raiz do projeto, e foi quebrado em ambos os datasets acima utilizando o script `scripts/split_data_ge.py`.
+![ge_diretorio_data](../images/04-1-3-diretorio_data.png)
 
 Para conectar à fonte de dados, rode:
 
@@ -86,25 +79,29 @@ Para conectar à fonte de dados, rode:
 $ great_expectations --v3-api datasource new
 ```
 
-![great_expectations_connection](../images/04-01-1-great_expectations_connection.png)
+E você será perguntado sobre como quer configurar sua conexão:
 
-Há a possibilidade de conectar o Great Expectations à arquivos locais ou à um banco de dados. Aqui foi feita as seguintes escolhas:
+![ge_conexao](../images/04-1-3-conexao.png)
 
-- Conectar à arquivos no nosso sistema operacional.
-- processar os dados com o framework Pandas.
-- especificar `data` como o diretório que contém os datasets que o Great Expectations irá considerar para análise.
+Há a possibilidade de conectar o Great Expectations a arquivos locais ou a um banco de dados. Aqui foi feita as seguintes escolhas:
 
-Depois de responder a todas estas perguntas, um Jupyter Notebook será aberto de forma automática! Este Notebook permite configurar a nova fonte de dados, Datasource. Este Datasource dirá ao Great Expectations onde estão os dados e como se conectar à eles.
+- Conectar a arquivos no nosso sistema operacional;
+- processar os dados com o framework Pandas;
+- especificar o diretório `data` como o que contém os datasets que o Great Expectations irá considerar para análise.
+
+Após responder a estas perguntas, um Jupyter Notebook será aberto de forma automática! Este notebook permite configurar a nova fonte de dados, Datasource. Este Datasource dirá ao Great Expectations onde estão os dados e como se conectar a eles.
+
+![](https://miro.medium.com/max/1000/1*ZCLbZdGW7B9_y8ABLdEjfQ.gif)
 
 Por padrão, o Great Expectations cria o Jupyter Notebook no seguinte caminho: `great_expectations/uncommitted/datasource_new.ipynb`
 
-Neste notebook, é possível especificar o nome do Datasource editando o valor da variável `datasource-name`.
+Neste notebook, é possível especificar o nome do Datasource editando o valor da variável `datasource-name`:
 
 ```python
 datasource_name = "first_data"
 ```
 
-O trecho de código abaixo permite criar e customizar as configurações no Datasource.
+O trecho de código abaixo permite criar e customizar as configurações no Datasource:
 
 ```python
 example_yaml = f"""
@@ -135,15 +132,15 @@ Por exemplo, como `first_data` e `second_data` estão no diretório `data`, a cl
 context.test_yaml_config(yaml_config=example_yaml)
 ```
 
-```
+```python
 Available data_asset_names (2 of 2):   
     first_data.csv (1 of 1): ['first_data.csv']   
     second_data.csv (1 of 1): ['second_data.csv']
 ```
 
-Depois de executar todas as células do Notebook, as configurações do Datasource serão adicionadas ao `great_expectations.yml`!
+Após executar todas as células do notebook, a configuração do seu Datasource será adicionada ao `great_expectations.yml`!
 
-[Neste link](https://docs.greatexpectations.io/docs/guides/connecting_to_your_data/index) é possível ver outras formas de conectar à outras fontes.
+[Neste link](https://legacy.docs.greatexpectations.io/en/latest/guides/how_to_guides/configuring_datasources.html) é possível ver outras formas de conectar a outras fontes.
 
 ### Criando a primeira validação
 
