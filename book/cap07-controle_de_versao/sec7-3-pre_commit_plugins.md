@@ -1,6 +1,6 @@
-## 7.3. 4 plugins pré-commit para automatizar a revisão e formatação de código em Python
+## 4 plugins pré-commit para automatizar a revisão e formatação de código em Python
 
-### 7.3.1. Motivação
+### Motivação
 
 Ao enviar seu código Python para o Git, você precisa ter certeza de que seu código:
 
@@ -15,7 +15,7 @@ No entanto, pode ser difícil verificar todos esses critérios antes de confirma
 
 É aí que o pré-commit é útil. Nesta seção, você aprenderá o que é pré-commit e quais plugins você pode adicionar a um pipeline de pré-commit.
 
-### 7.3.2. O que é pré-commit?
+### O que é pré-commit?
 
 pre-commit é uma estrutura que permite identificar problemas simples em seu código antes de confirmá-lo.
 
@@ -31,7 +31,7 @@ pip install pre-commit
 
 Legal! Agora vamos adicionar alguns plugins úteis ao nosso pipeline de pre-commit.
 
-### 7.3.3. black
+### black
 
 <!-- video - https://www.youtube.com/watch?v=fcRC07RJUGI&feature=emb_imp_woyt -->
 
@@ -93,7 +93,7 @@ exclude = '''
 )/ 
 ```
 
-### 7.3.4. flake8
+### flake8
 
 flake8 é uma ferramenta python que verifica o estilo e a qualidade do seu código Python. Ele verifica vários problemas não cobertos pelo preto.
 
@@ -155,7 +155,7 @@ max-complexity = 18
 select = B,C,E,F,W,T4,B9
 ```
 
-### 7.3.5. isort
+### isort
 
 [isort](https://github.com/PyCQA/isort) é uma biblioteca Python que classifica automaticamente as bibliotecas importadas em ordem alfabética e as separa em seções e tipos.
 
@@ -207,7 +207,7 @@ Para adicionar isort ao pipeline de pré-confirmação, adicione o seguinte cód
     -   id: isort
 ```
 
-### 7.3.6. interrogate
+### interrogate
 
 <!-- video - https://www.youtube.com/watch?v=fcRC07RJUGI&feature=emb_imp_woyt -->
 
@@ -309,7 +309,7 @@ generate-badge = "."
 badge-format = "svg"
 ```
 
-### 7.3.7. Etapa Final — Adicionar pre-commit ao Git Hooks
+### Etapa Final — Adicionar pre-commit ao Git Hooks
 
 <!-- video - https://www.youtube.com/watch?v=1Q1VOIrQ9GA&feature=emb_imp_woyt -->
 
@@ -348,7 +348,7 @@ Resultado (output):
 pre-commit installed at .git/hooks/pre-commit
 ```
 
-### 7.3.8. Commit
+### Commit
 
 Agora estamos prontos para dar o commit do novo código!
 
@@ -360,7 +360,7 @@ E você deve ver algo como abaixo:
 
 <!-- imagem - ![alt text](./images/image-tbd.png "Title") -->
 
-### 7.3.9. Pular verificação
+### Pular verificação
 
 Para evitar que o pré-commit verifique um determinado commit, adicione --no-verify ao git commit:
 

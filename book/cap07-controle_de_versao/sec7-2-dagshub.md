@@ -1,6 +1,6 @@
-## 7.2. DagsHub: um Suplemento de Github para Cientistas de Dados e Engenheiros de Aprendizado de Máquina
+## DagsHub: um Suplemento de Github para Cientistas de Dados e Engenheiros de Aprendizado de Máquina
 
-### 7.2.1. Motivação
+### Motivação
 
 Como um cientista de dados, você pode querer versionar seu código, modelo, dados, parâmetros e métricas para que possa reproduzir um determinado experimento.
 
@@ -17,7 +17,7 @@ O GitHub é uma ótima plataforma para controle de versão do seu código, mas n
 
 Não seria bom se houvesse uma plataforma semelhante ao GitHub, mas mais otimizada para Cientistas de Dados e Engenheiros de Aprendizado de Máquina? É aí que o DagsHub é útil.
 
-### 7.2.2. O que é DagsHub?
+### O que é DagsHub?
 
 O [DagsHub](https://dagshub.com/) é uma plataforma para cientistas de dados e engenheiros de aprendizado de máquina criarem versões de seus dados, modelos, experimentos e códigos.
 
@@ -41,7 +41,7 @@ A interface do seu novo repositório no DagsHub deve se parecer bastante com a i
 
 Você pode conferir o repositório acima [aqui](https://dagshub.com/khuyentran1401/dagshub-demo). Vamos explorar algumas funcionalidades do DagsHub.
 
-### 7.2.3. Versione o seu Dado e Código
+### Versione o seu Dado e Código
 
 Suponha que você tenha uma cópia local do seu repositório GitHub em sua máquina, utilizaremos DVC para versionar seus dados binários.
 
@@ -124,7 +124,7 @@ Isso é bastante conveniente, pois posso analisar o código e os dados em uma me
 
 <!-- imagem - ![alt text](./images/image-tbd.png "Title") -->
 
-### 7.2.4. Rastreie Experimentos
+### Rastreie Experimentos
 
 Bibliotecas como MLFlow permitem que cientistas de dados acompanhem seus experimentos junto com modelos e parâmetros. No entanto, eles não rastreiam o código.
 
@@ -140,7 +140,7 @@ Isso pode ser feito facilmente com o DagsHub. O DagsHub permite que você regist
 
 Vamos aprender como registrar seu experimento com cada um desses métodos.
 
-#### 7.2.4.1. Registre seus experimentos com MLFlow
+#### Registre seus experimentos com MLFlow
 
 O [MLflow](https://www.mlflow.org/) é uma plataforma de código aberto que permite rastrear e comparar experimentos. Para instalar o MLflow, digite:
 
@@ -189,7 +189,7 @@ Também defino o URI de rastreamento para ser o URL encontrado em MLflow Trackin
 
 Ser capaz de registrar seus experimentos MLflow em um servidor remoto como o DagsHub em vez de um banco de dados local permitirá que seus colegas de equipe tenham acesso aos seus experimentos no navegador.
 
-#### 7.2.4.2. Registre os seus Experimentos com DagsHub Logger
+#### Registre os seus Experimentos com DagsHub Logger
 
 Depois de encontrar um bom experimento e estiver pronto para registrar o código, os dados e as saídas (outputs) desse experimento, basta alternar o MLFlow para o DagsHub logger.
 
@@ -240,7 +240,7 @@ Agora, o novo experimento será registrado com o Git na guia Experiment.
 
 <!-- imagem - ![alt text](./images/image-tbd.png "Title") -->
 
-#### 7.2.4.3. Utilize tanto MLflow quanto DagsHub Logger ao mesmo tempo
+#### Utilize tanto MLflow quanto DagsHub Logger ao mesmo tempo
 
 Embora seja útil alternar entre o MLflow e DagsHub logger, achei inconveniente reescrever meu código toda vez que quero alternar para outro registrador.
 
@@ -286,7 +286,7 @@ with mlflow.start_run():
       )
 ```
 
-### 7.2.5. Compare entre experiementos MLflow
+### Compare entre experiementos MLflow
 
 Para comparar entre dois ou mais experimentos, marque as caixas dos experimentos que deseja comparar e clique em Comparar (Compare).
 
@@ -300,7 +300,7 @@ DagsHub também cria automaticamente gráficos como gráficos de coordenadas par
 
 <!-- imagem - ![alt text](./images/image-tbd.png "Title") -->
 
-### 7.2.6. Compare entre experimentos Git
+### Compare entre experimentos Git
 
 Para comparar a diferença de arquivos entre dois experimentos do Git, copie seus IDs de confirmação na guia Experimentos (Experiments):
 
@@ -324,7 +324,7 @@ Melhor ainda, o DagsHub fornece uma interface agradável para comparar dois note
 
 Como os cientistas de dados trabalham muito com o Jupyter Notebook, é útil poder comparar as saídas de dois notebooks.
 
-### 7.2.7. Dica Bonus: Criar um pipeline DVC
+### Dica Bonus: Criar um pipeline DVC
 
 Às vezes, você pode querer que outras pessoas entendam o fluxo de trabalho do seu projeto (ou seja, como as saídas de um script são usadas para outro script). O DagsHub permite que você crie a visualização do seu fluxo de trabalho de dados por meio do pipeline DVC.
 

@@ -1,13 +1,13 @@
 [![View the code](https://img.shields.io/badge/GitHub-Visualizar_codigo-blue?logo=GitHub)](https://github.com/HenriqueAJNB/data-science-escalavel/tree/main/book)
 
 
-## 7.1. Introdução ao DVC: Controle de Versionamento de Dados para Projetos de Aprendizado de Máquina
+## Introdução ao DVC: Controle de Versionamento de Dados para Projetos de Aprendizado de Máquina
 
 <div style="text-align: justify">
 
 <!---figura "Photo by Franki Chamaki on Unsplash" -->
 
-### 7.1.1. Motivação
+### Motivação
 
 Git é uma ferramenta poderosa para controle de versão. Ele permite que você vá e volte entre diferentes versões do seu código sem ter medo de perder o código que você alterou. Como cientista de dados, você pode não apenas querer controlar diferentes versões de seu código, mas também controlar diferentes versões de seus dados pelo mesmo motivo: você não quer perder os dados anteriores quando os dados são alterados.
 
@@ -19,7 +19,7 @@ Mas o Git não é ideal para controle de versão de banco de dados por dois moti
 
 Não seria bom se você pudesse armazenar seus dados em seu serviço de armazenamento favorito, tal como Amazon S3, Google Drive, Google Cloud Storage ou em sua própria máquina local, enquanto ainda fosse capaz de alternar entre diferentes versões dos dados? É aí que o DVC te dá uma mão.
 
-### 7.1.2. O que é DVC?
+### O que é DVC?
 
 DVC é um sistema para controle de versionamento de dados. É essencialmente como o Git, mas é utilizado para dados. Com o DVC, você pode manter as informações sobre diferentes versões de seus dados no Git enquanto armazena seus dados originais em outro lugar.
 
@@ -35,7 +35,7 @@ pip install dvc
 
 Encontre as instruções sobre mais formas de instalar o DVC [aqui](https://dvc.org/doc/install).
 
-### 7.1.3. Iniciar
+### Iniciar
 
 Após a instalação do DVC, `em um projeto Git`, inicialize-o executando
 
@@ -78,7 +78,7 @@ git add data.dvc
 git commit -m "add data"
 ```
 
-### 7.1.4. Armazenando os dados remotamente
+### Armazenando os dados remotamente
 
 
 Legal! Agora nós criamos um arquivo para armazenar as informações sobre os dados originais. O próximo passo é descobrir onde armazenar os dados.
@@ -127,7 +127,7 @@ Para enviar a mudança que fizemos até agora para nosso repositório remoto, di
 ```bash
 git push origin <branch>
 ```
-### 7.1.5. Acesse os dados
+### Acesse os dados
 
 Seus dados estão armazenados em algum lugar seguro. Mas agora você ou seus colegas de equipe querem acessar os dados, o que você ou seus colegas devem fazer?
 
@@ -143,7 +143,7 @@ para extrair os dados do armazenamento remoto. É isto!
 
 Se você estiver seguindo o tutorial e ainda tiver o repositório de dados em sua máquina local, exclua-o para ver como o dvc pull pode recuperar seus dados do repositório remoto.
 
-### 7.1.6. Faça alterações
+### Faça alterações
 
 Para fazer alterações, utilize
 
@@ -156,7 +156,7 @@ git push origin <branch>
 
 É direto, não?
 
-### 7.1.7. Alternar entre diferentes versões
+### Alternar entre diferentes versões
 
 O ponto principal de se utilizar o DVC é que podemos alternar entre diferentes versões de nossos dados. Então, como exatamente podemos fazer isso? Novamente, assim como alternamos entre diferentes versões de nosso código com o Git, use dvc checkout para alternar entre diferentes versões de nossos dados.
 
