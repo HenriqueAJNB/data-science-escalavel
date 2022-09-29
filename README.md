@@ -35,11 +35,11 @@
   - [x] Sec3.1 - pytest ([HenriqueAJNB](https://github.com/HenriqueAJNB))
   - [x] Sec3.2 - dicas de pytest ([HenriqueAJNB](https://github.com/HenriqueAJNB))
 
-- [x] Cap04 - testando dados ([HenriqueAJNB](https://github.com/HenriqueAJNB))
+- [x] Cap04 - testando dados ([HenriqueAJNB](https://github.com/HenriqueAJNB), [gurezende](https://github.com/gurezende))
   - [x] Sec4.0 - introdução ([HenriqueAJNB](https://github.com/HenriqueAJNB))
   - [ ] Sec4.1 - great_expectations ([HenriqueAJNB](https://github.com/HenriqueAJNB))
-  - [ ] Sec4.2 - pandera ([gurezende](https://github.com/gurezende))
-  - [ ] Sec4.3 - schema
+  - [x] Sec4.2 - pandera ([gurezende](https://github.com/gurezende))
+  - [x] Sec4.3 - schema ([gurezende](https://github.com/gurezende))
 
 - [x] Cap05 - orquestrando pipelines ([LevyPy](https://github.com/LevyPy))
   - [x] Sec5.0 - introdução ([LevyPy](https://github.com/LevyPy))
@@ -49,14 +49,15 @@
   - [x] Sec6.1 - hydra ([LevyPy](https://github.com/LevyPy))
   - [ ] Sec6.2 - wandb (em aberto)
 
-- [ ] Cap07 - controle de versionamento (em aberto)
+- [x] Cap07 - controle de versionamento ([arturovaine](https://github.com/arturovaine))
   - [x] Sec7.1 - DVC ([arturovaine](https://github.com/arturovaine))
-  - [ ] Sec7.2 - DagsHub (em aberto)
-  - [ ] Sec7.3 - plugin do pre-commit (em aberto)
+  - [x] Sec7.2 - DagsHub ([arturovaine](https://github.com/arturovaine))
+  - [x] Sec7.3 - plugin do pre-commit ([arturovaine](https://github.com/arturovaine))
 
-- [ ] Cap08 - Deploy de modelos (em aberto)
-  - [ ] Sec8.0 - introdução (em aberto)
-  - [ ] Sec8.1 - BentoML (em aberto)
+- [ ] Cap08 - Deploy de modelos ([diascarolina](https://github.com/diascarolina))
+  - [x] Sec8.0 - introdução ([diascarolina](https://github.com/diascarolina))
+  - [x] Sec8.1 - BentoML ([diascarolina](https://github.com/diascarolina))
+  - [ ] Sec8.2 - Github Actions em MLOps (em aberto)
 
 ## Contributors ✨
 
