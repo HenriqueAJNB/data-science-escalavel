@@ -11,11 +11,11 @@ chapters:
   sections:
   - file: cap02-estrutura_projeto/sec2-1-introducao.md
   - file: cap02-estrutura_projeto/sec2-2-melhores_praticas_funcoes.md
-- file: cap03-testes_unitarios/sec3-0-testando_codigo.ipynb
+- file: cap03-testes_unitarios/sec3-0-testes_unitarios.ipynb
   sections:
   - file: cap03-testes_unitarios/sec3-1-pytest.ipynb
   - file: cap03-testes_unitarios/sec3-2-dicas_pytest.md
-- file: cap04-testando_dados/sec4-0-introducao.md
+- file: cap04-testando_dados/sec4-0-testando_dados.md
   sections:
   - file: cap04-testando_dados/sec4-1-great_expectations.md
   - file: cap04-testando_dados/sec4-2-pandera.md
@@ -26,3 +26,11 @@ chapters:
 - file: cap06-acompanhamento_de_experimentos/sec6-0-acompanhamento_de_experimentos.md
   sections:
   - file: cap06-acompanhamento_de_experimentos/sec6-1-hydra.ipynb
+- file: cap07-controle_de_versao/sec7-0-controle_de_versao.md
+  sections:
+  - file: cap07-controle_de_versao/sec7-1-introducao_ao_DVC.md
+  - file: cap07-controle_de_versao/sec7-2-dagshub.md
+  - file: cap07-controle_de_versao/sec7-3-pre_commit_plugins.md
+- file: cap08-deploy_de_modelos/sec8-0-deploy_de_modelos.md
+  sections:
+  - file: cap08-deploy_de_modelos/sec8-1-bentoml.md
