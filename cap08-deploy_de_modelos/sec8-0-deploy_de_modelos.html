@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>Deploy de Modelos &#8212; Construindo uma solução robusta e escalável em ciência de dados</title>
+    <title>8. Deploy de Modelos &#8212; Construindo uma solução robusta e escalável em ciência de dados</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -52,6 +52,8 @@ const thebe_selector_output = ".output, .cell_output"
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="8.1. BentoML: Crie um Serviço de Predição Baseado em ML em Minutos" href="sec8-1-bentoml.html" />
+    <link rel="prev" title="7.3. 4 plugins pré-commit para automatizar a revisão e formatação de código em Python" href="../cap07-controle_de_versao/sec7-3-pre_commit_plugins.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -119,7 +121,7 @@ const thebe_selector_output = ".output, .cell_output"
                 </a>
             </li>
         </ul>
-        <ul class="nav bd-sidenav">
+        <ul class="current nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="../cap01-como_ler_este_livro.html">
    1. Como ler este livro
@@ -148,7 +150,7 @@ const thebe_selector_output = ".output, .cell_output"
   </ul>
  </li>
  <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../cap03-testes_unitarios/sec3-0-testando_codigo.html">
+  <a class="reference internal" href="../cap03-testes_unitarios/sec3-0-testes_unitarios.html">
    3. Testando o código
   </a>
   <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
@@ -170,7 +172,7 @@ const thebe_selector_output = ".output, .cell_output"
   </ul>
  </li>
  <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../cap04-testando_dados/sec4-0-introducao.html">
+  <a class="reference internal" href="../cap04-testando_dados/sec4-0-testando_dados.html">
    4. Testando os dados
   </a>
   <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
@@ -226,6 +228,50 @@ const thebe_selector_output = ".output, .cell_output"
    <li class="toctree-l2">
     <a class="reference internal" href="../cap06-acompanhamento_de_experimentos/sec6-1-hydra.html">
      6.1. Configure seus projetos de ciência de dados com Hydra
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../cap07-controle_de_versao/sec7-0-controle_de_versao.html">
+   7. Controle de Versão
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
+  <label for="toctree-checkbox-6">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../cap07-controle_de_versao/sec7-1-introducao_ao_DVC.html">
+     7.1. Introdução ao DVC: Controle de Versionamento de Dados para Projetos de Aprendizado de Máquina
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../cap07-controle_de_versao/sec7-2-dagshub.html">
+     7.2. DagsHub: um Suplemento de Github para Cientistas de Dados e Engenheiros de Aprendizado de Máquina
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../cap07-controle_de_versao/sec7-3-pre_commit_plugins.html">
+     7.3. 4 plugins pré-commit para automatizar a revisão e formatação de código em Python
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 current active has-children">
+  <a class="current reference internal" href="#">
+   8. Deploy de Modelos
+  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/>
+  <label for="toctree-checkbox-7">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="sec8-1-bentoml.html">
+     8.1. BentoML: Crie um Serviço de Predição Baseado em ML em Minutos
     </a>
    </li>
   </ul>
@@ -410,11 +456,13 @@ title="Print to PDF"
               <div>
                 
   <section class="tex2jax_ignore mathjax_ignore" id="deploy-de-modelos">
-<h1>Deploy de Modelos<a class="headerlink" href="#deploy-de-modelos" title="Permalink to this headline">#</a></h1>
+<h1><span class="section-number">8. </span>Deploy de Modelos<a class="headerlink" href="#deploy-de-modelos" title="Permalink to this headline">#</a></h1>
 <p>Você acabou de construir um modelo de machine learning para prever a qual grupo um cliente pertence. O modelo parece fazer um bom trabalho em segmentar seus clientes. Você decide entregar esse modelo para os membros da sua equipe para que eles possam desenvolver uma aplicação web em cima dele.</p>
 <p><img alt="" src="https://miro.medium.com/max/700/1*pxPlfd5nl8I8N8tnj0WieQ.png" /></p>
 <p>Mas espera aí, como você irá entregar esse modelo para os membros da sua equipe? Não seria ótimo se os membros da sua equipe pudessem <strong>usar seu modelo sem precisar configurar nenhum ambiente nem bagunçar seu código</strong>?</p>
 <p>Nesse capítulo, você irá aprender métodos e ferramentas para realizar o deploy dos seus modelos de ML facilmente.</p>
+<div class="toctree-wrapper compound">
+</div>
 </section>
 
     <script type="text/x-thebe-config">
@@ -444,6 +492,20 @@ title="Print to PDF"
                 
     <!-- Previous / next buttons -->
 <div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="../cap07-controle_de_versao/sec7-3-pre_commit_plugins.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title"><span class="section-number">7.3. </span>4 plugins pré-commit para automatizar a revisão e formatação de código em Python</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="sec8-1-bentoml.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><span class="section-number">8.1. </span>BentoML: Crie um Serviço de Predição Baseado em ML em Minutos</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
 </div>
             </footer>
         </div>

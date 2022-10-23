@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>BentoML: Crie um Serviço de Predição Baseado em ML em Minutos &#8212; Construindo uma solução robusta e escalável em ciência de dados</title>
+    <title>8.1. BentoML: Crie um Serviço de Predição Baseado em ML em Minutos &#8212; Construindo uma solução robusta e escalável em ciência de dados</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -52,6 +52,7 @@ const thebe_selector_output = ".output, .cell_output"
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
+    <link rel="prev" title="8. Deploy de Modelos" href="sec8-0-deploy_de_modelos.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -119,7 +120,7 @@ const thebe_selector_output = ".output, .cell_output"
                 </a>
             </li>
         </ul>
-        <ul class="nav bd-sidenav">
+        <ul class="current nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="../cap01-como_ler_este_livro.html">
    1. Como ler este livro
@@ -148,7 +149,7 @@ const thebe_selector_output = ".output, .cell_output"
   </ul>
  </li>
  <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../cap03-testes_unitarios/sec3-0-testando_codigo.html">
+  <a class="reference internal" href="../cap03-testes_unitarios/sec3-0-testes_unitarios.html">
    3. Testando o código
   </a>
   <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
@@ -170,7 +171,7 @@ const thebe_selector_output = ".output, .cell_output"
   </ul>
  </li>
  <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../cap04-testando_dados/sec4-0-introducao.html">
+  <a class="reference internal" href="../cap04-testando_dados/sec4-0-testando_dados.html">
    4. Testando os dados
   </a>
   <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
@@ -226,6 +227,50 @@ const thebe_selector_output = ".output, .cell_output"
    <li class="toctree-l2">
     <a class="reference internal" href="../cap06-acompanhamento_de_experimentos/sec6-1-hydra.html">
      6.1. Configure seus projetos de ciência de dados com Hydra
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../cap07-controle_de_versao/sec7-0-controle_de_versao.html">
+   7. Controle de Versão
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
+  <label for="toctree-checkbox-6">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../cap07-controle_de_versao/sec7-1-introducao_ao_DVC.html">
+     7.1. Introdução ao DVC: Controle de Versionamento de Dados para Projetos de Aprendizado de Máquina
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../cap07-controle_de_versao/sec7-2-dagshub.html">
+     7.2. DagsHub: um Suplemento de Github para Cientistas de Dados e Engenheiros de Aprendizado de Máquina
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../cap07-controle_de_versao/sec7-3-pre_commit_plugins.html">
+     7.3. 4 plugins pré-commit para automatizar a revisão e formatação de código em Python
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="sec8-0-deploy_de_modelos.html">
+   8. Deploy de Modelos
+  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/>
+  <label for="toctree-checkbox-7">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     8.1. BentoML: Crie um Serviço de Predição Baseado em ML em Minutos
     </a>
    </li>
   </ul>
@@ -409,42 +454,42 @@ title="Print to PDF"
         <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#o-que-e-o-bentoml">
-   O que é o BentoML?
+   8.1.1. O que é o BentoML?
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#processar-os-dados">
-   Processar os Dados
+   8.1.2. Processar os Dados
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#salvar-os-modelos">
-   Salvar os Modelos
+   8.1.3. Salvar os Modelos
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#criar-os-servicos">
-   Criar os Serviços
+   8.1.4. Criar os Serviços
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#criar-um-modelo-de-dados-com-pydantic">
-   Criar um Modelo de Dados com pydantic
+   8.1.5. Criar um Modelo de Dados com pydantic
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#construir-bentos">
-   Construir Bentos
+   8.1.6. Construir Bentos
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#deploy-no-heroku">
-   Deploy no Heroku
+   8.1.7. Deploy no Heroku
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#construir-uma-ui-para-seu-servico-utilizando-streamlit">
-   Construir Uma UI Para Seu Serviço Utilizando Streamlit
+   8.1.8. Construir Uma UI Para Seu Serviço Utilizando Streamlit
   </a>
  </li>
 </ul>
@@ -468,42 +513,42 @@ title="Print to PDF"
                             <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#o-que-e-o-bentoml">
-   O que é o BentoML?
+   8.1.1. O que é o BentoML?
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#processar-os-dados">
-   Processar os Dados
+   8.1.2. Processar os Dados
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#salvar-os-modelos">
-   Salvar os Modelos
+   8.1.3. Salvar os Modelos
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#criar-os-servicos">
-   Criar os Serviços
+   8.1.4. Criar os Serviços
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#criar-um-modelo-de-dados-com-pydantic">
-   Criar um Modelo de Dados com pydantic
+   8.1.5. Criar um Modelo de Dados com pydantic
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#construir-bentos">
-   Construir Bentos
+   8.1.6. Construir Bentos
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#deploy-no-heroku">
-   Deploy no Heroku
+   8.1.7. Deploy no Heroku
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#construir-uma-ui-para-seu-servico-utilizando-streamlit">
-   Construir Uma UI Para Seu Serviço Utilizando Streamlit
+   8.1.8. Construir Uma UI Para Seu Serviço Utilizando Streamlit
   </a>
  </li>
 </ul>
@@ -518,9 +563,9 @@ title="Print to PDF"
                 
   <p><a class="reference external" href="https://github.com/HenriqueAJNB/data-science-escalavel/tree/main/book"><img alt="View the code" src="https://img.shields.io/badge/GitHub-Visualizar_codigo-blue?logo=GitHub" /></a></p>
 <section id="bentoml-crie-um-servico-de-predicao-baseado-em-ml-em-minutos">
-<h1>BentoML: Crie um Serviço de Predição Baseado em ML em Minutos<a class="headerlink" href="#bentoml-crie-um-servico-de-predicao-baseado-em-ml-em-minutos" title="Permalink to this headline">#</a></h1>
+<h1><span class="section-number">8.1. </span>BentoML: Crie um Serviço de Predição Baseado em ML em Minutos<a class="headerlink" href="#bentoml-crie-um-servico-de-predicao-baseado-em-ml-em-minutos" title="Permalink to this headline">#</a></h1>
 <section id="o-que-e-o-bentoml">
-<h2>O que é o BentoML?<a class="headerlink" href="#o-que-e-o-bentoml" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">8.1.1. </span>O que é o BentoML?<a class="headerlink" href="#o-que-e-o-bentoml" title="Permalink to this headline">#</a></h2>
 <p><a class="reference external" href="https://github.com/bentoml/BentoML">BentoML</a> é uma biblioteca open-source do Python que permite que os usuários criem um serviço de predição baseado em machine learning em minutos, o que ajudar a diminuir a distância entre a ciência de dados e DevOps.</p>
 <p>Para utilizar a versão da BentoML que será usada nessa seção, digite:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip install <span class="nv">bentoml</span><span class="o">==</span><span class="m">1</span>.0.0a4
@@ -529,7 +574,7 @@ title="Print to PDF"
 <p>Para entender como a BentoML funciona, iremos usá-la para servir um modelo de segmentação de novos clientes baseado em suas personalidades.</p>
 </section>
 <section id="processar-os-dados">
-<h2>Processar os Dados<a class="headerlink" href="#processar-os-dados" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">8.1.2. </span>Processar os Dados<a class="headerlink" href="#processar-os-dados" title="Permalink to this headline">#</a></h2>
 <p>Comece baixando o dataset <a class="reference external" href="https://www.kaggle.com/imakash3011/customer-personality-analysis">Customer Personality Analysis (Análise de Personalidade de Clientes)</a> do Kaggle. A seguir, iremos processar os dados.</p>
 <p>Como iremos utilizar o <code class="docutils literal notranslate"><span class="pre">StandardScalar</span></code> e o <code class="docutils literal notranslate"><span class="pre">PCA</span></code> para processar novos dados mais adiante, vamos salvar esses transformadores do scikit-learn em arquivos pickle na pasta <code class="docutils literal notranslate"><span class="pre">processors</span></code>.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span> 
@@ -556,7 +601,7 @@ title="Print to PDF"
 <p><em>O código completo para ler e processar os dados pode ser encontrado</em> <a class="reference external" href="https://github.com/khuyentran1401/customer_segmentation/blob/bentoml_demo/src/process_data.py"><em>aqui</em></a><em>.</em></p>
 </section>
 <section id="salvar-os-modelos">
-<h2>Salvar os Modelos<a class="headerlink" href="#salvar-os-modelos" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">8.1.3. </span>Salvar os Modelos<a class="headerlink" href="#salvar-os-modelos" title="Permalink to this headline">#</a></h2>
 <p>A seguir, vamos treinar o modelo <code class="docutils literal notranslate"><span class="pre">KMeans</span></code> no conjunto de dados processado e salvar o modelo na loja de modelos locais da BentoML.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.cluster</span> <span class="kn">import</span> <span class="n">KMeans</span>
 <span class="kn">import</span> <span class="nn">bentoml.sklearn</span>
@@ -591,7 +636,7 @@ customer_segmentation_kmeans:o2ztyneoqsnwswyg  bentoml.sklearn  /home/khuyen/ben
 <p><em>O código completo para treinar e salvar o modelo pode ser encontrado</em> <a class="reference external" href="https://github.com/khuyentran1401/customer_segmentation/blob/bentoml_demo/src/segment.py"><em>aqui</em></a><em>.</em></p>
 </section>
 <section id="criar-os-servicos">
-<h2>Criar os Serviços<a class="headerlink" href="#criar-os-servicos" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">8.1.4. </span>Criar os Serviços<a class="headerlink" href="#criar-os-servicos" title="Permalink to this headline">#</a></h2>
 <p>Agora que temos o modelo, vamos carregar o último modelo de segmentação de clientes e criar um serviço com ele em <code class="docutils literal notranslate"><span class="pre">bentoml_app_pandas.py</span></code>:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">bentoml</span>
 <span class="kn">import</span> <span class="nn">bentoml.sklearn</span>
@@ -655,7 +700,7 @@ customer_segmentation_kmeans:o2ztyneoqsnwswyg  bentoml.sklearn  /home/khuyen/ben
 <p><img alt="" src="https://miro.medium.com/max/700/1*yoa7BCkJjjr9IuwUzW85-Q.gif" /></p>
 </section>
 <section id="criar-um-modelo-de-dados-com-pydantic">
-<h2>Criar um Modelo de Dados com pydantic<a class="headerlink" href="#criar-um-modelo-de-dados-com-pydantic" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">8.1.5. </span>Criar um Modelo de Dados com pydantic<a class="headerlink" href="#criar-um-modelo-de-dados-com-pydantic" title="Permalink to this headline">#</a></h2>
 <p>Para termos certeza que os usuários insiram os valores corretos com os tipos de dados corretos na API, podemos usar o pydantic para criar um modelo de dados customizado:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">bentoml.io</span> <span class="kn">import</span> <span class="n">JSON</span><span class="p">,</span> <span class="n">NumpyNdarray</span>
 <span class="kn">from</span> <span class="nn">pydantic</span> <span class="kn">import</span> <span class="n">BaseModel</span>
@@ -690,7 +735,7 @@ customer_segmentation_kmeans:o2ztyneoqsnwswyg  bentoml.sklearn  /home/khuyen/ben
 <p><em>O código completo para criar a API pode ser encontrado</em> <a class="reference external" href="https://github.com/khuyentran1401/customer_segmentation/blob/bentoml_demo/src/bentoml_app.py"><em>aqui</em></a><em>.</em></p>
 </section>
 <section id="construir-bentos">
-<h2>Construir Bentos<a class="headerlink" href="#construir-bentos" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">8.1.6. </span>Construir Bentos<a class="headerlink" href="#construir-bentos" title="Permalink to this headline">#</a></h2>
 <p>Após ter certeza que tudo está correndo bem, podemos começar a colocar o modelo, serviço e dependências dentro de um bento (esse nome faz referência à <a class="reference external" href="https://pt.wikipedia.org/wiki/Bent%C5%8D">Bentō</a>).</p>
 <p><img alt="" src="https://miro.medium.com/max/700/1*Q_gi8bLO6NmSXKY-x5D9jg.png" /></p>
 <p>Para construir Bentor, comece criando um arquivo chamado <code class="docutils literal notranslate"><span class="pre">bentofile.yaml</span></code> no diretório do seu projeto:</p>
@@ -749,7 +794,7 @@ customer_segmentation_kmeans:o2ztyneoqsnwswyg  bentoml.sklearn  /home/khuyen/ben
 <p>Muito legal! Acabamos de criar uma pasta com o modelo, serviço, processadores, requisitos Python e um Dockerfile com poucas linhas de código!</p>
 </section>
 <section id="deploy-no-heroku">
-<h2>Deploy no Heroku<a class="headerlink" href="#deploy-no-heroku" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">8.1.7. </span>Deploy no Heroku<a class="headerlink" href="#deploy-no-heroku" title="Permalink to this headline">#</a></h2>
 <p>Agora que você tem um Bentos, você pode colocá-lo em um contêiner
 <a class="reference external" href="https://docs.bentoml.org/en/latest/concepts/containerize_bentos.html#containerize-bentos-page">Docker</a> ou fazer o deploy no Heroku. Como queremos criar um link pública para a API, iremos fazer o deploy para o Heroku Container Registry.</p>
 <p>Comece instalando o <a class="reference external" href="https://www.heroku.com/">Heroku</a>, e faça o login para uma conta no Heroku através da linha de comando:</p>
@@ -816,7 +861,7 @@ customer_segmentation_kmeans:o2ztyneoqsnwswyg  bentoml.sklearn  /home/khuyen/ben
 <p>Se você preferir criar uma UI (interface de usuário) simples, a próxima seção irá mostrar como fazer isso com o Streamlit.</p>
 </section>
 <section id="construir-uma-ui-para-seu-servico-utilizando-streamlit">
-<h2>Construir Uma UI Para Seu Serviço Utilizando Streamlit<a class="headerlink" href="#construir-uma-ui-para-seu-servico-utilizando-streamlit" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">8.1.8. </span>Construir Uma UI Para Seu Serviço Utilizando Streamlit<a class="headerlink" href="#construir-uma-ui-para-seu-servico-utilizando-streamlit" title="Permalink to this headline">#</a></h2>
 <p>Se você quer que seus gerentes ou acionistas testem seu modelo, pode ser uma boa ideia construir uma simples UI para seu modelo utilizando <a class="reference external" href="https://streamlit.io/">Streamlit</a>.</p>
 <p>No arquivo <code class="docutils literal notranslate"><span class="pre">streamlit_app.py</span></code>, recebemos os inputs dos usuários e utilizamos esses inputs para construir uma requisição de predição.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">json</span>
@@ -932,6 +977,13 @@ customer_segmentation_kmeans:o2ztyneoqsnwswyg  bentoml.sklearn  /home/khuyen/ben
                 
     <!-- Previous / next buttons -->
 <div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="sec8-0-deploy_de_modelos.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title"><span class="section-number">8. </span>Deploy de Modelos</p>
+        </div>
+    </a>
 </div>
             </footer>
         </div>

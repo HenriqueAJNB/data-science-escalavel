@@ -150,7 +150,7 @@ const thebe_selector_output = ".output, .cell_output"
   </ul>
  </li>
  <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../cap03-testes_unitarios/sec3-0-testando_codigo.html">
+  <a class="reference internal" href="../cap03-testes_unitarios/sec3-0-testes_unitarios.html">
    3. Testando o código
   </a>
   <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
@@ -172,7 +172,7 @@ const thebe_selector_output = ".output, .cell_output"
   </ul>
  </li>
  <li class="toctree-l1 current active has-children">
-  <a class="reference internal" href="sec4-0-introducao.html">
+  <a class="reference internal" href="sec4-0-testando_dados.html">
    4. Testando os dados
   </a>
   <input checked="" class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
@@ -228,6 +228,50 @@ const thebe_selector_output = ".output, .cell_output"
    <li class="toctree-l2">
     <a class="reference internal" href="../cap06-acompanhamento_de_experimentos/sec6-1-hydra.html">
      6.1. Configure seus projetos de ciência de dados com Hydra
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../cap07-controle_de_versao/sec7-0-controle_de_versao.html">
+   7. Controle de Versão
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
+  <label for="toctree-checkbox-6">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../cap07-controle_de_versao/sec7-1-introducao_ao_DVC.html">
+     7.1. Introdução ao DVC: Controle de Versionamento de Dados para Projetos de Aprendizado de Máquina
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../cap07-controle_de_versao/sec7-2-dagshub.html">
+     7.2. DagsHub: um Suplemento de Github para Cientistas de Dados e Engenheiros de Aprendizado de Máquina
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../cap07-controle_de_versao/sec7-3-pre_commit_plugins.html">
+     7.3. 4 plugins pré-commit para automatizar a revisão e formatação de código em Python
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../cap08-deploy_de_modelos/sec8-0-deploy_de_modelos.html">
+   8. Deploy de Modelos
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/>
+  <label for="toctree-checkbox-7">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../cap08-deploy_de_modelos/sec8-1-bentoml.html">
+     8.1. BentoML: Crie um Serviço de Predição Baseado em ML em Minutos
     </a>
    </li>
   </ul>
@@ -410,8 +454,8 @@ title="Print to PDF"
     <nav id="bd-toc-nav" aria-label="Page">
         <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#o-que-e-schema">
-   4.3.1. O que é schema?
+  <a class="reference internal nav-link" href="#o-que-e-o-schema">
+   4.3.1. O que é o Schema?
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
@@ -420,13 +464,13 @@ title="Print to PDF"
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#valide-o-tipo-de-dados-de-algumas-colunas-enquanto-ignora-o-resto">
-   4.3.3. Valide o Tipo de Dados de Algumas Colunas Enquanto Ignora o Resto
+  <a class="reference internal nav-link" href="#valide-o-tipo-de-dado-de-algumas-colunas-enquanto-ignora-o-resto">
+   4.3.3. Valide o Tipo de Dado de Algumas Colunas Enquanto Ignora o Resto
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#valide-com-funcao">
-   4.3.4. Valide com Função
+  <a class="reference internal nav-link" href="#valide-com-uma-funcao">
+   4.3.4. Valide com uma Função
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
@@ -436,26 +480,17 @@ title="Print to PDF"
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#and">
-     4.3.5.1.
-     <em>
-      And
-     </em>
+     4.3.5.1. And
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#or">
-     4.3.5.2.
-     <em>
-      Or
-     </em>
+     4.3.5.2. Or
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#combinacao-de-and-e-or">
-     4.3.5.3.
-     <em>
-      Combinação de And e Or
-     </em>
+     4.3.5.3. Combinação de And e Or
     </a>
    </li>
   </ul>
@@ -476,8 +511,8 @@ title="Print to PDF"
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#converter-tipo-de-dados">
-   4.3.9. Converter tipo de dados
+  <a class="reference internal nav-link" href="#converter-tipo-de-dado">
+   4.3.9. Converter Tipo de Dado
   </a>
  </li>
 </ul>
@@ -500,8 +535,8 @@ title="Print to PDF"
                         <nav aria-label="Page">
                             <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#o-que-e-schema">
-   4.3.1. O que é schema?
+  <a class="reference internal nav-link" href="#o-que-e-o-schema">
+   4.3.1. O que é o Schema?
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
@@ -510,13 +545,13 @@ title="Print to PDF"
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#valide-o-tipo-de-dados-de-algumas-colunas-enquanto-ignora-o-resto">
-   4.3.3. Valide o Tipo de Dados de Algumas Colunas Enquanto Ignora o Resto
+  <a class="reference internal nav-link" href="#valide-o-tipo-de-dado-de-algumas-colunas-enquanto-ignora-o-resto">
+   4.3.3. Valide o Tipo de Dado de Algumas Colunas Enquanto Ignora o Resto
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#valide-com-funcao">
-   4.3.4. Valide com Função
+  <a class="reference internal nav-link" href="#valide-com-uma-funcao">
+   4.3.4. Valide com uma Função
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
@@ -526,26 +561,17 @@ title="Print to PDF"
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#and">
-     4.3.5.1.
-     <em>
-      And
-     </em>
+     4.3.5.1. And
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#or">
-     4.3.5.2.
-     <em>
-      Or
-     </em>
+     4.3.5.2. Or
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#combinacao-de-and-e-or">
-     4.3.5.3.
-     <em>
-      Combinação de And e Or
-     </em>
+     4.3.5.3. Combinação de And e Or
     </a>
    </li>
   </ul>
@@ -566,8 +592,8 @@ title="Print to PDF"
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#converter-tipo-de-dados">
-   4.3.9. Converter tipo de dados
+  <a class="reference internal nav-link" href="#converter-tipo-de-dado">
+   4.3.9. Converter Tipo de Dado
   </a>
  </li>
 </ul>
@@ -584,27 +610,31 @@ title="Print to PDF"
 <section id="introducao-ao-schema-uma-biblioteca-python-para-validar-seus-dados">
 <h1><span class="section-number">4.3. </span>Introdução ao Schema: Uma Biblioteca Python para Validar seus Dados<a class="headerlink" href="#introducao-ao-schema-uma-biblioteca-python-para-validar-seus-dados" title="Permalink to this headline">#</a></h1>
 <p><img alt="" src="https://miro.medium.com/max/700/0*HSqvCAEj62jir0Lq" /></p>
-<p>Photo by <a class="reference external" href="https://unsplash.com/&#64;nonsapvisuals?utm_source=medium&amp;utm_medium=referral">Nonsap Visuals</a> on <a class="reference external" href="https://unsplash.com/?utm_source=medium&amp;utm_medium=referral">Unsplash</a></p>
-<section id="o-que-e-schema">
-<h2><span class="section-number">4.3.1. </span>O que é schema?<a class="headerlink" href="#o-que-e-schema" title="Permalink to this headline">#</a></h2>
-<p>Nas duas últimas seções, aprendemos como validar um DataFrame pandas. No entanto, às vezes você pode querer validar estruturas de dados Python em vez de um DataFrame pandas. É aí que o schema se faz útil.</p>
-<p><a class="reference external" href="https://github.com/keleshev/schema"><strong>schema</strong></a> é uma biblioteca para validação de estruturas de dados em Python.</p>
-<p>Instale o schema com</p>
+<p>Foto por <a class="reference external" href="https://unsplash.com/&#64;nonsapvisuals?utm_source=medium&amp;utm_medium=referral">Nonsap Visuals</a> no <a class="reference external" href="https://unsplash.com/?utm_source=medium&amp;utm_medium=referral">Unsplash</a></p>
+<section id="o-que-e-o-schema">
+<h2><span class="section-number">4.3.1. </span>O que é o Schema?<a class="headerlink" href="#o-que-e-o-schema" title="Permalink to this headline">#</a></h2>
+<p>Nas duas últimas seções, aprendemos como validar um DataFrame Pandas. No entanto, às vezes você pode querer validar estruturas de dados Python em vez de um DataFrame Pandas. É aí que o Schema se faz útil.</p>
+<p><a class="reference external" href="https://github.com/keleshev/schema"><strong>Schema</strong></a> é uma biblioteca para validação de estruturas de dados em Python.</p>
+<p>Instale o Schema com:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip install schema
+</pre></div>
+</div>
+<p>ou, se estiver usando o Poetry:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>poetry add schema
 </pre></div>
 </div>
 </section>
 <section id="valide-tipos-de-dados">
 <h2><span class="section-number">4.3.2. </span>Valide Tipos de Dados<a class="headerlink" href="#valide-tipos-de-dados" title="Permalink to this headline">#</a></h2>
 <p>Imagine que esses dados apresentam as informações sobre seus amigos.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="p">[</span>
-    <span class="p">{</span><span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="s1">&#39;Norma Fisher&#39;</span><span class="p">,</span>  <span class="s1">&#39;city&#39;</span><span class="p">:</span> <span class="s1">&#39;South Richard&#39;</span><span class="p">,</span>  <span class="s1">&#39;closeness (1-5)&#39;</span><span class="p">:</span> <span class="mi">4</span><span class="p">,</span>  <span class="s1">&#39;extrovert&#39;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span>  <span class="s1">&#39;favorite_temperature&#39;</span><span class="p">:</span> <span class="o">-</span><span class="mf">45.74</span><span class="p">},</span> 
-    <span class="p">{</span><span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="s1">&#39;Colleen Taylor&#39;</span><span class="p">,</span>  <span class="s1">&#39;city&#39;</span><span class="p">:</span> <span class="s1">&#39;North Laurenshire&#39;</span><span class="p">,</span>  <span class="s1">&#39;closeness (1-5)&#39;</span><span class="p">:</span> <span class="mi">4</span><span class="p">,</span>  <span class="s1">&#39;extrovert&#39;</span><span class="p">:</span> <span class="kc">False</span><span class="p">,</span>  <span class="s1">&#39;favorite_temperature&#39;</span><span class="p">:</span> <span class="mf">93.9</span><span class="p">},</span> 
-    <span class="p">{</span><span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="s1">&#39;Melinda Kennedy&#39;</span><span class="p">,</span>  <span class="s1">&#39;city&#39;</span><span class="p">:</span> <span class="s1">&#39;South Cherylside&#39;</span><span class="p">,</span>  <span class="s1">&#39;closeness (1-5)&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>  <span class="s1">&#39;extrovert&#39;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span>  <span class="s1">&#39;favorite_temperature&#39;</span><span class="p">:</span> <span class="mf">66.33</span><span class="p">}</span>
-<span class="p">]</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">data</span> <span class="o">=</span> <span class="p">[</span>
+            <span class="p">{</span><span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="s1">&#39;Norma Fisher&#39;</span><span class="p">,</span>  <span class="s1">&#39;city&#39;</span><span class="p">:</span> <span class="s1">&#39;South Richard&#39;</span><span class="p">,</span>  <span class="s1">&#39;closeness (1-5)&#39;</span><span class="p">:</span> <span class="mi">4</span><span class="p">,</span>  <span class="s1">&#39;extrovert&#39;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span>  <span class="s1">&#39;favorite_temperature&#39;</span><span class="p">:</span> <span class="o">-</span><span class="mf">45.74</span><span class="p">},</span> 
+            <span class="p">{</span><span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="s1">&#39;Colleen Taylor&#39;</span><span class="p">,</span>  <span class="s1">&#39;city&#39;</span><span class="p">:</span> <span class="s1">&#39;North Laurenshire&#39;</span><span class="p">,</span>  <span class="s1">&#39;closeness (1-5)&#39;</span><span class="p">:</span> <span class="mi">4</span><span class="p">,</span>  <span class="s1">&#39;extrovert&#39;</span><span class="p">:</span> <span class="kc">False</span><span class="p">,</span>  <span class="s1">&#39;favorite_temperature&#39;</span><span class="p">:</span> <span class="mf">93.9</span><span class="p">},</span> 
+            <span class="p">{</span><span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="s1">&#39;Melinda Kennedy&#39;</span><span class="p">,</span>  <span class="s1">&#39;city&#39;</span><span class="p">:</span> <span class="s1">&#39;South Cherylside&#39;</span><span class="p">,</span>  <span class="s1">&#39;closeness (1-5)&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>  <span class="s1">&#39;extrovert&#39;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span>  <span class="s1">&#39;favorite_temperature&#39;</span><span class="p">:</span> <span class="mf">66.33</span><span class="p">}</span>
+        <span class="p">]</span>
 </pre></div>
 </div>
-<p>Podemos usar o schema para validar tipos de dados:</p>
+<p>Podemos usar o Schema para validar tipos de dados:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">schema</span> <span class="kn">import</span> <span class="n">Schema</span>
 
 <span class="n">schema</span> <span class="o">=</span> <span class="n">Schema</span><span class="p">([{</span><span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
@@ -616,8 +646,8 @@ title="Print to PDF"
 <span class="n">schema</span><span class="o">.</span><span class="n">validate</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>Como o esquema retorna a saída sem gerar nenhum erro, sabemos que nossos dados são válidos.</p>
-<p>Vamos ver o que acontece se os tipos de dados não forem como o que esperamos</p>
+<p>Como a saída não gera erros, sabemos que nossos dados são válidos.</p>
+<p>Vejamos o que acontece se os tipos de dados não forem como o que esperamos:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">schema</span> <span class="o">=</span> <span class="n">Schema</span><span class="p">([{</span><span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
                  <span class="s1">&#39;city&#39;</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> 
                  <span class="s1">&#39;closeness (1-5)&#39;</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
@@ -633,14 +663,14 @@ Key <span class="s1">&#39;name&#39;</span> error:
 </pre></div>
 </div>
 <p>A partir do erro, sabemos exatamente qual coluna e valor dos dados são diferentes do que esperamos. Assim, podemos voltar aos dados para corrigir ou excluir esse valor.</p>
-<p>Se tudo o que importa é se os dados são válidos ou não, use</p>
+<p>Se tudo o que importa é se os dados são válidos ou não, use:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">schema</span><span class="o">.</span><span class="n">is_valid</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>Isso retornará <code class="docutils literal notranslate"><span class="pre">True</span></code> se os dados estiverem conforme o esperado ou <code class="docutils literal notranslate"><span class="pre">False</span></code> caso contrário.</p>
 </section>
-<section id="valide-o-tipo-de-dados-de-algumas-colunas-enquanto-ignora-o-resto">
-<h2><span class="section-number">4.3.3. </span>Valide o Tipo de Dados de Algumas Colunas Enquanto Ignora o Resto<a class="headerlink" href="#valide-o-tipo-de-dados-de-algumas-colunas-enquanto-ignora-o-resto" title="Permalink to this headline">#</a></h2>
+<section id="valide-o-tipo-de-dado-de-algumas-colunas-enquanto-ignora-o-resto">
+<h2><span class="section-number">4.3.3. </span>Valide o Tipo de Dado de Algumas Colunas Enquanto Ignora o Resto<a class="headerlink" href="#valide-o-tipo-de-dado-de-algumas-colunas-enquanto-ignora-o-resto" title="Permalink to this headline">#</a></h2>
 <p>Mas e se não nos importarmos com os tipos de dados de todas as colunas, mas apenas nos preocuparmos com o valor de algumas colunas? Podemos especificar isso com <code class="docutils literal notranslate"><span class="pre">str:</span> <span class="pre">object</span></code></p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">schema</span> <span class="o">=</span> <span class="n">Schema</span><span class="p">([{</span><span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
                  <span class="s1">&#39;city&#39;</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> 
@@ -657,11 +687,11 @@ Key <span class="s1">&#39;name&#39;</span> error:
 <p>Como você pode ver, tentamos validar os tipos de dados ‘name’, ‘city’ e ‘favorite_temperature’, ignorando os tipos de dados do restante dos recursos em nossos dados.</p>
 <p>Os dados são válidos porque os tipos de dados dos 3 recursos especificados estão corretos.</p>
 </section>
-<section id="valide-com-funcao">
-<h2><span class="section-number">4.3.4. </span>Valide com Função<a class="headerlink" href="#valide-com-funcao" title="Permalink to this headline">#</a></h2>
-<p>E se quisermos determinar se os dados em uma coluna atendem a uma condição específica que não é relevante para tipos de dados, como o intervalo dos valores em uma coluna?</p>
-<p>Schema permite que você use uma função para especificar a condição para seus dados.</p>
-<p>Se quisermos verificar se os valores na coluna ‘closeness’ estão entre 1 e 5, podemos usar <code class="docutils literal notranslate"><span class="pre">lambda</span></code> como abaixo</p>
+<section id="valide-com-uma-funcao">
+<h2><span class="section-number">4.3.4. </span>Valide com uma Função<a class="headerlink" href="#valide-com-uma-funcao" title="Permalink to this headline">#</a></h2>
+<p>E se quisermos determinar se os dados em uma coluna atendem a uma condição específica, como o intervalo dos valores em uma coluna?</p>
+<p>O Schema permite que você use uma função para especificar a condição para os seus dados.</p>
+<p>Se quisermos verificar se os valores na coluna ‘closeness (1-5)’ estão entre 1 e 5, podemos usar <code class="docutils literal notranslate"><span class="pre">lambda</span></code> como abaixo:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">schema</span> <span class="o">=</span> <span class="n">Schema</span><span class="p">([{</span><span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
                  <span class="s1">&#39;city&#39;</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> 
                  <span class="s1">&#39;favorite_temperature&#39;</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span>
@@ -675,15 +705,17 @@ Key <span class="s1">&#39;name&#39;</span> error:
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>Output: True
 </pre></div>
 </div>
-<p>Como você pode ver, especificamos <code class="docutils literal notranslate"><span class="pre">n,</span></code>o valor em cada linha da coluna ‘proximidade’, entre 1 e 5 com <code class="docutils literal notranslate"><span class="pre">lambda</span> <span class="pre">n:</span> <span class="pre">1</span> <span class="pre">&lt;=</span> <span class="pre">n</span> <span class="pre">&lt;=5.</span></code> Legal!</p>
+<p>Como você pode ver, especificamos <code class="docutils literal notranslate"><span class="pre">n</span></code>, o valor em cada linha da coluna ‘closeness (1-5)’, entre 1 e 5 com <code class="docutils literal notranslate"><span class="pre">lambda</span> <span class="pre">n:</span> <span class="pre">1</span> <span class="pre">&lt;=</span> <span class="pre">n</span> <span class="pre">&lt;=5</span></code>. Legal!</p>
 </section>
 <section id="valide-varios-schemas">
 <h2><span class="section-number">4.3.5. </span>Valide Vários Schemas<a class="headerlink" href="#valide-varios-schemas" title="Permalink to this headline">#</a></h2>
 <section id="and">
-<h3><span class="section-number">4.3.5.1. </span><em>And</em><a class="headerlink" href="#and" title="Permalink to this headline">#</a></h3>
-<p>E se você quiser garantir que sua coluna “proximidade” esteja entre 1 e 5 <strong>e</strong> o tipo de dados seja um número inteiro?</p>
-<p>É quando <code class="docutils literal notranslate"><span class="pre">And</span></code> pode ser usado</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">schema</span> <span class="o">=</span> <span class="n">Schema</span><span class="p">([{</span><span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+<h3><span class="section-number">4.3.5.1. </span>And<a class="headerlink" href="#and" title="Permalink to this headline">#</a></h3>
+<p>E se você quiser garantir que sua coluna “closeness (1-5)” esteja entre 1 e 5 <strong>e</strong> o tipo de dado seja um número inteiro?</p>
+<p>É quando <code class="docutils literal notranslate"><span class="pre">And</span></code> pode ser usado:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">schema</span> <span class="kn">import</span> <span class="n">And</span>
+
+<span class="n">schema</span> <span class="o">=</span> <span class="n">Schema</span><span class="p">([{</span><span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
                  <span class="s1">&#39;city&#39;</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> 
                  <span class="s1">&#39;favorite_temperature&#39;</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span>
                   <span class="s1">&#39;closeness (1-5)&#39;</span><span class="p">:</span> <span class="n">And</span><span class="p">(</span><span class="k">lambda</span> <span class="n">n</span> <span class="p">:</span> <span class="mi">1</span> <span class="o">&lt;=</span> <span class="n">n</span> <span class="o">&lt;=</span> <span class="mi">5</span><span class="p">,</span> <span class="nb">float</span><span class="p">),</span>
@@ -696,14 +728,16 @@ Key <span class="s1">&#39;name&#39;</span> error:
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>Output: False
 </pre></div>
 </div>
-<p>Embora todos os valores estejam entre 1 e 5, o tipo de dados não é flutuante (decimal). Como uma das condições não foi satisfeita, os dados não são válidos.</p>
+<p>Embora todos os valores estejam entre 1 e 5, o tipo de dado não é flutuante (decimal). Como uma das condições não foi satisfeita, os dados são inválidos.</p>
 </section>
 <section id="or">
-<h3><span class="section-number">4.3.5.2. </span><em>Or</em><a class="headerlink" href="#or" title="Permalink to this headline">#</a></h3>
-<p>Se quisermos que os dados da coluna sejam válidos se qualquer uma das condições for satisfeita, podemos usar <code class="docutils literal notranslate"><span class="pre">Or</span></code></p>
-<p>Por exemplo, se quisermos que o nome da cidade contenha 1 ou 2 palavras, podemos usar</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">schema</span> <span class="o">=</span> <span class="n">Schema</span><span class="p">([{</span><span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
-                 <span class="s1">&#39;city&#39;</span><span class="p">:</span> <span class="n">Or</span><span class="p">(</span><span class="k">lambda</span> <span class="n">n</span><span class="p">:</span> <span class="nb">len</span><span class="p">(</span><span class="n">n</span><span class="o">.</span><span class="n">split</span><span class="p">())</span><span class="o">==</span><span class="mi">2</span><span class="p">,</span> <span class="k">lambda</span> <span class="n">n</span><span class="p">:</span> <span class="nb">len</span><span class="p">(</span><span class="n">n</span><span class="o">.</span><span class="n">split</span><span class="p">())</span> <span class="o">==</span><span class="mi">1</span><span class="p">),</span> 
+<h3><span class="section-number">4.3.5.2. </span>Or<a class="headerlink" href="#or" title="Permalink to this headline">#</a></h3>
+<p>Se quisermos que os dados da coluna sejam válidos se qualquer uma das condições for satisfeita, podemos usar <code class="docutils literal notranslate"><span class="pre">Or</span></code>.</p>
+<p>Por exemplo, se quisermos que o nome da cidade contenha 1 ou 2 palavras, podemos usar:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">schema</span> <span class="kn">import</span> <span class="n">Or</span>
+
+<span class="n">schema</span> <span class="o">=</span> <span class="n">Schema</span><span class="p">([{</span><span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+                 <span class="s1">&#39;city&#39;</span><span class="p">:</span> <span class="n">Or</span><span class="p">(</span><span class="k">lambda</span> <span class="n">n</span><span class="p">:</span> <span class="nb">len</span><span class="p">(</span><span class="n">n</span><span class="o">.</span><span class="n">split</span><span class="p">())</span> <span class="o">==</span> <span class="mi">2</span><span class="p">,</span> <span class="k">lambda</span> <span class="n">n</span><span class="p">:</span> <span class="nb">len</span><span class="p">(</span><span class="n">n</span><span class="o">.</span><span class="n">split</span><span class="p">())</span> <span class="o">==</span> <span class="mi">1</span><span class="p">),</span> 
                  <span class="s1">&#39;favorite_temperature&#39;</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span>
                   <span class="s1">&#39;closeness (1-5)&#39;</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
                   <span class="nb">str</span><span class="p">:</span> <span class="nb">object</span>
@@ -712,12 +746,15 @@ Key <span class="s1">&#39;name&#39;</span> error:
 <span class="n">schema</span><span class="o">.</span><span class="n">is_valid</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
 </pre></div>
 </div>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>Output: True
+</pre></div>
+</div>
 </section>
 <section id="combinacao-de-and-e-or">
-<h3><span class="section-number">4.3.5.3. </span><em>Combinação de And e Or</em><a class="headerlink" href="#combinacao-de-and-e-or" title="Permalink to this headline">#</a></h3>
-<p>E se quisermos que o tipo de dados ‘city’ seja uma string, mas o comprimento pode ser 1 ou 2? Felizmente, isso pode ser tratado facilmente combinando <code class="docutils literal notranslate"><span class="pre">And</span></code> e <code class="docutils literal notranslate"><span class="pre">Or</span></code>.</p>
+<h3><span class="section-number">4.3.5.3. </span>Combinação de And e Or<a class="headerlink" href="#combinacao-de-and-e-or" title="Permalink to this headline">#</a></h3>
+<p>E se quisermos que o tipo de dado da coluna ‘city’ seja string, mas o comprimento pode ser 1 ou 2? Felizmente, isso pode ser tratado facilmente combinando <code class="docutils literal notranslate"><span class="pre">And</span></code> e <code class="docutils literal notranslate"><span class="pre">Or</span></code>:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">schema</span> <span class="o">=</span> <span class="n">Schema</span><span class="p">([{</span><span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
-                 <span class="s1">&#39;city&#39;</span><span class="p">:</span> <span class="n">And</span><span class="p">(</span><span class="nb">str</span><span class="p">,</span> <span class="n">Or</span><span class="p">(</span><span class="k">lambda</span> <span class="n">n</span><span class="p">:</span> <span class="nb">len</span><span class="p">(</span><span class="n">n</span><span class="o">.</span><span class="n">split</span><span class="p">())</span><span class="o">==</span><span class="mi">2</span><span class="p">,</span> <span class="k">lambda</span> <span class="n">n</span><span class="p">:</span> <span class="nb">len</span><span class="p">(</span><span class="n">n</span><span class="o">.</span><span class="n">split</span><span class="p">())</span> <span class="o">==</span><span class="mi">1</span><span class="p">)),</span> 
+                 <span class="s1">&#39;city&#39;</span><span class="p">:</span> <span class="n">And</span><span class="p">(</span><span class="nb">str</span><span class="p">,</span> <span class="n">Or</span><span class="p">(</span><span class="k">lambda</span> <span class="n">n</span><span class="p">:</span> <span class="nb">len</span><span class="p">(</span><span class="n">n</span><span class="o">.</span><span class="n">split</span><span class="p">())</span> <span class="o">==</span> <span class="mi">2</span><span class="p">,</span> <span class="k">lambda</span> <span class="n">n</span><span class="p">:</span> <span class="nb">len</span><span class="p">(</span><span class="n">n</span><span class="o">.</span><span class="n">split</span><span class="p">())</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)),</span> 
                  <span class="s1">&#39;favorite_temperature&#39;</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span>
                   <span class="s1">&#39;closeness (1-5)&#39;</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
                   <span class="nb">str</span><span class="p">:</span> <span class="nb">object</span>
@@ -734,21 +771,31 @@ Key <span class="s1">&#39;name&#39;</span> error:
 <section id="optional">
 <h2><span class="section-number">4.3.6. </span>Optional<a class="headerlink" href="#optional" title="Permalink to this headline">#</a></h2>
 <p>E se <strong>não tivermos</strong> as informações detalhadas sobre <strong>alguns</strong> de seus amigos?</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="p">[</span>
-    <span class="p">{</span><span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="s1">&#39;Norma Fisher&#39;</span><span class="p">,</span>  <span class="s1">&#39;city&#39;</span><span class="p">:</span> <span class="s1">&#39;South Richard&#39;</span><span class="p">,</span>  <span class="s1">&#39;closeness (1-5)&#39;</span><span class="p">:</span> <span class="mi">4</span><span class="p">,</span>  <span class="s1">&#39;detailed_info&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;favorite_color&#39;</span><span class="p">:</span> <span class="s1">&#39;Pink&#39;</span><span class="p">,</span>   <span class="s1">&#39;phone number&#39;</span><span class="p">:</span> <span class="s1">&#39;7593824219489&#39;</span><span class="p">}},</span> 
-    <span class="p">{</span><span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="s1">&#39;Emily Blair&#39;</span><span class="p">,</span>  <span class="s1">&#39;city&#39;</span><span class="p">:</span> <span class="s1">&#39;Suttonview&#39;</span><span class="p">,</span>  <span class="s1">&#39;closeness (1-5)&#39;</span><span class="p">:</span> <span class="mi">4</span><span class="p">,</span>  <span class="s1">&#39;detailed_info&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;favorite_color&#39;</span><span class="p">:</span> <span class="s1">&#39;Chartreuse&#39;</span><span class="p">,</span>   <span class="s1">&#39;phone number&#39;</span><span class="p">:</span> <span class="s1">&#39;9387784080160&#39;</span><span class="p">}},</span> 
-    <span class="p">{</span><span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="s1">&#39;Samantha Cook&#39;</span><span class="p">,</span> <span class="s1">&#39;city&#39;</span><span class="p">:</span> <span class="s1">&#39;Janeton&#39;</span><span class="p">,</span> <span class="s1">&#39;closeness (1-5)&#39;</span><span class="p">:</span> <span class="mi">3</span><span class="p">}</span>
-<span class="p">]</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">data</span> <span class="o">=</span> <span class="p">[</span>
+            <span class="p">{</span><span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="s1">&#39;Norma Fisher&#39;</span><span class="p">,</span>  <span class="s1">&#39;city&#39;</span><span class="p">:</span> <span class="s1">&#39;South Richard&#39;</span><span class="p">,</span>  <span class="s1">&#39;closeness (1-5)&#39;</span><span class="p">:</span> <span class="mi">4</span><span class="p">,</span>  <span class="s1">&#39;detailed_info&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;favorite_color&#39;</span><span class="p">:</span> <span class="s1">&#39;Pink&#39;</span><span class="p">,</span>   <span class="s1">&#39;phone number&#39;</span><span class="p">:</span> <span class="s1">&#39;7593824219489&#39;</span><span class="p">}},</span> 
+            <span class="p">{</span><span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="s1">&#39;Emily Blair&#39;</span><span class="p">,</span>  <span class="s1">&#39;city&#39;</span><span class="p">:</span> <span class="s1">&#39;Suttonview&#39;</span><span class="p">,</span>  <span class="s1">&#39;closeness (1-5)&#39;</span><span class="p">:</span> <span class="mi">4</span><span class="p">,</span>  <span class="s1">&#39;detailed_info&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;favorite_color&#39;</span><span class="p">:</span> <span class="s1">&#39;Chartreuse&#39;</span><span class="p">,</span>   <span class="s1">&#39;phone number&#39;</span><span class="p">:</span> <span class="s1">&#39;9387784080160&#39;</span><span class="p">}},</span> 
+            <span class="p">{</span><span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="s1">&#39;Samantha Cook&#39;</span><span class="p">,</span> <span class="s1">&#39;city&#39;</span><span class="p">:</span> <span class="s1">&#39;Janeton&#39;</span><span class="p">,</span> <span class="s1">&#39;closeness (1-5)&#39;</span><span class="p">:</span> <span class="mi">3</span><span class="p">}</span>
+        <span class="p">]</span>
 </pre></div>
 </div>
-<p>Como o ‘detailed_info’ de Samantha Cook não está disponível para todos os seus amigos, queremos tornar esta coluna opcional. Schema nos permite definir essa condição com <code class="docutils literal notranslate"><span class="pre">Optional</span></code></p>
+<p>Como o ‘detailed_info’ de Samantha Cook não está disponível para todos os seus amigos, queremos tornar esta coluna opcional. Schema nos permite definir essa condição com <code class="docutils literal notranslate"><span class="pre">Optional</span></code>.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">schema</span> <span class="kn">import</span> <span class="n">Optional</span>
+
+<span class="n">schema</span> <span class="o">=</span> <span class="n">Schema</span><span class="p">([{</span><span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+                 <span class="s1">&#39;city&#39;</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> 
+                 <span class="s1">&#39;closeness (1-5)&#39;</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
+                 <span class="n">Optional</span><span class="p">(</span><span class="s1">&#39;detailed_info&#39;</span><span class="p">):</span> <span class="nb">dict</span><span class="p">}])</span>
+
+<span class="n">schema</span><span class="o">.</span><span class="n">is_valid</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+</pre></div>
+</div>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>Output: True
 </pre></div>
 </div>
 </section>
 <section id="forbidden">
 <h2><span class="section-number">4.3.7. </span>Forbidden<a class="headerlink" href="#forbidden" title="Permalink to this headline">#</a></h2>
-<p>Às vezes, também podemos querer garantir que um determinado tipo de dados não esteja em nossos dados, como informações privadas. Podemos especificar qual coluna é proibida com <code class="docutils literal notranslate"><span class="pre">Forbidden</span></code></p>
+<p>Às vezes, também podemos querer garantir que um determinado tipo de dado não esteja em nossos dados, como informações privadas. Podemos especificar qual coluna é proibida com <code class="docutils literal notranslate"><span class="pre">Forbidden</span></code>:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">schema</span> <span class="kn">import</span> <span class="n">Forbidden</span>
 
 <span class="n">schema</span> <span class="o">=</span> <span class="n">Schema</span><span class="p">([{</span><span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
@@ -756,6 +803,7 @@ Key <span class="s1">&#39;name&#39;</span> error:
                   <span class="s1">&#39;closeness (1-5)&#39;</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
                   <span class="n">Forbidden</span><span class="p">(</span><span class="s1">&#39;detailed_info&#39;</span><span class="p">):</span> <span class="nb">dict</span>
                  <span class="p">}])</span>
+
 <span class="n">schema</span><span class="o">.</span><span class="n">validate</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -766,16 +814,16 @@ Key <span class="s1">&#39;name&#39;</span> error:
 </section>
 <section id="dicionario-aninhado">
 <h2><span class="section-number">4.3.8. </span>Dicionário Aninhado<a class="headerlink" href="#dicionario-aninhado" title="Permalink to this headline">#</a></h2>
-<p>Até agora, o esquema nos permitiu realizar muitas validações sofisticadas em várias linhas de código. Mas na vida real, podemos lidar com uma estrutura de dados mais sofisticada do que o exemplo acima.</p>
+<p>Até agora, o esquema nos permitiu realizar muitas validações sofisticadas em várias linhas de código. Mas na realidade, podemos lidar com uma estrutura de dados mais sofisticada do que o exemplo acima.</p>
 <p>Podemos usá-lo para dados com uma estrutura mais complicada? Como um dicionário dentro de um dicionário? Sim, nós podemos.</p>
 <p>Imagine que nossos dados se parecem abaixo:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="p">[</span>
-    <span class="p">{</span><span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="s1">&#39;Norma Fisher&#39;</span><span class="p">,</span>  <span class="s1">&#39;city&#39;</span><span class="p">:</span> <span class="s1">&#39;South Richard&#39;</span><span class="p">,</span>  <span class="s1">&#39;closeness (1-5)&#39;</span><span class="p">:</span> <span class="mi">4</span><span class="p">,</span>  <span class="s1">&#39;detailed_info&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;favorite_color&#39;</span><span class="p">:</span> <span class="s1">&#39;Pink&#39;</span><span class="p">,</span>   <span class="s1">&#39;phone number&#39;</span><span class="p">:</span> <span class="s1">&#39;7593824219489&#39;</span><span class="p">}},</span> 
-    <span class="p">{</span><span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="s1">&#39;Emily Blair&#39;</span><span class="p">,</span>  <span class="s1">&#39;city&#39;</span><span class="p">:</span> <span class="s1">&#39;Suttonview&#39;</span><span class="p">,</span>  <span class="s1">&#39;closeness (1-5)&#39;</span><span class="p">:</span> <span class="mi">4</span><span class="p">,</span>  <span class="s1">&#39;detailed_info&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;favorite_color&#39;</span><span class="p">:</span> <span class="s1">&#39;Chartreuse&#39;</span><span class="p">,</span>   <span class="s1">&#39;phone number&#39;</span><span class="p">:</span> <span class="s1">&#39;9387784080160&#39;</span><span class="p">}}</span>
-<span class="p">]</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">data</span> <span class="o">=</span> <span class="p">[</span>
+            <span class="p">{</span><span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="s1">&#39;Norma Fisher&#39;</span><span class="p">,</span>  <span class="s1">&#39;city&#39;</span><span class="p">:</span> <span class="s1">&#39;South Richard&#39;</span><span class="p">,</span>  <span class="s1">&#39;closeness (1-5)&#39;</span><span class="p">:</span> <span class="mi">4</span><span class="p">,</span>  <span class="s1">&#39;detailed_info&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;favorite_color&#39;</span><span class="p">:</span> <span class="s1">&#39;Pink&#39;</span><span class="p">,</span>   <span class="s1">&#39;phone number&#39;</span><span class="p">:</span> <span class="s1">&#39;7593824219489&#39;</span><span class="p">}},</span> 
+            <span class="p">{</span><span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="s1">&#39;Emily Blair&#39;</span><span class="p">,</span>  <span class="s1">&#39;city&#39;</span><span class="p">:</span> <span class="s1">&#39;Suttonview&#39;</span><span class="p">,</span>  <span class="s1">&#39;closeness (1-5)&#39;</span><span class="p">:</span> <span class="mi">4</span><span class="p">,</span>  <span class="s1">&#39;detailed_info&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;favorite_color&#39;</span><span class="p">:</span> <span class="s1">&#39;Chartreuse&#39;</span><span class="p">,</span>   <span class="s1">&#39;phone number&#39;</span><span class="p">:</span> <span class="s1">&#39;9387784080160&#39;</span><span class="p">}}</span>
+        <span class="p">]</span>
 </pre></div>
 </div>
-<p>Podemos validar com um dicionário aninhado</p>
+<p>Podemos validar com um dicionário aninhado:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">schema</span> <span class="o">=</span> <span class="n">Schema</span><span class="p">([{</span><span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
                  <span class="s1">&#39;city&#39;</span><span class="p">:</span><span class="nb">str</span><span class="p">,</span>  
                   <span class="s1">&#39;closeness (1-5)&#39;</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
@@ -785,13 +833,18 @@ Key <span class="s1">&#39;name&#39;</span> error:
 <span class="n">schema</span><span class="o">.</span><span class="n">is_valid</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>A sintaxe é direta! Só precisamos escrever outro dicionário dentro do dicionário e especificar o tipo de dados para cada chave.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>Output: True
+</pre></div>
+</div>
+<p>A sintaxe é direta! Só precisamos escrever outro dicionário e especificar o tipo de dado para cada chave.</p>
 </section>
-<section id="converter-tipo-de-dados">
-<h2><span class="section-number">4.3.9. </span>Converter tipo de dados<a class="headerlink" href="#converter-tipo-de-dados" title="Permalink to this headline">#</a></h2>
-<p>O Schema pode não somente ser usado para validar dados, mas também para converter o tipo de dados se não for o que esperávamos!</p>
-<p>Por exemplo, podemos converter a string ‘123’ para o inteiro 123 com <code class="docutils literal notranslate"><span class="pre">Use(int)</span></code></p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">Schema</span><span class="p">(</span><span class="n">Use</span><span class="p">(</span><span class="nb">int</span><span class="p">))</span><span class="o">.</span><span class="n">validate</span><span class="p">(</span><span class="s1">&#39;123&#39;</span><span class="p">)</span>
+<section id="converter-tipo-de-dado">
+<h2><span class="section-number">4.3.9. </span>Converter Tipo de Dado<a class="headerlink" href="#converter-tipo-de-dado" title="Permalink to this headline">#</a></h2>
+<p>O Schema pode não somente ser usado para validar dados, mas também para converter o tipo de dado se não for o que esperávamos!</p>
+<p>Por exemplo, podemos converter a string ‘123’ para o inteiro 123 com <code class="docutils literal notranslate"><span class="pre">Use(int)</span></code>:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">schema</span> <span class="kn">import</span> <span class="n">Use</span>
+
+<span class="n">Schema</span><span class="p">(</span><span class="n">Use</span><span class="p">(</span><span class="nb">int</span><span class="p">))</span><span class="o">.</span><span class="n">validate</span><span class="p">(</span><span class="s1">&#39;123&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="m">123</span>

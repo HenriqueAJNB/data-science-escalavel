@@ -53,7 +53,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="4.2. Valide Seu Pandas DataFrame com Pandera" href="sec4-2-pandera.html" />
-    <link rel="prev" title="4. Testando os dados" href="sec4-0-introducao.html" />
+    <link rel="prev" title="4. Testando os dados" href="sec4-0-testando_dados.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -150,7 +150,7 @@ const thebe_selector_output = ".output, .cell_output"
   </ul>
  </li>
  <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../cap03-testes_unitarios/sec3-0-testando_codigo.html">
+  <a class="reference internal" href="../cap03-testes_unitarios/sec3-0-testes_unitarios.html">
    3. Testando o código
   </a>
   <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
@@ -172,7 +172,7 @@ const thebe_selector_output = ".output, .cell_output"
   </ul>
  </li>
  <li class="toctree-l1 current active has-children">
-  <a class="reference internal" href="sec4-0-introducao.html">
+  <a class="reference internal" href="sec4-0-testando_dados.html">
    4. Testando os dados
   </a>
   <input checked="" class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
@@ -228,6 +228,50 @@ const thebe_selector_output = ".output, .cell_output"
    <li class="toctree-l2">
     <a class="reference internal" href="../cap06-acompanhamento_de_experimentos/sec6-1-hydra.html">
      6.1. Configure seus projetos de ciência de dados com Hydra
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../cap07-controle_de_versao/sec7-0-controle_de_versao.html">
+   7. Controle de Versão
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
+  <label for="toctree-checkbox-6">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../cap07-controle_de_versao/sec7-1-introducao_ao_DVC.html">
+     7.1. Introdução ao DVC: Controle de Versionamento de Dados para Projetos de Aprendizado de Máquina
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../cap07-controle_de_versao/sec7-2-dagshub.html">
+     7.2. DagsHub: um Suplemento de Github para Cientistas de Dados e Engenheiros de Aprendizado de Máquina
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../cap07-controle_de_versao/sec7-3-pre_commit_plugins.html">
+     7.3. 4 plugins pré-commit para automatizar a revisão e formatação de código em Python
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../cap08-deploy_de_modelos/sec8-0-deploy_de_modelos.html">
+   8. Deploy de Modelos
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/>
+  <label for="toctree-checkbox-7">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../cap08-deploy_de_modelos/sec8-1-bentoml.html">
+     8.1. BentoML: Crie um Serviço de Predição Baseado em ML em Minutos
     </a>
    </li>
   </ul>
@@ -507,20 +551,20 @@ title="Print to PDF"
 <section id="o-que-e-o-great-expectations">
 <h2><span class="section-number">4.1.1. </span>O que é o Great Expectations?<a class="headerlink" href="#o-que-e-o-great-expectations" title="Permalink to this headline">#</a></h2>
 <p>Great Expectations é uma biblioteca referência de Python que permite você validar, documentar e checar dados para garantir que eles estão conforme esperado.</p>
-<p>Great Expectations passa por uma lista de checagem para garantir que os dados passem por todos os testes antes de serem utilizados.</p>
-<p><img alt="ge_checks" src="../_images/09-ge_checks.png" /></p>
+<p>O Great Expectations passa por uma lista de checagem para garantir que os dados passem por todos os testes antes de serem utilizados.</p>
+<p><img alt="ge_verificacoes" src="../_images/04-1-1-verificacao.png" /></p>
 <p>Há inúmeras ferramentas disponíveis que permitem criar validações para os dados. Porém, a autora afirma gostar do Great Expectations pelos seguintes motivos:</p>
 <ul class="simple">
-<li><p><strong>Cria automaticamente um pipeline de testes para os dados:</strong> criar um pipeline de testes compreensivos para os dados pode ser uma tarefa árdua. Great Expectations elimina essa complexidade sugerindo alguns testes baseado nas características da própria base de dados.</p></li>
+<li><p><strong>Cria automaticamente um pipeline de testes para os dados:</strong> criar um pipeline de testes compreensivos para os dados pode ser uma tarefa árdua. O Great Expectations elimina essa complexidade sugerindo alguns testes baseado nas características da própria base de dados.</p></li>
 </ul>
-<p><img alt="ge_database" src="../_images/09-ge_database.png" /></p>
+<p><img alt="ge_banco_de_dados" src="../_images/04-1-1-banco_dados.png" /></p>
 <ul class="simple">
 <li><p><strong>Cria suas validações e configura a sua fonte de dados através de Jupyter Notebooks:</strong> Para algumas pessoas pode ser difícil criar validações de dados usando arquivos JSON. Great Expectations facilita a criação destas validações usando Jupyter Notebooks!</p></li>
-<li><p><strong>Cria uma documentação de dados:</strong> Great Expectations também cria uma documentação de fácil leitura que permite entender os dados e as validações de forma eficiente.</p></li>
+<li><p><strong>Cria uma documentação de dados:</strong> O Great Expectations também cria uma documentação de fácil leitura que permite entender os dados e as validações eficientemente.</p></li>
 </ul>
 <p><img alt="" src="https://miro.medium.com/max/1000/1*UygLmtl_SBwaxWainKQ7ZQ.gif" /></p>
 <ul class="simple">
-<li><p><strong>Possui integração simples com ferramentas que usam DAG:</strong> Great Expections integra facilmente com ferramentas baseadas em DAG como o <a class="reference external" href="https://airflow.apache.org/">Apache Airflow</a>, <a class="reference external" href="https://www.getdbt.com/">dbt</a>, <a class="reference external" href="https://www.prefect.io/">Prefect</a>, <a class="reference external" href="https://github.com/dagster-io/dagster">Dagster</a>, <a class="reference external" href="https://github.com/quantumblacklabs/kedro">Kedro</a>, dentre outras.</p></li>
+<li><p><strong>Possui integração simples com ferramentas que usam DAG:</strong> O Great Expections se integra facilmente com ferramentas baseadas em DAG como o <a class="reference external" href="https://airflow.apache.org/">Apache Airflow</a>, <a class="reference external" href="https://www.getdbt.com/">dbt</a>, <a class="reference external" href="https://www.prefect.io/">Prefect</a>, <a class="reference external" href="https://github.com/dagster-io/dagster">Dagster</a>, <a class="reference external" href="https://github.com/quantumblacklabs/kedro">Kedro</a>, dentre outras.</p></li>
 </ul>
 <p>Nesta seção:</p>
 <ul class="simple">
@@ -536,59 +580,57 @@ title="Print to PDF"
 <h2><span class="section-number">4.1.2. </span>Primeiros passos<a class="headerlink" href="#primeiros-passos" title="Permalink to this headline">#</a></h2>
 <section id="criando-um-contexto-de-dados-data-context">
 <h3><span class="section-number">4.1.2.1. </span>Criando um contexto de dados (Data Context)<a class="headerlink" href="#criando-um-contexto-de-dados-data-context" title="Permalink to this headline">#</a></h3>
-<p>O chamado contexto de dados, ou Data Context em inglês, gerencia a configuração do seu projeto. Para criar um novo Data Context usando a API versão V3, rode:</p>
+<p>O chamado contexto de dados, ou Data Context em inglês, gerencia a configuração do seu projeto. Para criar um Data Context usando a API versão 3, rode:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ great_expectations --v3-api init
 </pre></div>
 </div>
 <p>E um novo diretório com o conteúdo da imagem abaixo será gerado no seu diretório atual!</p>
-<p><img alt="ge_folder_structure" src="../_images/09-ge_folder_structure.png" /></p>
-<p>Abaixo uma explicação de cada um destes diretórios e arquivos:</p>
+<p><img alt="ge_estrutura_das_pastas" src="../_images/04-1-2-estrutura_pastas.png" /></p>
+<p>Abaixo há uma explicação de cada um destes diretórios e arquivos:</p>
 <ul class="simple">
-<li><p>O arquivo <code class="docutils literal notranslate"><span class="pre">great_expectations.yml</span></code> contém as principais configurações da implementação atual.</p></li>
-<li><p>O diretório <code class="docutils literal notranslate"><span class="pre">expectations</span></code> armazena todas as validações como arquivos JSON.</p></li>
-<li><p>O diretório <code class="docutils literal notranslate"><span class="pre">plugins</span></code> armazena os códigos para quaisquer plugins que possam eventualmente existir.</p></li>
-<li><p>O diretório <code class="docutils literal notranslate"><span class="pre">uncommited</span></code> contém arquivos que não deveriam estar no controle de versionamento</p></li>
+<li><p>O arquivo <code class="docutils literal notranslate"><span class="pre">great_expectations.yml</span></code> contém as principais configurações da implementação atual;</p></li>
+<li><p>O diretório <code class="docutils literal notranslate"><span class="pre">expectations</span></code> armazena todas as validações como arquivos JSON;</p></li>
+<li><p>O diretório <code class="docutils literal notranslate"><span class="pre">plugins</span></code> armazena os códigos para quaisquer plugins que possam eventualmente existir;</p></li>
+<li><p>O diretório <code class="docutils literal notranslate"><span class="pre">uncommited</span></code> contém arquivos que não deveriam estar no controle de versionamento.</p></li>
 </ul>
 </section>
 <section id="fluxo-do-great-expectations">
 <h3><span class="section-number">4.1.2.2. </span>Fluxo do Great Expectations<a class="headerlink" href="#fluxo-do-great-expectations" title="Permalink to this headline">#</a></h3>
-<p>O Great Expectations geralmente inclui 3 etapas: conectar à base de dados, criar as validações e validar os dados.</p>
-<p><img alt="ge_steps" src="../_images/09-ge_steps.png" /></p>
+<p>O Great Expectations geralmente inclui 3 etapas: conectar à base de dados, criar as validações e validar os dados:</p>
+<p><img alt="ge_passos" src="../_images/04-1-2-2-passos.png" /></p>
 <p>Nas seções seguintes serão abordadas cada uma destas etapas.</p>
 </section>
 </section>
 <section id="conectando-a-base-de-dados">
 <h2><span class="section-number">4.1.3. </span>Conectando à base de dados<a class="headerlink" href="#conectando-a-base-de-dados" title="Permalink to this headline">#</a></h2>
-<p><img alt="ge_steps1" src="../_images/09-ge_step1.png" /></p>
-<div class="attention admonition">
-<p class="admonition-title">Link inexistente</p>
-<p>No momento da tradução deste livro, o link do dataset usado pela autora original não existe mais.</p>
-<p>Como consequência, o autor da tradução buscou por um novo conjunto de dados e separou-o da mesma forma como feito no livro em inglês. Porém, o dataset é diferente, levanto à divergências significativas, que precisaram ser adaptadas, em relação ao livro original.</p>
-</div>
-<p>Como demonstração, optou-se por dividir o dataset <a class="reference external" href="https://archive.ics.uci.edu/ml/datasets/Air+Quality">Air Quality Data Set</a>, cuja origem é a plataforma UCI Machine Learning , em dois datasets: <code class="docutils literal notranslate"><span class="pre">first_data.csv</span></code> e <code class="docutils literal notranslate"><span class="pre">second_data.csv</span></code>, nos quais:</p>
+<p><img alt="ge_passo1" src="../_images/04-1-3-passo1.png" /></p>
+<p>Como demonstração, optou-se por dividir o dataset <a class="reference external" href="https://www.kaggle.com/datasets/joaovitorsilva/advertising-dataset">advertising dataset</a>, baixado do Kaggle , em dois datasets: <code class="docutils literal notranslate"><span class="pre">first_data.csv</span></code> e <code class="docutils literal notranslate"><span class="pre">second_data.csv</span></code>, nos quais:</p>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">first_data.csv</span></code> contém dados de 2004.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">second_data.csv</span></code> contém dados de 2005.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">first_data.csv</span></code> contém dados de janeiro de 2016 a abril de 2016;</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">second_data.csv</span></code> contém dados de maio de 2016 a julho de 2016.</p></li>
 </ul>
-<p>Ambos os datasets estão no diretório <code class="docutils literal notranslate"><span class="pre">data</span></code>. O dataset original é o <code class="docutils literal notranslate"><span class="pre">AirQualityUCI.csv</span></code>, encontrado no diretório raiz do projeto, e foi quebrado em ambos os datasets acima utilizando o script <code class="docutils literal notranslate"><span class="pre">scripts/split_data_ge.py</span></code>.</p>
+<p>Estes datasets estão armazenados no diretório <code class="docutils literal notranslate"><span class="pre">data</span></code>.</p>
+<p><img alt="ge_diretorio_data" src="../_images/04-1-3-diretorio_data.png" /></p>
 <p>Para conectar à fonte de dados, rode:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ great_expectations --v3-api datasource new
 </pre></div>
 </div>
-<p><img alt="great_expectations_connection" src="../_images/04-01-1-great_expectations_connection.png" /></p>
-<p>Há a possibilidade de conectar o Great Expectations à arquivos locais ou à um banco de dados. Aqui foi feita as seguintes escolhas:</p>
+<p>E você será perguntado sobre como quer configurar sua conexão:</p>
+<p><img alt="ge_conexao" src="../_images/04-1-3-conexao.png" /></p>
+<p>Há a possibilidade de conectar o Great Expectations a arquivos locais ou a um banco de dados. Aqui foi feita as seguintes escolhas:</p>
 <ul class="simple">
-<li><p>Conectar à arquivos no nosso sistema operacional.</p></li>
-<li><p>processar os dados com o framework Pandas.</p></li>
-<li><p>especificar <code class="docutils literal notranslate"><span class="pre">data</span></code> como o diretório que contém os datasets que o Great Expectations irá considerar para análise.</p></li>
+<li><p>Conectar a arquivos no nosso sistema operacional;</p></li>
+<li><p>processar os dados com o framework Pandas;</p></li>
+<li><p>especificar o diretório <code class="docutils literal notranslate"><span class="pre">data</span></code> como o que contém os datasets que o Great Expectations irá considerar para análise.</p></li>
 </ul>
-<p>Depois de responder a todas estas perguntas, um Jupyter Notebook será aberto de forma automática! Este Notebook permite configurar a nova fonte de dados, Datasource. Este Datasource dirá ao Great Expectations onde estão os dados e como se conectar à eles.</p>
+<p>Após responder a estas perguntas, um Jupyter Notebook será aberto de forma automática! Este notebook permite configurar a nova fonte de dados, Datasource. Este Datasource dirá ao Great Expectations onde estão os dados e como se conectar a eles.</p>
+<p><img alt="" src="https://miro.medium.com/max/1000/1*ZCLbZdGW7B9_y8ABLdEjfQ.gif" /></p>
 <p>Por padrão, o Great Expectations cria o Jupyter Notebook no seguinte caminho: <code class="docutils literal notranslate"><span class="pre">great_expectations/uncommitted/datasource_new.ipynb</span></code></p>
-<p>Neste notebook, é possível especificar o nome do Datasource editando o valor da variável <code class="docutils literal notranslate"><span class="pre">datasource-name</span></code>.</p>
+<p>Neste notebook, é possível especificar o nome do Datasource editando o valor da variável <code class="docutils literal notranslate"><span class="pre">datasource-name</span></code>:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">datasource_name</span> <span class="o">=</span> <span class="s2">&quot;first_data&quot;</span>
 </pre></div>
 </div>
-<p>O trecho de código abaixo permite criar e customizar as configurações no Datasource.</p>
+<p>O trecho de código abaixo permite criar e customizar as configurações no Datasource:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">example_yaml</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;&quot;&quot;</span>
 <span class="s2">name: </span><span class="si">{</span><span class="n">datasource_name</span><span class="si">}</span><span class="s2"></span>
 <span class="s2">class_name: Datasource</span>
@@ -614,13 +656,13 @@ title="Print to PDF"
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">context</span><span class="o">.</span><span class="n">test_yaml_config</span><span class="p">(</span><span class="n">yaml_config</span><span class="o">=</span><span class="n">example_yaml</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Available</span> <span class="n">data_asset_names</span> <span class="p">(</span><span class="mi">2</span> <span class="n">of</span> <span class="mi">2</span><span class="p">):</span>   
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">Available</span> <span class="n">data_asset_names</span> <span class="p">(</span><span class="mi">2</span> <span class="n">of</span> <span class="mi">2</span><span class="p">):</span>   
     <span class="n">first_data</span><span class="o">.</span><span class="n">csv</span> <span class="p">(</span><span class="mi">1</span> <span class="n">of</span> <span class="mi">1</span><span class="p">):</span> <span class="p">[</span><span class="s1">&#39;first_data.csv&#39;</span><span class="p">]</span>   
     <span class="n">second_data</span><span class="o">.</span><span class="n">csv</span> <span class="p">(</span><span class="mi">1</span> <span class="n">of</span> <span class="mi">1</span><span class="p">):</span> <span class="p">[</span><span class="s1">&#39;second_data.csv&#39;</span><span class="p">]</span>
 </pre></div>
 </div>
-<p>Depois de executar todas as células do Notebook, as configurações do Datasource serão adicionadas ao <code class="docutils literal notranslate"><span class="pre">great_expectations.yml</span></code>!</p>
-<p><a class="reference external" href="https://docs.greatexpectations.io/docs/guides/connecting_to_your_data/index">Neste link</a> é possível ver outras formas de conectar à outras fontes.</p>
+<p>Após executar todas as células do notebook, a configuração do seu Datasource será adicionada ao <code class="docutils literal notranslate"><span class="pre">great_expectations.yml</span></code>!</p>
+<p><a class="reference external" href="https://legacy.docs.greatexpectations.io/en/latest/guides/how_to_guides/configuring_datasources.html">Neste link</a> é possível ver outras formas de conectar a outras fontes.</p>
 </section>
 <section id="criando-a-primeira-validacao">
 <h2><span class="section-number">4.1.4. </span>Criando a primeira validação<a class="headerlink" href="#criando-a-primeira-validacao" title="Permalink to this headline">#</a></h2>
@@ -688,7 +730,7 @@ title="Print to PDF"
                 
     <!-- Previous / next buttons -->
 <div class='prev-next-area'>
-    <a class='left-prev' id="prev-link" href="sec4-0-introducao.html" title="previous page">
+    <a class='left-prev' id="prev-link" href="sec4-0-testando_dados.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>

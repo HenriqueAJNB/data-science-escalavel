@@ -52,6 +52,8 @@ const thebe_selector_output = ".output, .cell_output"
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="7.3. 4 plugins pré-commit para automatizar a revisão e formatação de código em Python" href="sec7-3-pre_commit_plugins.html" />
+    <link rel="prev" title="7.1. Introdução ao DVC: Controle de Versionamento de Dados para Projetos de Aprendizado de Máquina" href="sec7-1-introducao_ao_DVC.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -119,7 +121,7 @@ const thebe_selector_output = ".output, .cell_output"
                 </a>
             </li>
         </ul>
-        <ul class="nav bd-sidenav">
+        <ul class="current nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="../cap01-como_ler_este_livro.html">
    1. Como ler este livro
@@ -148,7 +150,7 @@ const thebe_selector_output = ".output, .cell_output"
   </ul>
  </li>
  <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../cap03-testes_unitarios/sec3-0-testando_codigo.html">
+  <a class="reference internal" href="../cap03-testes_unitarios/sec3-0-testes_unitarios.html">
    3. Testando o código
   </a>
   <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
@@ -170,7 +172,7 @@ const thebe_selector_output = ".output, .cell_output"
   </ul>
  </li>
  <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../cap04-testando_dados/sec4-0-introducao.html">
+  <a class="reference internal" href="../cap04-testando_dados/sec4-0-testando_dados.html">
    4. Testando os dados
   </a>
   <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
@@ -226,6 +228,50 @@ const thebe_selector_output = ".output, .cell_output"
    <li class="toctree-l2">
     <a class="reference internal" href="../cap06-acompanhamento_de_experimentos/sec6-1-hydra.html">
      6.1. Configure seus projetos de ciência de dados com Hydra
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="sec7-0-controle_de_versao.html">
+   7. Controle de Versão
+  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
+  <label for="toctree-checkbox-6">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
+   <li class="toctree-l2">
+    <a class="reference internal" href="sec7-1-introducao_ao_DVC.html">
+     7.1. Introdução ao DVC: Controle de Versionamento de Dados para Projetos de Aprendizado de Máquina
+    </a>
+   </li>
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     7.2. DagsHub: um Suplemento de Github para Cientistas de Dados e Engenheiros de Aprendizado de Máquina
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="sec7-3-pre_commit_plugins.html">
+     7.3. 4 plugins pré-commit para automatizar a revisão e formatação de código em Python
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../cap08-deploy_de_modelos/sec8-0-deploy_de_modelos.html">
+   8. Deploy de Modelos
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/>
+  <label for="toctree-checkbox-7">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../cap08-deploy_de_modelos/sec8-1-bentoml.html">
+     8.1. BentoML: Crie um Serviço de Predição Baseado em ML em Minutos
     </a>
    </li>
   </ul>
@@ -320,7 +366,7 @@ title="Source repository"
       </li>
       
       <li>
-        <a href="https://github.com/HenriqueAJNB/data-science-escalavel/issues/new?title=Issue%20on%20page%20%2Fcap07-introducao_ao_DVC/sec7-2-dagshub.html&body=Your%20issue%20content%20here."
+        <a href="https://github.com/HenriqueAJNB/data-science-escalavel/issues/new?title=Issue%20on%20page%20%2Fcap07-controle_de_versao/sec7-2-dagshub.html&body=Your%20issue%20content%20here."
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -348,7 +394,7 @@ title="Open an issue"
   <div class="menu-dropdown__content">
     <ul>
       <li>
-        <a href="../_sources/cap07-introducao_ao_DVC/sec7-2-dagshub.md"
+        <a href="../_sources/cap07-controle_de_versao/sec7-2-dagshub.md"
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -468,7 +514,7 @@ title="Print to PDF"
         <div class="col pl-md-3 pl-lg-5 content-container">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>7.2. DagsHub: um Suplemento de Github para Cientistas de Dados e Engenheiros de Aprendizado de Máquina</h1>
+                <h1>DagsHub: um Suplemento de Github para Cientistas de Dados e Engenheiros de Aprendizado de Máquina</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
@@ -541,9 +587,9 @@ title="Print to PDF"
               <div>
                 
   <section id="dagshub-um-suplemento-de-github-para-cientistas-de-dados-e-engenheiros-de-aprendizado-de-maquina">
-<h1>7.2. DagsHub: um Suplemento de Github para Cientistas de Dados e Engenheiros de Aprendizado de Máquina<a class="headerlink" href="#dagshub-um-suplemento-de-github-para-cientistas-de-dados-e-engenheiros-de-aprendizado-de-maquina" title="Permalink to this headline">#</a></h1>
+<h1><span class="section-number">7.2. </span>DagsHub: um Suplemento de Github para Cientistas de Dados e Engenheiros de Aprendizado de Máquina<a class="headerlink" href="#dagshub-um-suplemento-de-github-para-cientistas-de-dados-e-engenheiros-de-aprendizado-de-maquina" title="Permalink to this headline">#</a></h1>
 <section id="motivacao">
-<h2>7.2.1. Motivação<a class="headerlink" href="#motivacao" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">7.2.1. </span>Motivação<a class="headerlink" href="#motivacao" title="Permalink to this headline">#</a></h2>
 <p>Como um cientista de dados, você pode querer versionar seu código, modelo, dados, parâmetros e métricas para que possa reproduzir um determinado experimento.</p>
 <!-- imagem - ![alt text](./images/image-tbd.png "Title") -->
 <p>O GitHub é uma ótima plataforma para controle de versão do seu código, mas não é ideal para versionar seus dados, modelo e métricas por dois motivos:</p>
@@ -556,7 +602,7 @@ title="Print to PDF"
 <p>Não seria bom se houvesse uma plataforma semelhante ao GitHub, mas mais otimizada para Cientistas de Dados e Engenheiros de Aprendizado de Máquina? É aí que o DagsHub é útil.</p>
 </section>
 <section id="o-que-e-dagshub">
-<h2>7.2.2. O que é DagsHub?<a class="headerlink" href="#o-que-e-dagshub" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">7.2.2. </span>O que é DagsHub?<a class="headerlink" href="#o-que-e-dagshub" title="Permalink to this headline">#</a></h2>
 <p>O <a class="reference external" href="https://dagshub.com/">DagsHub</a> é uma plataforma para cientistas de dados e engenheiros de aprendizado de máquina criarem versões de seus dados, modelos, experimentos e códigos.</p>
 <p>O DagsHub permite que você crie um novo repositório em sua plataforma ou se conecte a um repositório no GitHub.</p>
 <p>Se quiser criar um novo repositório no DagsHub, clique em Novo Repositório (New Repository):</p>
@@ -570,7 +616,7 @@ title="Print to PDF"
 <p>Você pode conferir o repositório acima <a class="reference external" href="https://dagshub.com/khuyentran1401/dagshub-demo">aqui</a>. Vamos explorar algumas funcionalidades do DagsHub.</p>
 </section>
 <section id="versione-o-seu-dado-e-codigo">
-<h2>7.2.3. Versione o seu Dado e Código<a class="headerlink" href="#versione-o-seu-dado-e-codigo" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">7.2.3. </span>Versione o seu Dado e Código<a class="headerlink" href="#versione-o-seu-dado-e-codigo" title="Permalink to this headline">#</a></h2>
 <p>Suponha que você tenha uma cópia local do seu repositório GitHub em sua máquina, utilizaremos DVC para versionar seus dados binários.</p>
 <p>Comece com a instalação do DVC:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip instalar dvc
@@ -624,7 +670,7 @@ title="Print to PDF"
 <!-- imagem - ![alt text](./images/image-tbd.png "Title") -->
 </section>
 <section id="rastreie-experimentos">
-<h2>7.2.4. Rastreie Experimentos<a class="headerlink" href="#rastreie-experimentos" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">7.2.4. </span>Rastreie Experimentos<a class="headerlink" href="#rastreie-experimentos" title="Permalink to this headline">#</a></h2>
 <p>Bibliotecas como MLFlow permitem que cientistas de dados acompanhem seus experimentos junto com modelos e parâmetros. No entanto, eles não rastreiam o código.</p>
 <p>Não seria legal se você pudesse salvar o código, modelos, parâmetros, dados de um experimento?</p>
 <!-- imagem - ![alt text](./images/image-tbd.png "Title") -->
@@ -633,7 +679,7 @@ title="Print to PDF"
 <p>É uma boa prática usar o MLFlow para experimentar diferentes parâmetros rapidamente sem comprometer seu código. Depois de encontrar os experimentos com bons resultados, você pode usar o registrador do DagsHub para salvar os resultados em formatos abertos (metric.csv, param.yaml) e encapsulá-los com o código, modelo e dados que os produziram.</p>
 <p>Vamos aprender como registrar seu experimento com cada um desses métodos.</p>
 <section id="registre-seus-experimentos-com-mlflow">
-<h3>7.2.4.1. Registre seus experimentos com MLFlow<a class="headerlink" href="#registre-seus-experimentos-com-mlflow" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">7.2.4.1. </span>Registre seus experimentos com MLFlow<a class="headerlink" href="#registre-seus-experimentos-com-mlflow" title="Permalink to this headline">#</a></h3>
 <p>O <a class="reference external" href="https://www.mlflow.org/">MLflow</a> é uma plataforma de código aberto que permite rastrear e comparar experimentos. Para instalar o MLflow, digite:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip install mlflow
 </pre></div>
@@ -671,7 +717,7 @@ title="Print to PDF"
 <p>Ser capaz de registrar seus experimentos MLflow em um servidor remoto como o DagsHub em vez de um banco de dados local permitirá que seus colegas de equipe tenham acesso aos seus experimentos no navegador.</p>
 </section>
 <section id="registre-os-seus-experimentos-com-dagshub-logger">
-<h3>7.2.4.2. Registre os seus Experimentos com DagsHub Logger<a class="headerlink" href="#registre-os-seus-experimentos-com-dagshub-logger" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">7.2.4.2. </span>Registre os seus Experimentos com DagsHub Logger<a class="headerlink" href="#registre-os-seus-experimentos-com-dagshub-logger" title="Permalink to this headline">#</a></h3>
 <p>Depois de encontrar um bom experimento e estiver pronto para registrar o código, os dados e as saídas (outputs) desse experimento, basta alternar o MLFlow para o DagsHub logger.</p>
 <p>Para usar o DagsHub logger, comece instalando o DagsHub:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip install dagshub
@@ -712,7 +758,7 @@ git push origin master
 <!-- imagem - ![alt text](./images/image-tbd.png "Title") -->
 </section>
 <section id="utilize-tanto-mlflow-quanto-dagshub-logger-ao-mesmo-tempo">
-<h3>7.2.4.3. Utilize tanto MLflow quanto DagsHub Logger ao mesmo tempo<a class="headerlink" href="#utilize-tanto-mlflow-quanto-dagshub-logger-ao-mesmo-tempo" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">7.2.4.3. </span>Utilize tanto MLflow quanto DagsHub Logger ao mesmo tempo<a class="headerlink" href="#utilize-tanto-mlflow-quanto-dagshub-logger-ao-mesmo-tempo" title="Permalink to this headline">#</a></h3>
 <p>Embora seja útil alternar entre o MLflow e DagsHub logger, achei inconveniente reescrever meu código toda vez que quero alternar para outro registrador.</p>
 <p>Minha solução foi criar uma classe <code class="docutils literal notranslate"><span class="pre">BaseLogger</span></code> cujos métodos são <code class="docutils literal notranslate"><span class="pre">log_metrics</span></code> e <code class="docutils literal notranslate"><span class="pre">log_params</span></code>. Cada método utilizará tanto o MLflow logger quanto o DagsHub logger.</p>
 <div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">mlflow</span>
@@ -755,7 +801,7 @@ git push origin master
 </section>
 </section>
 <section id="compare-entre-experiementos-mlflow">
-<h2>7.2.5. Compare entre experiementos MLflow<a class="headerlink" href="#compare-entre-experiementos-mlflow" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">7.2.5. </span>Compare entre experiementos MLflow<a class="headerlink" href="#compare-entre-experiementos-mlflow" title="Permalink to this headline">#</a></h2>
 <p>Para comparar entre dois ou mais experimentos, marque as caixas dos experimentos que deseja comparar e clique em Comparar (Compare).</p>
 <!-- imagem - ![alt text](./images/image-tbd.png "Title") -->
 <p>Você deve ver as comparações de todos os experimentos como abaixo:</p>
@@ -764,7 +810,7 @@ git push origin master
 <!-- imagem - ![alt text](./images/image-tbd.png "Title") -->
 </section>
 <section id="compare-entre-experimentos-git">
-<h2>7.2.6. Compare entre experimentos Git<a class="headerlink" href="#compare-entre-experimentos-git" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">7.2.6. </span>Compare entre experimentos Git<a class="headerlink" href="#compare-entre-experimentos-git" title="Permalink to this headline">#</a></h2>
 <p>Para comparar a diferença de arquivos entre dois experimentos do Git, copie seus IDs de confirmação na guia Experimentos (Experiments):</p>
 <!-- imagem - ![alt text](./images/image-tbd.png "Title") -->
 <p>Em seguida, cole cada ID de confirmação em cada ramificação na guia Arquivos (Files):</p>
@@ -778,7 +824,7 @@ git push origin master
 <p>Como os cientistas de dados trabalham muito com o Jupyter Notebook, é útil poder comparar as saídas de dois notebooks.</p>
 </section>
 <section id="dica-bonus-criar-um-pipeline-dvc">
-<h2>7.2.7. Dica Bonus: Criar um pipeline DVC<a class="headerlink" href="#dica-bonus-criar-um-pipeline-dvc" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">7.2.7. </span>Dica Bonus: Criar um pipeline DVC<a class="headerlink" href="#dica-bonus-criar-um-pipeline-dvc" title="Permalink to this headline">#</a></h2>
 <p>Às vezes, você pode querer que outras pessoas entendam o fluxo de trabalho do seu projeto (ou seja, como as saídas de um script são usadas para outro script). O DagsHub permite que você crie a visualização do seu fluxo de trabalho de dados por meio do pipeline DVC.</p>
 <!-- imagem - ![alt text](./images/image-tbd.png "Title") -->
 <p>Para criar um pipeline DVC, comece criando um arquivo <code class="docutils literal notranslate"><span class="pre">dvc.yaml</span></code>. No código abaixo, divido meu fluxo de trabalho em 3 estágios: <code class="docutils literal notranslate"><span class="pre">process_data</span></code>, <code class="docutils literal notranslate"><span class="pre">segment</span></code> e <code class="docutils literal notranslate"><span class="pre">analyze</span></code>. Para cada uma das etapas,</p>
@@ -861,7 +907,7 @@ git push origin master
         },
         kernelOptions: {
             kernelName: "python3",
-            path: "./cap07-introducao_ao_DVC"
+            path: "./cap07-controle_de_versao"
         },
         predefinedOutput: true
     }
@@ -875,6 +921,20 @@ git push origin master
                 
     <!-- Previous / next buttons -->
 <div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="sec7-1-introducao_ao_DVC.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title"><span class="section-number">7.1. </span>Introdução ao DVC: Controle de Versionamento de Dados para Projetos de Aprendizado de Máquina</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="sec7-3-pre_commit_plugins.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><span class="section-number">7.3. </span>4 plugins pré-commit para automatizar a revisão e formatação de código em Python</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
 </div>
             </footer>
         </div>
