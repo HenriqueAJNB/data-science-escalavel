@@ -1,7 +1,7 @@
 ## Orquestre um projeto de ciência de dados em Python com Prefect
 ### O que é Prefect?
 
-[Prefect](https://www.prefect.io/) é um framework open-sourced para criar fluxos de trabalho em Python. O Prefect facilita a criação, execução e monitoramento de pipelines de dados em escala.
+[Prefect](https://www.prefect.io/) é um framework de código aberto para criar fluxos de trabalho em Python. O Prefect facilita a criação, execução e monitoramento de pipelines de dados em escala.
 
 Para instalar o Prefect, digite:
 
@@ -9,13 +9,19 @@ Para instalar o Prefect, digite:
 pip install prefect
 ```
 
+ Se estiver usando o Poetry, então digite:
+
+```bash
+poetry add prefect
+```
+
 ### Construa seu fluxo de trabalho com Prefect
 
-Para saber como o Prefect funciona, vamos encapsular o fluxo de trabalho apresentado acima com o Prefect.
+Para saber como o Prefect funciona, vamos encapsular o fluxo de trabalho apresentado acima.
 
 #### Primeiro Passo — Criar Tarefas
 
-Uma `Task` é uma ação discreta em um fluxo Prefect. Comece transformando as funções definidas acima em tarefas usando o decorador `prefect.task` :
+Uma `Task` é uma ação discreta em um fluxo. Comece transformando as funções definidas acima em tarefas usando o decorador `@task` :
 ```python
 from prefect import task
 from typing import Any, Dict, List
@@ -25,24 +31,20 @@ import pandas as pd
 def load_data(path: str) -> pd.DataFrame:
     ...
 
-
 @task
 def get_classes(data: pd.DataFrame, target_col: str) -> List[str]:
-    """Task for getting the classes from the Iris data set."""
+    """Função que retorna as classes do conjunto de dados Iris."""
     ...
-
 
 @task
 def encode_categorical_columns(data: pd.DataFrame, target_col: str) -> pd.DataFrame:
-    """Task for encoding the categorical columns in the Iris data set."""
+    """Função que codifica as colunas categóricas do conjunto de dados Iris."""
     ...
 
 @task
 def split_data(data: pd.DataFrame, test_data_ratio: float, classes: list) -> Dict[str, Any]:
-    """Task for splitting the classical Iris data set into training and test
-    sets, each split into features and labels.
-    """
-    ... 
+    """Função para dividir o conjunto de dados Iris em conjuntos de treino e teste."""
+    ...
 ```
 #### Segunda Etapa — Criar um Fluxo
 
@@ -53,23 +55,23 @@ from prefect import task, Flow
 
 with Flow("data-engineer") as flow:
     
-    # Define parameters
+    # Defina os parâmetros
     target_col = 'species'
     test_data_ratio = 0.2
     
-    # Define tasks
+    # Defina as tarefas
     data = load_data(path="data/raw/iris.csv")
     classes = get_classes(data=data, target_col=target_col) 
     categorical_columns = encode_categorical_columns(data=data, target_col=target_col)
     train_test_dict = split_data(data=categorical_columns, test_data_ratio=test_data_ratio, classes=classes)
 ```
 
-Observe que nenhuma dessas tarefas é executada ao executar o código acima. Prefect permite que você execute o flow imediatamente ou agende para mais tarde.
+Observe que nenhuma dessas tarefas é executada ao executar o código acima. O Prefect permite que você execute o flow imediatamente ou agende para mais tarde.
 
 Vamos tentar executar o flow imediatamente usando `flow.run()` :
 ```python
 with Flow("data-engineer") as flow:
-  # Define your flow here
+  # Defina seu fluxo aqui
   ...
   
 flow.run()
@@ -108,15 +110,15 @@ Em seguida, adicione o método `visualize` ao código:
 flow.visualize()
 ```
 
-E você deve ver a visualização do fluxo de trabalho do `data-engineer` como abaixo!
+E você deve ver a visualização do fluxo de trabalho do `data-engineer` como abaixo:
 
 ![](https://miro.medium.com/max/700/1*JzMfqTsK9EZ09GnhgQm1lA.png)
 
-Observe que Prefect gerencia automaticamente as ordens de execução entre as tarefas para que o fluxo de trabalho seja otimizado. Isso é muito legal para alguns pedaços de código adicionais!
+Observe que o Prefect gerencia automaticamente as ordens de execução entre as tarefas para que o fluxo de trabalho seja otimizado. Isso é muito legal para alguns pedaços de código adicionais!
 
 #### Terceiro passo — Adicionar parâmetros
 
-Se você está experimentando frequentemente valores diferentes de uma variável, é ideal transformar essa variável em um `Parameter`.
+Se você está experimentando frequentemente valores diferentes de uma variável, é ideal transformar essa variável em um `Parameter`:
 
 ```python
 test_data_ratio = 0.2
@@ -125,7 +127,7 @@ train_test_dict = split_data(data=categorical_columns,
                             classes=classes)
 ```
 
-Você pode considerar um `Parameter` como uma `Task` , exceto que ele pode receber entradas do usuário sempre que um fluxo for executado. Para transformar uma variável em um parâmetro, basta usar `task.Parameter` .
+Você pode considerar um `Parameter` como uma `Task` , exceto que ele pode receber entradas do usuário sempre que um fluxo for executado. Para transformar uma variável em um parâmetro, basta usar `Parameter`:
 
 ```python
 from prefect import task, Flow, Parameter 
@@ -149,7 +151,8 @@ Você pode substituir o parâmetro padrão para cada execução:
 ```bash
 $ flow.run(parameters={'test_data_ratio': 0.3})
 ```
--   ou usando Prefect CLI:
+
+-   ou usando o Prefect CLI:
 ```bash
 $ prefect run -p data_engineering.py --param test_data_ratio=0.2 
 ```
@@ -158,7 +161,8 @@ $ prefect run -p data_engineering.py --param test_data_ratio=0.2
 ```bash
 $ prefect run -p data_engineering.py --param-file='params.json'
 ```
-Your JSON file should look similar to this:
+
+Seu arquivo JSON deve parecer com isso:
 ```json
 {"test_data_ratio": 0.3}
 ```
@@ -183,12 +187,12 @@ Em seguida, inicie um agente local para implantar nossos fluxos localmente em um
 $ prefect agent local start
 ```
 
-Em seguida, adicione:
+Em seguida, no final do seu arquivo, adicione:
 ```python
 flow.register(project_name="Iris Project")
 ```
 
-... no final do seu arquivo. Você deve ver algo parecido com o abaixo:
+Você deve ver algo parecido com o abaixo:
 ```bash
 
 Flow URL: https://cloud.prefect.io/khuyentran1476-gmail-com-s-account/flow/dba26bea-8827-4db4-9988-3289f6cb662f
@@ -196,19 +200,19 @@ Flow URL: https://cloud.prefect.io/khuyentran1476-gmail-com-s-account/flow/dba26
  └── Project: Iris Project
  └── Labels: ['khuyen-Precision-7740']
 ```
-Clique na URL na saída e você será redirecionado para uma página de visão geral. A página Visão geral mostra a versão do seu fluxo, quando ele é criado, o histórico de execução do fluxo e seu resumo de execuções.
+Clique na URL na saída e você será redirecionado para uma página de visão geral. A página Visão geral mostra a versão do seu fluxo, quando ele é criado, o histórico de execução do fluxo e seu resumo de execuções:
 
 ![](https://miro.medium.com/max/1810/1*olT8irSQON3D2N3g9K-wzg.png)
 
-Você também pode visualizar o resumo de outras execuções, quando são executadas e suas configurações.
+Você também pode visualizar o resumo de outras execuções, quando são executadas e suas configurações:
 
 ![](https://miro.medium.com/max/594/1*Jce9rCOQURyNJPBNye0c-Q.png)
 
-É muito legal como essas informações importantes são rastreadas automaticamente pelo Perfect!
+É muito legal como essas informações importantes são rastreadas automaticamente pelo Prefect!
 
 #### Executar o fluxo de trabalho com parâmetros padrão
 
-Observe que o fluxo de trabalho está registrado no Prefect Cloud, mas ainda não foi executado. Para executar o fluxo de trabalho com os parâmetros padrão, clique em Quick Run no canto superior direito.
+Observe que o fluxo de trabalho está registrado no Prefect Cloud, mas ainda não foi executado. Para executar o fluxo de trabalho com os parâmetros padrão, clique em Quick Run no canto superior direito:
 
 ![](https://miro.medium.com/max/376/1*kSdZ7ILVXcMurXJc-1n6Dw.png)
 
@@ -218,7 +222,7 @@ Clique na execução que é criada. Agora você poderá ver a atividade do seu n
 
 #### Execute o fluxo de trabalho com parâmetros personalizados
 
-Para executar o fluxo de trabalho com parâmetros personalizados, clique na guia Run e altere os parâmetros em Inputs.
+Para executar o fluxo de trabalho com parâmetros personalizados, clique na guia Run e altere os parâmetros em Inputs:
 
 ![](https://miro.medium.com/max/1885/1*4FD_0vEttydd1pvivVEpjw.png)
 
@@ -226,7 +230,7 @@ Quando estiver satisfeito com os parâmetros, basta clicar no botão Run para in
 
 #### Visualize o gráfico do fluxo de trabalho
 
-Clicar em Schematic fornecerá o gráfico de todo o fluxo de trabalho.
+Clicar em Schematic fornecerá o gráfico de todo o fluxo de trabalho:
 
 ![](https://miro.medium.com/max/1000/1*Inj8ey1ZWrMiVtmDPCYGyQ.png)
 
@@ -238,7 +242,7 @@ Além de alguns recursos básicos mencionados acima, o Prefect também fornece o
 
 Lembra do problema que mencionamos no início da seção? Normalmente, se a função `get_classes` falhar, os dados criados pela função `encode_categorical_columns` serão descartados e todo o fluxo de trabalho precisa ser iniciado desde o início.
 
-No entanto, com Prefect, a saída de `encode_categorical_columns` é armazenada. Na próxima vez que o fluxo de trabalho for executado novamente, a saída de `encode_categorical_columns` será usada pela próxima tarefa **sem executar novamente** a tarefa `encode_categorical_columns` .
+No entanto, com o Prefect, a saída de `encode_categorical_columns` é armazenada. Na próxima vez que o fluxo de trabalho for executado novamente, a saída de `encode_categorical_columns` será usada pela próxima tarefa **sem executar novamente** a tarefa `encode_categorical_columns`:
 
 ![](https://miro.medium.com/max/700/1*WN5iFz3QunvTDNc8ijpizg.png)
 
@@ -259,22 +263,20 @@ def split_data(data: pd.DataFrame, test_data_ratio: float, classes: list) -> Dic
 
 No entanto, fazer isso dificultará o teste da função.
 
-Prefect facilita salvar a saída de uma tarefa para cada execução:
+O Prefect facilita salvar a saída de uma tarefa para cada execução:
 
 -   definindo o checkpoint para `True`
 ```bash
 $ export PREFECT__FLOWS__CHECKPOINTING=true
 ```
--   e adicionando `result = LocalResult(dir=...))` para o decorator `@task` .
+-   e adicionando `result = LocalResult(dir=...))` para o decorator `@task`.
 ```bash
 
 from prefect.engine.results import LocalResult
 
 @task(result = LocalResult(dir='data/processed'))
 def split_data(data: pd.DataFrame, test_data_ratio: float, classes: list) -> Dict[str, Any]:
-    """Task for splitting the classical Iris data set into training and test
-    sets, each split into features and labels.
-    """
+    """Função para dividir o conjunto de dados Iris em conjuntos de treino e teste."""
     X_train, X_test, y_train, y_test = ...
     
     return dict(
@@ -288,6 +290,7 @@ Agora a saída da tarefa `split_data` será salva no diretório `data/processed`
 ```bash
 prefect-result-2021-11-06t15-37-29-605869-00-00
 ```
+
 Se você quiser personalizar o nome do seu arquivo, você pode adicionar o argumento `target` a `@task` :
 ```python
 
@@ -296,13 +299,11 @@ from prefect.engine.results import LocalResult
 @task(target="{date:%a_%b_%d_%Y_%H:%M:%S}/{task_name}_output", 
       result = LocalResult(dir='data/processed'))
 def split_data(data: pd.DataFrame, test_data_ratio: float, classes: list) -> Dict[str, Any]:
-    """Task for splitting the classical Iris data set into training and test
-    sets, each split into features and labels.
-    """
+    """Função para dividir o conjunto de dados Iris em conjuntos de treino e teste."""
     ...
 ```
 
-Prefect também fornece outras classes `Result` como `GCSResult` e `S3Result` . Você pode conferir a documentação da API sobre resultados [aqui](https://docs.prefect.io/api/latest/engine/results.html).
+O Prefect também fornece outras classes `Result` como `GCSResult` e `S3Result`. Você pode conferir a documentação da API sobre resultados [aqui](https://docs.prefect.io/api/latest/engine/results.html).
 
 #### Use a saída de outro fluxo para o fluxo atual
 
@@ -310,7 +311,7 @@ Se você estiver trabalhando com vários fluxos, por exemplo, fluxo `data-engine
 
 ![](https://miro.medium.com/max/700/1*Hl_8w9TqtGTzMKW_RygsDw.png)
 
-Depois de salvar a saída do seu fluxo `data-engineer` como um arquivo, você pode ler esse arquivo usando o método `read`:
+Após salvar a saída do seu fluxo `data-engineer` como um arquivo, você pode ler esse arquivo usando o método `read`:
 ```python
 from prefect.engine.results import LocalResult
 
@@ -321,11 +322,11 @@ train_test_dict = LocalResult(dir=...).read(location=...).value
 
 Imagine este cenário: você criou dois fluxos que dependem um do outro. O fluxo `data-engineer` precisa ser executado antes do fluxo `data-science`
 
-Alguém que olhou para o seu fluxo de trabalho não entendeu a relação entre esses dois fluxos. Como resultado, eles executaram o fluxo `data-science` e o fluxo `data-engineer` ao mesmo tempo e encontraram um erro!
+Alguém que olhou para o seu fluxo de trabalho não entendeu a relação entre esses dois fluxos. Como resultado, eles executaram o fluxo `data-science` e o fluxo `data-engineer` ao mesmo tempo, e encontraram um erro!
 
 ![](https://miro.medium.com/max/700/1*J7-kWMCMm3332B-Ff0D6JA.png)
 
-Para evitar que isso aconteça, devemos especificar a relação entre os fluxos. Felizmente, Prefect torna mais fácil para nós fazermos isso.
+Para evitar que isso aconteça, devemos especificar a relação entre os fluxos. Felizmente, O Prefect facilita para fazermos isso.
 
 Comece pegando dois fluxos diferentes usando `StartFlowRun`. Adicione `wait=True` ao argumento para que o fluxo seguinte seja executado somente depois que o fluxo anterior terminar de ser executado.
 ```python
