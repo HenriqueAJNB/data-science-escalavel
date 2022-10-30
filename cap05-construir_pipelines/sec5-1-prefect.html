@@ -668,18 +668,22 @@ title="Print to PDF"
 <h1><span class="section-number">5.1. </span>Orquestre um projeto de ciência de dados em Python com Prefect<a class="headerlink" href="#orquestre-um-projeto-de-ciencia-de-dados-em-python-com-prefect" title="Permalink to this headline">#</a></h1>
 <section id="o-que-e-prefect">
 <h2><span class="section-number">5.1.1. </span>O que é Prefect?<a class="headerlink" href="#o-que-e-prefect" title="Permalink to this headline">#</a></h2>
-<p><a class="reference external" href="https://www.prefect.io/">Prefect</a> é um framework open-sourced para criar fluxos de trabalho em Python. O Prefect facilita a criação, execução e monitoramento de pipelines de dados em escala.</p>
+<p><a class="reference external" href="https://www.prefect.io/">Prefect</a> é um framework de código aberto para criar fluxos de trabalho em Python. O Prefect facilita a criação, execução e monitoramento de pipelines de dados em escala.</p>
 <p>Para instalar o Prefect, digite:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip install prefect
+</pre></div>
+</div>
+<p>Se estiver usando o Poetry, então digite:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>poetry add prefect
 </pre></div>
 </div>
 </section>
 <section id="construa-seu-fluxo-de-trabalho-com-prefect">
 <h2><span class="section-number">5.1.2. </span>Construa seu fluxo de trabalho com Prefect<a class="headerlink" href="#construa-seu-fluxo-de-trabalho-com-prefect" title="Permalink to this headline">#</a></h2>
-<p>Para saber como o Prefect funciona, vamos encapsular o fluxo de trabalho apresentado acima com o Prefect.</p>
+<p>Para saber como o Prefect funciona, vamos encapsular o fluxo de trabalho apresentado acima.</p>
 <section id="primeiro-passo-criar-tarefas">
 <h3><span class="section-number">5.1.2.1. </span>Primeiro Passo — Criar Tarefas<a class="headerlink" href="#primeiro-passo-criar-tarefas" title="Permalink to this headline">#</a></h3>
-<p>Uma <code class="docutils literal notranslate"><span class="pre">Task</span></code> é uma ação discreta em um fluxo Prefect. Comece transformando as funções definidas acima em tarefas usando o decorador <code class="docutils literal notranslate"><span class="pre">prefect.task</span></code> :</p>
+<p>Uma <code class="docutils literal notranslate"><span class="pre">Task</span></code> é uma ação discreta em um fluxo. Comece transformando as funções definidas acima em tarefas usando o decorador <code class="docutils literal notranslate"><span class="pre">&#64;task</span></code> :</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">prefect</span> <span class="kn">import</span> <span class="n">task</span>
 <span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Any</span><span class="p">,</span> <span class="n">Dict</span><span class="p">,</span> <span class="n">List</span>
 <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
@@ -688,24 +692,20 @@ title="Print to PDF"
 <span class="k">def</span> <span class="nf">load_data</span><span class="p">(</span><span class="n">path</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">:</span>
     <span class="o">...</span>
 
-
 <span class="nd">@task</span>
 <span class="k">def</span> <span class="nf">get_classes</span><span class="p">(</span><span class="n">data</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">,</span> <span class="n">target_col</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]:</span>
-    <span class="sd">&quot;&quot;&quot;Task for getting the classes from the Iris data set.&quot;&quot;&quot;</span>
+    <span class="sd">&quot;&quot;&quot;Função que retorna as classes do conjunto de dados Iris.&quot;&quot;&quot;</span>
     <span class="o">...</span>
-
 
 <span class="nd">@task</span>
 <span class="k">def</span> <span class="nf">encode_categorical_columns</span><span class="p">(</span><span class="n">data</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">,</span> <span class="n">target_col</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">:</span>
-    <span class="sd">&quot;&quot;&quot;Task for encoding the categorical columns in the Iris data set.&quot;&quot;&quot;</span>
+    <span class="sd">&quot;&quot;&quot;Função que codifica as colunas categóricas do conjunto de dados Iris.&quot;&quot;&quot;</span>
     <span class="o">...</span>
 
 <span class="nd">@task</span>
 <span class="k">def</span> <span class="nf">split_data</span><span class="p">(</span><span class="n">data</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">,</span> <span class="n">test_data_ratio</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">classes</span><span class="p">:</span> <span class="nb">list</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]:</span>
-    <span class="sd">&quot;&quot;&quot;Task for splitting the classical Iris data set into training and test</span>
-<span class="sd">    sets, each split into features and labels.</span>
-<span class="sd">    &quot;&quot;&quot;</span>
-    <span class="o">...</span> 
+    <span class="sd">&quot;&quot;&quot;Função para dividir o conjunto de dados Iris em conjuntos de treino e teste.&quot;&quot;&quot;</span>
+    <span class="o">...</span>
 </pre></div>
 </div>
 </section>
@@ -716,21 +716,21 @@ title="Print to PDF"
 
 <span class="k">with</span> <span class="n">Flow</span><span class="p">(</span><span class="s2">&quot;data-engineer&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">flow</span><span class="p">:</span>
     
-    <span class="c1"># Define parameters</span>
+    <span class="c1"># Defina os parâmetros</span>
     <span class="n">target_col</span> <span class="o">=</span> <span class="s1">&#39;species&#39;</span>
     <span class="n">test_data_ratio</span> <span class="o">=</span> <span class="mf">0.2</span>
     
-    <span class="c1"># Define tasks</span>
+    <span class="c1"># Defina as tarefas</span>
     <span class="n">data</span> <span class="o">=</span> <span class="n">load_data</span><span class="p">(</span><span class="n">path</span><span class="o">=</span><span class="s2">&quot;data/raw/iris.csv&quot;</span><span class="p">)</span>
     <span class="n">classes</span> <span class="o">=</span> <span class="n">get_classes</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">data</span><span class="p">,</span> <span class="n">target_col</span><span class="o">=</span><span class="n">target_col</span><span class="p">)</span> 
     <span class="n">categorical_columns</span> <span class="o">=</span> <span class="n">encode_categorical_columns</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">data</span><span class="p">,</span> <span class="n">target_col</span><span class="o">=</span><span class="n">target_col</span><span class="p">)</span>
     <span class="n">train_test_dict</span> <span class="o">=</span> <span class="n">split_data</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">categorical_columns</span><span class="p">,</span> <span class="n">test_data_ratio</span><span class="o">=</span><span class="n">test_data_ratio</span><span class="p">,</span> <span class="n">classes</span><span class="o">=</span><span class="n">classes</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>Observe que nenhuma dessas tarefas é executada ao executar o código acima. Prefect permite que você execute o flow imediatamente ou agende para mais tarde.</p>
+<p>Observe que nenhuma dessas tarefas é executada ao executar o código acima. O Prefect permite que você execute o flow imediatamente ou agende para mais tarde.</p>
 <p>Vamos tentar executar o flow imediatamente usando <code class="docutils literal notranslate"><span class="pre">flow.run()</span></code> :</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">with</span> <span class="n">Flow</span><span class="p">(</span><span class="s2">&quot;data-engineer&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">flow</span><span class="p">:</span>
-  <span class="c1"># Define your flow here</span>
+  <span class="c1"># Defina seu fluxo aqui</span>
   <span class="o">...</span>
   
 <span class="n">flow</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
@@ -763,20 +763,20 @@ Flow run succeeded!
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">flow</span><span class="o">.</span><span class="n">visualize</span><span class="p">()</span>
 </pre></div>
 </div>
-<p>E você deve ver a visualização do fluxo de trabalho do <code class="docutils literal notranslate"><span class="pre">data-engineer</span></code> como abaixo!</p>
+<p>E você deve ver a visualização do fluxo de trabalho do <code class="docutils literal notranslate"><span class="pre">data-engineer</span></code> como abaixo:</p>
 <p><img alt="" src="https://miro.medium.com/max/700/1*JzMfqTsK9EZ09GnhgQm1lA.png" /></p>
-<p>Observe que Prefect gerencia automaticamente as ordens de execução entre as tarefas para que o fluxo de trabalho seja otimizado. Isso é muito legal para alguns pedaços de código adicionais!</p>
+<p>Observe que o Prefect gerencia automaticamente as ordens de execução entre as tarefas para que o fluxo de trabalho seja otimizado. Isso é muito legal para alguns pedaços de código adicionais!</p>
 </section>
 <section id="terceiro-passo-adicionar-parametros">
 <h3><span class="section-number">5.1.2.3. </span>Terceiro passo — Adicionar parâmetros<a class="headerlink" href="#terceiro-passo-adicionar-parametros" title="Permalink to this headline">#</a></h3>
-<p>Se você está experimentando frequentemente valores diferentes de uma variável, é ideal transformar essa variável em um <code class="docutils literal notranslate"><span class="pre">Parameter</span></code>.</p>
+<p>Se você está experimentando frequentemente valores diferentes de uma variável, é ideal transformar essa variável em um <code class="docutils literal notranslate"><span class="pre">Parameter</span></code>:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">test_data_ratio</span> <span class="o">=</span> <span class="mf">0.2</span>
 <span class="n">train_test_dict</span> <span class="o">=</span> <span class="n">split_data</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">categorical_columns</span><span class="p">,</span> 
                             <span class="n">test_data_ratio</span><span class="o">=</span><span class="n">test_data_ratio</span><span class="p">,</span> 
                             <span class="n">classes</span><span class="o">=</span><span class="n">classes</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>Você pode considerar um <code class="docutils literal notranslate"><span class="pre">Parameter</span></code> como uma <code class="docutils literal notranslate"><span class="pre">Task</span></code> , exceto que ele pode receber entradas do usuário sempre que um fluxo for executado. Para transformar uma variável em um parâmetro, basta usar <code class="docutils literal notranslate"><span class="pre">task.Parameter</span></code> .</p>
+<p>Você pode considerar um <code class="docutils literal notranslate"><span class="pre">Parameter</span></code> como uma <code class="docutils literal notranslate"><span class="pre">Task</span></code> , exceto que ele pode receber entradas do usuário sempre que um fluxo for executado. Para transformar uma variável em um parâmetro, basta usar <code class="docutils literal notranslate"><span class="pre">Parameter</span></code>:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">prefect</span> <span class="kn">import</span> <span class="n">task</span><span class="p">,</span> <span class="n">Flow</span><span class="p">,</span> <span class="n">Parameter</span> 
 
 <span class="n">test_data_ratio</span> <span class="o">=</span> <span class="n">Parameter</span><span class="p">(</span><span class="s2">&quot;test_data_ratio&quot;</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="mf">0.2</span><span class="p">)</span>
@@ -797,7 +797,7 @@ Flow run succeeded!
 </pre></div>
 </div>
 <ul class="simple">
-<li><p>ou usando Prefect CLI:</p></li>
+<li><p>ou usando o Prefect CLI:</p></li>
 </ul>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ prefect run -p data_engineering.py --param <span class="nv">test_data_ratio</span><span class="o">=</span><span class="m">0</span>.2 
 </pre></div>
@@ -808,7 +808,7 @@ Flow run succeeded!
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ prefect run -p data_engineering.py --param-file<span class="o">=</span><span class="s1">&#39;params.json&#39;</span>
 </pre></div>
 </div>
-<p>Your JSON file should look similar to this:</p>
+<p>Seu arquivo JSON deve parecer com isso:</p>
 <div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="nt">&quot;test_data_ratio&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">0.3</span><span class="p">}</span><span class="w"></span>
 </pre></div>
 </div>
@@ -828,39 +828,39 @@ Flow run succeeded!
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ prefect agent <span class="nb">local</span> start
 </pre></div>
 </div>
-<p>Em seguida, adicione:</p>
+<p>Em seguida, no final do seu arquivo, adicione:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">flow</span><span class="o">.</span><span class="n">register</span><span class="p">(</span><span class="n">project_name</span><span class="o">=</span><span class="s2">&quot;Iris Project&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>… no final do seu arquivo. Você deve ver algo parecido com o abaixo:</p>
+<p>Você deve ver algo parecido com o abaixo:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>Flow URL: https://cloud.prefect.io/khuyentran1476-gmail-com-s-account/flow/dba26bea-8827-4db4-9988-3289f6cb662f
  └── ID: 2944dc36-cdac-4079-8497-be4ec5594785
  └── Project: Iris Project
  └── Labels: <span class="o">[</span><span class="s1">&#39;khuyen-Precision-7740&#39;</span><span class="o">]</span>
 </pre></div>
 </div>
-<p>Clique na URL na saída e você será redirecionado para uma página de visão geral. A página Visão geral mostra a versão do seu fluxo, quando ele é criado, o histórico de execução do fluxo e seu resumo de execuções.</p>
+<p>Clique na URL na saída e você será redirecionado para uma página de visão geral. A página Visão geral mostra a versão do seu fluxo, quando ele é criado, o histórico de execução do fluxo e seu resumo de execuções:</p>
 <p><img alt="" src="https://miro.medium.com/max/1810/1*olT8irSQON3D2N3g9K-wzg.png" /></p>
-<p>Você também pode visualizar o resumo de outras execuções, quando são executadas e suas configurações.</p>
+<p>Você também pode visualizar o resumo de outras execuções, quando são executadas e suas configurações:</p>
 <p><img alt="" src="https://miro.medium.com/max/594/1*Jce9rCOQURyNJPBNye0c-Q.png" /></p>
-<p>É muito legal como essas informações importantes são rastreadas automaticamente pelo Perfect!</p>
+<p>É muito legal como essas informações importantes são rastreadas automaticamente pelo Prefect!</p>
 </section>
 <section id="executar-o-fluxo-de-trabalho-com-parametros-padrao">
 <h3><span class="section-number">5.1.3.2. </span>Executar o fluxo de trabalho com parâmetros padrão<a class="headerlink" href="#executar-o-fluxo-de-trabalho-com-parametros-padrao" title="Permalink to this headline">#</a></h3>
-<p>Observe que o fluxo de trabalho está registrado no Prefect Cloud, mas ainda não foi executado. Para executar o fluxo de trabalho com os parâmetros padrão, clique em Quick Run no canto superior direito.</p>
+<p>Observe que o fluxo de trabalho está registrado no Prefect Cloud, mas ainda não foi executado. Para executar o fluxo de trabalho com os parâmetros padrão, clique em Quick Run no canto superior direito:</p>
 <p><img alt="" src="https://miro.medium.com/max/376/1*kSdZ7ILVXcMurXJc-1n6Dw.png" /></p>
 <p>Clique na execução que é criada. Agora você poderá ver a atividade do seu novo fluxo executado em tempo real!</p>
 <p><img alt="" src="https://miro.medium.com/max/1000/1*JbKeDKz2sN_9cQP89yXVvg.gif" /></p>
 </section>
 <section id="execute-o-fluxo-de-trabalho-com-parametros-personalizados">
 <h3><span class="section-number">5.1.3.3. </span>Execute o fluxo de trabalho com parâmetros personalizados<a class="headerlink" href="#execute-o-fluxo-de-trabalho-com-parametros-personalizados" title="Permalink to this headline">#</a></h3>
-<p>Para executar o fluxo de trabalho com parâmetros personalizados, clique na guia Run e altere os parâmetros em Inputs.</p>
+<p>Para executar o fluxo de trabalho com parâmetros personalizados, clique na guia Run e altere os parâmetros em Inputs:</p>
 <p><img alt="" src="https://miro.medium.com/max/1885/1*4FD_0vEttydd1pvivVEpjw.png" /></p>
 <p>Quando estiver satisfeito com os parâmetros, basta clicar no botão Run para iniciar a execução.</p>
 </section>
 <section id="visualize-o-grafico-do-fluxo-de-trabalho">
 <h3><span class="section-number">5.1.3.4. </span>Visualize o gráfico do fluxo de trabalho<a class="headerlink" href="#visualize-o-grafico-do-fluxo-de-trabalho" title="Permalink to this headline">#</a></h3>
-<p>Clicar em Schematic fornecerá o gráfico de todo o fluxo de trabalho.</p>
+<p>Clicar em Schematic fornecerá o gráfico de todo o fluxo de trabalho:</p>
 <p><img alt="" src="https://miro.medium.com/max/1000/1*Inj8ey1ZWrMiVtmDPCYGyQ.png" /></p>
 </section>
 </section>
@@ -870,7 +870,7 @@ Flow run succeeded!
 <section id="cache-de-entrada">
 <h3><span class="section-number">5.1.4.1. </span>Cache de entrada<a class="headerlink" href="#cache-de-entrada" title="Permalink to this headline">#</a></h3>
 <p>Lembra do problema que mencionamos no início da seção? Normalmente, se a função <code class="docutils literal notranslate"><span class="pre">get_classes</span></code> falhar, os dados criados pela função <code class="docutils literal notranslate"><span class="pre">encode_categorical_columns</span></code> serão descartados e todo o fluxo de trabalho precisa ser iniciado desde o início.</p>
-<p>No entanto, com Prefect, a saída de <code class="docutils literal notranslate"><span class="pre">encode_categorical_columns</span></code> é armazenada. Na próxima vez que o fluxo de trabalho for executado novamente, a saída de <code class="docutils literal notranslate"><span class="pre">encode_categorical_columns</span></code> será usada pela próxima tarefa <strong>sem executar novamente</strong> a tarefa <code class="docutils literal notranslate"><span class="pre">encode_categorical_columns</span></code> .</p>
+<p>No entanto, com o Prefect, a saída de <code class="docutils literal notranslate"><span class="pre">encode_categorical_columns</span></code> é armazenada. Na próxima vez que o fluxo de trabalho for executado novamente, a saída de <code class="docutils literal notranslate"><span class="pre">encode_categorical_columns</span></code> será usada pela próxima tarefa <strong>sem executar novamente</strong> a tarefa <code class="docutils literal notranslate"><span class="pre">encode_categorical_columns</span></code>:</p>
 <p><img alt="" src="https://miro.medium.com/max/700/1*WN5iFz3QunvTDNc8ijpizg.png" /></p>
 <p>Isso pode resultar em uma grande redução no tempo necessário para executar o fluxo de trabalho.</p>
 </section>
@@ -886,7 +886,7 @@ Flow run succeeded!
 </pre></div>
 </div>
 <p>No entanto, fazer isso dificultará o teste da função.</p>
-<p>Prefect facilita salvar a saída de uma tarefa para cada execução:</p>
+<p>O Prefect facilita salvar a saída de uma tarefa para cada execução:</p>
 <ul class="simple">
 <li><p>definindo o checkpoint para <code class="docutils literal notranslate"><span class="pre">True</span></code></p></li>
 </ul>
@@ -894,15 +894,13 @@ Flow run succeeded!
 </pre></div>
 </div>
 <ul class="simple">
-<li><p>e adicionando <code class="docutils literal notranslate"><span class="pre">result</span> <span class="pre">=</span> <span class="pre">LocalResult(dir=...))</span></code> para o decorator <code class="docutils literal notranslate"><span class="pre">&#64;task</span></code> .</p></li>
+<li><p>e adicionando <code class="docutils literal notranslate"><span class="pre">result</span> <span class="pre">=</span> <span class="pre">LocalResult(dir=...))</span></code> para o decorator <code class="docutils literal notranslate"><span class="pre">&#64;task</span></code>.</p></li>
 </ul>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>from prefect.engine.results import LocalResult
 
 @task<span class="o">(</span><span class="nv">result</span> <span class="o">=</span> LocalResult<span class="o">(</span><span class="nv">dir</span><span class="o">=</span><span class="s1">&#39;data/processed&#39;</span><span class="o">))</span>
 def split_data<span class="o">(</span>data: pd.DataFrame, test_data_ratio: float, classes: list<span class="o">)</span> -&gt; Dict<span class="o">[</span>str, Any<span class="o">]</span>:
-    <span class="s2">&quot;&quot;&quot;Task for splitting the classical Iris data set into training and test</span>
-<span class="s2">    sets, each split into features and labels.</span>
-<span class="s2">    &quot;&quot;&quot;</span>
+    <span class="s2">&quot;&quot;&quot;Função para dividir o conjunto de dados Iris em conjuntos de treino e teste.&quot;&quot;&quot;</span>
     X_train, X_test, y_train, <span class="nv">y_test</span> <span class="o">=</span> ...
     
     <span class="k">return</span> dict<span class="o">(</span>
@@ -923,19 +921,17 @@ def split_data<span class="o">(</span>data: pd.DataFrame, test_data_ratio: float
 <span class="nd">@task</span><span class="p">(</span><span class="n">target</span><span class="o">=</span><span class="s2">&quot;{date:</span><span class="si">%a</span><span class="s2">_%b_</span><span class="si">%d</span><span class="s2">_%Y_%H:%M:%S}/</span><span class="si">{task_name}</span><span class="s2">_output&quot;</span><span class="p">,</span> 
       <span class="n">result</span> <span class="o">=</span> <span class="n">LocalResult</span><span class="p">(</span><span class="nb">dir</span><span class="o">=</span><span class="s1">&#39;data/processed&#39;</span><span class="p">))</span>
 <span class="k">def</span> <span class="nf">split_data</span><span class="p">(</span><span class="n">data</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">,</span> <span class="n">test_data_ratio</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">classes</span><span class="p">:</span> <span class="nb">list</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]:</span>
-    <span class="sd">&quot;&quot;&quot;Task for splitting the classical Iris data set into training and test</span>
-<span class="sd">    sets, each split into features and labels.</span>
-<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="sd">&quot;&quot;&quot;Função para dividir o conjunto de dados Iris em conjuntos de treino e teste.&quot;&quot;&quot;</span>
     <span class="o">...</span>
 </pre></div>
 </div>
-<p>Prefect também fornece outras classes <code class="docutils literal notranslate"><span class="pre">Result</span></code> como <code class="docutils literal notranslate"><span class="pre">GCSResult</span></code> e <code class="docutils literal notranslate"><span class="pre">S3Result</span></code> . Você pode conferir a documentação da API sobre resultados <a class="reference external" href="https://docs.prefect.io/api/latest/engine/results.html">aqui</a>.</p>
+<p>O Prefect também fornece outras classes <code class="docutils literal notranslate"><span class="pre">Result</span></code> como <code class="docutils literal notranslate"><span class="pre">GCSResult</span></code> e <code class="docutils literal notranslate"><span class="pre">S3Result</span></code>. Você pode conferir a documentação da API sobre resultados <a class="reference external" href="https://docs.prefect.io/api/latest/engine/results.html">aqui</a>.</p>
 </section>
 <section id="use-a-saida-de-outro-fluxo-para-o-fluxo-atual">
 <h3><span class="section-number">5.1.4.3. </span>Use a saída de outro fluxo para o fluxo atual<a class="headerlink" href="#use-a-saida-de-outro-fluxo-para-o-fluxo-atual" title="Permalink to this headline">#</a></h3>
 <p>Se você estiver trabalhando com vários fluxos, por exemplo, fluxo <code class="docutils literal notranslate"><span class="pre">data-engineer</span></code> e fluxo <code class="docutils literal notranslate"><span class="pre">data-science</span></code>, convém usar a saída do fluxo <code class="docutils literal notranslate"><span class="pre">data-engineer</span></code> para o fluxo <code class="docutils literal notranslate"><span class="pre">data-science</span></code>.</p>
 <p><img alt="" src="https://miro.medium.com/max/700/1*Hl_8w9TqtGTzMKW_RygsDw.png" /></p>
-<p>Depois de salvar a saída do seu fluxo <code class="docutils literal notranslate"><span class="pre">data-engineer</span></code> como um arquivo, você pode ler esse arquivo usando o método <code class="docutils literal notranslate"><span class="pre">read</span></code>:</p>
+<p>Após salvar a saída do seu fluxo <code class="docutils literal notranslate"><span class="pre">data-engineer</span></code> como um arquivo, você pode ler esse arquivo usando o método <code class="docutils literal notranslate"><span class="pre">read</span></code>:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">prefect.engine.results</span> <span class="kn">import</span> <span class="n">LocalResult</span>
 
 <span class="n">train_test_dict</span> <span class="o">=</span> <span class="n">LocalResult</span><span class="p">(</span><span class="nb">dir</span><span class="o">=...</span><span class="p">)</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">location</span><span class="o">=...</span><span class="p">)</span><span class="o">.</span><span class="n">value</span>
@@ -945,9 +941,9 @@ def split_data<span class="o">(</span>data: pd.DataFrame, test_data_ratio: float
 <section id="conectar-fluxos-dependentes">
 <h3><span class="section-number">5.1.4.4. </span>Conectar fluxos dependentes<a class="headerlink" href="#conectar-fluxos-dependentes" title="Permalink to this headline">#</a></h3>
 <p>Imagine este cenário: você criou dois fluxos que dependem um do outro. O fluxo <code class="docutils literal notranslate"><span class="pre">data-engineer</span></code> precisa ser executado antes do fluxo <code class="docutils literal notranslate"><span class="pre">data-science</span></code></p>
-<p>Alguém que olhou para o seu fluxo de trabalho não entendeu a relação entre esses dois fluxos. Como resultado, eles executaram o fluxo <code class="docutils literal notranslate"><span class="pre">data-science</span></code> e o fluxo <code class="docutils literal notranslate"><span class="pre">data-engineer</span></code> ao mesmo tempo e encontraram um erro!</p>
+<p>Alguém que olhou para o seu fluxo de trabalho não entendeu a relação entre esses dois fluxos. Como resultado, eles executaram o fluxo <code class="docutils literal notranslate"><span class="pre">data-science</span></code> e o fluxo <code class="docutils literal notranslate"><span class="pre">data-engineer</span></code> ao mesmo tempo, e encontraram um erro!</p>
 <p><img alt="" src="https://miro.medium.com/max/700/1*J7-kWMCMm3332B-Ff0D6JA.png" /></p>
-<p>Para evitar que isso aconteça, devemos especificar a relação entre os fluxos. Felizmente, Prefect torna mais fácil para nós fazermos isso.</p>
+<p>Para evitar que isso aconteça, devemos especificar a relação entre os fluxos. Felizmente, O Prefect facilita para fazermos isso.</p>
 <p>Comece pegando dois fluxos diferentes usando <code class="docutils literal notranslate"><span class="pre">StartFlowRun</span></code>. Adicione <code class="docutils literal notranslate"><span class="pre">wait=True</span></code> ao argumento para que o fluxo seguinte seja executado somente depois que o fluxo anterior terminar de ser executado.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">prefect</span> <span class="kn">import</span> <span class="n">Flow</span> 
 <span class="kn">from</span> <span class="nn">prefect.tasks.prefect</span> <span class="kn">import</span> <span class="n">StartFlowRun</span>

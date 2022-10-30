@@ -458,7 +458,7 @@ title="Print to PDF"
   <section class="tex2jax_ignore mathjax_ignore" id="construir-pipelines">
 <h1><span class="section-number">5. </span>Construir Pipelines<a class="headerlink" href="#construir-pipelines" title="Permalink to this headline">#</a></h1>
 <p>Como cientista de dados, por que você deveria se preocupar em otimizar seu fluxo de trabalho de ciência de dados? Vamos começar com um exemplo de um projeto básico de ciência de dados.</p>
-<p>Imagine que você estivesse trabalhando com um conjunto de dados Iris. Você começou construindo funções para processar seus dados.</p>
+<p>Imagine que você estivesse trabalhando com um conjunto de dados Iris. Você começou construindo funções para processar seus dados:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span>
 <span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Any</span><span class="p">,</span> <span class="n">Dict</span><span class="p">,</span> <span class="n">List</span>
 <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
@@ -468,28 +468,26 @@ title="Print to PDF"
 
 
 <span class="k">def</span> <span class="nf">get_classes</span><span class="p">(</span><span class="n">data</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">,</span> <span class="n">target_col</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]:</span>
-    <span class="sd">&quot;&quot;&quot;Task for getting the classes from the Iris data set.&quot;&quot;&quot;</span>
+    <span class="sd">&quot;&quot;&quot;Função que retorna as classes do conjunto de dados Iris.&quot;&quot;&quot;</span>
     <span class="o">...</span>
 
 
 <span class="k">def</span> <span class="nf">encode_categorical_columns</span><span class="p">(</span><span class="n">data</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">,</span> <span class="n">target_col</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">:</span>
-    <span class="sd">&quot;&quot;&quot;Task for encoding the categorical columns in the Iris data set.&quot;&quot;&quot;</span>
-
+    <span class="sd">&quot;&quot;&quot;Função que codifica as colunas categóricas do conjunto de dados Iris.&quot;&quot;&quot;</span>
     <span class="o">...</span>
 
+
 <span class="k">def</span> <span class="nf">split_data</span><span class="p">(</span><span class="n">data</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">,</span> <span class="n">test_data_ratio</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">classes</span><span class="p">:</span> <span class="nb">list</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]:</span>
-    <span class="sd">&quot;&quot;&quot;Task for splitting the classical Iris data set into training and test</span>
-<span class="sd">    sets, each split into features and labels.</span>
-<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="sd">&quot;&quot;&quot;Função para dividir o conjunto de dados Iris em conjuntos de treino e teste.&quot;&quot;&quot;</span>
     <span class="o">...</span>
 </pre></div>
 </div>
-<p>Depois de definir as funções, você as executa.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Define parameters</span>
+<p>Após definir as funções, você as executa:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Defina os parâmetros</span>
 <span class="n">target_col</span> <span class="o">=</span> <span class="s1">&#39;species&#39;</span>
 <span class="n">test_data_ratio</span> <span class="o">=</span> <span class="mf">0.2</span>
 
-<span class="c1"># Run functions</span>
+<span class="c1"># Rode as funções</span>
 <span class="n">data</span> <span class="o">=</span> <span class="n">load_data</span><span class="p">(</span><span class="n">path</span><span class="o">=</span><span class="s2">&quot;data/raw/iris.csv&quot;</span><span class="p">)</span>
 <span class="n">categorical_columns</span> <span class="o">=</span> <span class="n">encode_categorical_columns</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">data</span><span class="p">,</span> <span class="n">target_col</span><span class="o">=</span><span class="n">target_col</span><span class="p">)</span>
 <span class="n">classes</span> <span class="o">=</span> <span class="n">get_classes</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">data</span><span class="p">,</span> <span class="n">target_col</span><span class="o">=</span><span class="n">target_col</span><span class="p">)</span> 
@@ -498,7 +496,7 @@ title="Print to PDF"
                             <span class="n">classes</span><span class="o">=</span><span class="n">classes</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>Seu código funcionou bem e você não viu nada de errado com a saída, então você acha que o fluxo de trabalho é bom o suficiente. No entanto, pode haver muitas desvantagens com um fluxo de trabalho linear como acima.</p>
+<p>Seu código funcionou bem e você nada viu de errado com a saída, então você acha que o fluxo de trabalho é bom o suficiente. No entanto, pode haver muitas desvantagens com um fluxo de trabalho linear como acima.</p>
 <p><img alt="" src="https://miro.medium.com/max/1000/1*1dE70akxwDPMtw2s1LyHpQ.png" /></p>
 <p>As desvantagens são:</p>
 <ul class="simple">
@@ -506,7 +504,7 @@ title="Print to PDF"
 </ul>
 <p><img alt="" src="https://miro.medium.com/max/1000/1*b6hmvPxzWYr9GAX2Q2Sdvw.png" /></p>
 <ul class="simple">
-<li><p>Como as funções <code class="docutils literal notranslate"><span class="pre">encode_categorical_columns</span></code> e <code class="docutils literal notranslate"><span class="pre">get_classes</span></code> não são dependentes uma da outra, elas podem ser executadas ao mesmo tempo para economizar tempo:</p></li>
+<li><p>Como as funções <code class="docutils literal notranslate"><span class="pre">encode_categorical_columns</span></code> e <code class="docutils literal notranslate"><span class="pre">get_classes</span></code> não são dependentes uma da outra, elas podem ser executadas ao mesmo tempo:</p></li>
 </ul>
 <p><img alt="" src="https://miro.medium.com/max/700/1*iuzgmRBi2iMsCsF9IOkABw.png" /></p>
 <p>Executar as funções dessa maneira também pode evitar o desperdício de tempo desnecessário em funções que não funcionam. Se houver um erro na função <code class="docutils literal notranslate"><span class="pre">get_classes</span></code> , o fluxo de trabalho será reiniciado imediatamente sem esperar que a função <code class="docutils literal notranslate"><span class="pre">encode_categorical_columns</span></code> termine.</p>
