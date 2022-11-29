@@ -16,6 +16,12 @@ Para instalar o Pandera, digite:
 pip install pandera
 ```
 
+Se estiver usando o Poetry, então digite:
+
+```bash
+poetry add pandera
+```
+
 ### Introdução
 
 Para aprender como o Pandera funciona, vamos começar criando um simples conjunto de dados:
@@ -389,6 +395,7 @@ Para utilizar as funções de leitura e escrita do Pandera é necessário instal
 
 ```bash
 pip install pandera[io]
+poetry add pandera[io]
 ```
 ```
 

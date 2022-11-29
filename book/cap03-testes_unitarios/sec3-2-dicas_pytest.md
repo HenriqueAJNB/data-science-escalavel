@@ -134,6 +134,7 @@ Para repetir um determinado teste, instale `pytest-repeat`:
 
 ```bash
 $ pip install pytest-repeat
+$ poetry add pytest-repeat
 ```
 
 Agora podemos usar `pytest.mark.repeat(100)` como um decorador no teste que gostaríamos de repetir.
@@ -188,6 +189,7 @@ Vamos instalar o `pytest-benchmark`:
 
 ```bash
 $ pip install pytest-benchmark
+$ poetry add pytest-benchmark
 ```
 
 Vamos usar o exemplo deste artigo, escrito em inglês pela autora original do livro, sobre [performance em código Python](https://towardsdatascience.com/timing-the-performance-to-choose-the-right-python-object-for-your-data-science-project-670db6f11b8e) para mostrar como podemos usar o `pytest-benchmark`.

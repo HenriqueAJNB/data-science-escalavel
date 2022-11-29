@@ -27,6 +27,12 @@ Para fazer download do template, comece instalando o [cookiecutter](https://gith
 pip install cookiecutter
 ```
 
+Se estiver usando o Poetry, então digite:
+
+```bash
+poetry add cookiecutter
+```
+
 Crie um projeto baseado no template:
 
 ```bash
