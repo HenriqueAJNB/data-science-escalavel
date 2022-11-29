@@ -31,6 +31,13 @@ Para instalar o Great Expectations, rode:
 ```bash
 pip install great_expectations
 ```
+
+Se estiver usando o Poetry, então digite:
+
+```bash
+poetry add great_expectations
+```
+
 ### Primeiros passos
 
 #### Criando um contexto de dados (Data Context)
