@@ -9,7 +9,7 @@ Para instalar o Prefect, digite:
 pip install prefect
 ```
 
- Se estiver usando o Poetry, então digite:
+Se estiver usando o Poetry, então digite:
 
 ```bash
 poetry add prefect
