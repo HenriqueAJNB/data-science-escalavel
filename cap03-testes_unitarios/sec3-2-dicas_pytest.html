@@ -643,6 +643,7 @@ title="Print to PDF"
 <p>Para garantir que a ordem de inserção é preservada quando usamos o método <code class="docutils literal notranslate"><span class="pre">extend</span></code>, nós podemos criar duas listas aleatórias e testá-las 100 vezes. Se todos os testes passarem, teremos certeza de que o método funciona conforme o esperado.</p>
 <p>Para repetir um determinado teste, instale <code class="docutils literal notranslate"><span class="pre">pytest-repeat</span></code>:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ pip install pytest-repeat
+$ poetry add pytest-repeat
 </pre></div>
 </div>
 <p>Agora podemos usar <code class="docutils literal notranslate"><span class="pre">pytest.mark.repeat(100)</span></code> como um decorador no teste que gostaríamos de repetir.</p>
@@ -688,6 +689,7 @@ title="Print to PDF"
 <p>Por sorte, temos uma biblioteca chamada <code class="docutils literal notranslate"><span class="pre">pytest-benchmark</span></code> que permite realizar o benchmark do nosso código enquanto testamos as nossas funções com pytest!</p>
 <p>Vamos instalar o <code class="docutils literal notranslate"><span class="pre">pytest-benchmark</span></code>:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ pip install pytest-benchmark
+$ poetry add pytest-benchmark
 </pre></div>
 </div>
 <p>Vamos usar o exemplo deste artigo, escrito em inglês pela autora original do livro, sobre <a class="reference external" href="https://towardsdatascience.com/timing-the-performance-to-choose-the-right-python-object-for-your-data-science-project-670db6f11b8e">performance em código Python</a> para mostrar como podemos usar o <code class="docutils literal notranslate"><span class="pre">pytest-benchmark</span></code>.</p>
