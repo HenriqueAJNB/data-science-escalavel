@@ -4,6 +4,8 @@ on: [push]
 
 jobs:
   build-and-deploy:
+    permissions:
+      contents: write
     runs-on: ubuntu-latest
     steps:
       - name: Setup GitHub Actions
