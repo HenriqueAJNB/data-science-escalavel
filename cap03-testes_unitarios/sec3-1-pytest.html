@@ -1,118 +1,187 @@
 
 <!DOCTYPE html>
 
-<html>
+
+<html lang="en" data-content_root="../" >
+
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>3.1. Pytest para cientista de dados &#8212; Construindo uma solução robusta e escalável em ciência de dados</title>
-    
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
   <!-- Loaded before other Sphinx assets -->
-  <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
-<link href="../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+  <link href="../_static/styles/theme.css?digest=3ee479438cf8b5e0d341" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=3ee479438cf8b5e0d341" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=3ee479438cf8b5e0d341" rel="stylesheet" />
 
-    
-  <link rel="stylesheet"
-    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
-  <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
-  <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+  
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=3ee479438cf8b5e0d341" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
-    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
-    
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=87e54e7c" />
+  
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=3ee479438cf8b5e0d341" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=3ee479438cf8b5e0d341" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=3ee479438cf8b5e0d341"></script>
 
-    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-    <script src="../_static/jquery.js"></script>
-    <script src="../_static/underscore.js"></script>
-    <script src="../_static/doctools.js"></script>
-    <script src="../_static/clipboard.min.js"></script>
-    <script src="../_static/copybutton.js"></script>
-    <script src="../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="../_static/togglebutton.js"></script>
-    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
-    <script src="../_static/design-tabs.js"></script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
-const thebe_selector = ".thebe,.cell"
-const thebe_selector_input = "pre"
-const thebe_selector_output = ".output, .cell_output"
-</script>
-    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script async="async" src="https://www.googletagmanager.com/gtag/js?id=G-QFTP5KWB8R"></script>
+    <script>
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){ dataLayer.push(arguments); }
+                gtag('js', new Date());
+                gtag('config', 'G-QFTP5KWB8R');
+            </script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){ dataLayer.push(arguments); }
+                gtag('js', new Date());
+                gtag('config', 'G-QFTP5KWB8R');
+            </script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'cap03-testes_unitarios/sec3-1-pytest';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="3.2. Quatro dicas úteis para o pytest" href="sec3-2-dicas_pytest.html" />
     <link rel="prev" title="3. Testando o código" href="sec3-0-testes_unitarios.html" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="docsearch:language" content="None">
-    
-
-    <!-- Google Analytics -->
-    
-<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-QFTP5KWB8R"></script>
-<script>
-                    window.dataLayer = window.dataLayer || [];
-                    function gtag(){ dataLayer.push(arguments); }
-                    gtag('js', new Date());
-                    gtag('config', 'G-QFTP5KWB8R');
-                </script>
-
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
   </head>
-  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
-<!-- Checkboxes to toggle the left sidebar -->
-<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
-<label class="overlay overlay-navbar" for="__navigation">
-    <div class="visually-hidden">Toggle navigation sidebar</div>
-</label>
-<!-- Checkboxes to toggle the in-page toc -->
-<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
-<label class="overlay overlay-pagetoc" for="__page-toc">
-    <div class="visually-hidden">Toggle in-page Table of Contents</div>
-</label>
-<!-- Headers at the top -->
-<div class="announcement header-item noprint"></div>
-<div class="header header-item noprint"></div>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
 
-    
-    <div class="container-fluid" id="banner"></div>
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
 
-    
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
 
-    <div class="container-xl">
-      <div class="row">
-          
-<!-- Sidebar -->
-<div class="bd-sidebar noprint" id="site-navigation">
-    <div class="bd-sidebar__content">
-        <div class="bd-sidebar__top"><div class="navbar-brand-box">
-    <a class="navbar-brand text-wrap" href="../index.html">
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
       
-        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
         
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+
+<a class="navbar-brand logo" href="../README.html">
+  
+  
+  
+  
+  
+    
+    
       
-      
-      <img src="../_static/00-hb_logo.png" class="logo" alt="logo">
-      
-      
-      <h1 class="site-logo" id="site-title">Construindo uma solução robusta e escalável em ciência de dados</h1>
-      
-    </a>
-</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
-  <i class="icon fas fa-search"></i>
-  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
-</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
-    <div class="bd-toc-item active">
+    
+    
+    <img src="../_static/00-hb_logo.png" class="logo__image only-light" alt="Construindo uma solução robusta e escalável em ciência de dados - Home"/>
+    <script>document.write(`<img src="../_static/00-hb_logo.png" class="logo__image only-dark" alt="Construindo uma solução robusta e escalável em ciência de dados - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
             <li class="toctree-l1">
@@ -122,494 +191,272 @@ const thebe_selector_output = ".output, .cell_output"
             </li>
         </ul>
         <ul class="current nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="../cap01-como_ler_este_livro.html">
-   1. Como ler este livro
-  </a>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../cap02-estrutura_projeto/sec2-0-estrutura_projeto.html">
-   2. Estrutura do projeto
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
-  <label for="toctree-checkbox-1">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../cap02-estrutura_projeto/sec2-1-introducao.html">
-     2.1. Como estruturar seu projeto de ciência de dados para aumentar a legibilidade e transparência
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../cap02-estrutura_projeto/sec2-2-melhores_praticas_funcoes.html">
-     2.2. Boas práticas na escrita de funções
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1 current active has-children">
-  <a class="reference internal" href="sec3-0-testes_unitarios.html">
-   3. Testando o código
-  </a>
-  <input checked="" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
-  <label for="toctree-checkbox-2">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul class="current">
-   <li class="toctree-l2 current active">
-    <a class="current reference internal" href="#">
-     3.1. Pytest para cientista de dados
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="sec3-2-dicas_pytest.html">
-     3.2. Quatro dicas úteis para o pytest
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../cap04-testando_dados/sec4-0-testando_dados.html">
-   4. Testando os dados
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
-  <label for="toctree-checkbox-3">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../cap04-testando_dados/sec4-1-great_expectations.html">
-     4.1. Great Expectations: saiba sempre o que esperar dos seus dados
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../cap04-testando_dados/sec4-2-pandera.html">
-     4.2. Valide Seu Pandas DataFrame com Pandera
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../cap04-testando_dados/sec4-3-schema.html">
-     4.3. Introdução ao Schema: Uma Biblioteca Python para Validar seus Dados
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../cap05-construir_pipelines/sec5-0-construir_pipelines.html">
-   5. Construir Pipelines
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
-  <label for="toctree-checkbox-4">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../cap05-construir_pipelines/sec5-1-prefect.html">
-     5.1. Orquestre um projeto de ciência de dados em Python com Prefect
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../cap06-acompanhamento_de_experimentos/sec6-0-acompanhamento_de_experimentos.html">
-   6. Acompanhamento de experimentos
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
-  <label for="toctree-checkbox-5">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../cap06-acompanhamento_de_experimentos/sec6-1-hydra.html">
-     6.1. Configure seus projetos de ciência de dados com Hydra
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../cap07-controle_de_versao/sec7-0-controle_de_versao.html">
-   7. Controle de Versão
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
-  <label for="toctree-checkbox-6">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../cap07-controle_de_versao/sec7-1-introducao_ao_DVC.html">
-     7.1. Introdução ao DVC: Controle de Versionamento de Dados para Projetos de Aprendizado de Máquina
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../cap07-controle_de_versao/sec7-2-dagshub.html">
-     7.2. DagsHub: um Suplemento de Github para Cientistas de Dados e Engenheiros de Aprendizado de Máquina
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../cap07-controle_de_versao/sec7-3-pre_commit_plugins.html">
-     7.3. 4 plugins pré-commit para automatizar a revisão e formatação de código em Python
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../cap08-deploy_de_modelos/sec8-0-deploy_de_modelos.html">
-   8. Deploy de Modelos
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/>
-  <label for="toctree-checkbox-7">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../cap08-deploy_de_modelos/sec8-1-bentoml.html">
-     8.1. BentoML: Crie um Serviço de Predição Baseado em ML em Minutos
-    </a>
-   </li>
-  </ul>
- </li>
+<li class="toctree-l1"><a class="reference internal" href="../cap01-como_ler_este_livro.html">1. Como ler este livro</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../cap02-estrutura_projeto/sec2-0-estrutura_projeto.html">2. Estrutura do projeto</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../cap02-estrutura_projeto/sec2-1-introducao.html">2.1. Como estruturar seu projeto de ciência de dados para aumentar a legibilidade e transparência</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cap02-estrutura_projeto/sec2-2-melhores_praticas_funcoes.html">2.2. Boas práticas na escrita de funções</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="sec3-0-testes_unitarios.html">3. Testando o código</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">3.1. Pytest para cientista de dados</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sec3-2-dicas_pytest.html">3.2. Quatro dicas úteis para o pytest</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../cap04-testando_dados/sec4-0-testando_dados.html">4. Testando os dados</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../cap04-testando_dados/sec4-1-great_expectations.html">4.1. Great Expectations: saiba sempre o que esperar dos seus dados</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cap04-testando_dados/sec4-2-pandera.html">4.2. Valide Seu Pandas DataFrame com Pandera</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cap04-testando_dados/sec4-3-schema.html">4.3. Introdução ao Schema: Uma Biblioteca Python para Validar seus Dados</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../cap05-construir_pipelines/sec5-0-construir_pipelines.html">5. Construir Pipelines</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../cap05-construir_pipelines/sec5-1-prefect.html">5.1. Orquestre um projeto de ciência de dados em Python com Prefect</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../cap06-acompanhamento_de_experimentos/sec6-0-acompanhamento_de_experimentos.html">6. Acompanhamento de experimentos</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../cap06-acompanhamento_de_experimentos/sec6-1-hydra.html">6.1. Configure seus projetos de ciência de dados com Hydra</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../cap07-controle_de_versao/sec7-0-controle_de_versao.html">7. Controle de Versão</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../cap07-controle_de_versao/sec7-1-introducao_ao_DVC.html">7.1. Introdução ao DVC: Controle de Versionamento de Dados para Projetos de Aprendizado de Máquina</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cap07-controle_de_versao/sec7-2-dagshub.html">7.2. DagsHub: um Suplemento de Github para Cientistas de Dados e Engenheiros de Aprendizado de Máquina</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cap07-controle_de_versao/sec7-3-pre_commit_plugins.html">7.3. 4 plugins pré-commit para automatizar a revisão e formatação de código em Python</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../cap08-deploy_de_modelos/sec8-0-deploy_de_modelos.html">8. Deploy de Modelos</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../cap08-deploy_de_modelos/sec8-1-bentoml.html">8.1. BentoML: Crie um Serviço de Predição Baseado em ML em Minutos</a></li>
+</ul>
+</details></li>
 </ul>
 
     </div>
 </nav></div>
-        <div class="bd-sidebar__bottom">
-             <!-- To handle the deprecated key -->
-            
-            <div class="navbar_extra_footer">
-            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
-            </div>
-            
-        </div>
     </div>
-    <div id="rtd-footer-container"></div>
-</div>
-
-
-          
-
-
-          
-<!-- A tiny helper pixel to detect if we've scrolled -->
-<div class="sbt-scroll-pixel-helper"></div>
-<!-- Main content -->
-<div class="col py-0 content-container">
-    
-    <div class="header-article row sticky-top noprint">
-        
-
-
-
-<div class="col py-1 d-flex header-article-main">
-    <div class="header-article__left">
-        
-        <label for="__navigation"
-  class="headerbtn"
-  data-toggle="tooltip"
-data-placement="right"
-title="Toggle navigation"
->
   
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-bars"></i>
-  </span>
-
-</label>
-
-        
-    </div>
-    <div class="header-article__right">
-<div class="menu-dropdown menu-dropdown-launch-buttons">
-  <button class="headerbtn menu-dropdown__trigger"
-      aria-label="Launch interactive content">
-      <i class="fas fa-rocket"></i>
-  </button>
-  <div class="menu-dropdown__content">
-    <ul>
-      <li>
-        <a href="https://mybinder.org/v2/gh/HenriqueAJNB/data-science-escalavel/main?urlpath=tree/./data-science-escalavel/cap03-testes_unitarios/sec3-1-pytest.ipynb"
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Launch on Binder"
->
   
-
-<span class="headerbtn__icon-container">
-  
-    <img src="../_static/images/logo_binder.svg">
-  </span>
-<span class="headerbtn__text-container">Binder</span>
-</a>
-
-      </li>
-      
-    </ul>
+  <div class="sidebar-primary-items__end sidebar-primary__section">
   </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/HenriqueAJNB/data-science-escalavel" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/HenriqueAJNB/data-science-escalavel/issues/new?title=Issue%20on%20page%20%2Fcap03-testes_unitarios/sec3-1-pytest.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
 </div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/cap03-testes_unitarios/sec3-1-pytest.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
 
 <button onclick="toggleFullScreen()"
-  class="headerbtn"
-  data-toggle="tooltip"
-data-placement="bottom"
-title="Fullscreen mode"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
 >
   
 
-<span class="headerbtn__icon-container">
+<span class="btn__icon-container">
   <i class="fas fa-expand"></i>
   </span>
 
 </button>
 
-<div class="menu-dropdown menu-dropdown-repository-buttons">
-  <button class="headerbtn menu-dropdown__trigger"
-      aria-label="Source repositories">
-      <i class="fab fa-github"></i>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
   </button>
-  <div class="menu-dropdown__content">
-    <ul>
-      <li>
-        <a href="https://github.com/HenriqueAJNB/data-science-escalavel"
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Source repository"
->
-  
+`);
+</script>
 
-<span class="headerbtn__icon-container">
-  <i class="fab fa-github"></i>
-  </span>
-<span class="headerbtn__text-container">repository</span>
-</a>
 
-      </li>
-      
-      <li>
-        <a href="https://github.com/HenriqueAJNB/data-science-escalavel/issues/new?title=Issue%20on%20page%20%2Fcap03-testes_unitarios/sec3-1-pytest.html&body=Your%20issue%20content%20here."
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Open an issue"
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-lightbulb"></i>
-  </span>
-<span class="headerbtn__text-container">open issue</span>
-</a>
-
-      </li>
-      
-    </ul>
-  </div>
-</div>
-
-<div class="menu-dropdown menu-dropdown-download-buttons">
-  <button class="headerbtn menu-dropdown__trigger"
-      aria-label="Download this page">
-      <i class="fas fa-download"></i>
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
   </button>
-  <div class="menu-dropdown__content">
-    <ul>
-      <li>
-        <a href="../_sources/cap03-testes_unitarios/sec3-1-pytest.ipynb"
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Download source file"
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-file"></i>
-  </span>
-<span class="headerbtn__text-container">.ipynb</span>
-</a>
-
-      </li>
-      
-      <li>
-        
-<button onclick="printPdf(this)"
-  class="headerbtn"
-  data-toggle="tooltip"
-data-placement="left"
-title="Print to PDF"
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-file-pdf"></i>
-  </span>
-<span class="headerbtn__text-container">.pdf</span>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
 </button>
-
-      </li>
+</div></div>
       
-    </ul>
-  </div>
-</div>
-<label for="__page-toc"
-  class="headerbtn headerbtn-page-toc"
+    </div>
   
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-list"></i>
-  </span>
-
-</label>
-
-    </div>
 </div>
-
-<!-- Table of contents -->
-<div class="col-md-3 bd-toc show noprint">
-    <div class="tocsection onthispage pt-5 pb-3">
-        <i class="fas fa-list"></i> Contents
-    </div>
-    <nav id="bd-toc-nav" aria-label="Page">
-        <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#o-que-e-o-pytest">
-   3.1.1. O que é o Pytest?
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#multiplos-testes-para-a-mesma-funcao">
-   3.1.2. Múltiplos testes para a mesma função
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#parametrizacao-combinando-testes">
-   3.1.3. Parametrização: combinando testes
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#parametrizando-com-uma-lista-de-exemplos">
-     3.1.3.1. Parametrizando com uma lista de exemplos
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#parametrizando-uma-lista-de-entradas-diferentes-com-diferentes-resultados-esperados">
-     3.1.3.2. Parametrizando uma lista de entradas diferentes com diferentes resultados esperados
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#testando-uma-funcao-de-cada-vez">
-   3.1.4. Testando uma função de cada vez
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#fixtures-usando-os-mesmos-dados-para-testar-diferentes-funcoes">
-   3.1.5. Fixtures: usando os mesmos dados para testar diferentes funções
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#estruture-seus-projetos">
-   3.1.6. Estruture seus projetos
-  </a>
- </li>
-</ul>
-
-    </nav>
 </div>
-    </div>
-    <div class="article row">
-        <div class="col pl-md-3 pl-lg-5 content-container">
-            <!-- Table of contents that is only displayed when printing the page -->
-            <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Pytest para cientista de dados</h1>
-                <!-- Table of contents -->
-                <div id="print-main-content">
-                    <div id="jb-print-toc">
-                        
-                        <div>
-                            <h2> Contents </h2>
-                        </div>
-                        <nav aria-label="Page">
-                            <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#o-que-e-o-pytest">
-   3.1.1. O que é o Pytest?
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#multiplos-testes-para-a-mesma-funcao">
-   3.1.2. Múltiplos testes para a mesma função
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#parametrizacao-combinando-testes">
-   3.1.3. Parametrização: combinando testes
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#parametrizando-com-uma-lista-de-exemplos">
-     3.1.3.1. Parametrizando com uma lista de exemplos
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#parametrizando-uma-lista-de-entradas-diferentes-com-diferentes-resultados-esperados">
-     3.1.3.2. Parametrizando uma lista de entradas diferentes com diferentes resultados esperados
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#testando-uma-funcao-de-cada-vez">
-   3.1.4. Testando uma função de cada vez
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#fixtures-usando-os-mesmos-dados-para-testar-diferentes-funcoes">
-   3.1.5. Fixtures: usando os mesmos dados para testar diferentes funções
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#estruture-seus-projetos">
-   3.1.6. Estruture seus projetos
-  </a>
- </li>
-</ul>
+              
+              
 
-                        </nav>
-                    </div>
-                </div>
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Pytest para cientista de dados</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
             </div>
-            <main id="main-content" role="main">
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#o-que-e-o-pytest">3.1.1. O que é o Pytest?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#multiplos-testes-para-a-mesma-funcao">3.1.2. Múltiplos testes para a mesma função</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#parametrizacao-combinando-testes">3.1.3. Parametrização: combinando testes</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#parametrizando-com-uma-lista-de-exemplos">3.1.3.1. Parametrizando com uma lista de exemplos</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#parametrizando-uma-lista-de-entradas-diferentes-com-diferentes-resultados-esperados">3.1.3.2. Parametrizando uma lista de entradas diferentes com diferentes resultados esperados</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#testando-uma-funcao-de-cada-vez">3.1.4. Testando uma função de cada vez</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fixtures-usando-os-mesmos-dados-para-testar-diferentes-funcoes">3.1.5. Fixtures: usando os mesmos dados para testar diferentes funções</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#estruture-seus-projetos">3.1.6. Estruture seus projetos</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
                 
-              <div>
-                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
   <section id="pytest-para-cientista-de-dados">
-<h1><span class="section-number">3.1. </span>Pytest para cientista de dados<a class="headerlink" href="#pytest-para-cientista-de-dados" title="Permalink to this headline">#</a></h1>
+<h1><span class="section-number">3.1. </span>Pytest para cientista de dados<a class="headerlink" href="#pytest-para-cientista-de-dados" title="Link to this heading">#</a></h1>
 <div class="note admonition">
 <p class="admonition-title">Fonte dos vídeos</p>
 <p>Todos os vídeos são da própria autora do livro original.</p>
 </div>
 <img src="https://user-images.githubusercontent.com/72529112/165227426-638a9596-de98-49a6-a02b-c24d904046ca.jpg" style="width:800px; height:545px"/><section id="o-que-e-o-pytest">
-<h2><span class="section-number">3.1.1. </span>O que é o Pytest?<a class="headerlink" href="#o-que-e-o-pytest" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">3.1.1. </span>O que é o Pytest?<a class="headerlink" href="#o-que-e-o-pytest" title="Link to this heading">#</a></h2>
 <p><a class="reference external" href="https://docs.pytest.org/en/stable/">Pytest</a> é um framework que facilita a escrita de testes unitários em Python. A autora original do livro afirma gostar do pytest pois permite a escrita de teses com pouco código, e eu, autor da tradução, concordo plenamente com ela. Se você já está familiarizado com testes unitários, pytest é uma grande ferramenta para sair da inércia.</p>
 <p>Para instalar o pytest, basta rodar no terminal:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip install pytest
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip<span class="w"> </span>install<span class="w"> </span>pytest
 </pre></div>
 </div>
 <p>Caso estiver usando o poetry:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>poetry add pytest
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>poetry<span class="w"> </span>add<span class="w"> </span>pytest
 </pre></div>
 </div>
 <div class="cell tag_remove-input docutils container">
@@ -621,7 +468,7 @@ title="Print to PDF"
 <span class="kn">from</span> <span class="nn">textblob</span> <span class="kn">import</span> <span class="n">TextBlob</span>
 
 <span class="k">def</span> <span class="nf">extract_sentiment</span><span class="p">(</span><span class="n">text</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
-        <span class="sd">&#39;&#39;&#39;Extrai um sentimento usando textblob. </span>
+<span class="w">        </span><span class="sd">&#39;&#39;&#39;Extrai um sentimento usando textblob. </span>
 <span class="sd">        Polaridade está no intervalo [-1, 1]&#39;&#39;&#39;</span>
 
         <span class="n">text</span> <span class="o">=</span> <span class="n">TextBlob</span><span class="p">(</span><span class="n">text</span><span class="p">)</span>
@@ -645,11 +492,11 @@ title="Print to PDF"
 <p>Dentro da função de teste, nós usamos a função <code class="docutils literal notranslate"><span class="pre">extract_sentiment</span></code> em uma frase de exemplo: “I think today will be a great day”, que em português significa “Eu acredito que hoje será um grande dia”. Nós, então, usamos um <code class="docutils literal notranslate"><span class="pre">assert</span> <span class="pre">sentiment</span> <span class="pre">&gt;</span> <span class="pre">0</span></code> para garantir que aquele sentimento é positivo, pois esta é nossa expectativa.</p>
 <p>E tudo pronto! Hora de rodar nosso teste.</p>
 <p>Se o nome do nosso script for <code class="docutils literal notranslate"><span class="pre">sentiment.py</span></code>, podemos rodar:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pytest sentiment.py
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pytest<span class="w"> </span>sentiment.py
 </pre></div>
 </div>
 <p>O pytest irá procurar e rodar por todas as funções que começam com <code class="docutils literal notranslate"><span class="pre">test_</span></code> no script. A saída do teste acima será parecida com esta:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="o">==========================================</span> <span class="m">1</span> passed <span class="k">in</span> <span class="m">0</span>.68s <span class="o">===========================================</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="o">==========================================</span><span class="w"> </span><span class="m">1</span><span class="w"> </span>passed<span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="m">0</span>.68s<span class="w"> </span><span class="o">===========================================</span>
 </pre></div>
 </div>
 <p>Legal, não? Não precisamos nem especificar qual função rodar. Desde que colocamos <code class="docutils literal notranslate"><span class="pre">test_</span></code> no começo da função de teste, o pytest detecta e executa automaticamente aquela função. Não precisamos nem sequer importar o pytest no script para rodar os testes.</p>
@@ -665,24 +512,24 @@ title="Print to PDF"
     <span class="k">assert</span> <span class="n">sentiment</span> <span class="o">&lt;</span> <span class="mi">0</span>
 </pre></div>
 </div>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ pytest sentiment.py
-_______________________________________ test_extract_sentiment ________________________________________
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>pytest<span class="w"> </span>sentiment.py
+_______________________________________<span class="w"> </span>test_extract_sentiment<span class="w"> </span>________________________________________
 
-def test_extract_sentiment<span class="o">()</span>:
-    
-        <span class="nv">text</span> <span class="o">=</span> <span class="s2">&quot;I think today will be a great day&quot;</span>
-    
-        <span class="nv">sentiment</span> <span class="o">=</span> extract_sentiment<span class="o">(</span>text<span class="o">)</span>
-    
-&gt;       assert sentiment &lt; <span class="m">0</span>
-E       assert <span class="m">0</span>.8 &lt; <span class="nv">0</span>
-<span class="o">==========================================</span> <span class="m">1</span> failed <span class="k">in</span> <span class="m">0</span>.84s <span class="o">===========================================</span>
+def<span class="w"> </span>test_extract_sentiment<span class="o">()</span>:
+<span class="w">    </span>
+<span class="w">        </span><span class="nv">text</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;I think today will be a great day&quot;</span>
+<span class="w">    </span>
+<span class="w">        </span><span class="nv">sentiment</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>extract_sentiment<span class="o">(</span>text<span class="o">)</span>
+<span class="w">    </span>
+&gt;<span class="w">       </span>assert<span class="w"> </span>sentiment<span class="w"> </span>&lt;<span class="w"> </span><span class="m">0</span>
+E<span class="w">       </span>assert<span class="w"> </span><span class="m">0</span>.8<span class="w"> </span>&lt;<span class="w"> </span><span class="nv">0</span>
+<span class="o">==========================================</span><span class="w"> </span><span class="m">1</span><span class="w"> </span>failed<span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="m">0</span>.84s<span class="w"> </span><span class="o">===========================================</span>
 </pre></div>
 </div>
 <p>A partir da saída acima, podemos perceber que o teste falhou porque o sentimento retornado pela função é 0.8 e não é menor do que zero! Nós agora somos capazes de não só saber se a nossa função funciona como esperado, mas também o porquê ela não funciona. Com este insight maravilhoso, nós conseguimos consertar a nossa função para que ela funcione de acordo com o esperado.</p>
 </section>
 <section id="multiplos-testes-para-a-mesma-funcao">
-<h2><span class="section-number">3.1.2. </span>Múltiplos testes para a mesma função<a class="headerlink" href="#multiplos-testes-para-a-mesma-funcao" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">3.1.2. </span>Múltiplos testes para a mesma função<a class="headerlink" href="#multiplos-testes-para-a-mesma-funcao" title="Link to this heading">#</a></h2>
 <p>Nós gostaríamos de testar a nossa função com outros exemplos. Como seriam os nomes destes novos testes?</p>
 <p>O nome do segundo teste poderia ser algo do tipo <code class="docutils literal notranslate"><span class="pre">test_extract_sentiment_2</span></code> ou <code class="docutils literal notranslate"><span class="pre">test_extract_sentiment_negative</span></code> caso o teste seja com um texto com sentimento negativo. O importante é que qualquer nome significativo é valido, desde que comece com <code class="docutils literal notranslate"><span class="pre">test_</span></code>:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1">#sentiment.py</span>
@@ -706,33 +553,33 @@ E       assert <span class="m">0</span>.8 &lt; <span class="nv">0</span>
     <span class="k">assert</span> <span class="n">sentiment</span> <span class="o">&lt;</span> <span class="mi">0</span>
 </pre></div>
 </div>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ pytest sentiment.py
-___________________________________ test_extract_sentiment_negative ____________________________________
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>pytest<span class="w"> </span>sentiment.py
+___________________________________<span class="w"> </span>test_extract_sentiment_negative<span class="w"> </span>____________________________________
 
-def test_extract_sentiment_negative<span class="o">()</span>:
-    
-        <span class="c1"># Tradução: Isso não vai acabar bem</span>
-        <span class="nv">text</span> <span class="o">=</span> <span class="s2">&quot;I do not think this will turn out well&quot;</span>
-    
-        <span class="nv">sentiment</span> <span class="o">=</span> extract_sentiment<span class="o">(</span>text<span class="o">)</span>
-    
-&gt;       assert sentiment &lt; <span class="m">0</span>
-E       assert <span class="m">0</span>.0 &lt; <span class="nv">0</span>
-<span class="o">=====================================</span> <span class="m">1</span> failed, <span class="m">1</span> passed <span class="k">in</span> <span class="m">0</span>.80s <span class="o">======================================</span>
+def<span class="w"> </span>test_extract_sentiment_negative<span class="o">()</span>:
+<span class="w">    </span>
+<span class="w">        </span><span class="c1"># Tradução: Isso não vai acabar bem</span>
+<span class="w">        </span><span class="nv">text</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;I do not think this will turn out well&quot;</span>
+<span class="w">    </span>
+<span class="w">        </span><span class="nv">sentiment</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>extract_sentiment<span class="o">(</span>text<span class="o">)</span>
+<span class="w">    </span>
+&gt;<span class="w">       </span>assert<span class="w"> </span>sentiment<span class="w"> </span>&lt;<span class="w"> </span><span class="m">0</span>
+E<span class="w">       </span>assert<span class="w"> </span><span class="m">0</span>.0<span class="w"> </span>&lt;<span class="w"> </span><span class="nv">0</span>
+<span class="o">=====================================</span><span class="w"> </span><span class="m">1</span><span class="w"> </span>failed,<span class="w"> </span><span class="m">1</span><span class="w"> </span>passed<span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="m">0</span>.80s<span class="w"> </span><span class="o">======================================</span>
 </pre></div>
 </div>
 <p>O resultado dos testes nos mostra que apenas um dos testes passou e o outro falhou, e sabemos o porquê. Esperávamos que a saída da sentença “I do not think this will turn out well”, que em português significa “Isso não vai acabar bem”, fosse negativo, mas a função retornou 0, classificando a frase como neutra.</p>
 <p>Esse tipo de análise nos indica que a função pode não ter uma assertividade de 100 % e, portanto, devemos ter cuidado ao usá-la para extrair sentimentos de um texto.</p>
 </section>
 <section id="parametrizacao-combinando-testes">
-<h2><span class="section-number">3.1.3. </span>Parametrização: combinando testes<a class="headerlink" href="#parametrizacao-combinando-testes" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">3.1.3. </span>Parametrização: combinando testes<a class="headerlink" href="#parametrizacao-combinando-testes" title="Link to this heading">#</a></h2>
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
 <div class="output text_html"><iframe width="560"height="315"src="https://www.youtube.com/embed/dnru6nSnwHU"title="YouTube video player"frameborder="0"allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"allowfullscreen></iframe></div></div>
 </div>
 <p>O exemplo acima mostra 2 testes para a mesma função. Será que não podemos combinar os 2 exemplos em uma única função de testes? É o que vamos aprender com parametrização de testes.</p>
 <section id="parametrizando-com-uma-lista-de-exemplos">
-<h3><span class="section-number">3.1.3.1. </span>Parametrizando com uma lista de exemplos<a class="headerlink" href="#parametrizando-com-uma-lista-de-exemplos" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">3.1.3.1. </span>Parametrizando com uma lista de exemplos<a class="headerlink" href="#parametrizando-com-uma-lista-de-exemplos" title="Link to this heading">#</a></h3>
 <p>Com o decorador <code class="docutils literal notranslate"><span class="pre">pytest.mark.parametrize()</span></code>, podemos executar testes com diferentes exemplos passando uma lista como argumento.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># sentiment.py</span>
 
@@ -740,7 +587,7 @@ E       assert <span class="m">0</span>.0 &lt; <span class="nv">0</span>
 <span class="kn">import</span> <span class="nn">pytest</span>
 
 <span class="k">def</span> <span class="nf">extract_sentiment</span><span class="p">(</span><span class="n">text</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
-        <span class="sd">&#39;&#39;&#39;Extract sentiment using textblob. </span>
+<span class="w">        </span><span class="sd">&#39;&#39;&#39;Extract sentiment using textblob. </span>
 <span class="sd">        Polarity is within range [-1, 1]&#39;&#39;&#39;</span>
 
         <span class="n">text</span> <span class="o">=</span> <span class="n">TextBlob</span><span class="p">(</span><span class="n">text</span><span class="p">)</span>
@@ -759,27 +606,27 @@ E       assert <span class="m">0</span>.0 &lt; <span class="nv">0</span>
 </pre></div>
 </div>
 <p>No código acima, nós associamos à variável <code class="docutils literal notranslate"><span class="pre">sample</span></code> uma lista de frases, e então, passamos essa variável como argumento da função de teste. Agora cada frase da lista será testada uma de cada vez. Vejamos abaixo:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>_____ test_extract_sentiment<span class="o">[</span>I <span class="k">do</span> not think this will turn out well<span class="o">]</span> _____
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>_____<span class="w"> </span>test_extract_sentiment<span class="o">[</span>I<span class="w"> </span><span class="k">do</span><span class="w"> </span>not<span class="w"> </span>think<span class="w"> </span>this<span class="w"> </span>will<span class="w"> </span>turn<span class="w"> </span>out<span class="w"> </span>well<span class="o">]</span><span class="w"> </span>_____
 
-<span class="nv">sample</span> <span class="o">=</span> <span class="s1">&#39;I do not think this will turn out well&#39;</span>
-@pytest.mark.parametrize<span class="o">(</span><span class="s1">&#39;sample&#39;</span>, testdata<span class="o">)</span>
-    def test_extract_sentiment<span class="o">(</span>sample<span class="o">)</span>:
-    
-        <span class="nv">sentiment</span> <span class="o">=</span> extract_sentiment<span class="o">(</span>sample<span class="o">)</span>
-    
-&gt;       assert sentiment &gt; <span class="m">0</span>
-E       assert <span class="m">0</span>.0 &gt; <span class="nv">0</span>
-<span class="o">======================</span> <span class="m">1</span> failed, <span class="m">1</span> passed <span class="k">in</span> <span class="m">0</span>.80s <span class="o">===================</span>
+<span class="nv">sample</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;I do not think this will turn out well&#39;</span>
+@pytest.mark.parametrize<span class="o">(</span><span class="s1">&#39;sample&#39;</span>,<span class="w"> </span>testdata<span class="o">)</span>
+<span class="w">    </span>def<span class="w"> </span>test_extract_sentiment<span class="o">(</span>sample<span class="o">)</span>:
+<span class="w">    </span>
+<span class="w">        </span><span class="nv">sentiment</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>extract_sentiment<span class="o">(</span>sample<span class="o">)</span>
+<span class="w">    </span>
+&gt;<span class="w">       </span>assert<span class="w"> </span>sentiment<span class="w"> </span>&gt;<span class="w"> </span><span class="m">0</span>
+E<span class="w">       </span>assert<span class="w"> </span><span class="m">0</span>.0<span class="w"> </span>&gt;<span class="w"> </span><span class="nv">0</span>
+<span class="o">======================</span><span class="w"> </span><span class="m">1</span><span class="w"> </span>failed,<span class="w"> </span><span class="m">1</span><span class="w"> </span>passed<span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="m">0</span>.80s<span class="w"> </span><span class="o">===================</span>
 </pre></div>
 </div>
 <p>Usando <code class="docutils literal notranslate"><span class="pre">parametrize()</span></code> é possível testar 2 exemplos diferentes na mesma função!</p>
 </section>
 <section id="parametrizando-uma-lista-de-entradas-diferentes-com-diferentes-resultados-esperados">
-<h3><span class="section-number">3.1.3.2. </span>Parametrizando uma lista de entradas diferentes com diferentes resultados esperados<a class="headerlink" href="#parametrizando-uma-lista-de-entradas-diferentes-com-diferentes-resultados-esperados" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">3.1.3.2. </span>Parametrizando uma lista de entradas diferentes com diferentes resultados esperados<a class="headerlink" href="#parametrizando-uma-lista-de-entradas-diferentes-com-diferentes-resultados-esperados" title="Link to this heading">#</a></h3>
 <p>E se nós testássemos <strong>diferentes exemplos</strong> para ter <strong>diferentes saídas</strong>? O pytest permite também adicionar exemplos e resultados esperados como argumentos da nossa função de teste!</p>
 <p>Por exemplo, a função abaixo checa se um texto contém uma determinada palavra.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">text_contain_word</span><span class="p">(</span><span class="n">word</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">text</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
-    <span class="sd">&#39;&#39;&#39;Procura por uma determinada palavra em um texto&#39;&#39;&#39;</span>
+<span class="w">    </span><span class="sd">&#39;&#39;&#39;Procura por uma determinada palavra em um texto&#39;&#39;&#39;</span>
     
     <span class="k">return</span> <span class="n">word</span> <span class="ow">in</span> <span class="n">text</span>
 </pre></div>
@@ -791,7 +638,7 @@ E       assert <span class="m">0</span>.0 &gt; <span class="nv">0</span>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># process.py</span>
 <span class="kn">import</span> <span class="nn">pytest</span>
 <span class="k">def</span> <span class="nf">text_contain_word</span><span class="p">(</span><span class="n">word</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">text</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
-    <span class="sd">&#39;&#39;&#39;Procura por uma determinada palavra em um texto&#39;&#39;&#39;</span>
+<span class="w">    </span><span class="sd">&#39;&#39;&#39;Procura por uma determinada palavra em um texto&#39;&#39;&#39;</span>
     
     <span class="k">return</span> <span class="n">word</span> <span class="ow">in</span> <span class="n">text</span>
 
@@ -809,16 +656,16 @@ E       assert <span class="m">0</span>.0 &gt; <span class="nv">0</span>
 </pre></div>
 </div>
 <p>A estrutura dos parâmetros da nossa função será <code class="docutils literal notranslate"><span class="pre">parametrize(‘sample,</span> <span class="pre">expected_out’,</span> <span class="pre">testdata)</span></code> com <code class="docutils literal notranslate"><span class="pre">testdata=[(&lt;exemplo1&gt;,</span> <span class="pre">&lt;saida1&gt;),</span> <span class="pre">(&lt;exemplo2&gt;,</span> <span class="pre">&lt;saida2&gt;)</span></code></p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ pytest process.py
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>pytest<span class="w"> </span>process.py
 
-<span class="o">==========================================</span> <span class="m">2</span> passed <span class="k">in</span> <span class="m">0</span>.04s <span class="o">===========================================</span>
+<span class="o">==========================================</span><span class="w"> </span><span class="m">2</span><span class="w"> </span>passed<span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="m">0</span>.04s<span class="w"> </span><span class="o">===========================================</span>
 </pre></div>
 </div>
 <p>Maravilha! Ambos os testes passaram!</p>
 </section>
 </section>
 <section id="testando-uma-funcao-de-cada-vez">
-<h2><span class="section-number">3.1.4. </span>Testando uma função de cada vez<a class="headerlink" href="#testando-uma-funcao-de-cada-vez" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">3.1.4. </span>Testando uma função de cada vez<a class="headerlink" href="#testando-uma-funcao-de-cada-vez" title="Link to this heading">#</a></h2>
 <p>Conforme o número de testes em nosso script começa a crescer, você pode desejar testar uma única função ao invés de vários ou todos de uma única vez. Isso pode ser feito através da sintaxe <code class="docutils literal notranslate"><span class="pre">pytest</span> <span class="pre">arquivo.py::nome_da_funcao_de_teste</span></code>.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># process.py</span>
 
@@ -846,13 +693,13 @@ E       assert <span class="m">0</span>.0 &gt; <span class="nv">0</span>
 </pre></div>
 </div>
 <p>Por exemplo, se quisermos rodar apenas o teste <code class="docutils literal notranslate"><span class="pre">test_text_contain_word</span></code>, basta rodar no terminal:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ pytest process.py::test_text_contain_word
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>pytest<span class="w"> </span>process.py::test_text_contain_word
 </pre></div>
 </div>
 <p>E o pytest executará apenas o teste especificado!</p>
 </section>
 <section id="fixtures-usando-os-mesmos-dados-para-testar-diferentes-funcoes">
-<h2><span class="section-number">3.1.5. </span>Fixtures: usando os mesmos dados para testar diferentes funções<a class="headerlink" href="#fixtures-usando-os-mesmos-dados-para-testar-diferentes-funcoes" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">3.1.5. </span>Fixtures: usando os mesmos dados para testar diferentes funções<a class="headerlink" href="#fixtures-usando-os-mesmos-dados-para-testar-diferentes-funcoes" title="Link to this heading">#</a></h2>
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
 <div class="output text_html"><iframe width="560"height="315"src="https://www.youtube.com/embed/Jx2G0BQIjMs"title="YouTube video player"frameborder="0"allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"allowfullscreen></iframe></div></div>
@@ -881,7 +728,7 @@ E       assert <span class="m">0</span>.0 &gt; <span class="nv">0</span>
 <p>Agora conseguimos usar essa variável como parâmetro de quaisquer outros testes!</p>
 </section>
 <section id="estruture-seus-projetos">
-<h2><span class="section-number">3.1.6. </span>Estruture seus projetos<a class="headerlink" href="#estruture-seus-projetos" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">3.1.6. </span>Estruture seus projetos<a class="headerlink" href="#estruture-seus-projetos" title="Link to this heading">#</a></h2>
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
 <div class="output text_html"><iframe width="560"height="315"src="https://www.youtube.com/embed/714TfDztVVM"title="YouTube video player"frameborder="0"allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"allowfullscreen></iframe></div></div>
@@ -891,16 +738,16 @@ E       assert <span class="m">0</span>.0 &gt; <span class="nv">0</span>
 <p>Há diferentes formas de organizar seus arquivos. Você pode ou organizar seus scripts e funções na mesma pasta ou em duas pastas diferentes, uma com o código-fonte e outra com os testes.</p>
 <p>Método 1:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>test_structure_example/
-├── process.py
-└── test_process.py
+├──<span class="w"> </span>process.py
+└──<span class="w"> </span>test_process.py
 </pre></div>
 </div>
 <p>Método 2:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>test_structure_example/
-├── src
-│   └── process.py
-└── tests
-    └── test_process.py
+├──<span class="w"> </span>src
+│<span class="w">   </span>└──<span class="w"> </span>process.py
+└──<span class="w"> </span>tests
+<span class="w">    </span>└──<span class="w"> </span>test_process.py
 </pre></div>
 </div>
 <p>Tanto eu, autor da tradução, como a autora original recomendamos o método dois, pois torna mais fácil a organização conforme um projeto cresce.</p>
@@ -909,7 +756,7 @@ E       assert <span class="m">0</span>.0 &gt; <span class="nv">0</span>
 <span class="kn">from</span> <span class="nn">textblob</span> <span class="kn">import</span> <span class="n">TextBlob</span>
 
 <span class="k">def</span> <span class="nf">extract_sentiment</span><span class="p">(</span><span class="n">text</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
-        <span class="sd">&#39;&#39;&#39;Extract sentiment using textblob. </span>
+<span class="w">        </span><span class="sd">&#39;&#39;&#39;Extract sentiment using textblob. </span>
 <span class="sd">        Polarity is within range [-1, 1]&#39;&#39;&#39;</span>
 
         <span class="n">text</span> <span class="o">=</span> <span class="n">TextBlob</span><span class="p">(</span><span class="n">text</span><span class="p">)</span>
@@ -937,7 +784,7 @@ E       assert <span class="m">0</span>.0 &gt; <span class="nv">0</span>
 </div>
 <p>O objetivo do comando <code class="docutils literal notranslate"><span class="pre">sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__),</span> <span class="pre">os.path.pardir)))</span></code> é simplesmente adicionar o módulo <code class="docutils literal notranslate"><span class="pre">src</span></code> à variável de ambiente <code class="docutils literal notranslate"><span class="pre">PYTHONPATH</span></code> para permitir importações dos módulos e funções.</p>
 <p>Estando na pasta raiz do projeto (<code class="docutils literal notranslate"><span class="pre">test_structure_example/</span></code>), rode <code class="docutils literal notranslate"><span class="pre">pytest</span> <span class="pre">tests/test_process.py</span></code> ou então <code class="docutils literal notranslate"><span class="pre">pytest</span> <span class="pre">test_process.py</span></code>.</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="o">===========================</span> <span class="m">1</span> passed <span class="k">in</span> <span class="m">0</span>.69s <span class="o">============================</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="o">===========================</span><span class="w"> </span><span class="m">1</span><span class="w"> </span>passed<span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="m">0</span>.69s<span class="w"> </span><span class="o">============================</span>
 </pre></div>
 </div>
 </section>
@@ -955,7 +802,7 @@ E       assert <span class="m">0</span>.0 &gt; <span class="nv">0</span>
             mode: "python"
         },
         kernelOptions: {
-            kernelName: "python3",
+            name: "python3",
             path: "./cap03-testes_unitarios"
         },
         predefinedOutput: true
@@ -963,50 +810,112 @@ E       assert <span class="m">0</span>.0 &gt; <span class="nv">0</span>
     </script>
     <script>kernelName = 'python3'</script>
 
-              </div>
+                </article>
               
-            </main>
-            <footer class="footer-article noprint">
-                
-    <!-- Previous / next buttons -->
-<div class='prev-next-area'>
-    <a class='left-prev' id="prev-link" href="sec3-0-testes_unitarios.html" title="previous page">
-        <i class="fas fa-angle-left"></i>
-        <div class="prev-next-info">
-            <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title"><span class="section-number">3. </span>Testando o código</p>
-        </div>
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="sec3-0-testes_unitarios.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title"><span class="section-number">3. </span>Testando o código</p>
+      </div>
     </a>
-    <a class='right-next' id="next-link" href="sec3-2-dicas_pytest.html" title="next page">
-    <div class="prev-next-info">
+    <a class="right-next"
+       href="sec3-2-dicas_pytest.html"
+       title="next page">
+      <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
         <p class="prev-next-title"><span class="section-number">3.2. </span>Quatro dicas úteis para o pytest</p>
-    </div>
-    <i class="fas fa-angle-right"></i>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
     </a>
 </div>
-            </footer>
-        </div>
-    </div>
-    <div class="footer-content row">
-        <footer class="col footer"><p>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#o-que-e-o-pytest">3.1.1. O que é o Pytest?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#multiplos-testes-para-a-mesma-funcao">3.1.2. Múltiplos testes para a mesma função</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#parametrizacao-combinando-testes">3.1.3. Parametrização: combinando testes</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#parametrizando-com-uma-lista-de-exemplos">3.1.3.1. Parametrizando com uma lista de exemplos</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#parametrizando-uma-lista-de-entradas-diferentes-com-diferentes-resultados-esperados">3.1.3.2. Parametrizando uma lista de entradas diferentes com diferentes resultados esperados</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#testando-uma-funcao-de-cada-vez">3.1.4. Testando uma função de cada vez</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fixtures-usando-os-mesmos-dados-para-testar-diferentes-funcoes">3.1.5. Fixtures: usando os mesmos dados para testar diferentes funções</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#estruture-seus-projetos">3.1.6. Estruture seus projetos</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
   
-    By Henrique Branco<br/>
-  
-      &copy; Copyright 2022.<br/>
-</p>
-        </footer>
-    </div>
+  <div class="footer-item">
     
+<p class="component-author">
+By Henrique Branco
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
 </div>
+          </footer>
+        
 
-
-      </div>
+      </main>
     </div>
+  </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+  <script src="../_static/scripts/bootstrap.js?digest=3ee479438cf8b5e0d341"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=3ee479438cf8b5e0d341"></script>
 
-
+  <footer class="bd-footer">
+  </footer>
   </body>
 </html>

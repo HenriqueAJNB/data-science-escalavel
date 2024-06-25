@@ -1,118 +1,187 @@
 
 <!DOCTYPE html>
 
-<html>
+
+<html lang="en" data-content_root="../" >
+
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>2.1. Como estruturar seu projeto de ciência de dados para aumentar a legibilidade e transparência &#8212; Construindo uma solução robusta e escalável em ciência de dados</title>
-    
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
   <!-- Loaded before other Sphinx assets -->
-  <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
-<link href="../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+  <link href="../_static/styles/theme.css?digest=3ee479438cf8b5e0d341" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=3ee479438cf8b5e0d341" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=3ee479438cf8b5e0d341" rel="stylesheet" />
 
-    
-  <link rel="stylesheet"
-    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
-  <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
-  <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+  
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=3ee479438cf8b5e0d341" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
-    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
-    
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=87e54e7c" />
+  
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=3ee479438cf8b5e0d341" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=3ee479438cf8b5e0d341" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=3ee479438cf8b5e0d341"></script>
 
-    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-    <script src="../_static/jquery.js"></script>
-    <script src="../_static/underscore.js"></script>
-    <script src="../_static/doctools.js"></script>
-    <script src="../_static/clipboard.min.js"></script>
-    <script src="../_static/copybutton.js"></script>
-    <script src="../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="../_static/togglebutton.js"></script>
-    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
-    <script src="../_static/design-tabs.js"></script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
-const thebe_selector = ".thebe,.cell"
-const thebe_selector_input = "pre"
-const thebe_selector_output = ".output, .cell_output"
-</script>
-    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script async="async" src="https://www.googletagmanager.com/gtag/js?id=G-QFTP5KWB8R"></script>
+    <script>
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){ dataLayer.push(arguments); }
+                gtag('js', new Date());
+                gtag('config', 'G-QFTP5KWB8R');
+            </script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){ dataLayer.push(arguments); }
+                gtag('js', new Date());
+                gtag('config', 'G-QFTP5KWB8R');
+            </script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'cap02-estrutura_projeto/sec2-1-introducao';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="2.2. Boas práticas na escrita de funções" href="sec2-2-melhores_praticas_funcoes.html" />
     <link rel="prev" title="2. Estrutura do projeto" href="sec2-0-estrutura_projeto.html" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="docsearch:language" content="None">
-    
-
-    <!-- Google Analytics -->
-    
-<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-QFTP5KWB8R"></script>
-<script>
-                    window.dataLayer = window.dataLayer || [];
-                    function gtag(){ dataLayer.push(arguments); }
-                    gtag('js', new Date());
-                    gtag('config', 'G-QFTP5KWB8R');
-                </script>
-
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
   </head>
-  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
-<!-- Checkboxes to toggle the left sidebar -->
-<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
-<label class="overlay overlay-navbar" for="__navigation">
-    <div class="visually-hidden">Toggle navigation sidebar</div>
-</label>
-<!-- Checkboxes to toggle the in-page toc -->
-<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
-<label class="overlay overlay-pagetoc" for="__page-toc">
-    <div class="visually-hidden">Toggle in-page Table of Contents</div>
-</label>
-<!-- Headers at the top -->
-<div class="announcement header-item noprint"></div>
-<div class="header header-item noprint"></div>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
 
-    
-    <div class="container-fluid" id="banner"></div>
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
 
-    
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
 
-    <div class="container-xl">
-      <div class="row">
-          
-<!-- Sidebar -->
-<div class="bd-sidebar noprint" id="site-navigation">
-    <div class="bd-sidebar__content">
-        <div class="bd-sidebar__top"><div class="navbar-brand-box">
-    <a class="navbar-brand text-wrap" href="../index.html">
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
       
-        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
         
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+
+<a class="navbar-brand logo" href="../README.html">
+  
+  
+  
+  
+  
+    
+    
       
-      
-      <img src="../_static/00-hb_logo.png" class="logo" alt="logo">
-      
-      
-      <h1 class="site-logo" id="site-title">Construindo uma solução robusta e escalável em ciência de dados</h1>
-      
-    </a>
-</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
-  <i class="icon fas fa-search"></i>
-  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
-</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
-    <div class="bd-toc-item active">
+    
+    
+    <img src="../_static/00-hb_logo.png" class="logo__image only-light" alt="Construindo uma solução robusta e escalável em ciência de dados - Home"/>
+    <script>document.write(`<img src="../_static/00-hb_logo.png" class="logo__image only-dark" alt="Construindo uma solução robusta e escalável em ciência de dados - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
             <li class="toctree-l1">
@@ -122,482 +191,264 @@ const thebe_selector_output = ".output, .cell_output"
             </li>
         </ul>
         <ul class="current nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="../cap01-como_ler_este_livro.html">
-   1. Como ler este livro
-  </a>
- </li>
- <li class="toctree-l1 current active has-children">
-  <a class="reference internal" href="sec2-0-estrutura_projeto.html">
-   2. Estrutura do projeto
-  </a>
-  <input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
-  <label for="toctree-checkbox-1">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul class="current">
-   <li class="toctree-l2 current active">
-    <a class="current reference internal" href="#">
-     2.1. Como estruturar seu projeto de ciência de dados para aumentar a legibilidade e transparência
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="sec2-2-melhores_praticas_funcoes.html">
-     2.2. Boas práticas na escrita de funções
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../cap03-testes_unitarios/sec3-0-testes_unitarios.html">
-   3. Testando o código
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
-  <label for="toctree-checkbox-2">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../cap03-testes_unitarios/sec3-1-pytest.html">
-     3.1. Pytest para cientista de dados
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../cap03-testes_unitarios/sec3-2-dicas_pytest.html">
-     3.2. Quatro dicas úteis para o pytest
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../cap04-testando_dados/sec4-0-testando_dados.html">
-   4. Testando os dados
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
-  <label for="toctree-checkbox-3">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../cap04-testando_dados/sec4-1-great_expectations.html">
-     4.1. Great Expectations: saiba sempre o que esperar dos seus dados
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../cap04-testando_dados/sec4-2-pandera.html">
-     4.2. Valide Seu Pandas DataFrame com Pandera
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../cap04-testando_dados/sec4-3-schema.html">
-     4.3. Introdução ao Schema: Uma Biblioteca Python para Validar seus Dados
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../cap05-construir_pipelines/sec5-0-construir_pipelines.html">
-   5. Construir Pipelines
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
-  <label for="toctree-checkbox-4">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../cap05-construir_pipelines/sec5-1-prefect.html">
-     5.1. Orquestre um projeto de ciência de dados em Python com Prefect
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../cap06-acompanhamento_de_experimentos/sec6-0-acompanhamento_de_experimentos.html">
-   6. Acompanhamento de experimentos
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
-  <label for="toctree-checkbox-5">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../cap06-acompanhamento_de_experimentos/sec6-1-hydra.html">
-     6.1. Configure seus projetos de ciência de dados com Hydra
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../cap07-controle_de_versao/sec7-0-controle_de_versao.html">
-   7. Controle de Versão
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
-  <label for="toctree-checkbox-6">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../cap07-controle_de_versao/sec7-1-introducao_ao_DVC.html">
-     7.1. Introdução ao DVC: Controle de Versionamento de Dados para Projetos de Aprendizado de Máquina
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../cap07-controle_de_versao/sec7-2-dagshub.html">
-     7.2. DagsHub: um Suplemento de Github para Cientistas de Dados e Engenheiros de Aprendizado de Máquina
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../cap07-controle_de_versao/sec7-3-pre_commit_plugins.html">
-     7.3. 4 plugins pré-commit para automatizar a revisão e formatação de código em Python
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../cap08-deploy_de_modelos/sec8-0-deploy_de_modelos.html">
-   8. Deploy de Modelos
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/>
-  <label for="toctree-checkbox-7">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../cap08-deploy_de_modelos/sec8-1-bentoml.html">
-     8.1. BentoML: Crie um Serviço de Predição Baseado em ML em Minutos
-    </a>
-   </li>
-  </ul>
- </li>
+<li class="toctree-l1"><a class="reference internal" href="../cap01-como_ler_este_livro.html">1. Como ler este livro</a></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="sec2-0-estrutura_projeto.html">2. Estrutura do projeto</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">2.1. Como estruturar seu projeto de ciência de dados para aumentar a legibilidade e transparência</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sec2-2-melhores_praticas_funcoes.html">2.2. Boas práticas na escrita de funções</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../cap03-testes_unitarios/sec3-0-testes_unitarios.html">3. Testando o código</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../cap03-testes_unitarios/sec3-1-pytest.html">3.1. Pytest para cientista de dados</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cap03-testes_unitarios/sec3-2-dicas_pytest.html">3.2. Quatro dicas úteis para o pytest</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../cap04-testando_dados/sec4-0-testando_dados.html">4. Testando os dados</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../cap04-testando_dados/sec4-1-great_expectations.html">4.1. Great Expectations: saiba sempre o que esperar dos seus dados</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cap04-testando_dados/sec4-2-pandera.html">4.2. Valide Seu Pandas DataFrame com Pandera</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cap04-testando_dados/sec4-3-schema.html">4.3. Introdução ao Schema: Uma Biblioteca Python para Validar seus Dados</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../cap05-construir_pipelines/sec5-0-construir_pipelines.html">5. Construir Pipelines</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../cap05-construir_pipelines/sec5-1-prefect.html">5.1. Orquestre um projeto de ciência de dados em Python com Prefect</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../cap06-acompanhamento_de_experimentos/sec6-0-acompanhamento_de_experimentos.html">6. Acompanhamento de experimentos</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../cap06-acompanhamento_de_experimentos/sec6-1-hydra.html">6.1. Configure seus projetos de ciência de dados com Hydra</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../cap07-controle_de_versao/sec7-0-controle_de_versao.html">7. Controle de Versão</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../cap07-controle_de_versao/sec7-1-introducao_ao_DVC.html">7.1. Introdução ao DVC: Controle de Versionamento de Dados para Projetos de Aprendizado de Máquina</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cap07-controle_de_versao/sec7-2-dagshub.html">7.2. DagsHub: um Suplemento de Github para Cientistas de Dados e Engenheiros de Aprendizado de Máquina</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cap07-controle_de_versao/sec7-3-pre_commit_plugins.html">7.3. 4 plugins pré-commit para automatizar a revisão e formatação de código em Python</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../cap08-deploy_de_modelos/sec8-0-deploy_de_modelos.html">8. Deploy de Modelos</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../cap08-deploy_de_modelos/sec8-1-bentoml.html">8.1. BentoML: Crie um Serviço de Predição Baseado em ML em Minutos</a></li>
+</ul>
+</details></li>
 </ul>
 
     </div>
 </nav></div>
-        <div class="bd-sidebar__bottom">
-             <!-- To handle the deprecated key -->
-            
-            <div class="navbar_extra_footer">
-            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
-            </div>
-            
-        </div>
     </div>
-    <div id="rtd-footer-container"></div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/HenriqueAJNB/data-science-escalavel" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/HenriqueAJNB/data-science-escalavel/issues/new?title=Issue%20on%20page%20%2Fcap02-estrutura_projeto/sec2-1-introducao.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
 </div>
 
 
-          
-
-
-          
-<!-- A tiny helper pixel to detect if we've scrolled -->
-<div class="sbt-scroll-pixel-helper"></div>
-<!-- Main content -->
-<div class="col py-0 content-container">
-    
-    <div class="header-article row sticky-top noprint">
-        
 
 
 
-<div class="col py-1 d-flex header-article-main">
-    <div class="header-article__left">
-        
-        <label for="__navigation"
-  class="headerbtn"
-  data-toggle="tooltip"
-data-placement="right"
-title="Toggle navigation"
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/cap02-estrutura_projeto/sec2-1-introducao.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
 >
   
 
-<span class="headerbtn__icon-container">
-  <i class="fas fa-bars"></i>
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
   </span>
-
-</label>
-
-        
-    </div>
-    <div class="header-article__right">
-<button onclick="toggleFullScreen()"
-  class="headerbtn"
-  data-toggle="tooltip"
-data-placement="bottom"
-title="Fullscreen mode"
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
 >
   
 
-<span class="headerbtn__icon-container">
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
   <i class="fas fa-expand"></i>
   </span>
 
 </button>
 
-<div class="menu-dropdown menu-dropdown-repository-buttons">
-  <button class="headerbtn menu-dropdown__trigger"
-      aria-label="Source repositories">
-      <i class="fab fa-github"></i>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
   </button>
-  <div class="menu-dropdown__content">
-    <ul>
-      <li>
-        <a href="https://github.com/HenriqueAJNB/data-science-escalavel"
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Source repository"
->
-  
+`);
+</script>
 
-<span class="headerbtn__icon-container">
-  <i class="fab fa-github"></i>
-  </span>
-<span class="headerbtn__text-container">repository</span>
-</a>
 
-      </li>
-      
-      <li>
-        <a href="https://github.com/HenriqueAJNB/data-science-escalavel/issues/new?title=Issue%20on%20page%20%2Fcap02-estrutura_projeto/sec2-1-introducao.html&body=Your%20issue%20content%20here."
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Open an issue"
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-lightbulb"></i>
-  </span>
-<span class="headerbtn__text-container">open issue</span>
-</a>
-
-      </li>
-      
-    </ul>
-  </div>
-</div>
-
-<div class="menu-dropdown menu-dropdown-download-buttons">
-  <button class="headerbtn menu-dropdown__trigger"
-      aria-label="Download this page">
-      <i class="fas fa-download"></i>
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
   </button>
-  <div class="menu-dropdown__content">
-    <ul>
-      <li>
-        <a href="../_sources/cap02-estrutura_projeto/sec2-1-introducao.md"
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Download source file"
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-file"></i>
-  </span>
-<span class="headerbtn__text-container">.md</span>
-</a>
-
-      </li>
-      
-      <li>
-        
-<button onclick="printPdf(this)"
-  class="headerbtn"
-  data-toggle="tooltip"
-data-placement="left"
-title="Print to PDF"
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-file-pdf"></i>
-  </span>
-<span class="headerbtn__text-container">.pdf</span>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
 </button>
-
-      </li>
+</div></div>
       
-    </ul>
-  </div>
-</div>
-<label for="__page-toc"
-  class="headerbtn headerbtn-page-toc"
+    </div>
   
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-list"></i>
-  </span>
-
-</label>
-
-    </div>
 </div>
-
-<!-- Table of contents -->
-<div class="col-md-3 bd-toc show noprint">
-    <div class="tocsection onthispage pt-5 pb-3">
-        <i class="fas fa-list"></i> Contents
-    </div>
-    <nav id="bd-toc-nav" aria-label="Page">
-        <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#motivacao">
-   2.1.1. Motivação
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#mao-na-massa">
-   2.1.2. Mão na massa!
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#dependencias-e-ambiente-virtual">
-   2.1.3. Dependências e ambiente virtual
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#makefile">
-   2.1.4. Makefile
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#codigo-e-testes">
-   2.1.5. Código e testes
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#gerenciando-arquivos-de-configuracoes-com-hydra">
-   2.1.6. Gerenciando arquivos de configurações com hydra
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#gerenciando-modelos-e-dados-com-dvc">
-   2.1.7. Gerenciando modelos e dados com DVC
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#armazenando-seus-dados-de-forma-remota">
-   2.1.8. Armazenando seus dados de forma remota
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#encontrando-bugs-no-seu-codigo-antes-de-commitar">
-   2.1.9. Encontrando bugs no seu código antes de commitar
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#adicionando-a-documentacao-da-api">
-   2.1.10. Adicionando a documentação da API
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#conclusoes">
-   2.1.11. Conclusões
-  </a>
- </li>
-</ul>
-
-    </nav>
 </div>
-    </div>
-    <div class="article row">
-        <div class="col pl-md-3 pl-lg-5 content-container">
-            <!-- Table of contents that is only displayed when printing the page -->
-            <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Como estruturar seu projeto de ciência de dados para aumentar a legibilidade e transparência</h1>
-                <!-- Table of contents -->
-                <div id="print-main-content">
-                    <div id="jb-print-toc">
-                        
-                        <div>
-                            <h2> Contents </h2>
-                        </div>
-                        <nav aria-label="Page">
-                            <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#motivacao">
-   2.1.1. Motivação
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#mao-na-massa">
-   2.1.2. Mão na massa!
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#dependencias-e-ambiente-virtual">
-   2.1.3. Dependências e ambiente virtual
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#makefile">
-   2.1.4. Makefile
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#codigo-e-testes">
-   2.1.5. Código e testes
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#gerenciando-arquivos-de-configuracoes-com-hydra">
-   2.1.6. Gerenciando arquivos de configurações com hydra
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#gerenciando-modelos-e-dados-com-dvc">
-   2.1.7. Gerenciando modelos e dados com DVC
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#armazenando-seus-dados-de-forma-remota">
-   2.1.8. Armazenando seus dados de forma remota
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#encontrando-bugs-no-seu-codigo-antes-de-commitar">
-   2.1.9. Encontrando bugs no seu código antes de commitar
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#adicionando-a-documentacao-da-api">
-   2.1.10. Adicionando a documentação da API
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#conclusoes">
-   2.1.11. Conclusões
-  </a>
- </li>
-</ul>
+              
+              
 
-                        </nav>
-                    </div>
-                </div>
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Como estruturar seu projeto de ciência de dados para aumentar a legibilidade e transparência</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
             </div>
-            <main id="main-content" role="main">
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#motivacao">2.1.1. Motivação</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mao-na-massa">2.1.2. Mão na massa!</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dependencias-e-ambiente-virtual">2.1.3. Dependências e ambiente virtual</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#makefile">2.1.4. Makefile</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#codigo-e-testes">2.1.5. Código e testes</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#gerenciando-arquivos-de-configuracoes-com-hydra">2.1.6. Gerenciando arquivos de configurações com hydra</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#gerenciando-modelos-e-dados-com-dvc">2.1.7. Gerenciando modelos e dados com DVC</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#armazenando-seus-dados-de-forma-remota">2.1.8. Armazenando seus dados de forma remota</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#encontrando-bugs-no-seu-codigo-antes-de-commitar">2.1.9. Encontrando bugs no seu código antes de commitar</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#adicionando-a-documentacao-da-api">2.1.10. Adicionando a documentação da API</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusoes">2.1.11. Conclusões</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
                 
-              <div>
-                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
   <p><a class="reference external" href="https://github.com/HenriqueAJNB/data-science-escalavel/tree/main/book"><img alt="View the code" src="https://img.shields.io/badge/GitHub-Visualizar_codigo-blue?logo=GitHub" /></a></p>
 <section id="como-estruturar-seu-projeto-de-ciencia-de-dados-para-aumentar-a-legibilidade-e-transparencia">
-<h1><span class="section-number">2.1. </span>Como estruturar seu projeto de ciência de dados para aumentar a legibilidade e transparência<a class="headerlink" href="#como-estruturar-seu-projeto-de-ciencia-de-dados-para-aumentar-a-legibilidade-e-transparencia" title="Permalink to this headline">#</a></h1>
+<h1><span class="section-number">2.1. </span>Como estruturar seu projeto de ciência de dados para aumentar a legibilidade e transparência<a class="headerlink" href="#como-estruturar-seu-projeto-de-ciencia-de-dados-para-aumentar-a-legibilidade-e-transparencia" title="Link to this heading">#</a></h1>
 <div style="text-align: justify">
 <section id="motivacao">
-<h2><span class="section-number">2.1.1. </span>Motivação<a class="headerlink" href="#motivacao" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">2.1.1. </span>Motivação<a class="headerlink" href="#motivacao" title="Link to this heading">#</a></h2>
 <p>É importante estruturar o seu projeto de ciência de dados baseado em algum padrão para que seus colegas de trabalho consigam facilmente manter e modificar o projeto.</p>
 <p><img alt="estrutura_projeto" src="../_images/02-1-estrutura_projeto.png" /></p>
 <p>Mas qual tipo de padrão você deve seguir? Não seria ideal se pudéssemos criar uma estrutura a partir de um modelo padrão (template)?</p>
@@ -606,17 +457,17 @@ title="Print to PDF"
 <p>Nesta seção iremos aprender a usar esse template para incorporar as melhores práticas ao fluxo de ciência de dados.</p>
 </section>
 <section id="mao-na-massa">
-<h2><span class="section-number">2.1.2. </span>Mão na massa!<a class="headerlink" href="#mao-na-massa" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">2.1.2. </span>Mão na massa!<a class="headerlink" href="#mao-na-massa" title="Link to this heading">#</a></h2>
 <p>Para fazer download do template, comece instalando o <a class="reference external" href="https://github.com/cookiecutter/cookiecutter">cookiecutter</a>:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip install cookiecutter
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip<span class="w"> </span>install<span class="w"> </span>cookiecutter
 </pre></div>
 </div>
 <p>Se estiver usando o Poetry, então digite:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>poetry add cookiecutter
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>poetry<span class="w"> </span>add<span class="w"> </span>cookiecutter
 </pre></div>
 </div>
 <p>Crie um projeto baseado no template:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>cookiecutter https://github.com/khuyentran1401/data-science-template
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>cookiecutter<span class="w"> </span>https://github.com/khuyentran1401/data-science-template
 </pre></div>
 </div>
 <p>…, e você será questionado de alguns detalhes do seu projeto, como:</p>
@@ -639,7 +490,7 @@ title="Print to PDF"
 <p>Nas próximas seções, nós vamos aprender as funcionalidades destas ferramentas e arquivos.</p>
 </section>
 <section id="dependencias-e-ambiente-virtual">
-<h2><span class="section-number">2.1.3. </span>Dependências e ambiente virtual<a class="headerlink" href="#dependencias-e-ambiente-virtual" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">2.1.3. </span>Dependências e ambiente virtual<a class="headerlink" href="#dependencias-e-ambiente-virtual" title="Link to this heading">#</a></h2>
 <p>Este projeto usa o <a class="reference external" href="https://python-poetry.org/">Poetry</a> no lugar do <code class="docutils literal notranslate"><span class="pre">pip</span></code> para gerenciar as dependências. O motivo é porque o Poetry nos permite:</p>
 <ul class="simple">
 <li><p>Separar as dependências principais das dependências indiretas em dois arquivos diferentes, ao invés de colocar todas elas em um único arquivo <code class="docutils literal notranslate"><span class="pre">requirements.txt</span></code>.</p></li>
@@ -648,7 +499,7 @@ title="Print to PDF"
 <li><p>Evitar instalar novos pacotes que são conflitantes com aqueles preexistentes.</p></li>
 </ul>
 <p>As instruções de instalação do Poetry estão neste <a class="reference external" href="https://python-poetry.org/docs/#installation"><i>link</i></a>. Todas as dependências principais do projeto estão definidas no arquivo <code class="docutils literal notranslate"><span class="pre">pyproject.toml</span></code>. Para instalar todas as dependências, basta rodar no terminal:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>poetry install
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>poetry<span class="w"> </span>install
 </pre></div>
 </div>
 <blockquote>
@@ -661,11 +512,11 @@ title="Print to PDF"
 <p>Isso alterará o valor da variável <code class="docutils literal notranslate"><span class="pre">LongPathsEnabled</span></code> do Sistema de Arquivos para 1 (True).</p>
 </div></blockquote>
 <p>Para adicionar um novo pacote do repositório PyPI, rode:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>poetry add &lt;nome-do-pacote&gt;
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>poetry<span class="w"> </span>add<span class="w"> </span>&lt;nome-do-pacote&gt;
 </pre></div>
 </div>
 <p>Para remover um pacote:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>poetry remove &lt;nome-do-pacote&gt;
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>poetry<span class="w"> </span>remove<span class="w"> </span>&lt;nome-do-pacote&gt;
 </pre></div>
 </div>
 <hr class="docutils" />
@@ -683,22 +534,22 @@ title="Print to PDF"
 </section>
 <hr class="docutils" />
 <section id="makefile">
-<h2><span class="section-number">2.1.4. </span>Makefile<a class="headerlink" href="#makefile" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">2.1.4. </span>Makefile<a class="headerlink" href="#makefile" title="Link to this heading">#</a></h2>
 <p>O arquivo Makefile permite criar atalhos pequenos e legíveis para uma série de comandos. Você pode usar o Makefile para automatizar tarefas como, por exemplo, a preparação inicial do seu ambiente:</p>
-<div class="highlight-Makefile notranslate"><div class="highlight"><pre><span></span><span class="nf">install</span><span class="o">:</span> 
-	@echo <span class="s2">&quot;Installing...&quot;</span>
-	poetry install
-	poetry run pre-commit install
+<div class="highlight-Makefile notranslate"><div class="highlight"><pre><span></span><span class="nf">install</span><span class="o">:</span><span class="w"> </span>
+<span class="w">	</span>@echo<span class="w"> </span><span class="s2">&quot;Installing...&quot;</span>
+<span class="w">	</span>poetry<span class="w"> </span>install
+<span class="w">	</span>poetry<span class="w"> </span>run<span class="w"> </span>pre-commit<span class="w"> </span>install
 
 <span class="nf">activate</span><span class="o">:</span>
-	@echo <span class="s2">&quot;Activating virtual environment&quot;</span>
-	poetry shell
+<span class="w">	</span>@echo<span class="w"> </span><span class="s2">&quot;Activating virtual environment&quot;</span>
+<span class="w">	</span>poetry<span class="w"> </span>shell
 
 <span class="nf">initialize_git</span><span class="o">:</span>
-  @echo <span class="s2">&quot;Initialize git&quot;</span>
-	git init 
+<span class="w">  </span>@echo<span class="w"> </span><span class="s2">&quot;Initialize git&quot;</span>
+<span class="w">	</span>git<span class="w"> </span>init<span class="w"> </span>
 
-<span class="nf">setup</span><span class="o">:</span> <span class="n">initialize_git</span> <span class="n">install</span>
+<span class="nf">setup</span><span class="o">:</span><span class="w"> </span><span class="n">initialize_git</span> <span class="n">install</span>
 </pre></div>
 </div>
 <blockquote>
@@ -706,14 +557,14 @@ title="Print to PDF"
 <p>Embora a autora não tenho mencionado no livro original, existem alternativas não oficiais para realizar essas automações com o <code class="docutils literal notranslate"><span class="pre">make</span></code> no Windows, pois o <code class="docutils literal notranslate"><span class="pre">make</span></code> não é nativo deste sistema operacional. Em contrapartida, existe o <code class="docutils literal notranslate"><span class="pre">just</span></code> que funciona de forma equivalente ao <code class="docutils literal notranslate"><span class="pre">make</span></code> e também funciona no Windows.</p>
 </div></blockquote>
 <p>Quando qualquer pessoa pegar o projeto pela primeira vez, basta rodar os comandos abaixo para preparar todo o ambiente do projeto:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>make activate
-make setup
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>make<span class="w"> </span>activate
+make<span class="w"> </span>setup
 </pre></div>
 </div>
 <p><img alt="make" src="../_images/02-1-make.gif" /></p>
 </section>
 <section id="codigo-e-testes">
-<h2><span class="section-number">2.1.5. </span>Código e testes<a class="headerlink" href="#codigo-e-testes" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">2.1.5. </span>Código e testes<a class="headerlink" href="#codigo-e-testes" title="Link to this heading">#</a></h2>
 <p>Todos os scripts Python são armazenados dentro da pasta <code class="docutils literal notranslate"><span class="pre">src</span></code></p>
 <p><img alt="estrutura_pastas1" src="../_images/02-1-estrutura_pastas1.png" /></p>
 <blockquote>
@@ -724,19 +575,19 @@ make setup
 <p><img alt="estrutura_pastas2" src="../_images/02-1-estrutura_pastas2.png" /></p>
 </section>
 <section id="gerenciando-arquivos-de-configuracoes-com-hydra">
-<h2><span class="section-number">2.1.6. </span>Gerenciando arquivos de configurações com hydra<a class="headerlink" href="#gerenciando-arquivos-de-configuracoes-com-hydra" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">2.1.6. </span>Gerenciando arquivos de configurações com hydra<a class="headerlink" href="#gerenciando-arquivos-de-configuracoes-com-hydra" title="Link to this heading">#</a></h2>
 <p>Um arquivo de configurações armazena todos os valores em um único arquivo, a fim de deixá-los separados e não escrevê-los diretamente no código. Neste template, todos os arquivos de configuração são armazenados na pasta <code class="docutils literal notranslate"><span class="pre">config</span></code>.</p>
 <p><img alt="config" src="../_images/02-1-config.png" /></p>
 <p><a class="reference external" href="https://hydra.cc/docs/intro/">Hydra</a> é um pacote da linguagem Python que permite acessar os parâmetros de configuração dos arquivos dentro de um script Python.</p>
 <p>Por exemplo, se o seu <code class="docutils literal notranslate"><span class="pre">config/main.yaml</span></code> tiver o conteúdo abaixo:</p>
 <div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">raw</span><span class="p">:</span><span class="w"> </span>
-<span class="w">  </span><span class="nt">path</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">data/raw/sample.csv</span><span class="w"></span>
+<span class="w">  </span><span class="nt">path</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">data/raw/sample.csv</span>
 
-<span class="nt">processed</span><span class="p">:</span><span class="w"></span>
-<span class="w">  </span><span class="nt">path</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">data/processed/processed.csv</span><span class="w"></span>
+<span class="nt">processed</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">path</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">data/processed/processed.csv</span>
 
-<span class="nt">final</span><span class="p">:</span><span class="w"></span>
-<span class="w">  </span><span class="nt">path</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">data/final/final.csv</span><span class="w"></span>
+<span class="nt">final</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">path</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">data/final/final.csv</span>
 </pre></div>
 </div>
 <p>…, podemos acessar os valores nesse arquivo de configuração usando o decorador <code class="docutils literal notranslate"><span class="pre">&#64;hydra.main</span></code> em uma função específica. Dentro da função, podemos acessar os valores em <code class="docutils literal notranslate"><span class="pre">processed</span></code> e <code class="docutils literal notranslate"><span class="pre">path</span></code> usando a notação de ponto: <code class="docutils literal notranslate"><span class="pre">config.processed.path</span></code>.</p>
@@ -752,7 +603,7 @@ make setup
 
 <span class="nd">@hydra</span><span class="o">.</span><span class="n">main</span><span class="p">(</span><span class="n">config_path</span><span class="o">=</span><span class="s2">&quot;../config&quot;</span><span class="p">,</span> <span class="n">config_name</span><span class="o">=</span><span class="s1">&#39;main&#39;</span><span class="p">)</span>
 <span class="k">def</span> <span class="nf">process_data</span><span class="p">(</span><span class="n">config</span><span class="p">:</span> <span class="n">DictConfig</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Função para processar os dados&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Função para processar os dados&quot;&quot;&quot;</span>
 
     <span class="n">raw_path</span> <span class="o">=</span> <span class="n">abspath</span><span class="p">(</span><span class="n">config</span><span class="o">.</span><span class="n">raw</span><span class="o">.</span><span class="n">path</span><span class="p">)</span>
     <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Processando os dados com </span><span class="si">{</span><span class="n">raw_path</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
@@ -765,65 +616,65 @@ make setup
 <p>Vamos aprofundar em maiores detalhes na seção sobre configurações.</p>
 </section>
 <section id="gerenciando-modelos-e-dados-com-dvc">
-<h2><span class="section-number">2.1.7. </span>Gerenciando modelos e dados com DVC<a class="headerlink" href="#gerenciando-modelos-e-dados-com-dvc" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">2.1.7. </span>Gerenciando modelos e dados com DVC<a class="headerlink" href="#gerenciando-modelos-e-dados-com-dvc" title="Link to this heading">#</a></h2>
 <p>Todos os dados são armazenados na pasta <code class="docutils literal notranslate"><span class="pre">data</span></code>. Cada subpasta dentro de <code class="docutils literal notranslate"><span class="pre">data</span></code> armazena dados em diferentes estágios.</p>
 <p><img alt="config" src="../_images/02-1-data.png" /></p>
 <p>Todos os modelos são salvos na pasta <code class="docutils literal notranslate"><span class="pre">model</span></code>.</p>
 <p>Sabendo que o <em>git</em> não é uma ferramenta propícia para versionamento de dados e arquivos binários (modelos), vamos usar o DVC - Data Version Control - para controlar o versionamento de nossos dados e modelos.</p>
 <p>Começamos especificando as etapas no arquivo <code class="docutils literal notranslate"><span class="pre">dvc.yaml</span></code>. Cada etapa representa um processamento específico de dados, incluindo a entrada (<code class="docutils literal notranslate"><span class="pre">deps</span></code>) e a saída (<code class="docutils literal notranslate"><span class="pre">outs</span></code>).</p>
-<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">stages</span><span class="p">:</span><span class="w"></span>
-<span class="w">  </span><span class="nt">process_data</span><span class="p">:</span><span class="w"></span>
-<span class="w">    </span><span class="nt">cmd</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">python src/process.py</span><span class="w"></span>
-<span class="w">    </span><span class="nt">deps</span><span class="p">:</span><span class="w"></span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">config/main.yaml</span><span class="w"></span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">config/process</span><span class="w"></span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">data/raw</span><span class="w"></span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">src/process.py</span><span class="w"></span>
-<span class="w">    </span><span class="nt">outs</span><span class="p">:</span><span class="w"></span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">data/processed</span><span class="p">:</span><span class="w"></span>
-<span class="w">        </span><span class="nt">persist</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span><span class="w"></span>
-<span class="w">  </span><span class="nt">train_model</span><span class="p">:</span><span class="w"></span>
-<span class="w">    </span><span class="nt">cmd</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">python src/train_model.py</span><span class="w"></span>
-<span class="w">    </span><span class="nt">deps</span><span class="p">:</span><span class="w"></span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">config/main.yaml</span><span class="w"></span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">config/model</span><span class="w"></span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">data/processed</span><span class="w"></span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">src/train_model.py</span><span class="w"></span>
-<span class="w">    </span><span class="nt">outs</span><span class="p">:</span><span class="w"></span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">data/final</span><span class="p">:</span><span class="w"></span>
-<span class="w">        </span><span class="nt">persist</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span><span class="w"></span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">models</span><span class="p">:</span><span class="w"></span>
-<span class="w">        </span><span class="nt">persist</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span><span class="w"></span>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">stages</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">process_data</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">cmd</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">python src/process.py</span>
+<span class="w">    </span><span class="nt">deps</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">config/main.yaml</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">config/process</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">data/raw</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">src/process.py</span>
+<span class="w">    </span><span class="nt">outs</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">data/processed</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">persist</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">  </span><span class="nt">train_model</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">cmd</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">python src/train_model.py</span>
+<span class="w">    </span><span class="nt">deps</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">config/main.yaml</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">config/model</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">data/processed</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">src/train_model.py</span>
+<span class="w">    </span><span class="nt">outs</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">data/final</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">persist</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">models</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">persist</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
 </pre></div>
 </div>
 <p>Todas as pastas e arquivos abaixo de <code class="docutils literal notranslate"><span class="pre">outs</span></code> serão automaticamente rastreados e versionados pelo DVC.</p>
 <p>Se você quiser executar as etapas definidas em <code class="docutils literal notranslate"><span class="pre">stages</span></code>, basta rodar no terminal</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>dvc repro
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>dvc<span class="w"> </span>repro
 </pre></div>
 </div>
 <p>Fato interessante é que o DVC pula as etapas que não foram modificadas, e roda somente as etapas que foram alteradas, economizando tempo no processo de modelagem.</p>
 <p><img alt="dvc_repro" src="../_images/02-1-dvc_repro.gif" /></p>
 </section>
 <section id="armazenando-seus-dados-de-forma-remota">
-<h2><span class="section-number">2.1.8. </span>Armazenando seus dados de forma remota<a class="headerlink" href="#armazenando-seus-dados-de-forma-remota" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">2.1.8. </span>Armazenando seus dados de forma remota<a class="headerlink" href="#armazenando-seus-dados-de-forma-remota" title="Link to this heading">#</a></h2>
 <p>O maior benefício no uso do DVC está no fato de ser possível armazenar dados em diversas plataformas, incluindo os serviços em nuvem. Você pode armazenar seus dados no DagsHub, Google Drive, Amazon S3, Azure Blob Storage, Google Cloud Storage, Aliyun OS, SSH, HDFS e HTTP.</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>dvc remote add -d remote &lt;REMOTE-URL&gt;
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>dvc<span class="w"> </span>remote<span class="w"> </span>add<span class="w"> </span>-d<span class="w"> </span>remote<span class="w"> </span>&lt;REMOTE-URL&gt;
 </pre></div>
 </div>
 <p>Depois de adicionar dados ao seu projeto local, você pode enviá-los para armazenamento remoto desta forma:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>dvc push
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>dvc<span class="w"> </span>push
 </pre></div>
 </div>
 <p>Agora basta adicionar as outras informações ao git:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git add .
-git commit -m <span class="s1">&#39;mensagem de commit&#39;</span>
-git push origin &lt;BRANCH&gt;
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>add<span class="w"> </span>.
+git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s1">&#39;mensagem de commit&#39;</span>
+git<span class="w"> </span>push<span class="w"> </span>origin<span class="w"> </span>&lt;BRANCH&gt;
 </pre></div>
 </div>
 <p>Vamos aprofundar em maiores detalhes sobre o DVC na seção sobre versionamento de dados.</p>
 </section>
 <section id="encontrando-bugs-no-seu-codigo-antes-de-commitar">
-<h2><span class="section-number">2.1.9. </span>Encontrando bugs no seu código antes de commitar<a class="headerlink" href="#encontrando-bugs-no-seu-codigo-antes-de-commitar" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">2.1.9. </span>Encontrando bugs no seu código antes de commitar<a class="headerlink" href="#encontrando-bugs-no-seu-codigo-antes-de-commitar" title="Link to this heading">#</a></h2>
 <p>Quando vamos commitar um código, precisamos nos certificar que:</p>
 <ul class="simple">
 <li><p>está bem formatado</p></li>
@@ -843,7 +694,7 @@ git push origin &lt;BRANCH&gt;
 <li><p><a class="reference external" href="https://github.com/kynan/nbstripout">nbstrpout</a> - limpa o <code class="docutils literal notranslate"><span class="pre">.json</span></code> dos arquivos Jupyter Notebooks.</p></li>
 </ul>
 <p>Para adicionar o pre-commit aos hooks do git, rode no terminal:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pre-commit install
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pre-commit<span class="w"> </span>install
 </pre></div>
 </div>
 <p>A partir de agora, quando você der um <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">commit</span></code>, seu código passará por todas as verificações e correções, de forma automática.</p>
@@ -851,27 +702,27 @@ git push origin &lt;BRANCH&gt;
 <p>Vamos aprofundar em maiores detalhes sobre pre-commit na seção sobre formatação de código.</p>
 </section>
 <section id="adicionando-a-documentacao-da-api">
-<h2><span class="section-number">2.1.10. </span>Adicionando a documentação da API<a class="headerlink" href="#adicionando-a-documentacao-da-api" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">2.1.10. </span>Adicionando a documentação da API<a class="headerlink" href="#adicionando-a-documentacao-da-api" title="Link to this heading">#</a></h2>
 <p>Na ciência de dados, assim como em qualquer outra profissão, sempre há o trabalho em equipe. Portanto, é importante criar uma boa documentação para o seu projeto.</p>
 <p>Para criar a documentação da API do seu projeto baseado nas docstrings dos seus scripts Python, vamos rodar:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>make docs_view
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>make<span class="w"> </span>docs_view
 </pre></div>
 </div>
 <p>Saída:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>Save the output to docs...
-pdoc src --http localhost:8080
-Starting pdoc server on localhost:8080
-pdoc server ready at http://localhost:8080
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>Save<span class="w"> </span>the<span class="w"> </span>output<span class="w"> </span>to<span class="w"> </span>docs...
+pdoc<span class="w"> </span>src<span class="w"> </span>--http<span class="w"> </span>localhost:8080
+Starting<span class="w"> </span>pdoc<span class="w"> </span>server<span class="w"> </span>on<span class="w"> </span>localhost:8080
+pdoc<span class="w"> </span>server<span class="w"> </span>ready<span class="w"> </span>at<span class="w"> </span>http://localhost:8080
 </pre></div>
 </div>
 <p>A documentação estará disponível em <a class="reference external" href="http://localhost:8080">http://localhost:8080</a>.</p>
 <p>Para salvar a saída da documentação em formato markdown:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>make docs_save
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>make<span class="w"> </span>docs_save
 </pre></div>
 </div>
 </section>
 <section id="conclusoes">
-<h2><span class="section-number">2.1.11. </span>Conclusões<a class="headerlink" href="#conclusoes" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">2.1.11. </span>Conclusões<a class="headerlink" href="#conclusoes" title="Link to this heading">#</a></h2>
 <p>Você acabou de aprender a estruturar um projeto de ciência de dados usando um template. Este template traz uma flexibilidade extrema. Sinta-se à vontade para ajustá-lo baseado nas suas próprias aplicações.</p>
 <p>E também pode brincar a vontade com o template <a class="reference external" href="https://github.com/khuyentran1401/data-science-template">data-science-template</a> da autora Khuyen Tran.</p>
 </div>
@@ -890,7 +741,7 @@ pdoc server ready at http://localhost:8080
             mode: "python"
         },
         kernelOptions: {
-            kernelName: "python3",
+            name: "python3",
             path: "./cap02-estrutura_projeto"
         },
         predefinedOutput: true
@@ -898,50 +749,113 @@ pdoc server ready at http://localhost:8080
     </script>
     <script>kernelName = 'python3'</script>
 
-              </div>
+                </article>
               
-            </main>
-            <footer class="footer-article noprint">
-                
-    <!-- Previous / next buttons -->
-<div class='prev-next-area'>
-    <a class='left-prev' id="prev-link" href="sec2-0-estrutura_projeto.html" title="previous page">
-        <i class="fas fa-angle-left"></i>
-        <div class="prev-next-info">
-            <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title"><span class="section-number">2. </span>Estrutura do projeto</p>
-        </div>
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="sec2-0-estrutura_projeto.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title"><span class="section-number">2. </span>Estrutura do projeto</p>
+      </div>
     </a>
-    <a class='right-next' id="next-link" href="sec2-2-melhores_praticas_funcoes.html" title="next page">
-    <div class="prev-next-info">
+    <a class="right-next"
+       href="sec2-2-melhores_praticas_funcoes.html"
+       title="next page">
+      <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
         <p class="prev-next-title"><span class="section-number">2.2. </span>Boas práticas na escrita de funções</p>
-    </div>
-    <i class="fas fa-angle-right"></i>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
     </a>
 </div>
-            </footer>
-        </div>
-    </div>
-    <div class="footer-content row">
-        <footer class="col footer"><p>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#motivacao">2.1.1. Motivação</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mao-na-massa">2.1.2. Mão na massa!</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dependencias-e-ambiente-virtual">2.1.3. Dependências e ambiente virtual</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#makefile">2.1.4. Makefile</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#codigo-e-testes">2.1.5. Código e testes</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#gerenciando-arquivos-de-configuracoes-com-hydra">2.1.6. Gerenciando arquivos de configurações com hydra</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#gerenciando-modelos-e-dados-com-dvc">2.1.7. Gerenciando modelos e dados com DVC</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#armazenando-seus-dados-de-forma-remota">2.1.8. Armazenando seus dados de forma remota</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#encontrando-bugs-no-seu-codigo-antes-de-commitar">2.1.9. Encontrando bugs no seu código antes de commitar</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#adicionando-a-documentacao-da-api">2.1.10. Adicionando a documentação da API</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusoes">2.1.11. Conclusões</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
   
-    By Henrique Branco<br/>
-  
-      &copy; Copyright 2022.<br/>
-</p>
-        </footer>
-    </div>
+  <div class="footer-item">
     
+<p class="component-author">
+By Henrique Branco
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
 </div>
+          </footer>
+        
 
-
-      </div>
+      </main>
     </div>
+  </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+  <script src="../_static/scripts/bootstrap.js?digest=3ee479438cf8b5e0d341"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=3ee479438cf8b5e0d341"></script>
 
-
+  <footer class="bd-footer">
+  </footer>
   </body>
 </html>
